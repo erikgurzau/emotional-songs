@@ -15,5 +15,7 @@ public class EmotionalSongs {
                 "46512355",
                 "123PASS",
                 "mario.rossi@test.com");
+        
+        System.out.println(u.toSteing());
     }
 }
