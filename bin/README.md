@@ -1,1 +1,1 @@
-Qui saranno inseriti i file eseguibili
+Contiene i file eseguibili del progetto
