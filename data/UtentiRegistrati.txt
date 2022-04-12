@@ -1,2 +1,2 @@
-1;erikgurzau@gmail.com;e79a8581c65a2a45e5162f01187db0842c0dbc4c1;Erik;Gurzau;ZRKPTD01A45F905D;Via;Roberto Bolle;15;20028;San Vittore Olona;Milano
-2:mariorossi@gmail.com;e79a8581c65a2a45e5162f01187db0842c0dbc4c1;Mario;Rossi;MRRSSS03B32K205F;Corso;Garibaldi;89;20010;Canegrate;Milano
+1;erikgurzau@gmail.com;e79a8581c65a2a45e5162f01187db0842c0dbc4c1;Erik;Gurzau;GRZRKE01A31F205D;Via;Maria Locati;9;20028;San Vittore Olona;Milano
+
