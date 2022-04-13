@@ -97,7 +97,7 @@ public class EmotionalSongs {
             perchè arrivati a questo punto il ciclo foreach prenderà un'altra riga e ingnoreremo i dati inutili
              */
 
-            Song song = new Song(titolo,autore,getRandomGenre(),Integer.parseInt(anno),getRandomInt(MIN_DURATION, MAX_DURATION));
+            Song song = new Song(titolo, autore, getRandomGenre(), Integer.parseInt(anno), getRandomInt(MIN_DURATION, MAX_DURATION));
             canzoni.add(song);
 
         }
