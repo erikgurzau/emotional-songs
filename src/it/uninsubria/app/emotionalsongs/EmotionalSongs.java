@@ -110,12 +110,12 @@ public class EmotionalSongs {
      */
     public static void updateFile(){
         FileManager fm = new FileManager("./data/Canzoni.txt");
-        Vector<Song> listasong = formatDataSongs(); // prende la lista di canzoni
+        Vector<Song> listaSongs = formatDataSongs(); // prende la lista di canzoni
         fm.clear(); /* cancella il contenuto del file "Canzoni.txt", lo facciamo perchè in questo punto del codice
         il file contiene tutti i dati "sporchi", che non ci servono.
         Cancelliamo queste informazioni intuili prima di mettere quele giuste e corrette per noi attraverso la lista di Canzoni
         */
-        for(int i = 0; i < listasong.size(); i++){
+        for(int i = 0; i < listaSongs.size(); i++){
             fm.println(listasong.get(i).toString(),'a'); // scrive nel file il toString() delle conzoni, in modalità append 'a', cioè aggiunge senza cancellare il contenuto già esistente
         }
     }
