@@ -25,6 +25,18 @@ public class FileManager {
         }
     }
 
+    public void clear(){
+        try {
+            FileWriter fileWriter = new FileWriter(f);
+            PrintWriter printer = new PrintWriter(fileWriter);
+            printer.write("");
+            printer.flush();
+            printer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void read() {
         try {
             Scanner sc = new Scanner(new FileReader(f));
