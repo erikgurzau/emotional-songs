@@ -38,6 +38,7 @@ public class EmotionalSongs {
         Vector<String> listaStringhe = fm.getContent();
         return listaStringhe;
     }
+    
 
     /**
      * Genera un numero intero casuale x compreso tra 0 e N, dove N è la lunghezza dell'array di generi possibili,
@@ -49,6 +50,8 @@ public class EmotionalSongs {
         int x = rand.nextInt(generi.length);
         return generi[x];
     }
+    
+    
 
     /**
      * Genera un numero intero casuale tra min e max
@@ -61,6 +64,8 @@ public class EmotionalSongs {
         int x = rand.nextInt((max - min) + 1) + min;
         return x;
     }
+    
+    
 
     /**
      * Formatta, cioè prende e modifica i dati dal file delle canzoni in modo tale che abbiano un senso e
@@ -98,6 +103,11 @@ public class EmotionalSongs {
         }
         return canzoni;
     }
+    
+    
+    /**
+     * Aggiorna il file con la lista di Canzoni, ogni riga rappresenta una conzoni e i dati sono separati dal ';'
+     */
     public static void updateFile(){
         FileManager fm = new FileManager("./data/Canzoni.txt");
         Vector<Song> listasong = formatDataSongs(); // prende la lista di canzoni
