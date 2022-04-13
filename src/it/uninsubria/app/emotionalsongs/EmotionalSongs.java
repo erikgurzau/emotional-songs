@@ -11,7 +11,7 @@ import java.util.Vector;
 
 public class EmotionalSongs {
 
-       /**
+    /**
      * Array di stringhe contenenti le tipologie di generei musicali
      */
     public static String[] generi={"Pop","Rock","Jazz","Techno","Country","Ballad","House","Funk","Raggae","Rap","Trap","Metal","Indie","Latino"};
