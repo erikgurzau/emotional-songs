@@ -46,8 +46,7 @@ public class EmotionalSongs {
      * @return Il genere in posizione x, in formato String, nell'array di generi
      */
     public static String getRandomGenre(){
-        Random rand = new Random();
-        int x = rand.nextInt(generi.length);
+        int x = getRandomInt(0, generi.length);
         return generi[x];
     }
     
