@@ -106,7 +106,7 @@ public class EmotionalSongs {
     
     
     /**
-     * Aggiorna il file con la lista di Canzoni, ogni riga rappresenta una conzoni e i dati sono separati dal ';'
+     * Aggiorna il file con la lista di Canzoni, ogni riga rappresenta una canzone e i dati sono separati dal ';'
      */
     public static void updateFile(){
         FileManager fm = new FileManager("./data/Canzoni.txt");
