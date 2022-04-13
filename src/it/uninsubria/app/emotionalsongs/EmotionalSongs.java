@@ -17,12 +17,12 @@ public class EmotionalSongs {
     public static String[] generi = { "Pop","Rock","Jazz","Techno","Country","Ballad","House","Funk","Raggae","Rap","Trap","Metal","Indie","Latino" };
 
     /**
-     * Valore intero che rappresenta la durata minima di una canzone
+     * Valore intero che rappresenta la durata minima di una canzone in millisecondi
      */
     public static final int MIN_DURATION = 150000;
 
     /**
-     * Valore intero che rappresenta la durata massima di una canzone
+     * Valore intero che rappresenta la durata massima di una canzone in millisecondi
      */
     public static final int MAX_DURATION = 300000;
 
