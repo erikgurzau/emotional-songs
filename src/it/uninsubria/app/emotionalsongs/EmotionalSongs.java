@@ -75,11 +75,11 @@ public class EmotionalSongs {
      * @return La lista di canzoni
      */
     public static Vector<Song> formatDataSongs(){
-        Vector<String> list= getListOfFileLines(); // Lista che contiene le righe del file in formato String
+        Vector<String> list = getListOfFileLines(); // Lista che contiene le righe del file in formato String
         Vector<Song> canzoni = new Vector<Song>(); // Creo una lista di canzoni di tipo Song
 
         for (String riga:list){ // Itero la lista delle righe per ricavare le informazione che mi servono
-            StringTokenizer stk= new StringTokenizer(riga,","); // Divido i dati della singola riga
+            StringTokenizer stk = new StringTokenizer(riga,","); // Divido i dati della singola riga
 
             /*
             Non c'è più bisogno del ciclo while perchè mi sono accorto che era inutile,
