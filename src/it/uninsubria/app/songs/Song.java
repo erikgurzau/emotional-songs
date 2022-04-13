@@ -3,9 +3,9 @@ package it.uninsubria.app.songs;
 public class Song {
     private String title, author, genre;
     private int year;
-    private long duration_ms;
+    private int duration_ms;
 
-    public Song(String title, String author, String genre, int year, long duration_ms) {
+    public Song(String title, String author, String genre, int year, int duration_ms) {
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -29,7 +29,7 @@ public class Song {
         return year;
     }
 
-    public long getDuration() {
+    public int getDuration() {
         return duration_ms;
     }
 
