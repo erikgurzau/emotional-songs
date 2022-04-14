@@ -18,19 +18,30 @@ public class User extends Person {
      * Stringa che identifica in modo univoco ogni utente
      */
     private final String userId;
+    
     /**
      * Email dell'utente
      */
     private final String email;
+    
     /**
      * Password del'utente
      */
     private final String psw;
 
+    /**
+     * Array dei possibili domini email consentiti
+     */
     private final String[] domains = { "@gmail.com", "@outlook.com", "@icloud.com", "@yahoo.com" };
-    
+
+    /**
+     * Lunghezza minima di caratteri per la password
+     */
     private final int MIN_LENGTH_PSW = 8;
-    
+
+    /**
+     * Lunghezza massima di caratteri per la password
+     */
     private final int MAX_LENGTH_PSW = 16;
 
     /**
