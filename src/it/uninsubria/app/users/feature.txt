@@ -7,3 +7,4 @@ Hey Alessia, ti posso chiedere se tu e Sara mi fate i seguenti metodi con i rela
 	 
 Nel package "it.uninsubria.app.users.exceptions" ho creato una classe che gestisce gli errori, si chiama UserException;
 
+Ho aggiornato anche la classe User, quindi scarica la nuova versione
