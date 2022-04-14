@@ -73,8 +73,8 @@ public class User extends Person {
         return email;
     }
 
-    public boolean checkLoginInfo(String email, String cryptPsw) {
-        return this.email.equals(email) && psw.equals(cryptPsw);
+    public boolean login(String email, String psw) {
+        return this.email.equals(email) && psw.equals(psw);
     }
 
 
