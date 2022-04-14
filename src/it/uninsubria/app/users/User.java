@@ -25,7 +25,7 @@ public class User extends Person {
     private final String email;
     
     /**
-     * Password del'utente
+     * Password dell'utente
      */
     private final String psw;
 
