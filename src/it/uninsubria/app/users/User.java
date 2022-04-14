@@ -74,7 +74,7 @@ public class User extends Person {
     }
 
     public boolean login(String email, String psw) {
-        return this.email.equals(email) && psw.equals(psw);
+        return this.email.equals(email) && this.psw.equals(psw);
     }
 
 
