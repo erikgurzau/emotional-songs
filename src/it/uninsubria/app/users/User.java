@@ -3,7 +3,7 @@ package it.uninsubria.app.users;
 import it.uninsubria.app.users.utils.Address;
 
 /**
- * Classe che definisce l'
+ * Classe che definisce un utente dell'applicazione
  * @author  Erik Gurzau
  * @author  Alessia Metaj
  * @author  Sara Biavaschi
