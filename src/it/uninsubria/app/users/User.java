@@ -29,9 +29,9 @@ public class User extends Person {
 
     private final String[] domains = { "@gmail.com", "@outlook.com", "@icloud.com", "@yahoo.com" };
     
-    private final int MIN_LENGTG_PSW = 8;
+    private final int MIN_LENGTH_PSW = 8;
     
-    private final int MAX_LENGTG_PSW = 16;
+    private final int MAX_LENGTH_PSW = 16;
 
     /**
      * Costruttore di un utente
