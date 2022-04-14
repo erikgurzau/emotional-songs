@@ -3,4 +3,7 @@ Hey Alessia, ti posso chiedere se tu e Sara mi fate i seguenti metodi con i rela
 	  controlla se la password è compresa tra 8 e 16 caratteri e contiene almeno un carattere speciale e una lettera maiuscola. Se la password non rispetta queste regole, lancia una UserException("La password non rispetta le regole") con "throw new UserException(....)"
     - public boolean isEmaiPatternValid(String email) : 
 	  controlla se è una email valida, cioè se domino valido @gmail.com, @outlook.com etc (ho già messo io un array di possibili domini, se vi vengono in mente altri aggiungeteli). Devi anche controllare che prima del '@' non ci siano solo numeri o che l'email non inizia con un numero. Se l'email non rispetta queste regole, lancia una UserException("Non è una email valida") con "throw new UserException(....)"
+	  
+	 
+Nel package "it.uninsubria.app.users.exceptions" ho creato una classe che gestisce gli errori, si chiama UserException;
 
