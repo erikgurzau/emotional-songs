@@ -1,6 +1,6 @@
 Hey Alessia, ti posso chiedere se tu e Sara mi fate i seguenti metodi con i relativi controlli, nella classe User:
     - public boolean isPswPatternValid(String psw) : 
-	  controlla se la password è compresa tra 8 e 16 caratteri e contiene almeno un carattere speciale e una lettera maiuscola. Se la password non rispetta queste regole, lancia una UserException("La password non rispetta le regole") con "throw new UserException(....)"
+	  controlla se la password è compresa tra MIN_LENGTH_PSW e MAX_LENGTH_PSW caratteri e contiene almeno un carattere speciale e una lettera maiuscola. Se la password non rispetta queste regole, lancia una UserException("La password non rispetta le regole") con "throw new UserException(....)"
     - public boolean isEmailPatternValid(String email) : 
 	  controlla se è una email valida, cioè se domino valido @gmail.com, @outlook.com etc (ho già messo io un array di possibili domini, se vi vengono in mente altri aggiungeteli). Devi anche controllare che prima del '@' non ci siano solo numeri o che l'email non inizia con un numero. Se l'email non rispetta queste regole, lancia una UserException("Non è una email valida") con "throw new UserException(....)"
 	  
