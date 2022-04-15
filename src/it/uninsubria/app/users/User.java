@@ -1,6 +1,11 @@
 package it.uninsubria.app.users;
 
+import it.uninsubria.app.controllers.utils.FileManager;
+import it.uninsubria.app.songs.Song;
 import it.uninsubria.app.users.utils.Address;
+
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 /**
  * Classe che definisce un utente dell'applicazione
@@ -15,15 +20,15 @@ import it.uninsubria.app.users.utils.Address;
  */
 public class User extends Person {
     /**
-     * Stringa che identifica in modo univoco ogni utente
+     * ID che identifica in modo univoco ogni utente
      */
-    private final String userId;
-    
+    private final int userId;
+
     /**
      * Email dell'utente
      */
     private final String email;
-    
+
     /**
      * Password dell'utente
      */
@@ -50,18 +55,18 @@ public class User extends Person {
      * @param surname Stringa che contiene il cognome dell'utente
      * @param cf Stringa che contiene il codice fiscale dell'utente, composta da obbligatoriamente 16 caratteri
      * @param address Indirizzo dell'utente
-     * @param userId Stringa che contiene l'ID dell'utente
+     * @param userId Stringa che contiene l'ID univoco dell'utente
      * @param email Stringa che contiene l'email dell'utente
      * @param psw Stringa che contiene la password
      */
-    public User(String name, String surname, String cf, Address address, String userId, String email, String psw) {
+    public User(String name, String surname, String cf, Address address, int userId, String email, String psw) {
         super(name, surname, cf, address);
         this.userId = userId;
         this.email = email;
         this.psw = psw;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -82,4 +87,5 @@ public class User extends Person {
     public String toString() {
         return userId + ";" + email + ";" + psw + ";" + super.toString();
     }
+
 }

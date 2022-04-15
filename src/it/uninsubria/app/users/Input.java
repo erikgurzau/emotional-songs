@@ -6,14 +6,19 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
+    Scanner sc;
 
-    public static int readOption(Scanner sc, String message){
+    public Input(Scanner sc) {
+        this.sc = sc;
+    }
+
+    public int readOption(String message){
         try {
             System.out.print(message);
             return Integer.parseInt(sc.next());
         } catch (NumberFormatException | InputMismatchException e){
             Display.printError("Errore, inserisci un numero per continuare");
-            return readOption(sc, message);
+            return readOption(message);
         }
     }
 }
