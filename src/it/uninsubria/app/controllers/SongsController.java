@@ -7,12 +7,13 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class SongsController {
-    public final String pathDB = "./data/Canzoni.txt";
+    private String pathFile;
     private Vector<Song> listSongs;
     private FileManager fm;
 
-    public SongsController() {
-        fm = new FileManager(pathDB);
+    public SongsController(String pathFile) {
+        this.pathFile = pathFile;
+        fm = new FileManager(pathFile);
         loadData();
     }
 
@@ -25,15 +26,24 @@ public class SongsController {
         for (String row: dbSongs) {
             StringTokenizer st = new StringTokenizer(row, ";");
             while (st.hasMoreTokens()){
+                int id = Integer.parseInt(st.nextToken());
                 String title = st.nextToken();
                 String author = st.nextToken();
                 String genre = st.nextToken();
                 int year = Integer.parseInt(st.nextToken());
-                long duration = Long.parseLong(st.nextToken());
-                list.add(new Song(title, author, genre, year, duration));
+                int duration = Integer.parseInt(st.nextToken());
+                list.add(new Song(id, title, author, genre, year, duration));
             }
         }
         return list;
+    }
+
+    public Vector<Song> getListSongs() {
+        return listSongs;
+    }
+
+    public Vector<Song> getListSongs(int idxFrom, int idxTo){
+        return new Vector(listSongs.subList(idxFrom, idxTo));
     }
 
     @Override
@@ -41,8 +51,5 @@ public class SongsController {
         return listSongs.toString();
     }
 
-    public static void main(String[] args) {
-        SongsController songsController = new SongsController();
-        System.out.println(songsController.toString());
-    }
+
 }

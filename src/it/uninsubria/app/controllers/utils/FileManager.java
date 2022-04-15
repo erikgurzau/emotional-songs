@@ -71,4 +71,5 @@ public class FileManager {
     public boolean println(String text, char mod){
         return print(text + "\n", mod);
     }
+
 }

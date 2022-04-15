@@ -11,12 +11,13 @@ import java.util.Vector;
 
 
 public class UsersController {
-    public final String pathDB = "./data/UtentiRegistrati.txt";
+    private String pathFile;
     private Vector<User> listUsers;
     private FileManager fm;
 
-    public UsersController() {
-        fm = new FileManager(pathDB);
+    public UsersController(String pathFile) {
+        this.pathFile = pathFile;
+        fm = new FileManager(pathFile);
         loadData();
     }
 
@@ -29,7 +30,7 @@ public class UsersController {
         for (String row: dbUsers) {
             StringTokenizer st = new StringTokenizer(row, ";");
             while (st.hasMoreTokens()){
-                String userId = st.nextToken();
+                int userId = Integer.parseInt(st.nextToken());
                 String email = st.nextToken();
                 String psw = st.nextToken();
                 String name = st.nextToken();
@@ -60,9 +61,13 @@ public class UsersController {
 
     public boolean login(String email, String cryptPsw){
         for (User u: listUsers) {
-            if (u.checkLoginInfo(email, cryptPsw)) return true;
+            if (u.login(email, cryptPsw)) return true;
         }
         return false;
+    }
+
+    public int getNextFreeID(){
+        return listUsers.size() + 1;
     }
 
     public String encryptPsw(String psw) {
