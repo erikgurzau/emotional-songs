@@ -16,7 +16,7 @@ import java.util.Vector;
 public class EmotionalSongs implements FileConfiguration {
     private String pathFileUsers = "./data/UtentiRegistrati.txt";
     private String pathFileSongs = "./data/Canzoni.txt";
-    private String pathFilePLaylists = "./data/Playlist.txt";
+    private String pathFilePlaylists = "./data/Playlist.txt";
     private String pathFileEmotions = "./data/Emozioni.txt";
 
     private SongsController ctrlSongs;
