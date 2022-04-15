@@ -1,8 +1,8 @@
 package it.uninsubria.app.views;
 
-import it.uninsubria.app.users.Input;
+import it.uninsubria.app.songs.Song;
 import it.uninsubria.app.views.utils.DisplayColors;
-import java.util.Scanner;
+import java.util.Vector;
 
 public class Display {
 
@@ -18,25 +18,46 @@ public class Display {
                 "\\________|\\__|     \\__| \\______/   \\__|   \\______| \\______/ \\__|  \\__|\\__|  \\__|\\________|\\______/  \\______/ \\__|  \\__| \\______/  \\______/");
     }
 
-    public static int printMenu(){
-        return printMenu(true);
+    public static void printMenu(){
+        printMenu(true);
     }
 
-    public static int printMenu(boolean showTitle){
+    public static void printMenu(boolean showTitle){
         if (showTitle) printTitle();
         System.out.println("\n(1) - Visualizza tutte le canzoni disponibili");
         System.out.println("(2) - Registrati all'applicazione");
         System.out.println("(3) - Crea una playlist");
         System.out.println("(0) - Esci");
-        System.out.print("\nRisposta: ");
-        return Input.readOption(new Scanner(System.in), "Risposta: ");
     }
 
     public static void printCredits(){
-        System.out.println("\nRealizzato da Erik Gurzau\n© 2022 Erik Gurzau. Tutti i diritti riservati.");
+        System.out.println("\nRealizzato da Erik Gurzau, Alessia Metaj, Sara Biavaschi\n© 2022 Erik Gurzau. Tutti i diritti riservati.");
     }
 
     public static void printError(String message){
-        System.out.println(DisplayColors.ANSI_RED + message + DisplayColors.ANSI_RESET);
+        System.out.print(DisplayColors.ANSI_RED + message + DisplayColors.ANSI_RESET);
+    }
+
+    public static void printPause(){
+        System.out.println("\nPremi 'Invio' per continuare...");
+        new java.util.Scanner(System.in).nextLine();
+    }
+
+    public static void printListSongs(Vector<Song> list){
+        String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
+        int k = 1, nSongs = 50;
+
+        System.out.println();
+        System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+        System.out.println("| ID    | Titolo                                            | Autore/i                                 | Anno   | Genere   | Durata |");
+        System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+        for (int i = 0; i < list.size(); i++) {
+            Song s = list.elementAt(i);
+            System.out.format(tableFormat, s.getId(), s.getTitle(), s.getAuthor(), s.getYear(), s.getGenre(), s.millisToTime());
+            if (i == (nSongs * k) - 1) {
+                printPause();
+                k++;
+            }
+        }
     }
 }
