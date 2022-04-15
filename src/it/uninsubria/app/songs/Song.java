@@ -1,16 +1,22 @@
 package it.uninsubria.app.songs;
 
 public class Song {
+    private int id;
     private String title, author, genre;
     private int year;
     private int duration_ms;
 
-    public Song(String title, String author, String genre, int year, int duration_ms) {
+    public Song(int id, String title, String author, String genre, int year, int duration_ms) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.year = year;
         this.duration_ms = duration_ms;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -41,7 +47,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return title + ";" + author + ";" + genre + ";" + year + ";" + duration_ms;
+        return id + ";" + title + ";" + author + ";" + genre + ";" + year + ";" + duration_ms;
     }
 
 }
