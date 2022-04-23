@@ -106,6 +106,8 @@ public class EmotionalSongs {
                     if (pswRandom == 'y') psw = SecurePassword.genPsw();
                     else psw = Input.readPassword(sc,"Inserisci la tua password: ");
 
+                    
+                    // Questa roba è per il login, qui non c'entra nulla, solo per provare
                     try {
                         app.login(email, psw);
                         Display.printLoginSuccess();
