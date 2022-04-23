@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 public class SecurePassword {
-    public static final String CARATTERI = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&/?@[]^{}";
+    private static final String CARATTERI = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&/?@[]^{}";
     public static final int LENGTH_PSW = 16;
 
     public static String encrypt(String password){
