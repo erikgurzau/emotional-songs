@@ -59,7 +59,15 @@ public class UsersController {
         return listUsers.size();
     }
 
-    public boolean login(String email, String cryptPsw){
+    public boolean contains(String email){
+        for (User u: listUsers)
+            if (u.getEmail().equals(email))
+                return true;
+        return false;
+    }
+
+    public boolean login(String email, String psw){
+        String cryptPsw = SecurePassword.encrypt(psw);
         for (User u: listUsers) {
             if (u.login(email, cryptPsw)) return true;
         }
