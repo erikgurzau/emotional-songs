@@ -21,6 +21,7 @@ public class Main {
     public void run(){
         EmotionalSongs app = new EmotionalSongs();
         Scanner sc = new Scanner(System.in);
+        sc.useDelimiter("\n");
 
         String name, surname, cf;
         String streetName, postalCode, city, province;
@@ -49,11 +50,11 @@ public class Main {
                     // Indirizzo
                     Display.printRegistrationProgressBar(2);
                     typeStreet = Input.readTypeStreet(sc, Arrays.toString(TypeStreet.values()) + "\nScegli il tipo di strada: ");
-                    streetName = Input.readString(sc , "Inserisci il nome della strada: ");
-                    houseNumber = Input.readInteger(sc , "Inserisci il numero civico: ");
-                    postalCode = Input.readString(sc , "Inserisci il codice postale: ");
-                    city = Input.readString(sc , "Inserisci il nome della città: ");
-                    province = Input.readString(sc , "Inserisci il nome della provincia: ");
+                    streetName = Input.readString(sc, "Inserisci il nome della strada: ");
+                    houseNumber = Input.readInteger(sc,"Inserisci il numero civico: ");
+                    postalCode = Input.readString(sc, "Inserisci il codice postale: ");
+                    city = Input.readString(sc, "Inserisci il nome della città: ");
+                    province = Input.readString(sc, "Inserisci il nome della provincia: ");
 
 
                     // Account

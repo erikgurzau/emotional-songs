@@ -9,6 +9,10 @@ import it.uninsubria.app.users.utils.TypeStreet;
 import it.uninsubria.app.views.Display;
 import it.uninsubria.app.views.utils.DisplayColors;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.InputMismatchException;
 import java.util.Scanner;
