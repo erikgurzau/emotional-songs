@@ -12,8 +12,6 @@ import it.uninsubria.app.views.Display;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static org.graalvm.compiler.options.OptionType.User;
-
 public class Main {
 
     public Main(){ }
