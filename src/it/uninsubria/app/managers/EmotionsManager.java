@@ -2,7 +2,6 @@ package it.uninsubria.app.managers;
 
 import it.uninsubria.app.emotionalsongs.Emotion;
 import it.uninsubria.app.managers.utils.FileManager;
-import it.uninsubria.app.songs.Song;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
