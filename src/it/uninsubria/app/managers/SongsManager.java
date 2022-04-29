@@ -46,7 +46,47 @@ public class SongsManager {
         return new Vector(listSongs.subList(idxFrom, idxTo));
     }
 
-    @Override
+
+
+    /**
+     * Ritorna una lista di canzoni che contengono nel titolo la stringa cercata
+     * @param research
+     * @return un vettore con le canzoni trovate
+     */
+    public Vector<Song> findSongsByTitle(String research) {
+        Vector<Song> result = new Vector<>();
+
+        for(Song song: listSongs)
+            if(song.getTitle().contains(research))
+                result.add(song);
+
+
+        return result;
+    }
+
+    /**
+     * Prende in input un autore e un anno e restituisce il nome del/i brano/i corrispondenti ad autore ed anno ricercato
+     * @param rscAuth
+     * @param rscYear
+     * @return un vettore con le canzoni trovate
+     */
+    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) {
+        Vector<Song> result = new Vector<>();
+        for(Song song: listSongs) {
+            String author = song.getAuthor();
+            int year = song.getYear();
+
+            if(author.equals(rscAuth) && year == rscYear)
+                result.add(song);
+
+        }
+        return result;
+    }
+
+
+
+
+
     public String toString() {
         return listSongs.toString();
     }
