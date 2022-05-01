@@ -38,7 +38,7 @@ public class EmotionsManager {
         return listEmotions;
     }
 
-    public Vector<Song> getListEmotions(int idxFrom, int idxTo){
+    public Vector<Emotion> getListEmotions(int idxFrom, int idxTo){
         return new Vector(listEmotions.subList(idxFrom, idxTo));
     }
 }
