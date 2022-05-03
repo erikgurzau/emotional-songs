@@ -31,7 +31,8 @@ public class Main {
         String email, psw;
         char pswRandom;
         int opt = 0;
-        String research;
+        String research, rscAuth;
+        int rscYear;
 
         do {
             Display.printMenu();
@@ -80,16 +81,39 @@ public class Main {
                 case 3:
                     //if (app.isLogged()){
                         //crea la playlist
-                        research = Input.readString(sc, "Ricerca brano per titolo: ");
+                    Display.printResearchOption();
+                    opt = Input.readInteger(sc, "\nRisposta: ");
+
+                    switch (opt) {
+                        case 1:
+                            research = Input.readString(sc, "Cerca: ");
                             if (app.findSongsByTitle(research).size() != 0) {
                                 Display.printListSongs(app.findSongsByTitle(research));
                             } else {
                                 do {
                                     System.out.println("Nessuna canzone trovata!");
-                                    research = Input.readString(sc, "Ricerca brano per titolo: ");
+                                    research = Input.readString(sc, "Cerca: ");
                                 } while(app.findSongsByTitle(research).size() == 0);
                                 Display.printListSongs(app.findSongsByTitle(research));
                             }
+                            break;
+
+                        case 2:
+                            rscAuth = Input.readString(sc, "Cerca autore: ");
+                            rscYear = Input.readInteger(sc, "Cerca anno:");
+                            if (app.findSongsByAuthorAndYear(rscAuth, rscYear).size() != 0) {
+                                Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
+                            } else {
+                                do {
+                                    System.out.println("Nessuna canzone trovata!");
+                                    rscAuth = Input.readString(sc, "Cerca autore: ");
+                                    rscYear = Input.readInteger(sc, "Cerca anno: ");
+                                } while(app.findSongsByAuthorAndYear(rscAuth, rscYear).size() == 0);
+                                Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
+                            }
+                            break;
+                    }
+
                     //}
                     //else {
                         // registrati
