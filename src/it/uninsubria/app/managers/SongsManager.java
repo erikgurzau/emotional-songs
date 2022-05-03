@@ -3,6 +3,9 @@ package it.uninsubria.app.managers;
 import it.uninsubria.app.managers.utils.FileManager;
 import it.uninsubria.app.songs.Song;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -47,7 +50,6 @@ public class SongsManager {
     }
 
 
-
     /**
      * Ritorna una lista di canzoni che contengono nel titolo la stringa cercata
      * @param research
@@ -55,12 +57,13 @@ public class SongsManager {
      */
     public Vector<Song> findSongsByTitle(String research) {
         Vector<Song> result = new Vector<>();
-
-        for(Song song: listSongs)
-            if(song.getTitle().contains(research))
+        for(Song song: listSongs) {
+            String title = song.getTitle();
+            String lowTitle = title.toLowerCase();
+            if(lowTitle.contains(research)) {
                 result.add(song);
-
-
+            }
+        }
         return result;
     }
 
@@ -75,18 +78,15 @@ public class SongsManager {
         for(Song song: listSongs) {
             String author = song.getAuthor();
             int year = song.getYear();
-
-            if(author.equals(rscAuth) && year == rscYear)
+            if(author.equals(rscAuth) && year==rscYear) {
                 result.add(song);
-
+            }
         }
         return result;
     }
 
 
-
-
-
+    @Override
     public String toString() {
         return listSongs.toString();
     }
