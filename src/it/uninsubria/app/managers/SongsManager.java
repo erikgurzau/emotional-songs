@@ -6,6 +6,7 @@ import it.uninsubria.app.songs.Song;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -51,7 +52,7 @@ public class SongsManager {
 
 
     /**
-     * Ritorna una lista di canzoni che contengono nel titolo la stringa cercata
+     * Ritorna una lista di canzoni che contengono nel titolo la stringa cercata (case insensitive)
      * @param research
      * @return un vettore con le canzoni trovate
      */
@@ -68,7 +69,7 @@ public class SongsManager {
     }
 
     /**
-     * Prende in input un autore e un anno e restituisce il nome del/i brano/i corrispondenti ad autore ed anno ricercato
+     * Prende in input un autore e un anno e restituisce il nome del/i brano/i corrispondenti ad autore ed anno ricercato (ricerca autore case insensitive)
      * @param rscAuth
      * @param rscYear
      * @return un vettore con le canzoni trovate
@@ -77,8 +78,9 @@ public class SongsManager {
         Vector<Song> result = new Vector<>();
         for(Song song: listSongs) {
             String author = song.getAuthor();
+            String lowAuth = author.toLowerCase();
             int year = song.getYear();
-            if(author.equals(rscAuth) && year==rscYear) {
+            if(lowAuth.equals(rscAuth) && year==rscYear) {
                 result.add(song);
             }
         }
