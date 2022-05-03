@@ -43,7 +43,7 @@ public class Display {
         System.out.println("(0) - Esci");
     }
 
-    public static void printResearchOption() {
+    public static void printResearchOptions() {
         System.out.println("\n(1) - Ricerca brano per titolo");
         System.out.println("(2) - Ricerca brano per autore ed anno");
     }
