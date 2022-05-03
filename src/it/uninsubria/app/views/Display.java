@@ -43,6 +43,11 @@ public class Display {
         System.out.println("(0) - Esci");
     }
 
+    public static void printResearchOption() {
+        System.out.println("\n(1) - Ricerca brano per titolo");
+        System.out.println("(2) - Ricerca brano per autore ed anno");
+    }
+
     public static void printCredits(){
         System.out.println("\nRealizzato da Erik Gurzau, Alessia Metaj, Sara Biavaschi\n© 2022 Erik Gurzau. Tutti i diritti riservati.");
     }
