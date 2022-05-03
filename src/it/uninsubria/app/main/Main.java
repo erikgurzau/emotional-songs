@@ -81,7 +81,7 @@ public class Main {
                 case 3:
                     //if (app.isLogged()){
                         //crea la playlist
-                    Display.printResearchOption();
+                    Display.printResearchOptions();
                     opt = Input.readInteger(sc, "\nRisposta: ");
 
                     switch (opt) {
@@ -100,7 +100,7 @@ public class Main {
 
                         case 2:
                             rscAuth = Input.readString(sc, "Cerca autore: ");
-                            rscYear = Input.readInteger(sc, "Cerca anno:");
+                            rscYear = Input.readInteger(sc, "Cerca anno: ");
                             if (app.findSongsByAuthorAndYear(rscAuth, rscYear).size() != 0) {
                                 Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
                             } else {
