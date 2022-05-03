@@ -2,6 +2,7 @@ package it.uninsubria.app.main;
 
 import it.uninsubria.app.emotionalsongs.EmotionalSongs;
 import it.uninsubria.app.input.Input;
+import it.uninsubria.app.managers.SongsManager;
 import it.uninsubria.app.managers.utils.SecurePassword;
 import it.uninsubria.app.users.User;
 import it.uninsubria.app.users.exceptions.UserException;
@@ -30,6 +31,7 @@ public class Main {
         String email, psw;
         char pswRandom;
         int opt = 0;
+        String research;
 
         do {
             Display.printMenu();
@@ -76,13 +78,23 @@ public class Main {
 
                     break;
                 case 3:
-                    if (app.isLogged()){
+                    //if (app.isLogged()){
                         //crea la playlist
-                    }
-                    else {
+                        research = Input.readString(sc, "Ricerca brano per titolo: ");
+                            if (app.findSongsByTitle(research).size() != 0) {
+                                Display.printListSongs(app.findSongsByTitle(research));
+                            } else {
+                                do {
+                                    System.out.println("Nessuna canzone trovata!");
+                                    research = Input.readString(sc, "Ricerca brano per titolo: ");
+                                } while(app.findSongsByTitle(research).size() == 0);
+                                Display.printListSongs(app.findSongsByTitle(research));
+                            }
+                    //}
+                    //else {
                         // registrati
 
-                    }
+                    //}
                     break;
 
 
