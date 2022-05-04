@@ -87,6 +87,8 @@ public class EmotionalSongs {
 
     public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) { return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear); }
 
+    public int prendiUserId(String email) { return usersManager.prendiUserId(email); }
+
 
     public boolean login(String email, String psw) throws UserException {
         if (!usersManager.contains(email))
