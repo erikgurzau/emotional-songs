@@ -15,6 +15,7 @@ public class UsersManager {
     private String pathFile;
     private Vector<User> listUsers;
     private FileManager fm;
+    private int userId;
 
     public UsersManager(String pathFile) {
         this.pathFile = pathFile;
@@ -88,6 +89,16 @@ public class UsersManager {
     public int nextUserId(){
         return listUsers.lastElement().getUserId() + 1;
     }
+
+    public int prendiUserId(String email) {
+        for(User user: listUsers) {
+            if(user.getEmail().contains(email)){
+                userId = user.getUserId();
+            }
+        }
+        return userId;
+    }
+
 
     public boolean addUser(User user){
         return fm.println(user.toString(), 'a');
