@@ -71,7 +71,6 @@ public class User extends Person {
     }
 
     public boolean login(String email, String psw) {
-        System.out.println("\nother psw: " + psw + "\tthis psw: " + this.psw);
         return this.email.equals(email) && this.psw.equals(psw);
     }
 
