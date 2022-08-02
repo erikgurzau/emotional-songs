@@ -12,15 +12,15 @@ public class Playlist {
     private HashMap<Song, Vector<Emotion>> playlistMap;
 
     public Playlist(int userId){
+        playlistMap = new HashMap<>();
         this.userId = userId;
         this.name = "Playlist " + playlistMap.size();
-        playlistMap = new HashMap<>();
     }
 
     public Playlist(int userId, String name){
+        playlistMap = new HashMap<>();
         this.userId = userId;
         this.name = name;
-        playlistMap = new HashMap<>();
     }
 
     public void addSong(Song s) {
@@ -43,16 +43,25 @@ public class Playlist {
 
     @Override
     public String toString() {
-        String s = "\n\tuserId: " + userId + "\n";
+        String s = name + ";" + userId + ";";
         for (Map.Entry<Song, Vector<Emotion>> set : playlistMap.entrySet()) {
             Song song = set.getKey();
-            Vector<Emotion> emotions = set.getValue();
-            s += "\tsong: (" + song.toString() + ") = {";
-            for (Emotion e: emotions) {
-                s += "\n\t\t" + e.getId()+";"+e.getName()+";"+e.getExplanation();
+            Vector<Emotion> emotionsList = set.getValue();
+
+            if (!emotionsList.isEmpty()) {
+                s += song.getId() + ",";
+                for (int i = 0; i < emotionsList.size(); i++) {
+                    s += emotionsList.get(i).getId();
+                    if (i < emotionsList.size() - 1)
+                        s += ",";
+                }
+                s += ";";
             }
-            s += "\n\t}";
+            else
+                s += song.getId() + ";";
+
         }
-        return s + "\n";
+        System.out.println(s);
+        return s;
     }
 }
