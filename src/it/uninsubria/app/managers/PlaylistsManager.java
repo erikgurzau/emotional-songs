@@ -4,7 +4,6 @@ import it.uninsubria.app.emotionalsongs.Emotion;
 import it.uninsubria.app.managers.utils.FileManager;
 import it.uninsubria.app.songs.Playlist;
 import it.uninsubria.app.songs.Song;
-import it.uninsubria.app.users.User;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -23,35 +22,33 @@ public class PlaylistsManager {
     }
 
     public void loadData() {
-        listPlaylist = loadData(fm.getContent());
+        listPlaylist = parseData(fm.getContent());
     }
 
-    private Vector<Playlist> loadData(Vector<String> dbPlaylist) {
+    private Vector<Playlist> parseData(Vector<String> dbPlaylist) {
         Vector<Playlist> listPlaylist = new Vector<>();
-        Vector<Emotion> listEmotion = new Vector<>();
 
         EmotionsManager em = new EmotionsManager();
         SongsManager sm = new SongsManager();
 
         for (String row: dbPlaylist) {
             StringTokenizer st = new StringTokenizer(row, ";");
+            String name = st.nextToken();
             int userId = Integer.parseInt(st.nextToken());
+            Playlist p = new Playlist(userId, name);
+
             while (st.hasMoreTokens()){
-                StringTokenizer tokenizer = new StringTokenizer(st.nextToken(), ",");
-                int songId = Integer.parseInt(tokenizer.nextToken());
+                StringTokenizer emotionTok = new StringTokenizer(st.nextToken(), ",");
+                int songId = Integer.parseInt(emotionTok.nextToken());
                 Song s = sm.getSong(songId);
-                while (tokenizer.hasMoreTokens()){
-                    Emotion e = em.getEmotion(Integer.parseInt(tokenizer.nextToken()));
-                    listEmotion.add(e);
+                p.addSong(s);
+                while (emotionTok.hasMoreTokens()){
+                    Emotion e = em.getEmotion(Integer.parseInt(emotionTok.nextToken()));
+                    p.addEmotion(s, e);
                 }
-
-                Playlist p = new Playlist(userId);
-                p.set(s, listEmotion);
-
-                listPlaylist.add(p);
-                listEmotion = new Vector<>();
-
             }
+
+            listPlaylist.add(p);
         }
         return listPlaylist;
     }
