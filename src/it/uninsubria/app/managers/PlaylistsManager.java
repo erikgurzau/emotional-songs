@@ -53,8 +53,13 @@ public class PlaylistsManager {
         return listPlaylist;
     }
 
-    public String toString(){
+    public String toString() {
         return listPlaylist.toString();
+    }
+    
+    public boolean registraPlaylist (Playlist playlist) {
+        listPlaylist.add(playlist);
+        return fm.println(playlist.toString(), 'a');
     }
 
     public static void main(String[] args) {
