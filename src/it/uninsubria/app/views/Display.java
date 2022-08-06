@@ -49,7 +49,7 @@ public class Display {
         System.out.println(" (3) - Profilo");
         System.out.println(" (4) - Statistiche");
         System.out.println(" (5) - Crea una playlist");
-        System.out.println(" (6) - Recesisci una o più canzoni");
+        System.out.println(" (6) - Recensisci una o più canzoni");
         System.out.println(" (7) - Visualizza tutte le canzoni");
         System.out.println(" (0) - Esci");
     }
@@ -105,28 +105,32 @@ public class Display {
     }
 
     public static void printListSongs(Vector<Song> list){
-        Input in = new Input();
-        String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
-        int page = 1, songsPerPage = 50;
+        if (list.isEmpty()) {
+            System.out.println(" ");
+        } else {
+            Input in = new Input();
+            String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
+            int page = 1, songsPerPage = 50;
 
 
-        System.out.println();
-        System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
-        System.out.println("| ID    | Titolo                                            | Autore/i                                 | Anno   | Genere   | Durata |");
-        System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+            System.out.println();
+            System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+            System.out.println("| ID    | Titolo                                            | Autore/i                                 | Anno   | Genere   | Durata |");
+            System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
 
-        for (int i = 0; i < list.size(); i++) {
-            Song s = list.elementAt(i);
-            System.out.format(tableFormat, s.getId(), s.getTitle(), s.getAuthor(), s.getYear(), s.getGenre(), s.millisToTime());
+            for (int i = 0; i < list.size(); i++) {
+                Song s = list.elementAt(i);
+                System.out.format(tableFormat, s.getId(), s.getTitle(), s.getAuthor(), s.getYear(), s.getGenre(), s.millisToTime());
 
-            if (i == (songsPerPage * page) - 1) {
-                System.out.println();
-                char risp = in.readYesNo("Vuoi continuare? (yes/no) : ");
-                System.out.println();
+                if (i == (songsPerPage * page) - 1) {
+                    System.out.println();
+                    char risp = in.readYesNo("Vuoi continuare? (yes/no) : ");
+                    System.out.println();
 
-                if(risp == 'n' || risp == 'N')
-                    break;
-                page++;
+                    if(risp == 'n' || risp == 'N')
+                        break;
+                    page++;
+                }
             }
         }
     }
