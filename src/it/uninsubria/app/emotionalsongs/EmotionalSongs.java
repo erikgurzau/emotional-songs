@@ -26,6 +26,11 @@ public class EmotionalSongs {
      * Gestore delle emozioni
      */
     private EmotionsManager emotionsManager;
+    
+    /**
+     * Gestore delle playlist
+     */
+    private PlaylistsManager playlistsManager;
 
     /**
      * Utente che ha effettuato l'accesso
