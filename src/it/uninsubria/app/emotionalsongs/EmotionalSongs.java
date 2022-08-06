@@ -115,7 +115,10 @@ public class EmotionalSongs {
         this.sessionUser = user;
         return usersManager.register(user);
     }
-
+    
+    public boolean registraPlaylist(Playlist playlist) {
+        return playlistsManager.registraPlaylist(playlist);
+    }
 
     public static void main(String[] args) {
         new Main();
