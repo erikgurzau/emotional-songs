@@ -2,12 +2,17 @@ package it.uninsubria.app.main;
 
 import it.uninsubria.app.emotionalsongs.EmotionalSongs;
 import it.uninsubria.app.input.Input;
+import it.uninsubria.app.managers.SongsManager;
 import it.uninsubria.app.managers.utils.SecurePassword;
+import it.uninsubria.app.songs.Playlist;
+import it.uninsubria.app.songs.Song;
 import it.uninsubria.app.users.User;
 import it.uninsubria.app.users.exceptions.UserException;
 import it.uninsubria.app.users.utils.Address;
 import it.uninsubria.app.users.utils.TypeStreet;
 import it.uninsubria.app.views.Display;
+
+import java.util.Vector;
 
 public class Main {
 
@@ -29,6 +34,9 @@ public class Main {
         int opt;
         String research, rscAuth;
         int rscYear;
+
+        SongsManager songsManager = new SongsManager();
+        Vector<Song> canzoni = songsManager.getListSongs();
 
         do {
             Display.printTitle();
@@ -61,8 +69,8 @@ public class Main {
                     }
 
                     break;
-                case 2:
 
+                case 2:
                     Display.printSubtitle("\nREGISTRAZIONE");
 
                     // Info Generali
@@ -99,15 +107,60 @@ public class Main {
                         Display.printAuthFailed(e.getMessage());
                     }
                     break;
-                case 3:
 
+                case 5:
                     if (app.isLogged()) {
+                        int userId = app.getSessionUser().getUserId();
+                        String nomePlaylist = in.readString("Inserisci il nome della playlst: ");
+                        char c = in.readYesNo( "Vuoi aggiungere una canzone alla playlist? ");
+                        Playlist playlist = new Playlist(userId, nomePlaylist);
+                        while(c == 'y') {
+                            Display.printResearchOptions();
+                            opt = in.readInteger("\nRisposta: ");
+                            switch (opt) {
+                                case 1:
+                                    do {
+                                        research = in.readString("Cerca: ");
+                                        Display.printListSongs(app.findSongsByTitle(research));
+                                        if (app.findSongsByTitle(research).size() == 0) {
+                                            Display.printError("Nessuna canzone trovata! ");
+                                        }
+                                    } while (app.findSongsByTitle(research).size() == 0);
+                                    int idCanzone = in.readInteger("Digita il numero della canzone che vuoi selezionare: ");
 
+                                    for (Song song : canzoni) {
+                                        if (song.getId() == idCanzone) {
+                                            playlist.addSong(song);
+                                        }
+                                    }
+                                    c = in.readYesNo("Vuoi aggiungere un'altra canzone? ");
+                                    System.out.println(playlist);
+                                    break;
 
+                                case 2:
+                                    do {
+                                        rscAuth = in.readString("Cerca autore: ");
+                                        rscYear = in.readInteger("Cerca anno: ");
+                                        Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
+                                        if (app.findSongsByAuthorAndYear(rscAuth, rscYear).size() == 0) {
+                                            Display.printError("Nessuna canzone trovata!");
+                                        }
+                                    } while (app.findSongsByAuthorAndYear(rscAuth, rscYear).size() == 0);
+                                    idCanzone = in.readInteger("Digita il numero della canzone che vuoi selezionare: ");
 
+                                    for (Song song : canzoni) {
+                                        if (song.getId() == idCanzone) {
+                                            playlist.addSong(song);
+                                        }
+                                    }
+                                    System.out.println(playlist);
+                                    c = in.readYesNo("Vuoi aggiungere un'altra canzone? ");
+                                    break;
+                            }
+                        } app.registraPlaylist(playlist);
 
                     } else {
-                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali");
+                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali. ");
 
                         if (in.readYesNo("\nVuoi accedere all'area riservata? (yes/no) : ") == 'y'){
                             String emailUser = in.readString( "Inserisci la tua email: ");
@@ -119,67 +172,8 @@ public class Main {
                             } catch (UserException e){
                                 Display.printAuthFailed(e.getMessage());
                             }
-
-
-
-
                         }
                     }
-
-                    //se l'utente è loggato, crea la playlist
-                    /*System.out.println("Per creare una playlist è necessario accedere.");
-                    String emailUser = in.readString( "Inserisci la tua email: ");
-                    String pswUser = in.readString( "Inserisci password: ");
-                    try {
-                        app.login(emailUser, pswUser);
-                        Display.printLoginSuccess();
-
-
-                        int userId = app.getUserId(emailUser);
-                        String nomePlaylist = in.readString( "Inserisci il nome della playlist: ");
-                        char c = in.readYesNo( "Vuoi aggiungere una canzone alla playlist?");
-                        while(c == 'y') {
-                            Display.printResearchOptions();
-                            opt = in.readInteger( "\nRisposta: ");
-                            switch (opt) {
-                                case 1:
-                                    research = in.readString( "Cerca: ");
-                                    if (app.findSongsByTitle(research).size() != 0) {
-                                        Display.printListSongs(app.findSongsByTitle(research));
-                                    } else {
-                                        System.out.println("Nessuna canzone trovata!");
-                                    }
-                                    SongsManager songsManager = new SongsManager("./data/Canzoni.txt");
-                                    Vector<Song> canzoni = songsManager.getListSongs();
-                                    Vector<Song> vettorePlaylist = new Vector<>();
-                                    int idCanzone = in.readInteger( "Digita il numero della canzone che vuoi selezionare: ");
-                                    for(Song song: canzoni) {
-                                        if(song.getId() == idCanzone) {
-                                            vettorePlaylist.add(song);
-                                        }
-                                    }
-                                    System.out.println(vettorePlaylist);
-                                    Playlist playlist = new Playlist(userId, nomePlaylist, vettorePlaylist);
-                                    c = in.readYesNo( "Vuoi aggiungere un'altra canzone? ");
-                                    break;
-
-                                case 2:
-                                    rscAuth = in.readString( "Cerca autore: ");
-                                    rscYear = in.readInteger( "Cerca anno: ");
-                                    if (app.findSongsByAuthorAndYear(rscAuth, rscYear).size() != 0) {
-                                        Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
-                                    } else {
-                                        System.out.println("Nessuna canzone trovata!");
-                                    }
-                                    break;
-                            }
-                        }
-
-
-
-                    } catch (UserException e){
-                        Display.printLoginFailed(e.getMessage());
-                    }*/
                     break;
 
                 case 7:
