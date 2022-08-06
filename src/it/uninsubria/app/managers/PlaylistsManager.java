@@ -21,17 +21,28 @@ public class PlaylistsManager {
         loadData();
     }
 
+    /**
+     * Legge i dati dal file e li converte in playlist
+     */
     public void loadData() {
         listPlaylist = parseData(fm.getContent());
     }
 
-    private Vector<Playlist> parseData(Vector<String> dbPlaylist) {
+    /**
+     * Converte una lista di stringhe, che corrispondono alle righe del file .txt
+     * contenenti tutte le playlist degli utenti, in una lista di playlist.
+     * I dati nel file sono salvati con il seguente formato:
+     * nomePlaylist;idUtente;idCanzone,idEmozione,idEmozione;idCanzone; etc.
+     * @param rowsFile Lista di stringhe con le informazione delle canzoni
+     * @return Una lista di canzoni
+     */
+    private Vector<Playlist> parseData(Vector<String> rowsFile) {
         Vector<Playlist> listPlaylist = new Vector<>();
 
         EmotionsManager em = new EmotionsManager();
         SongsManager sm = new SongsManager();
 
-        for (String row: dbPlaylist) {
+        for (String row: rowsFile) {
             StringTokenizer st = new StringTokenizer(row, ";");
             String name = st.nextToken();
             int userId = Integer.parseInt(st.nextToken());
@@ -53,17 +64,12 @@ public class PlaylistsManager {
         return listPlaylist;
     }
 
-    public String toString() {
-        return listPlaylist.toString();
-    }
-    
-    public boolean registraPlaylist (Playlist playlist) {
+    public boolean savePlaylist (Playlist playlist) {
         listPlaylist.add(playlist);
         return fm.println(playlist.toString(), 'a');
     }
 
-    public static void main(String[] args) {
-        PlaylistsManager pm = new PlaylistsManager();
-        System.out.println(pm.toString());
+    public String toString(){
+        return listPlaylist.toString();
     }
 }

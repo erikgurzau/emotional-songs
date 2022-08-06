@@ -2,7 +2,6 @@ package it.uninsubria.app.main;
 
 import it.uninsubria.app.emotionalsongs.EmotionalSongs;
 import it.uninsubria.app.input.Input;
-import it.uninsubria.app.managers.SongsManager;
 import it.uninsubria.app.managers.utils.SecurePassword;
 import it.uninsubria.app.songs.Playlist;
 import it.uninsubria.app.songs.Song;
@@ -11,8 +10,6 @@ import it.uninsubria.app.users.exceptions.UserException;
 import it.uninsubria.app.users.utils.Address;
 import it.uninsubria.app.users.utils.TypeStreet;
 import it.uninsubria.app.views.Display;
-
-import java.util.Vector;
 
 public class Main {
 
@@ -34,9 +31,6 @@ public class Main {
         int opt;
         String research, rscAuth;
         int rscYear;
-
-        SongsManager songsManager = new SongsManager();
-        Vector<Song> canzoni = songsManager.getListSongs();
 
         do {
             Display.printTitle();
@@ -60,7 +54,8 @@ public class Main {
                         }
                     }
                     else {
-                        Display.printError("\nHai già effettuato l'accesso\n");
+                        System.out.println();
+                        Display.printError("Hai già effettuato l'accesso\n");
                         char rispLogout = in.readYesNo("Vuoi uscire dal tuo account? (yes/no) : ");
                         if (rispLogout == 'y') {
                             app.logout();
@@ -69,8 +64,8 @@ public class Main {
                     }
 
                     break;
-
                 case 2:
+
                     Display.printSubtitle("\nREGISTRAZIONE");
 
                     // Info Generali
@@ -107,62 +102,55 @@ public class Main {
                         Display.printAuthFailed(e.getMessage());
                     }
                     break;
-
                 case 5:
+
+                    // controllo se l'utente ha eseguito il login
                     if (app.isLogged()) {
-                        int userId = app.getSessionUser().getUserId();
+
+                        Display.printSubtitle("\nCREA UNA PLAYLIST");
+
                         String nomePlaylist = in.readString("Inserisci il nome della playlst: ");
-                        char c = in.readYesNo( "Vuoi aggiungere una canzone alla playlist? ");
-                        Playlist playlist = new Playlist(userId, nomePlaylist);
-                        while(c == 'y') {
+                        Playlist playlist = new Playlist(app.getSessionUser().getUserId(), nomePlaylist);
+                        do {
                             Display.printResearchOptions();
                             opt = in.readInteger("\nRisposta: ");
                             switch (opt) {
-                                case 1:
-                                    do {
-                                        research = in.readString("Cerca: ");
-                                        Display.printListSongs(app.findSongsByTitle(research));
-                                        if (app.findSongsByTitle(research).size() == 0) {
-                                            Display.printError("Nessuna canzone trovata! ");
-                                        }
-                                    } while (app.findSongsByTitle(research).size() == 0);
-                                    int idCanzone = in.readInteger("Digita il numero della canzone che vuoi selezionare: ");
-
-                                    for (Song song : canzoni) {
-                                        if (song.getId() == idCanzone) {
-                                            playlist.addSong(song);
-                                        }
+                                case 1: // ricerca per titolo
+                                    research = in.readString("\nInserisci il titolo della canzone: ");
+                                    Display.printListSongs(app.findSongsByTitle(research));
+                                    if (app.findSongsByTitle(research).isEmpty()) {
+                                        Display.printError("Nessuna canzone trovata!\n\n");
                                     }
-                                    c = in.readYesNo("Vuoi aggiungere un'altra canzone? ");
-                                    System.out.println(playlist);
+                                    else {
+                                        int idCanzone = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare: ");
+                                        playlist.addSong(app.getSongById(idCanzone));
+                                    }
+
                                     break;
 
                                 case 2:
-                                    do {
-                                        rscAuth = in.readString("Cerca autore: ");
-                                        rscYear = in.readInteger("Cerca anno: ");
-                                        Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
-                                        if (app.findSongsByAuthorAndYear(rscAuth, rscYear).size() == 0) {
-                                            Display.printError("Nessuna canzone trovata!");
-                                        }
-                                    } while (app.findSongsByAuthorAndYear(rscAuth, rscYear).size() == 0);
-                                    idCanzone = in.readInteger("Digita il numero della canzone che vuoi selezionare: ");
-
-                                    for (Song song : canzoni) {
-                                        if (song.getId() == idCanzone) {
-                                            playlist.addSong(song);
-                                        }
+                                    rscAuth = in.readString("\nCerca per autore: ");
+                                    rscYear = in.readInteger("Cerca per anno: ");
+                                    Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
+                                    if (app.findSongsByAuthorAndYear(rscAuth, rscYear).isEmpty()) {
+                                        Display.printError("Nessuna canzone trovata!\n\n");
                                     }
-                                    System.out.println(playlist);
-                                    c = in.readYesNo("Vuoi aggiungere un'altra canzone? ");
+                                    else {
+                                        int idCanzone = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
+                                        playlist.addSong(app.getSongById(idCanzone));
+                                    }
                                     break;
                             }
-                        } app.registraPlaylist(playlist);
+                        } while(in.readYesNo("\nVuoi aggiungere una canzone alla playlist? (yes/no) : ") == 'y');
+
+                        app.savePlaylist(playlist);
+                        System.out.println(playlist.size());
 
                     } else {
+                        System.out.println();
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali. ");
 
-                        if (in.readYesNo("\nVuoi accedere all'area riservata? (yes/no) : ") == 'y'){
+                        /*if (in.readYesNo("\nVuoi accedere all'area riservata? (yes/no) : ") == 'y'){
                             String emailUser = in.readString( "Inserisci la tua email: ");
                             String pswUser = in.readString( "Inserisci password: ");
                             try {
@@ -172,7 +160,7 @@ public class Main {
                             } catch (UserException e){
                                 Display.printAuthFailed(e.getMessage());
                             }
-                        }
+                        }*/
                     }
                     break;
 
@@ -184,5 +172,6 @@ public class Main {
             }
             System.out.println("\n");
         } while (opt != 0);
+        Display.printCredits();
     }
 }

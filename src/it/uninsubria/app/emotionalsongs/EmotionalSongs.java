@@ -2,8 +2,10 @@ package it.uninsubria.app.emotionalsongs;
 
 import it.uninsubria.app.main.Main;
 import it.uninsubria.app.managers.EmotionsManager;
+import it.uninsubria.app.managers.PlaylistsManager;
 import it.uninsubria.app.managers.SongsManager;
 import it.uninsubria.app.managers.UsersManager;
+import it.uninsubria.app.songs.Playlist;
 import it.uninsubria.app.songs.Song;
 import it.uninsubria.app.users.User;
 import it.uninsubria.app.users.exceptions.UserException;
@@ -26,7 +28,7 @@ public class EmotionalSongs {
      * Gestore delle emozioni
      */
     private EmotionsManager emotionsManager;
-    
+
     /**
      * Gestore delle playlist
      */
@@ -50,6 +52,7 @@ public class EmotionalSongs {
         usersManager = new UsersManager();
         songsManager = new SongsManager();
         emotionsManager = new EmotionsManager();
+        playlistsManager = new PlaylistsManager();
     }
 
     public User getSessionUser() {
@@ -86,11 +89,14 @@ public class EmotionalSongs {
         return songsManager.getListSongs(idxFrom, idxTo);
     }
 
-    public Vector<Song> findSongsByTitle(String research) { return songsManager.findSongsByTitle(research); }
+    public Vector<Song> findSongsByTitle(String research) {
+        return songsManager.findSongsByTitle(research);
+    }
 
-    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) { return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear); }
+    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) {
+        return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear);
+    }
 
-    public int getUserId(String email) { return usersManager.getUserByEmail(email).getUserId(); }
 
 
     public boolean login(String email, String psw) throws UserException {
@@ -120,10 +126,14 @@ public class EmotionalSongs {
         this.sessionUser = user;
         return usersManager.register(user);
     }
-    
-    public boolean registraPlaylist(Playlist playlist) {
-        return playlistsManager.registraPlaylist(playlist);
+
+    public Song getSongById(int idSong) {
+        return songsManager.getSong(idSong);
     }
+    public boolean savePlaylist(Playlist playlist) {
+        return playlistsManager.savePlaylist(playlist);
+    }
+
 
     public static void main(String[] args) {
         new Main();

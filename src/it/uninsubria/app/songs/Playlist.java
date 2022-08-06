@@ -23,6 +23,10 @@ public class Playlist {
         this.name = name;
     }
 
+    public int size() {
+        return playlistMap.size();
+    }
+
     public void addSong(Song s) {
         playlistMap.put(s, new Vector<>());
     }

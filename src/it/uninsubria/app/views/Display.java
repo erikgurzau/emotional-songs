@@ -44,24 +44,25 @@ public class Display {
     }*/
 
     public static void printMenu() {
-        System.out.println("\n (1) - Login / Logout");
-        System.out.println(" (2) - Registrazione");
-        System.out.println(" (3) - Profilo");
-        System.out.println(" (4) - Statistiche");
-        System.out.println(" (5) - Crea una playlist");
-        System.out.println(" (6) - Recensisci una o più canzoni");
-        System.out.println(" (7) - Visualizza tutte le canzoni");
-        System.out.println(" (0) - Esci");
+        System.out.println("\n(1) - Login / Logout");
+        System.out.println("(2) - Registrazione");
+        System.out.println("(3) - Profilo");
+        System.out.println("(4) - Statistiche");
+        System.out.println("(5) - Crea una playlist");
+        System.out.println("(6) - Recensisci una o più canzoni");
+        System.out.println("(7) - Visualizza tutte le canzoni");
+        System.out.println("(0) - Esci");
     }
 
     public static void printResearchOptions() {
-        System.out.println("\n(1) - Ricerca brano per titolo");
+        Display.printSectionTitle("\nRicerca Avanzata");
+        System.out.println("(1) - Ricerca brano per titolo");
         System.out.println("(2) - Ricerca brano per autore ed anno");
     }
 
     public static void printCredits(){
         System.out.println(
-                "\nRealizzato da Erik Gurzau, Alessia Metaj, Sara Biavaschi" +
+                "Realizzato da Erik Gurzau, Alessia Metaj, Sara Biavaschi" +
                 "\n© 2022 Erik Gurzau, Alessia Metaj, Sara Biavaschi. Tutti i diritti riservati."
         );
     }
@@ -127,7 +128,7 @@ public class Display {
                     char risp = in.readYesNo("Vuoi continuare? (yes/no) : ");
                     System.out.println();
 
-                    if(risp == 'n' || risp == 'N')
+                    if (risp == 'n' || risp == 'N')
                         break;
                     page++;
                 }
