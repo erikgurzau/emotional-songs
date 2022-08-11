@@ -1,8 +1,1 @@
-1;Amazement;Feeling of wonder or happiness
-2;Solemnity;Feeling of transcendence, inspiration. Thrills.
-3;Tenderness;Sensuality, affect, feeling of love
-4;Nostalgia;Dreamy, melancholic, sentimental feelings
-5;Power;Feeling of strong, heroic, triumphant, energetic
-6;Joy;Feels like dancing, bouncy feeling, animated, amused
-7;Tension;Feeling nervous, impatient, irritated
-8;Sadness;Feeling depressed, sorrowful
+2;440;3,nota;4,nota;2,nota;5,nota;1,nota;3,nota;2,nota;4,nota
