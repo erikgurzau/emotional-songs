@@ -69,6 +69,23 @@ public class PlaylistsManager {
         return fm.println(playlist.toString(), 'a');
     }
 
+    public Vector<Playlist> getPlaylistByUserId(int userId) {
+        Vector<Playlist> playlists = new Vector<>();
+        for(Playlist playlist: listPlaylist)
+            if(playlist.getUserId() == userId)
+                playlists.add(playlist);
+
+        return playlists;
+    }
+
+    public Playlist getPlaylistByName(String name) {
+        for(Playlist playlist: listPlaylist)
+            if(playlist.getName().equals(name))
+                return playlist;
+
+        return null;
+    }
+
     public String toString(){
         return listPlaylist.toString();
     }
