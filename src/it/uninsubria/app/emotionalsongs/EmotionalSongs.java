@@ -89,14 +89,23 @@ public class EmotionalSongs {
         return songsManager.getListSongs(idxFrom, idxTo);
     }
 
-    public Vector<Song> findSongsByTitle(String research) {
-        return songsManager.findSongsByTitle(research);
+    public Vector<Emotion> getListEmotions() {
+        return emotionsManager.getListEmotions();
     }
 
-    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) {
-        return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear);
-    }
+    public Vector<Song> findSongsByTitle(String research) { return songsManager.findSongsByTitle(research); }
 
+    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) { return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear); }
+
+    public int getUserId(String email) { return usersManager.getUserByEmail(email).getUserId(); }
+
+    public Vector<Playlist> getPlaylistByUserId(int userId) { return playlistsManager.getPlaylistByUserId(userId); }
+
+    public Playlist getPlaylistByName(String name) { return playlistsManager.getPlaylistByName(name); }
+
+    public Song getSong(int songId) { return songsManager.getSong(songId); }
+
+    public Emotion getEmotion(int emotionId) { return emotionsManager.getEmotion(emotionId); }
 
 
     public boolean login(String email, String psw) throws UserException {
@@ -133,7 +142,6 @@ public class EmotionalSongs {
     public boolean savePlaylist(Playlist playlist) {
         return playlistsManager.savePlaylist(playlist);
     }
-
 
     public static void main(String[] args) {
         new Main();
