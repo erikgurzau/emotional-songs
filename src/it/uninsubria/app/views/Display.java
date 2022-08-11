@@ -1,5 +1,6 @@
 package it.uninsubria.app.views;
 
+import it.uninsubria.app.emotionalsongs.Emotion;
 import it.uninsubria.app.songs.Song;
 import it.uninsubria.app.input.Input;
 import it.uninsubria.app.users.User;
@@ -63,7 +64,7 @@ public class Display {
     public static void printCredits(){
         System.out.println(
                 "Realizzato da Erik Gurzau, Alessia Metaj, Sara Biavaschi" +
-                "\n© 2022 Erik Gurzau, Alessia Metaj, Sara Biavaschi. Tutti i diritti riservati."
+                        "\n© 2022 Erik Gurzau, Alessia Metaj, Sara Biavaschi. Tutti i diritti riservati."
         );
     }
 
@@ -103,6 +104,39 @@ public class Display {
         Display.printSubtitle("\nUTENTE SESSIONE");
         System.out.println(user.getName() + " " + user.getSurname() + " (" + user.getEmail() + ")");
 
+    }
+
+    public static void printListEmotions(Vector<Emotion> list) {
+        Input in = new Input();
+        Emotion em1 = new Emotion(1,"Amazement","Feeling of wonder or happiness");
+        Emotion em2 = new Emotion(2,"Solemnity", "Feeling of transcendence, inspiration. Thrills.");
+        Emotion em3 = new Emotion(3, "Tenderness", "Sensuality, affect, feeling of love");
+        Emotion em4 = new Emotion(4, "Nostalgia", "Dreamy, melancholic, sentimental feelings");
+        Emotion em5 = new Emotion (5, "Power", "Feeling of strong, heroic, triumphant, energetic");
+        Emotion em6 = new Emotion(6, "Joy", "Feels like dancing, bouncy feeling, animated, amused");
+        Emotion em7 = new Emotion(7, "Tension", "Feeling nervous, impatient, irritated");
+        Emotion em8 = new Emotion(8, "Sadness", "Feeling depressed, sorrowful");
+
+        list.add(em1);
+        list.add(em2);
+        list.add(em3);
+        list.add(em4);
+        list.add(em5);
+        list.add(em6);
+        list.add(em7);
+        list.add(em8);
+
+        String tableFormat = "| %-5s | %-32s | %-60s |%n";
+
+        System.out.println();
+        System.out.println("+———————+——————————————————————————————————+——————————————————————————————————————————————————————————————+");
+        System.out.println("| ID    | Emozione                         | Descrizione                                                  |");
+        System.out.println("+———————+——————————————————————————————————+——————————————————————————————————————————————————————————————+");
+
+        for (int i = 0; i < list.size(); i++) {
+            Emotion e = list.elementAt(i);
+            System.out.format(tableFormat, e.getId(), e.getName(), e.getExplanation());
+        }
     }
 
     public static void printListSongs(Vector<Song> list){
