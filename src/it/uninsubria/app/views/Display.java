@@ -117,14 +117,7 @@ public class Display {
         Emotion em7 = new Emotion(7, "Tension", "Feeling nervous, impatient, irritated");
         Emotion em8 = new Emotion(8, "Sadness", "Feeling depressed, sorrowful");
 
-        list.add(em1);
-        list.add(em2);
-        list.add(em3);
-        list.add(em4);
-        list.add(em5);
-        list.add(em6);
-        list.add(em7);
-        list.add(em8);
+        list.add(em1); list.add(em2); list.add(em3); list.add(em4); list.add(em5); list.add(em6); list.add(em7); list.add(em8);
 
         String tableFormat = "| %-5s | %-32s | %-60s |%n";
 
