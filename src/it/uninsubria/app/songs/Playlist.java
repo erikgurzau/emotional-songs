@@ -23,6 +23,14 @@ public class Playlist {
         this.name = name;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public int size() {
         return playlistMap.size();
     }
@@ -32,7 +40,13 @@ public class Playlist {
     }
 
     public void addEmotion(Song s, Emotion e){
-        Vector<Emotion> listEmotions = playlistMap.get(s);
+        Vector<Emotion> listEmotions;
+
+        if(playlistMap.containsKey(s))
+            listEmotions = playlistMap.get(s);
+        else
+            listEmotions = new Vector<>();
+
         listEmotions.add(e);
         playlistMap.put(s, listEmotions);
     }
