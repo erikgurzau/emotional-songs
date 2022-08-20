@@ -1,10 +1,7 @@
 package it.uninsubria.app.emotionalsongs;
 
 import it.uninsubria.app.main.Main;
-import it.uninsubria.app.managers.EmotionsManager;
-import it.uninsubria.app.managers.PlaylistsManager;
-import it.uninsubria.app.managers.SongsManager;
-import it.uninsubria.app.managers.UsersManager;
+import it.uninsubria.app.managers.*;
 import it.uninsubria.app.songs.Playlist;
 import it.uninsubria.app.songs.Song;
 import it.uninsubria.app.users.User;
@@ -35,6 +32,11 @@ public class EmotionalSongs {
     private PlaylistsManager playlistsManager;
 
     /**
+     * Gestore delle recensioni degli utenti
+     */
+    private FeedbackManager feedbackManager;
+
+    /**
      * Utente che ha effettuato l'accesso
      */
     private User sessionUser;
@@ -53,6 +55,15 @@ public class EmotionalSongs {
         songsManager = new SongsManager();
         emotionsManager = new EmotionsManager();
         playlistsManager = new PlaylistsManager();
+        feedbackManager = new FeedbackManager();
+    }
+
+    public SongsManager getSongsManager() {
+        return songsManager;
+    }
+
+    public EmotionsManager getEmotionsManager() {
+        return emotionsManager;
     }
 
     public User getSessionUser() {
@@ -62,7 +73,7 @@ public class EmotionalSongs {
     /**
      * Ritorna lo stato dell'avvenuto accesso all'applicazione
      * @return Restituisce {@code true} Se e solo se, l'utente si è loggato all'app.
-     *          Altrimenti {@code false}
+     *         Altrimenti {@code false}
      */
     public boolean isLogged() {
         return isLogged;
@@ -89,23 +100,14 @@ public class EmotionalSongs {
         return songsManager.getListSongs(idxFrom, idxTo);
     }
 
-    public Vector<Emotion> getListEmotions() {
-        return emotionsManager.getListEmotions();
+    public Vector<Song> findSongsByTitle(String research) {
+        return songsManager.findSongsByTitle(research);
     }
 
-    public Vector<Song> findSongsByTitle(String research) { return songsManager.findSongsByTitle(research); }
+    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) {
+        return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear);
+    }
 
-    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) { return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear); }
-
-    public int getUserId(String email) { return usersManager.getUserByEmail(email).getUserId(); }
-
-    public Vector<Playlist> getPlaylistByUserId(int userId) { return playlistsManager.getPlaylistByUserId(userId); }
-
-    public Playlist getPlaylistByName(String name) { return playlistsManager.getPlaylistByName(name); }
-
-    public Song getSong(int songId) { return songsManager.getSong(songId); }
-
-    public Emotion getEmotion(int emotionId) { return emotionsManager.getEmotion(emotionId); }
 
 
     public boolean login(String email, String psw) throws UserException {
@@ -139,8 +141,39 @@ public class EmotionalSongs {
     public Song getSongById(int idSong) {
         return songsManager.getSong(idSong);
     }
+
     public boolean savePlaylist(Playlist playlist) {
         return playlistsManager.savePlaylist(playlist);
+    }
+
+    public boolean isNamePlaylistAvailable(String namePlaylist) {
+        return playlistsManager.isNameAvailable(sessionUser.getUserId(), namePlaylist);
+    }
+
+    public int countPlaylists(int userId) {
+        return playlistsManager.countPlaylists(userId);
+    }
+
+
+    public Playlist getPlaylistByName(String namePlaylist) {
+        return playlistsManager.getPlaylistByName(sessionUser.getUserId(), namePlaylist);
+    }
+
+
+    public int getUserId(String email) { return usersManager.getUserByEmail(email).getUserId(); }
+
+    public Vector<Playlist> getPlaylistByUserId(int userId) { return playlistsManager.getPlaylistByUserId(userId); }
+
+    public Song getSong(int songId) { return songsManager.getSong(songId); }
+
+    public Emotion getEmotion(int emotionId) { return emotionsManager.getEmotion(emotionId); }
+
+    public int emotionsListSize() {
+        return emotionsManager.size();
+    }
+
+    public boolean saveFeedback(Vector<Feedback> listFeedback) {
+        return feedbackManager.saveFeedback(listFeedback);
     }
 
     public static void main(String[] args) {

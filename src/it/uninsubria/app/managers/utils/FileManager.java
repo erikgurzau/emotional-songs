@@ -5,11 +5,16 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class FileManager {
-    File f;
+    private File f;
 
     public FileManager(String pathFile) {
         f = new File(pathFile);
     }
+
+    public void changeFile(String pathFile) {
+        f = new File(pathFile);
+    }
+
 
     public Vector<String> getContent(){
         try {
@@ -27,31 +32,6 @@ public class FileManager {
         }
     }
 
-    public void clear(){
-        try {
-            FileWriter fileWriter = new FileWriter(f);
-            PrintWriter printer = new PrintWriter(fileWriter);
-            printer.write("");
-            printer.flush();
-            printer.close();
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void read() {
-        try {
-            FileReader fr = new FileReader(f);
-            Scanner sc = new Scanner(fr);
-            while (sc.hasNextLine())
-                System.out.println(sc.nextLine());
-            fr.close();
-            sc.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public boolean print(String text, char mod){
         if (mod != 'a' && mod != 'w') throw new RuntimeException("Mod Error");

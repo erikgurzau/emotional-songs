@@ -1,12 +1,27 @@
 package it.uninsubria.app.users.utils;
 
 import it.uninsubria.app.input.exceptions.InputException;
-
 import java.util.Arrays;
 
+/**
+ * Classe che definisce un indirizzo di residenza/domicilio
+ * @author  Erik Gurzau
+ * @author  Alessia Metaj
+ * @author  Sara Biavaschi
+ * @version 1.0.0
+ */
 public enum TypeStreet {
+    /**
+     * Tipi di strada esistenti
+     */
     Corso, Largo, Piazza, Via, Vicolo, Viale;
 
+    /**
+     * Converte una stringa nel tipo "TypeStreet" corrispondente
+     * @param street Stringa da convertire con il tipo di strada
+     * @return Enum del tipo di strada
+     * @throws InputException Se la stringa da convertire non corrisponde a nessun tipo di strada
+     */
     public static TypeStreet decode(String street) throws InputException {
         street = street.toLowerCase();
         return switch (street) {

@@ -1,85 +1,79 @@
 package it.uninsubria.app.songs;
 
-import it.uninsubria.app.emotionalsongs.Emotion;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
 public class Playlist {
+    /**
+     * ID dell'utente che ha creato la playlist
+     */
     private int userId;
+
+    /**
+     * Nome della playlist (nome univoco)
+     */
     private String name;
-    private HashMap<Song, Vector<Emotion>> playlistMap;
 
-    public Playlist(int userId){
-        playlistMap = new HashMap<>();
-        this.userId = userId;
-        this.name = "Playlist " + playlistMap.size();
-    }
+    /**
+     * Lista con gli ID delle canzoni scelte dall'utente per creare la playlist
+     */
+    private Vector<Integer> listSongs;
 
+
+    /**
+     * Costruttore di una playlist
+     * @param userId Intero che rappresente l'ID dell'utente
+     * @param name Stringa con il nome della playlist
+     */
     public Playlist(int userId, String name){
-        playlistMap = new HashMap<>();
         this.userId = userId;
         this.name = name;
+        listSongs = new Vector<>();
     }
 
+    /**
+     * Restituisce il numero di canzoni totali nella playlist
+     * @return Intero che rappresenta il numero di canzoni totali nella playlist
+     */
+    public int size() {
+        return listSongs.size();
+    }
+
+    /**
+     * Getter dell'ID dell'utente proprietario della playlist
+     * @return Intero che rappresenta l'ID dell'utente proprietario della playlist
+     */
     public int getUserId() {
         return userId;
     }
 
+    /**
+     * Getter del nome della playlist
+     * @return String che contiene il nome della playlist
+     */
     public String getName() {
         return name;
     }
 
-    public int size() {
-        return playlistMap.size();
+    public Vector<Integer> getListIdSongs() {
+        return listSongs;
     }
 
-    public void addSong(Song s) {
-        playlistMap.put(s, new Vector<>());
+    public void addSong(int songId) {
+        listSongs.add(songId);
     }
 
-    public void addEmotion(Song s, Emotion e){
-        Vector<Emotion> listEmotions;
-
-        if(playlistMap.containsKey(s))
-            listEmotions = playlistMap.get(s);
-        else
-            listEmotions = new Vector<>();
-
-        listEmotions.add(e);
-        playlistMap.put(s, listEmotions);
+    public boolean contains(int songId) {
+        for (int id: listSongs)
+            if (songId == id)
+                return true;
+        return false;
     }
 
-    public void set(Song s, Vector<Emotion> listEmotions){
-        playlistMap.put(s, listEmotions);
-    }
-
-    public Vector<Emotion> getEmotions(Song s) {
-        return playlistMap.get(s);
-    }
-
-    @Override
     public String toString() {
         String s = name + ";" + userId + ";";
-        for (Map.Entry<Song, Vector<Emotion>> set : playlistMap.entrySet()) {
-            Song song = set.getKey();
-            Vector<Emotion> emotionsList = set.getValue();
-
-            if (!emotionsList.isEmpty()) {
-                s += song.getId() + ",";
-                for (int i = 0; i < emotionsList.size(); i++) {
-                    s += emotionsList.get(i).getId();
-                    if (i < emotionsList.size() - 1)
-                        s += ",";
-                }
-                s += ";";
-            }
-            else
-                s += song.getId() + ";";
-
+        for (int songId: listSongs) {
+            s += songId + ";";
         }
-        System.out.println(s);
         return s;
     }
 }

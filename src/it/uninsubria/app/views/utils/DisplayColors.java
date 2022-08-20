@@ -1,5 +1,11 @@
 package it.uninsubria.app.views.utils;
-
+/**
+ * Classe che definisce i colori dell'interfaccia utente
+ * @author  Erik Gurzau
+ * @author  Alessia Metaj
+ * @author  Sara Biavaschi
+ * @version 1.0.0
+ */
 public final class DisplayColors {
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset

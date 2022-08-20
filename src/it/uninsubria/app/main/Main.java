@@ -1,10 +1,8 @@
 package it.uninsubria.app.main;
 
-import it.uninsubria.app.emotionalsongs.Emotion;
 import it.uninsubria.app.emotionalsongs.EmotionalSongs;
+import it.uninsubria.app.emotionalsongs.Feedback;
 import it.uninsubria.app.input.Input;
-import it.uninsubria.app.managers.PlaylistsManager;
-import it.uninsubria.app.managers.utils.FileManager;
 import it.uninsubria.app.managers.utils.SecurePassword;
 import it.uninsubria.app.songs.Playlist;
 import it.uninsubria.app.songs.Song;
@@ -48,14 +46,14 @@ public class Main {
                 case 1:
                     if (!app.isLogged()) {
                         Display.printSubtitle("\nLOGIN");
-                        email = in.readEmail("Inserisci la tua email: ");
+                        email = in.readEmail("Inserisci la tua email: ").toLowerCase();
                         psw = in.readPassword("Inserisci la tua password: ");
 
                         try {
-                            app.login(email, psw);
-                            Display.printAuthSuccess("Accesso effettuato con successo!");
+                            app.login(email, SecurePassword.encrypt(psw));
+                            Display.printBoxSuccess("Accesso effettuato con successo!");
                         } catch (UserException e) {
-                            Display.printAuthFailed(e.getMessage());
+                            Display.printBoxFailed(e.getMessage());
                         }
                     }
                     else {
@@ -64,7 +62,7 @@ public class Main {
                         char rispLogout = in.readYesNo("Vuoi uscire dal tuo account? (yes/no) : ");
                         if (rispLogout == 'y') {
                             app.logout();
-                            Display.printAuthSuccess("Logout effettuato con successo!");
+                            Display.printBoxSuccess("Logout effettuato con successo!");
                         }
                     }
 
@@ -75,64 +73,64 @@ public class Main {
 
                     // Info Generali
                     Display.printSectionTitle("\nInfo Generali");
-                    name = in.readString("Inserisci il tuo nome: ", 3, 30);
-                    surname = in.readString("Inserisci il tuo cognome: ", 3, 30);
-                    cf = in.readCF("Inserisci il tuo codice fiscale: ");
+                    name = Main.capitalize(in.readString("Inserisci il tuo nome: ", 3, 30));
+                    surname = Main.capitalize(in.readString("Inserisci il tuo cognome: ", 3, 30));
+                    cf = in.readCF("Inserisci il tuo codice fiscale: ").toUpperCase();
 
                     // Indirizzo
                     Display.printSectionTitle("\nIndirizzo");
                     typeStreet = in.readTypeStreet("Inserisci il tipo di strada (Via, Piazza, etc.): ");
-                    streetName = in.readString( "Inserisci il nome della strada: ", 3, 50);
+                    streetName = Main.capitalize(in.readString( "Inserisci il nome della strada: ", 3, 50));
                     houseNumber = in.readInteger("Inserisci il numero civico: ");
                     postalCode = in.readString( "Inserisci il codice postale: ", 5);
-                    city = in.readString( "Inserisci il nome della città: ", 3 ,50);
-                    province = in.readString( "Inserisci il nome della provincia: ", 3, 50);
+                    city = Main.capitalize(in.readString( "Inserisci il nome della città: ", 3 ,50));
+                    province = Main.capitalize(in.readString( "Inserisci il nome della provincia: ", 3, 50));
                     Address address = new Address(typeStreet, streetName, houseNumber, postalCode, city, province);
 
                     // Account
                     Display.printSectionTitle("\nAccount");
-                    email = in.readEmail("Inserisci la tua email: ");
+                    email = in.readEmail("Inserisci la tua email: ").toLowerCase();
                     if (in.readYesNo( "Vuoi generare una password? (yes/no) : ") == 'y') {
                         psw = SecurePassword.genPsw();
                         System.out.println("La tua password è: " + psw);
                     }
                     else psw = in.readPassword("Inserisci la tua password: ");
 
+                    User u = new User(name, surname, cf, address, app.nextUserId(), email, SecurePassword.encrypt(psw));
+                    app.register(u);
 
-                    app.register(new User(name, surname, cf, address, app.nextUserId(), email, SecurePassword.encrypt(psw)));
                     try {
-                        app.login(email, psw);
-                        Display.printAuthSuccess("Registrazione effettuata con successo!");
+                        app.login(email, u.getPsw());
+                        Display.printBoxSuccess("Registrazione effettuata con successo!");
                     } catch (UserException e) {
-                        Display.printAuthFailed(e.getMessage());
+                        Display.printBoxFailed(e.getMessage());
                     }
                     break;
                 case 3:
-
                     if(app.isLogged()) {
 
                         Display.printSubtitle("\nPROFILO UTENTE");
 
-                        Display.printSectionTitle("\nUser ID: ");
-                        System.out.println(app.getSessionUser().getUserId());
+                        Display.printSectionTitle("\nUser ID\t\t\t\t", false);
+                        System.out.print(app.getSessionUser().getUserId());
 
-                        Display.printSectionTitle("\nEmail: ");
-                        System.out.println(app.getSessionUser().getEmail());
+                        Display.printSectionTitle("\nEmail\t\t\t\t",false);
+                        System.out.print(app.getSessionUser().getEmail());
 
-                        Display.printSectionTitle("\nPassword: ");
-                        System.out.println(app.getSessionUser().getPsw());
+                        Display.printSectionTitle("\nNome\t\t\t\t", false);
+                        System.out.print(app.getSessionUser().getName());
 
-                        Display.printSectionTitle("\nNome: ");
-                        System.out.println(app.getSessionUser().getName());
+                        Display.printSectionTitle("\nCognome\t\t\t\t", false);
+                        System.out.print(app.getSessionUser().getSurname());
 
-                        Display.printSectionTitle("\nCognome: ");
-                        System.out.println(app.getSessionUser().getSurname());
+                        Display.printSectionTitle("\nIndirizzo\t\t\t", false);
+                        System.out.print(app.getSessionUser().getAddress().toAddressString());
 
-                        Display.printSectionTitle("\nIndirizzo: ");
-                        System.out.println(app.getSessionUser().getAddress());
-
-                        Display.printSectionTitle("\nCodice fiscale: ");
+                        Display.printSectionTitle("\nCodice Fiscale\t\t",false);
                         System.out.println(app.getSessionUser().getCf());
+
+                        Display.printSectionTitle("\n\nN° di playlist create\t\t",false);
+                        System.out.println(app.countPlaylists(app.getSessionUser().getUserId()));
 
 
                     } else {
@@ -141,17 +139,20 @@ public class Main {
                     }
                     break;
                 case 5:
-
                     // controllo se l'utente ha eseguito il login
                     if (app.isLogged()) {
 
                         Display.printSubtitle("\nCREA UNA PLAYLIST");
 
                         String nomePlaylist = in.readString("Inserisci il nome della playlst: ");
+                        while (!app.isNamePlaylistAvailable(nomePlaylist)) {
+                            Display.printError("Errore, il nome della playlist è già presente! Scegli un altro nome...");
+                            nomePlaylist = in.readString("\nInserisci il nome della playlst: ");
+                        }
                         Playlist playlist = new Playlist(app.getSessionUser().getUserId(), nomePlaylist);
                         do {
                             Display.printResearchOptions();
-                            opt = in.readInteger("\nRisposta: ");
+                            opt = in.readInteger("Risposta: ");
                             switch (opt) {
                                 case 1: // ricerca per titolo
                                     research = in.readString("\nInserisci il titolo della canzone: ");
@@ -161,12 +162,12 @@ public class Main {
                                     }
                                     else {
                                         int idCanzone = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare: ");
-                                        playlist.addSong(app.getSongById(idCanzone));
+                                        playlist.addSong(app.getSongById(idCanzone).getId());
                                     }
 
                                     break;
 
-                                case 2:
+                                case 2: // ricerca per autore e anno
                                     rscAuth = in.readString("\nCerca per autore: ");
                                     rscYear = in.readInteger("Cerca per anno: ");
                                     Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
@@ -175,137 +176,86 @@ public class Main {
                                     }
                                     else {
                                         int idCanzone = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
-                                        playlist.addSong(app.getSongById(idCanzone));
+                                        playlist.addSong(app.getSongById(idCanzone).getId());
                                     }
                                     break;
                             }
-                        } while(in.readYesNo("\nVuoi aggiungere una canzone alla playlist? (yes/no) : ") == 'y');
+                        } while(in.readYesNo("Vuoi aggiungere una canzone alla playlist? (yes/no) : ") == 'y');
 
-                        app.savePlaylist(playlist);
-                        System.out.println(playlist.size());
+                        // salvo la playlist appena creata nel file
+                        if (app.savePlaylist(playlist))
+                            Display.printBoxSuccess("Playlist creata con successo!");
+                        else
+                            Display.printBoxFailed("Playlist non creata correttamente");
 
                     } else {
                         System.out.println();
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali. ");
-
-                        if (in.readYesNo("\nVuoi accedere all'area riservata? (yes/no) : ") == 'y'){
-                            String emailUser = in.readString( "Inserisci la tua email: ");
-                            String pswUser = in.readString( "Inserisci password: ");
-                            try {
-                                app.login(emailUser, pswUser);
-                                Display.printAuthSuccess("Accesso effettuato con successo!");
-                            } catch (UserException e){
-                                Display.printAuthFailed(e.getMessage());
-                            }
-                        }
                     }
                     break;
+
                 case 6:
-
                     if(app.isLogged()) {
+                        Display.printSubtitle("\nLE TUE PLAYLIST\n");
+                        Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
 
-                        Display.printSubtitle("\nINSERIMENTO EMOZIONI\n");
-
-                        Display.printSubtitle("Le tue playlist: ");
-                        Vector<Playlist> UserPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
-                        System.out.println(UserPlaylists);
+                        //stampa delle playlist
+                        Display.printPlaylist(userPlaylists, app.getSongsManager());
 
                         Playlist playlist;
+                        String namePlaylist;
                         do {
-                            String playlistName = in.readString("\nDigita il nome della playlist che vuoi selezionare: ");
-                            playlist = app.getPlaylistByName(playlistName);
+                            namePlaylist = in.readString("Digita il nome della playlist che vuoi selezionare: ");
+                            playlist = app.getPlaylistByName(namePlaylist);
                             if (playlist == null) {
-                                Display.printError("Nessuna playlist corrispondente trovata! ");
+                                Display.printError("Nessuna delle tue playlist ha questo nome! Controlla bene e riprova...\n");
                             }
                         } while (playlist == null);
 
-
-                        int songId = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
-                        Song song = app.getSong(songId);
-
-                        Display.printListEmotions(app.getListEmotions());
-
-                        Display.printSectionTitle("\nInserisci per ogni emozione un voto da 1 (per niente) a 5 (molto) e aggiungi un'eventuale nota. ");
-
-                        char c;
-                        String nota1, nota2, nota3, nota4, nota5, nota6, nota7, nota8;
-                        int em1 = in.readInteger("\n* Emozione 1: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota1 = in.readString("Nota: ");
+                        int songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
+                        while (!playlist.contains(songId)) {
+                            Display.printError("Il brano che hai scelto non c'è nella playlist! Riprova...\n");
+                            songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
                         }
 
-                        int em2 = in.readInteger("\n* Emozione 2: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota2 = in.readString("Nota: ");
-                        }
+                        //stampa lista di emozioni
+                        Display.printSubtitle("\n\nSCEGLI UNA EMOZIONE");
+                        Display.printListEmotions(app.getEmotionsManager());
 
-                        int em3 = in.readInteger("\n* Emozione 3: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota3 = in.readString("Nota: ");
-                        }
+                        String note = "";
+                        int emotionId, score;
+                        Feedback f;
+                        Vector<Feedback> listFeedback = new Vector<>();
+                        do {
+                            emotionId = in.readInteger("Inserisci l'ID dell'emozione: ");
+                            while (emotionId < 1 || emotionId > app.emotionsListSize()) {
+                                Display.printError("Errore, l'ID deve essere compreso tra 1 e " +  app.emotionsListSize() + "! Riprova...\n");
+                                emotionId = in.readInteger("Inserisci il tuo punteggio per il brano: ");
+                            }
+                            Display.printInfo("l'intensità dell'emozione provata deve essere compreso tra 1 (Per niente) e 5 (Molto)\n");
+                            score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
+                            while (score < 1 || score > 5) {
+                                Display.printError("Errore, l'intensità dell'emozione deve essere compreso tra 1 (Per niente) e 5 (Molto)! Riprova...\n");
+                                score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
+                            }
+                            if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
+                                note = in.readString("Inserisci qui una nota per la recensione: ");
+                            }
+                            listFeedback.add(new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, emotionId, score, note));
+                        } while (in.readYesNo("Vuoi aggiungere una nuova emozione? (y/n) ") == 'y');
 
-                        int em4 = in.readInteger("\n* Emozione 4: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota4 = in.readString("Nota: ");
-                        }
-
-                        int em5 = in.readInteger("\n* Emozione 5: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota5 = in.readString("Nota: ");
-                        }
-
-                        int em6 = in.readInteger("\n* Emozione 6: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota6 = in.readString("Nota: ");
-                        }
-
-                        int em7 = in.readInteger("\n* Emozione 7: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota7 = in.readString("Nota: ");
-                        }
-
-                        int em8 = in.readInteger("\n* Emozione 8: ");
-                        c = in.readYesNo("Vuoi aggiungere una nota? (y/n) ");
-                        if (c == 'y') {
-                            nota8 = in.readString("Nota: ");
-                        }
-
-
-
-
-                        // int emotionId = in.readInteger("\nDigita l'ID dell'emozione che vuoi selezionare: ");
-                        // Vector<Emotion> songEmotions = new Vector<>();
-                        // Emotion emotion = app.getEmotion(emotionId);
-                        // songEmotions.add(emotion);
-                        // playlist.addEmotion(song, emotion);
-                        // playlist.set(song, songEmotions);
-
-                    } else {
+                        if (app.saveFeedback(listFeedback))
+                            Display.printBoxSuccess("Recensione aggiunta con successo!");
+                        else
+                            Display.printBoxFailed("Recensione non aggiunta correttamente");
+                    }
+                    else {
                         System.out.println();
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali. ");
-
-                        if (in.readYesNo("\nVuoi accedere all'area riservata? (yes/no) : ") == 'y'){
-                            String emailUser = in.readString( "Inserisci la tua email: ");
-                            String pswUser = in.readString( "Inserisci password: ");
-                            try {
-                                app.login(emailUser, pswUser);
-                                Display.printAuthSuccess("Accesso effettuato con successo!");
-                            } catch (UserException e){
-                                Display.printAuthFailed(e.getMessage());
-                            }
-                        }
                     }
-
                     break;
 
-                case 7:
+                case 9:
                     Display.printListSongs(app.getListSongs());
                     break;
 
@@ -314,5 +264,20 @@ public class Main {
             System.out.println("\n");
         } while (opt != 0);
         Display.printCredits();
+    }
+
+    /**
+     * Restituisce una stringa con la prima lettera maiscola per ogni parola
+     * @param str Stringa da formattare
+     * @return Stringa formattata con la prima lettera maiuscola per ogni parola
+     */
+    public static String capitalize(String str) {
+        String[] vet = str.split(" ");
+        String capitalized = "";
+        for (int i = 0; i < vet.length; i++) {
+            capitalized += vet[i].substring(0,1).toUpperCase() + vet[i].substring(1).toLowerCase();
+            capitalized += i < vet.length - 1 ? " " : "";
+        }
+        return capitalized;
     }
 }

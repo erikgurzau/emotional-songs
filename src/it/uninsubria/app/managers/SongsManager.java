@@ -14,10 +14,26 @@ public class SongsManager {
      * Percorso del file delle canzoni presenti nell'applicazione
      */
     private String pathFile = "./data/Canzoni.txt";
+
+    /**
+     * Lista delle canzoni
+     */
     private Vector<Song> listSongs;
+
+    /**
+     * Indice delle canzoni con chiave l'ID della canzone e come valore l'oggetto Song
+     */
     private HashMap<Integer, Song> mapSongs;
+
+    /**
+     * Gestore I/O del file delle canzoni
+     */
     private FileManager fm;
 
+
+    /**
+     * Costruttore
+     */
     public SongsManager() {
         mapSongs = new HashMap<>();
         fm = new FileManager(pathFile);
@@ -129,7 +145,11 @@ public class SongsManager {
     }
 
 
-    @Override
+    /**
+     *
+     * 
+     * @return
+     */
     public String toString() {
         return listSongs.toString();
     }

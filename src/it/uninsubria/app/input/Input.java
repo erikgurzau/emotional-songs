@@ -48,11 +48,11 @@ public class Input {
             char c = risp.charAt(0);
 
             if (risp.length() > 1 && !risp.equalsIgnoreCase("yes") & !risp.equalsIgnoreCase("no"))
-                throw new InputException("Errore, inserisci una parola tra 'yes' o 'no'");
+                throw new InputException("Errore, inserisci una parola tra 'yes' o 'no'\n");
             if (!Character.isLetter(c))
-                throw new InputException("Errore, inserisci una lettera tra 'y' o 'n'");
+                throw new InputException("Errore, inserisci una lettera tra 'y' o 'n'\n");
             if (c != 'y' & c != 'Y' & c != 'n' & c != 'N')
-                throw new InputException("Errore, inserisci una lettera tra 'y' o 'n'");
+                throw new InputException("Errore, inserisci una lettera tra 'y' o 'n'\n");
 
             return c;
         } catch (StringIndexOutOfBoundsException | InputException e) {

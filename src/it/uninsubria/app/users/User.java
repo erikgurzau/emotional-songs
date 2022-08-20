@@ -1,6 +1,5 @@
 package it.uninsubria.app.users;
 
-import it.uninsubria.app.managers.utils.SecurePassword;
 import it.uninsubria.app.users.exceptions.UserException;
 import it.uninsubria.app.users.utils.Address;
 
@@ -34,9 +33,14 @@ public class User extends Person {
      */
     private final String psw;
 
-
+    /**
+     * Lunghezza minima di caratteri della password
+     */
     public static final byte MIN_LENGTH_PSW = 6;
 
+    /**
+     * Lunghezza massima di caratteri della password
+     */
     public static final byte MAX_LENGTH_PSW = 16;
 
 
@@ -58,23 +62,56 @@ public class User extends Person {
         this.psw = psw;
     }
 
+    /**
+     * Getter dell'ID dell'utente
+     * @return Intero che definisce l'ID dell'utente
+     */
     public int getUserId() {
         return userId;
     }
 
+    /**
+     * Getter della password dell'utente
+     * La password non è in chiaro, ma criptata mediante
+     * l'utilizzo di SHA1 che genera una stringa esadecimale di 40 caratteri
+     * @return Password criptata lunga 40 caratteri
+     */
     public String getPsw() {
         return psw;
     }
 
+    /**
+     * Getter dell'email dell'utente
+     * @return Stringa contenente l'email
+     */
     public String getEmail() {
         return email;
     }
 
-    public boolean login(String email, String psw) {
-        return this.email.equals(email) && this.psw.equals(psw);
+
+    /**
+     * Verifica che la password fornita corrisponda
+     * esattamente alla password di questo utente
+     * @param psw Password criptata da confrontare
+     * @return {@code = true} Se e solo se, le due password sono uguali.
+     * Altrimenti {@code = false}
+     */
+    public boolean comparePsw(String psw) {
+        return this.psw.equals(psw);
     }
 
 
+    /**
+     * Verifica che la password fornita rispetti i requisiti minimi di validità:
+     * Controlla se la password ha una lunghezza compresa tra MIN_LENGTH_PSW e MAX_LENGTH_PSW;
+     * Controlla se è presente almeno un carattere maiuscolo;
+     * Controlla se è presente almeno un numero;
+     * Controlla se è presente almeno un carattere speciale;
+     * @param psw Stringa da validare come password
+     * @return {@code = true} Se e solo se, la stringa rispetta tutti i requisiti minimi di validità.
+     * Altrimenti {@code = false}
+     * @throws UserException Se la password non rispetta i requisiti minimi di validità
+     */
     public static boolean isPswValid(String psw) throws UserException {
         if(psw.length() < MIN_LENGTH_PSW || psw.length() > MAX_LENGTH_PSW)
             throw new UserException("La password non rispetta i requisiti di lunghezza");
@@ -105,6 +142,16 @@ public class User extends Person {
         else throw new UserException("La password non contiene caratteri speciali, riprova");
     }
 
+    /**
+     * Verifica che l'email fornita rappresenta una possibile email valida:
+     * Controlla se la parte del nome utente, contiene lettere o numeri;
+     * Controlla se la parte prima della '@', non contiene solo numeri oppure non inizia con un numero;
+     * Controlla se la parte del dominio contiene lettere o numeri;
+     * Controlla se contiene il DNS. es .it .com. biz .com etc.;
+     * @param email Stringa da validare come email
+     * @return {@code = true} Se e solo se, l'email rispetta i requisiti di validità
+     * @throws UserException Se l'email non rispetta i requisiti di vakidità
+     */
     public static boolean isEmailValid(String email) throws UserException {
         String[] array = email.split("@");
         Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -120,7 +167,12 @@ public class User extends Person {
         return true;
     }
 
-
+    /**
+     * Controlla se la stringa contiene solo numeri
+     * @param str Stringa da controllare
+     * @return {@code = true} Se e solo se, la stringa contiene solo numeri.
+     * Altrimenti {@code = false}
+     */
     private static boolean containsAllNumbers(String str){
         for (char c: str.toCharArray())
             if (Character.isLetter(c))
@@ -128,7 +180,10 @@ public class User extends Person {
         return true;
     }
 
-    @Override
+    /**
+     * Ritorna una stringa che contiene le informazioni dell'utente
+     * @return String che contiene i dati dell'utente divisi dal separatore ';'
+     */
     public String toString() {
         return userId + ";" + email + ";" + psw + ";" + super.toString();
     }
