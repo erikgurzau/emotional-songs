@@ -1,1 +1,7 @@
-2;440;3,nota;4,nota;2,nota;5,nota;1,nota;3,nota;2,nota;4,nota
+Playlist;1;45,1,5,Molto bella;67,1,2;
+Playlist;1;122,5,3;
+Mix;2;12,3,3,"Gustosa";
+Mix2022;1;253,6,4;
+Playlist;1;67,5,4,Molto particolare;
+Playlist;1;122,3,5;122,6,2,Divertente;
+Mix2022;1;253,1,5;
