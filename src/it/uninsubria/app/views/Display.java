@@ -283,6 +283,14 @@ public class Display {
         }
         System.out.println("+———————————————————————————+———————————————+——————————+");
     }
+    
+    public static void printListNotes(EmotionalSongs app, int songId) {
+        for (Emotion e: app.getEmotionList()) {
+            Vector<String> listNotes = app.listNotes(songId, e.getId());
+            System.out.println("\n* " + e.getCategory() + ":");
 
+            Arrays.stream(listNotes.toArray()).forEach(System.out::println);
+        }
+    }
 
 }
