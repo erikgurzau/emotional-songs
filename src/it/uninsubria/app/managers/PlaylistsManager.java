@@ -93,12 +93,18 @@ public class PlaylistsManager {
      * Altrimenti {@code = false}
      */
     public boolean savePlaylist (Playlist playlist) {
-        Vector<Playlist> currPlaylist = playlistMap.get(playlist.getUserId());
+        Vector<Playlist> currPlaylist;
+        if (playlistMap.containsKey(playlist.getUserId())) {
+            currPlaylist = playlistMap.get(playlist.getUserId());
+        } else {
+            currPlaylist = new Vector<>();
+        }
         currPlaylist.add(playlist);
         playlistMap.put(playlist.getUserId(), currPlaylist);
         return fm.println(playlist.toString(), 'a');
     }
 
+    
     /**
      * Conta il numero di playlist create da un determinato utente, identificato
      * dal suo proprio ID
@@ -118,7 +124,12 @@ public class PlaylistsManager {
      *          di playlist create dall'utente. Altrimenti {@code = false}
      */
     public boolean isNameAvailable(int userId, String namePlaylist) {
-        Vector<Playlist> listPlaylist = playlistMap.get(userId);
+        Vector<Playlist> listPlaylist;
+        if (playlistMap.containsKey(userId)) {
+            listPlaylist = playlistMap.get(userId);
+        } else {
+            listPlaylist = new Vector<>();
+        }
         for (Playlist p : listPlaylist)
             if (p.getName().equals(namePlaylist))
                 return false;
