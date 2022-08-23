@@ -102,5 +102,17 @@ public class FeedbackManager {
         }
         return sum;
     }
+    
+    public Vector<String> listNotes (int songId, int emotionId) {
+        Vector<String> notes = new Vector<>();
+        for (Map.Entry<String, Vector<Feedback>> entry : mapFeedback.entrySet()) {
+            Vector<Feedback> list = entry.getValue();
+            for (Feedback f : list) {
+                if (f.getSongId() == songId && f.getEmotionId() == emotionId)
+                    notes.add(f.getNote());
+            }
+        }
+        return notes;
+    }
 
 }
