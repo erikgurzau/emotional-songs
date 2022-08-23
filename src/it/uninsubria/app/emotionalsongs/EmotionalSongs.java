@@ -191,6 +191,11 @@ public class EmotionalSongs {
     public boolean containsFeedback(String namePlaylist, int songId) {
         return false;
     }
+    
+    public Vector<String> listNotes(int songId, int emotionId) {
+        return feedbackManager.listNotes(songId, emotionId);
+    }
+
 
     public static void main(String[] args) {
         new Main();
