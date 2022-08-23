@@ -1,6 +1,7 @@
 package it.uninsubria.app.views;
 
 import it.uninsubria.app.emotionalsongs.Emotion;
+import it.uninsubria.app.emotionalsongs.EmotionalSongs;
 import it.uninsubria.app.managers.EmotionsManager;
 import it.uninsubria.app.managers.SongsManager;
 import it.uninsubria.app.songs.Playlist;
@@ -66,13 +67,12 @@ public class Display {
     public static void printMenu() {
         System.out.println("\n(1) - Login / Logout");
         System.out.println("(2) - Registrazione");
-        System.out.println("(3) - Profilo");
-        System.out.println("(4) - Statistiche");
-        System.out.println("(5) - Crea una playlist");
-        System.out.println("(6) - Recensisci una o più canzoni");
-        System.out.println("(7) - Visualizza recensioni delle canzoni");
-        System.out.println("(8) - Cerca una o più canzoni");
-        System.out.println("(9) - Visualizza tutte le canzoni");
+        System.out.println("(3) - Statistiche");
+        System.out.println("(4) - Crea una playlist");
+        System.out.println("(5) - Recensisci una o più canzoni");
+        System.out.println("(6) - Ricerca un brano");
+        System.out.println("(7) - Visualizza un report emozionale per un brano");
+        System.out.println("(8) - Visualizza tutte le canzoni");
         System.out.println("(0) - Esci");
     }
 
@@ -179,6 +179,10 @@ public class Display {
 
     }
 
+    public static void printSystemPause(Input in) {
+        in.readString("\nPremi un tasto per continuare...",true);
+    }
+
 
     /**
      * Stampa una tabella con le informazioni dei brani presenti nella lista.
@@ -190,7 +194,8 @@ public class Display {
      */
     public static void printListSongs(Vector<Song> list){
         if (list.isEmpty()) {
-            Display.printError("Nessuna canzone presente nel catalogo");
+            System.out.println();
+            Display.printError("Nessuna canzone trovata!\n");
         } else {
             Input in = new Input();
             String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
@@ -209,7 +214,6 @@ public class Display {
 
                 if (i == (MAX_SONG_PER_PAGE * page) - 1) {
                     System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
-                    System.out.println();
                     char risp = in.readYesNo("Vuoi continuare? (yes/no) : ");
                     System.out.println();
 
@@ -247,8 +251,7 @@ public class Display {
         }
     }
 
-    public static void printListEmotions(EmotionsManager emotionsManager) {
-        Vector<Emotion> emotionsList = emotionsManager.getListEmotions();
+    public static void printListEmotions(Vector<Emotion> emotionsList) {
         String tableFormat = "| %-5s | %-32s | %-60s |%n";
 
         System.out.println("+———————+——————————————————————————————————+——————————————————————————————————————————————————————————————+");
@@ -260,6 +263,25 @@ public class Display {
         }
         System.out.println("+———————+——————————————————————————————————+——————————————————————————————————————————————————————————————+");
 
+    }
+
+
+    public static void printReportEmotionalTag(EmotionalSongs app, int songId) {
+        String tableFormat = "| %-25s | %-13s | %-8s |%n";
+        System.out.println();
+        System.out.println("+———————————————————————————+———————————————+——————————+");
+        System.out.println("| Emozione                  | Recensioni    | Media    |");
+        System.out.println("+———————————————————————————+———————————————+——————————+");
+
+        for (Emotion e: app.getEmotionList()){
+            int totFeedback = app.countFeedback(songId, e.getId());
+            int totScoreFeedback = app.totScoreFeedback(songId, e.getId());
+            double media = totScoreFeedback > 0 ? totScoreFeedback / (double)totFeedback : 0;
+            //Emotion emotionMostCommon = app.emotionMostCommon(songId);
+            //Emotion emotionLessCommon = app.emotionLessCommon(songId);
+            System.out.format(tableFormat, e.getCategory(), totFeedback, media);
+        }
+        System.out.println("+———————————————————————————+———————————————+——————————+");
     }
 
 
