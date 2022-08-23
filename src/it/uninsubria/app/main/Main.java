@@ -266,6 +266,8 @@ public class Main {
                                 else {
                                     idCanzone = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
                                     Display.printReportEmotionalTag(app, idCanzone);
+                                    Display.printSubtitle("\nI COMMENTI DEGLI UTENTI");
+                                    Display.printListNotes(app, idCanzone);
                                 }
                                 break;
 
@@ -278,6 +280,8 @@ public class Main {
                                 else {
                                     idCanzone = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
                                     Display.printReportEmotionalTag(app, idCanzone);
+                                    Display.printSubtitle("\nI COMMENTI DEGLI UTENTI");
+                                    Display.printListNotes(app, idCanzone);
                                 }
 
                                 break;
