@@ -12,6 +12,7 @@ import it.uninsubria.app.users.utils.Address;
 import it.uninsubria.app.users.utils.TypeStreet;
 import it.uninsubria.app.views.Display;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 public class Main {
@@ -107,38 +108,9 @@ public class Main {
                     }
                     break;
                 case 3:
-                    if(app.isLogged()) {
 
-                        Display.printSubtitle("\nPROFILO UTENTE");
-
-                        Display.printSectionTitle("\nUser ID\t\t\t\t", false);
-                        System.out.print(app.getSessionUser().getUserId());
-
-                        Display.printSectionTitle("\nEmail\t\t\t\t",false);
-                        System.out.print(app.getSessionUser().getEmail());
-
-                        Display.printSectionTitle("\nNome\t\t\t\t", false);
-                        System.out.print(app.getSessionUser().getName());
-
-                        Display.printSectionTitle("\nCognome\t\t\t\t", false);
-                        System.out.print(app.getSessionUser().getSurname());
-
-                        Display.printSectionTitle("\nIndirizzo\t\t\t", false);
-                        System.out.print(app.getSessionUser().getAddress().toAddressString());
-
-                        Display.printSectionTitle("\nCodice Fiscale\t\t",false);
-                        System.out.println(app.getSessionUser().getCf());
-
-                        Display.printSectionTitle("\n\nN° di playlist create\t\t",false);
-                        System.out.println(app.countPlaylists(app.getSessionUser().getUserId()));
-
-
-                    } else {
-                        System.out.println();
-                        Display.printError("Per visualizzare le informazioni è necessario accedere con le proprie credenziali. ");
-                    }
                     break;
-                case 5:
+                case 4:
                     // controllo se l'utente ha eseguito il login
                     if (app.isLogged()) {
 
@@ -168,8 +140,8 @@ public class Main {
                                     break;
 
                                 case 2: // ricerca per autore e anno
-                                    rscAuth = in.readString("\nCerca per autore: ");
-                                    rscYear = in.readInteger("Cerca per anno: ");
+                                    rscAuth = in.readString("\nInserisci l'autore della canzone: ");
+                                    rscYear = in.readInteger("Inserisci l'anno di pubblicazione: ");
                                     Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
                                     if (app.findSongsByAuthorAndYear(rscAuth, rscYear).isEmpty()) {
                                         Display.printError("Nessuna canzone trovata!\n\n");
@@ -190,11 +162,11 @@ public class Main {
 
                     } else {
                         System.out.println();
-                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali. ");
+                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
                     }
                     break;
 
-                case 6:
+                case 5:
                     if(app.isLogged()) {
                         Display.printSubtitle("\nLE TUE PLAYLIST\n");
                         Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
@@ -213,18 +185,17 @@ public class Main {
                         } while (playlist == null);
 
                         int songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
-                        while (!playlist.contains(songId)) {
+                        while (!playlist.contains(songId) && app.containsFeedback(namePlaylist, songId)) {
                             Display.printError("Il brano che hai scelto non c'è nella playlist! Riprova...\n");
                             songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
                         }
 
                         //stampa lista di emozioni
                         Display.printSubtitle("\n\nSCEGLI UNA EMOZIONE");
-                        Display.printListEmotions(app.getEmotionsManager());
+                        Display.printListEmotions(app.getEmotionList());
 
                         String note = "";
                         int emotionId, score;
-                        Feedback f;
                         Vector<Feedback> listFeedback = new Vector<>();
                         do {
                             emotionId = in.readInteger("Inserisci l'ID dell'emozione: ");
@@ -239,7 +210,7 @@ public class Main {
                                 score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
                             }
                             if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
-                                note = in.readString("Inserisci qui una nota per la recensione: ");
+                                note = in.readString("Inserisci qui una nota per la recensione: ", 0, 256);
                             }
                             listFeedback.add(new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, emotionId, score, note));
                         } while (in.readYesNo("Vuoi aggiungere una nuova emozione? (y/n) ") == 'y');
@@ -251,11 +222,75 @@ public class Main {
                     }
                     else {
                         System.out.println();
-                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali. ");
+                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
+                        Display.printSystemPause(in);
                     }
                     break;
 
-                case 9:
+
+                case 6:
+                    Display.printSubtitle("\nRICERCA UNA CANZONE");
+
+                    do {
+                        Display.printResearchOptions();
+                        opt = in.readInteger("Risposta: ");
+                        switch (opt) {
+                            case 1: // ricerca per titolo
+                                research = in.readString("\nInserisci il titolo della canzone: ");
+                                Display.printListSongs(app.findSongsByTitle(research));
+                                break;
+
+                            case 2: // ricerca per autore e anno
+                                rscAuth = in.readString("\nInserisci l'autore della canzone: ");
+                                rscYear = in.readInteger("Inserisci l'anno di pubblicazione: ");
+                                Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
+                                break;
+                        }
+                    } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
+
+                    break;
+
+                case 7:
+                    Display.printSubtitle("\nVISUALIZZA TAG EMOZIONALI");
+
+                    int idCanzone = 0;
+                    do {
+                        Display.printResearchOptions();
+                        opt = in.readInteger("Risposta: ");
+                        switch (opt) {
+                            case 1: // ricerca per titolo
+                                research = in.readString("\nInserisci il titolo della canzone: ");
+                                Display.printListSongs(app.findSongsByTitle(research));
+                                if (app.findSongsByTitle(research).isEmpty())
+                                    Display.printError("Nessuna canzone trovata!\n\n");
+                                else {
+                                    idCanzone = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
+                                    Display.printReportEmotionalTag(app, idCanzone);
+                                }
+                                break;
+
+                            case 2: // ricerca per autore e anno
+                                rscAuth = in.readString("\nInserisci l'autore della canzone: ");
+                                rscYear = in.readInteger("Inserisci l'anno di pubblicazione: ");
+                                Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
+                                if (app.findSongsByAuthorAndYear(rscAuth, rscYear).isEmpty())
+                                    Display.printError("Nessuna canzone trovata!\n\n");
+                                else {
+                                    idCanzone = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
+                                    Display.printReportEmotionalTag(app, idCanzone);
+                                }
+
+                                break;
+                        }
+
+
+
+                    } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
+
+
+                    break;
+
+                case 8:
                     Display.printListSongs(app.getListSongs());
                     break;
 
@@ -280,4 +315,6 @@ public class Main {
         }
         return capitalized;
     }
+
+
 }

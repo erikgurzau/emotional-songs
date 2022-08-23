@@ -172,8 +172,24 @@ public class EmotionalSongs {
         return emotionsManager.size();
     }
 
+    public Vector<Emotion> getEmotionList(){
+        return emotionsManager.getListEmotions();
+    }
+
     public boolean saveFeedback(Vector<Feedback> listFeedback) {
         return feedbackManager.saveFeedback(listFeedback);
+    }
+
+    public int countFeedback(int songId, int emotionId) {
+        return feedbackManager.countFeedback(songId, emotionId);
+    }
+
+    public int totScoreFeedback(int songId, int emotionId) {
+        return feedbackManager.totScoreFeedback(songId, emotionId);
+    }
+
+    public boolean containsFeedback(String namePlaylist, int songId) {
+        return false;
     }
 
     public static void main(String[] args) {

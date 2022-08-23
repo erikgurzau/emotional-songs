@@ -99,6 +99,16 @@ public class Input {
         }
     }
 
+    public String readString(String message, boolean canBeEmpty) {
+        if (canBeEmpty) {
+            System.out.print(message);
+            String str = sc.next();
+            return str;
+        }
+        else return readString(message);
+
+    }
+
     public String readString(String message, int minLength, int maxLength) {
         try {
             minLength = Math.min(minLength, maxLength);
