@@ -287,9 +287,12 @@ public class Display {
     public static void printListNotes(EmotionalSongs app, int songId) {
         for (Emotion e: app.getEmotionList()) {
             Vector<String> listNotes = app.listNotes(songId, e.getId());
-            System.out.println("\n* " + e.getCategory() + ":");
-
-            Arrays.stream(listNotes.toArray()).forEach(System.out::println);
+            System.out.println("* " + e.getCategory() + ":");
+            if(listNotes.isEmpty()) {
+                printInfo("Ancora nessun commento da parte degli utenti\n");
+            } else {
+                Arrays.stream(listNotes.toArray()).forEach(System.out::println);
+            }
         }
     }
 
