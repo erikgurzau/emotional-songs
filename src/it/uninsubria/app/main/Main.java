@@ -266,7 +266,7 @@ public class Main {
                                 else {
                                     idCanzone = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
                                     Display.printReportEmotionalTag(app, idCanzone);
-                                    if(in.readYesNo("\nVuoi visualizzare i commmenti rilasciati dagli utenti? (y/n) ") == 'y') {
+                                    if (in.readYesNo("\nVuoi visualizzare i commmenti rilasciati dagli utenti? (y/n) ") == 'y') {
                                         Display.printSubtitle("\nI COMMENTI DEGLI UTENTI");
                                         Display.printListNotes(app, idCanzone);
                                     }
@@ -282,7 +282,7 @@ public class Main {
                                 else {
                                     idCanzone = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
                                     Display.printReportEmotionalTag(app, idCanzone);
-                                    if(in.readYesNo("\nVuoi visualizzare i commmenti rilasciati dagli utenti? (y/n) ") == 'y') {
+                                    if (in.readYesNo("\nVuoi visualizzare i commmenti rilasciati dagli utenti? (y/n) ") == 'y') {
                                         Display.printSubtitle("\nI COMMENTI DEGLI UTENTI");
                                         Display.printListNotes(app, idCanzone);
                                     }
