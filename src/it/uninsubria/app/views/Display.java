@@ -10,6 +10,7 @@ import it.uninsubria.app.input.Input;
 import it.uninsubria.app.users.User;
 import it.uninsubria.app.views.utils.DisplayColors;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 /**
@@ -228,7 +229,7 @@ public class Display {
     }
 
     public static void printPlaylist(Vector<Playlist> list, SongsManager songsManager) {
-        if (list.isEmpty()) {
+        if (list==null) {
             Display.printError("Nessuna playlist creata da te! ");
         } else {
             String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
@@ -283,7 +284,35 @@ public class Display {
         }
         System.out.println("+———————————————————————————+———————————————+——————————+");
     }
-    
+
+    public static void printReportPlaylist(Playlist p, EmotionalSongs app, SongsManager songsManager){
+        String tableFormat= "| %-48s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s |%n";
+        System.out.println();
+        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+        System.out.println("|                                                  | Amazement          | Solemnity          | Tenderness         | Nostalgia          | Power              | Joy                | Tension            | Sadness            |");
+        System.out.println("+                     Brano                        +————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+        System.out.println("|                                                  |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |");
+        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+
+            int[] totfeedback= new int[9];
+            int[] totscorefeedback= new int[9];
+            double[]media=new double[9];
+            for (int songId : p.getListIdSongs()){
+                for(int i=1;i< totfeedback.length;i++) {
+                    Song s=songsManager.getSong(songId);
+                    totfeedback[i] = app.countFeedback(s.getId(),i);
+                    totscorefeedback[i]=app.totScoreFeedback(s.getId(),i);
+            }
+
+                for(int i=1;i< totfeedback.length;i++){
+                    media[i]=totscorefeedback[i]>0?totscorefeedback[i]/(double)totfeedback[i]:0;
+                }
+                Song s=songsManager.getSong(songId);
+                System.out.format(tableFormat,s.getTitle(),media[1],totfeedback[1],media[2],totfeedback[2],media[3],totfeedback[3],media[4],totfeedback[4],media[5],totfeedback[5],media[6],totfeedback[6],media[7],totfeedback[7],media[8],totfeedback[8]);
+                System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+            }
+
+        }
     public static void printListNotes(EmotionalSongs app, int songId) {
         for (Emotion e: app.getEmotionList()) {
             Vector<String> listNotes = app.listNotes(songId, e.getId());
@@ -296,4 +325,4 @@ public class Display {
         }
     }
 
-}
+    }
