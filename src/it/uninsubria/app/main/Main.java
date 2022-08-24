@@ -130,6 +130,7 @@ public class Main {
                     } else{
                         System.out.println();
                         Display.printError("Per visionare le playlist è necessario accedere con le proprie credenziali\n ");
+                        Display.printSystemPause(in);
                     }
 
                     break;
