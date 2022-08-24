@@ -203,10 +203,10 @@ public class Main {
                                 Display.printError("Errore, l'ID deve essere compreso tra 1 e " +  app.emotionsListSize() + "! Riprova...\n");
                                 emotionId = in.readInteger("Inserisci il tuo punteggio per il brano: ");
                             }
-                            Display.printInfo("l'intensità dell'emozione provata deve essere compreso tra 1 (Per niente) e 5 (Molto)\n");
+                            Display.printInfo("L'intensità dell'emozione provata deve essere compresa tra 1 (Per niente) e 5 (Molto)\n");
                             score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
                             while (score < 1 || score > 5) {
-                                Display.printError("Errore, l'intensità dell'emozione deve essere compreso tra 1 (Per niente) e 5 (Molto)! Riprova...\n");
+                                Display.printError("Errore, l'intensità dell'emozione deve essere compresa tra 1 (Per niente) e 5 (Molto)! Riprova...\n");
                                 score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
                             }
                             if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
