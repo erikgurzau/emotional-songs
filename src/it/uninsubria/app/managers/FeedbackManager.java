@@ -108,8 +108,11 @@ public class FeedbackManager {
         for (Map.Entry<String, Vector<Feedback>> entry : mapFeedback.entrySet()) {
             Vector<Feedback> list = entry.getValue();
             for (Feedback f : list) {
-                if (f.getSongId() == songId && f.getEmotionId() == emotionId)
-                    notes.add(f.getNote());
+                if (f.getSongId() == songId && f.getEmotionId() == emotionId) {
+                    if(!f.getNote().isEmpty()) {
+                        notes.add(f.getNote());
+                    }
+                }
             }
         }
         return notes;
