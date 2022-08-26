@@ -16,6 +16,15 @@ public class Feedback {
         this.score = score;
         this.note = note;
     }
+    
+    public Feedback (String namePlaylist, int userId, int songId, int emotionId, int score) {
+        this.namePlaylist = namePlaylist;
+        this.userId = userId;
+        this.songId = songId;
+        this.emotionId = emotionId;
+        this.score = score;
+        this.note = "";
+    }
 
     public String getNamePlaylist() {
         return namePlaylist;
