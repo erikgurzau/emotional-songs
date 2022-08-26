@@ -235,8 +235,11 @@ public class Main {
                             }
                             if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
                                 note = in.readString("Inserisci qui una nota per la recensione: ", 0, 256);
+                                f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, emotionId, score, note);
+                            } else {
+                                f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, emotionId, score);
                             }
-                            listFeedback.add(new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, emotionId, score, note));
+                            listFeedback.add(f);
                         } while (in.readYesNo("Vuoi aggiungere una nuova emozione? (y/n) ") == 'y');
 
                         if (app.saveFeedback(listFeedback))
