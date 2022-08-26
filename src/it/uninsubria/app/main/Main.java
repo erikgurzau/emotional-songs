@@ -120,13 +120,13 @@ public class Main {
                         do {
                             namePlaylist = in.readString("Digita il nome della playlist che vuoi selezionare: ");
                             playlist = app.getPlaylistByName(namePlaylist);
-                            Display.printReportPlaylist(playlist,app, app.getSongsManager());
-
-
                             if (playlist == null) {
                                 Display.printError("Nessuna delle tue playlist ha questo nome! Controlla bene e riprova...\n");
                             }
                         } while (playlist == null);
+                        
+                        Display.printReportPlaylist(playlist,app, app.getSongsManager());
+                        
                     } else{
                         System.out.println();
                         Display.printError("Per visionare le playlist è necessario accedere con le proprie credenziali\n ");
