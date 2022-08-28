@@ -14,7 +14,7 @@ public class Input {
 
     public Input() {
         sc = new Scanner(System.in);
-        sc.useDelimiter("\n");
+       
     }
 
     public String readEmail(String message) {
