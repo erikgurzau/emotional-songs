@@ -117,7 +117,7 @@ public class SongsManager {
         for(Song song: listSongs) {
             String title = song.getTitle();
             String lowTitle = title.toLowerCase();
-            if(lowTitle.contains(titleSong)) {
+            if(lowTitle.contains(titleSong.toLowerCase())) {
                 result.add(song);
             }
         }
@@ -137,7 +137,7 @@ public class SongsManager {
             String author = song.getAuthor();
             String lowAuth = author.toLowerCase();
             int year = song.getYear();
-            if(lowAuth.equals(rscAuth) && year==rscYear) {
+            if(lowAuth.equals(rscAuth.toLowerCase()) && year==rscYear) {
                 result.add(song);
             }
         }
