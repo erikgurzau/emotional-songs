@@ -286,33 +286,33 @@ public class Display {
     }
 
     public static void printReportPlaylist(Playlist p, EmotionalSongs app, SongsManager songsManager){
-        String tableFormat= "| %-48s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s |%n";
+        String tableFormat= "| %-48s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s |%n";
         System.out.println();
-        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
-        System.out.println("|                                                  | Amazement          | Solemnity          | Tenderness         | Nostalgia          | Power              | Joy                | Tension            | Sadness            |");
-        System.out.println("+                     Brano                        +————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
-        System.out.println("|                                                  |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |");
-        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+        System.out.println("|                                                  | Amazement          | Solemnity          | Tenderness         | Nostalgia          | Calmness           | Power              | Joy                | Tension            | Sadness            |");
+        System.out.println("+                     Brano                        +————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+        System.out.println("|                                                  |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |");
+        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
 
-            int[] totfeedback= new int[9];
-            int[] totscorefeedback= new int[9];
-            double[]media=new double[9];
-            for (int songId : p.getListIdSongs()){
-                for(int i=1;i< totfeedback.length;i++) {
-                    Song s=songsManager.getSong(songId);
-                    totfeedback[i] = app.countFeedback(s.getId(),i);
-                    totscorefeedback[i]=app.totScoreFeedback(s.getId(),i);
-            }
-
-                for(int i=1;i< totfeedback.length;i++){
-                    media[i]=totscorefeedback[i]>0?totscorefeedback[i]/(double)totfeedback[i]:0;
-                }
+        int[] totfeedback= new int[10];
+        int[] totscorefeedback= new int[10];
+        double[]media=new double[10];
+        for (int songId : p.getListIdSongs()){
+            for(int i=1;i< totfeedback.length;i++) {
                 Song s=songsManager.getSong(songId);
-                System.out.format(tableFormat,s.getTitle(),media[1],totfeedback[1],media[2],totfeedback[2],media[3],totfeedback[3],media[4],totfeedback[4],media[5],totfeedback[5],media[6],totfeedback[6],media[7],totfeedback[7],media[8],totfeedback[8]);
-                System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+                totfeedback[i] = app.countFeedback(s.getId(),i);
+                totscorefeedback[i]=app.totScoreFeedback(s.getId(),i);
             }
 
+            for(int i=1;i< totfeedback.length;i++){
+                media[i]=totscorefeedback[i]>0?totscorefeedback[i]/(double)totfeedback[i]:0;
+            }
+            Song s=songsManager.getSong(songId);
+            System.out.format(tableFormat,s.getTitle(),media[1],totfeedback[1],media[2],totfeedback[2],media[3],totfeedback[3],media[4],totfeedback[4],media[5],totfeedback[5],media[6],totfeedback[6],media[7],totfeedback[7],media[8],totfeedback[8],media[9],totfeedback[9]);
+            System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
         }
+    }
+    
     public static void printListNotes(EmotionalSongs app, int songId) {
         for (Emotion e: app.getEmotionList()) {
             Vector<String> listNotes = app.listNotes(songId, e.getId());
