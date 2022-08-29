@@ -6,6 +6,7 @@ package it.uninsubria.app.users.utils;
  * @author  Alessia Metaj
  * @author  Sara Biavaschi
  * @version 1.0.0
+ * @see     it.uninsubria.app.users.utils.TypeStreet
  */
 public class Address {
     /**
@@ -106,7 +107,6 @@ public class Address {
     }
 
     /**
-     * Ritorna una stringa che contiene le informazioni dell'indirizzo, in un formato più leggibile per l'utente
      * Ritorna una stringa che contiene le informazioni dell'indirizzo, in un formato più leggibile per l'utente
      * @return String che contiene i dati dell'indirizzo formattati per facilitare la lettura dei dati
      */

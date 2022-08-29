@@ -1,16 +1,14 @@
 package it.uninsubria.app.views;
 
 import it.uninsubria.app.emotionalsongs.Emotion;
-import it.uninsubria.app.emotionalsongs.EmotionalSongs;
-import it.uninsubria.app.managers.EmotionsManager;
-import it.uninsubria.app.managers.SongsManager;
+import it.uninsubria.app.emotionalsongs.Feedback;
+import it.uninsubria.app.managers.CommandManager;
 import it.uninsubria.app.songs.Playlist;
 import it.uninsubria.app.songs.Song;
 import it.uninsubria.app.input.Input;
 import it.uninsubria.app.users.User;
 import it.uninsubria.app.views.utils.DisplayColors;
 
-import java.util.Arrays;
 import java.util.Vector;
 
 /**
@@ -20,25 +18,15 @@ import java.util.Vector;
  * @author  Alessia Metaj
  * @author  Sara Biavaschi
  * @version 1.0.0
- * @see     it.uninsubria.app.users.User
  * @see     it.uninsubria.app.views.utils.DisplayColors
+ * @see     it.uninsubria.app.users.User
+ * @see     it.uninsubria.app.managers.CommandManager
+ * @see     it.uninsubria.app.songs.Song
+ * @see     it.uninsubria.app.songs.Playlist
+ * @see     it.uninsubria.app.input.Input
+ * @see     it.uninsubria.app.emotionalsongs.Emotion
  */
 public class Display {
-
-    /**
-     * Icon del check
-     */
-    public static final String CHECK = "✔️";
-
-    /**
-     * Icon della X
-     */
-    public static final String X = "✘";
-
-    /**
-     * Icona del warning
-     */
-    public static final String WARNING = "⚠";
 
     /**
      * Numero massimo di canzoni, da visualizzare a schermo, per pagina
@@ -68,13 +56,13 @@ public class Display {
     public static void printMenu() {
         System.out.println("\n(1) - Login / Logout");
         System.out.println("(2) - Registrazione");
-        System.out.println("(3) - Statistiche");
+        System.out.println("(3) - Ricerca un brano");
         System.out.println("(4) - Crea una playlist");
         System.out.println("(5) - Recensisci una o più canzoni");
-        System.out.println("(6) - Ricerca un brano");
-        System.out.println("(7) - Visualizza un report emozionale per un brano");
-        System.out.println("(8) - Visualizza tutte le canzoni");
-        System.out.println("(0) - Esci");
+        System.out.println("(7) - Visualizza un report emozionale su una canzone");
+        System.out.println("(8) - Visualizza un report emozionale su una tua playlist");
+        System.out.println("(9) - Visualizza tutte le canzoni");
+        System.out.println("(0) - Esci\n");
     }
 
     /**
@@ -101,7 +89,7 @@ public class Display {
      * @param message Stringa contenente il messaggio da visualizzare
      */
     public static void printError(String message){
-        System.out.print(DisplayColors.RED + WARNING + " " + message + DisplayColors.RESET);
+        System.out.print(DisplayColors.RED + message + DisplayColors.RESET);
     }
 
     /**
@@ -117,8 +105,19 @@ public class Display {
      * @param subtitle Stringa contenete il titolo da visualizzare
      */
     public static void printSubtitle(String subtitle){
-        System.out.println(DisplayColors.GREEN_BOLD_BRIGHT + subtitle + DisplayColors.RESET);
+        System.out.println(DisplayColors.YELLOW_BRIGHT + subtitle + DisplayColors.RESET);
     }
+
+    /**
+     * Stampa a display un titolo riguardante la sezione del menù scelta dall'utente
+     * @param subtitle Stringa contenete il titolo da visualizzare
+     * @param eof Booleano per inserire il carattere di end of line '\n'
+     */
+    public static void printSubtitle(String subtitle, boolean eof){
+        if (eof) printSubtitle(subtitle);
+        else System.out.print(DisplayColors.GREEN_BOLD_BRIGHT + subtitle + DisplayColors.RESET);
+    }
+
 
     /**
      * Stampa a display un sotto-titolo riguardante la sezione del menù scelta dall'utente
@@ -150,11 +149,12 @@ public class Display {
      * @param message Stringa da visualizzare con il messaggio di operazione riuscita
      */
     public static void printBoxSuccess(String message){
-        String msgFormat = "|     %-" + (message.length() + 7) + "s|%n";
+        int spaceX = 8;
+        int totSpace = (spaceX * 2) + message.length();
         System.out.println();
-        System.out.println(DisplayColors.GREEN + "+" + "—".repeat(9 + message.length() + 4) + "+");
-        System.out.format(msgFormat, CHECK + " " + message);
-        System.out.println("+" + "—".repeat(9 + message.length() + 4) + "+" + DisplayColors.RESET);
+        System.out.println(DisplayColors.GREEN + "+" + "-".repeat(totSpace) + "+");
+        System.out.println("|" + " ".repeat(8) + message + " ".repeat(8) + "|");
+        System.out.println("+" + "-".repeat(totSpace) + "+" + DisplayColors.RESET);
     }
 
     /**
@@ -163,11 +163,13 @@ public class Display {
      * @param message Stringa da visualizzare con il messaggio di operazione fallita
      */
     public static void printBoxFailed(String message){
-        String msgFormat = "|      %-" + (message.length() + 7) + "s  |%n";
+        int spaceX = 8;
+        int totSpace = (spaceX * 2) + message.length();
         System.out.println();
-        System.out.println(DisplayColors.RED + "+" + "—".repeat(9 + message.length() + 4) + "+");
-        System.out.format(msgFormat, X + "️" + message);
-        System.out.println("+" + "—".repeat(9 + message.length() + 4) + "+" + DisplayColors.RESET);
+        System.out.println(DisplayColors.RED + "+" + "-".repeat(totSpace) + "+");
+        System.out.println("|" + " ".repeat(spaceX) + message + " ".repeat(spaceX) + "|");
+        System.out.println("+" + "-".repeat(totSpace) + "+" + DisplayColors.RESET);
+
     }
 
     /**
@@ -180,8 +182,12 @@ public class Display {
 
     }
 
+    /**
+     * Stampa una pausa del sistema, premendo il tasto 'Invio' si continua con il regolare flusso del programma
+     * @param in Input che legge dalla console il tasto 'Invio'
+     */
     public static void printSystemPause(Input in) {
-        in.readString("\nPremi un tasto per continuare...",true);
+        in.readEnter("\nPremi un 'invio' per continuare...");
     }
 
 
@@ -189,8 +195,8 @@ public class Display {
      * Stampa una tabella con le informazioni dei brani presenti nella lista.
      * Se la lista ha un grandezza maggiore di MAX_SONGS_PER_PAGE, allora
      * verranno stampati MAX_SONGS_PER_PAGE brani e verrà chiesto all'utente
-     * se vuole visualizzare i prossimi MAX_SONGS_PER_PAGE, e così via fino alla
-     * fine della lista
+     * se vuole visualizzare i prossimi MAX_SONGS_PER_PAGE,
+     * e così via fino alla fine della lista
      * @param list Lista di canzoni
      */
     public static void printListSongs(Vector<Song> list){
@@ -205,16 +211,16 @@ public class Display {
 
 
             System.out.println();
-            System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+            System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
             System.out.println("| ID    | Titolo                                            | Autore/i                                 | Anno   | Genere   | Durata |");
-            System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+            System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
 
             for (int i = 0; i < list.size(); i++) {
                 Song s = list.elementAt(i);
                 System.out.format(tableFormat, s.getId(), s.getTitle(), s.getAuthor(), s.getYear(), s.getGenre(), s.millisToTime());
 
                 if (i == (MAX_SONG_PER_PAGE * page) - 1) {
-                    System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+                    System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
                     char risp = in.readYesNo("Vuoi continuare? (yes/no) : ");
                     System.out.println();
 
@@ -224,27 +230,32 @@ public class Display {
                 }
             }
             if (!isPaged)
-                System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+                System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
         }
     }
 
-    public static void printPlaylist(Vector<Playlist> list, SongsManager songsManager) {
-        if (list==null) {
+    /**
+     * Stampa una tabella con le informazioni dei brani presenti nella playlist.
+     * @param app Manager per ricavare le informazioni di una canzone mediante l'ID della canzone presente nella playlist
+     * @param list Lista di playlist create da un utente X
+     */
+    public static void printPlaylist(CommandManager app, Vector<Playlist> list) {
+        if (list.isEmpty()) {
             Display.printError("Nessuna playlist creata da te! ");
         } else {
             String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
 
             for (Playlist p : list) {
                 System.out.println(DisplayColors.CYAN_BOLD_BRIGHT + p.getName() + DisplayColors.RESET);
-                System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+                System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
                 System.out.println("| ID    | Titolo                                            | Autore/i                                 | Anno   | Genere   | Durata |");
-                System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+                System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
                 for (int songId : p.getListIdSongs()){
-                    Song s = songsManager.getSong(songId);
+                    Song s = app.getSongById(songId);
                     System.out.format(tableFormat, s.getId(), s.getTitle(), s.getAuthor(), s.getYear(), s.getGenre(), s.millisToTime());
 
                 }
-                System.out.println("+———————+———————————————————————————————————————————————————+——————————————————————————————————————————+————————+——————————+————————+");
+                System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
                 System.out.println();
             }
 
@@ -252,77 +263,98 @@ public class Display {
         }
     }
 
-    public static void printListEmotions(Vector<Emotion> emotionsList) {
-        String tableFormat = "| %-5s | %-32s | %-60s |%n";
 
-        System.out.println("+———————+——————————————————————————————————+——————————————————————————————————————————————————————————————+");
-        System.out.println("| ID    | Emozione                         | Descrizione                                                  |");
-        System.out.println("+———————+——————————————————————————————————+——————————————————————————————————————————————————————————————+");
-
-        for (Emotion e: emotionsList) {
-            System.out.format(tableFormat, e.getId(), e.getCategory(), e.getExplanation());
-        }
-        System.out.println("+———————+——————————————————————————————————+——————————————————————————————————————————————————————————————+");
-
-    }
-
-
-    public static void printReportEmotionalTag(EmotionalSongs app, int songId) {
+    /**
+     * Stampa in una tabella un report sui tag emozionali di una canzone
+     * @param app Manager per ricavare le informazioni delle emozioni e calcolare i parametri per generare il report
+     * @param songId Intero che rappresenta l'ID della canzone sulla quale bisogna calcolare i paramentri per genereare il report
+     */
+    public static boolean printReportSong(CommandManager app, int songId) {
         String tableFormat = "| %-25s | %-13s | %-8s |%n";
-        System.out.println();
-        System.out.println("+———————————————————————————+———————————————+——————————+");
-        System.out.println("| Emozione                  | Recensioni    | Media    |");
-        System.out.println("+———————————————————————————+———————————————+——————————+");
 
-        for (Emotion e: app.getEmotionList()){
-            int totFeedback = app.countFeedback(songId, e.getId());
-            int totScoreFeedback = app.totScoreFeedback(songId, e.getId());
-            double media = totScoreFeedback > 0 ? totScoreFeedback / (double)totFeedback : 0;
-            //Emotion emotionMostCommon = app.emotionMostCommon(songId);
-            //Emotion emotionLessCommon = app.emotionLessCommon(songId);
-            System.out.format(tableFormat, e.getCategory(), totFeedback, media);
+        if (app.hasFeedback(songId)) {
+            System.out.println();
+            System.out.println("+---------------------------+---------------+----------+");
+            System.out.println("| Emozione                  | Recensioni    | Media    |");
+            System.out.println("+---------------------------+---------------+----------+");
+
+            int totFeedback = app.countFeedback(songId);
+            for (Emotion e: app.getEmotionList()){
+                int totScoreFeedback = app.totScoreFeedback(songId, e.getId());
+                double media = totScoreFeedback > 0 ? totScoreFeedback / (double)totFeedback : 0;
+
+                System.out.format(tableFormat, e.getCategory(), totFeedback, media);
+            }
+            System.out.println("+---------------------------+---------------+----------+");
+            return true;
         }
-        System.out.println("+———————————————————————————+———————————————+——————————+");
-    }
-
-    public static void printReportPlaylist(Playlist p, EmotionalSongs app, SongsManager songsManager){
-        String tableFormat= "| %-48s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s | %-6s | %-9s |%n";
-        System.out.println();
-        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
-        System.out.println("|                                                  | Amazement          | Solemnity          | Tenderness         | Nostalgia          | Calmness           | Power              | Joy                | Tension            | Sadness            |");
-        System.out.println("+                     Brano                        +————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
-        System.out.println("|                                                  |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |Media   |Recensioni |");
-        System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
-
-        int[] totfeedback= new int[10];
-        int[] totscorefeedback= new int[10];
-        double[]media=new double[10];
-        for (int songId : p.getListIdSongs()){
-            for(int i=1;i< totfeedback.length;i++) {
-                Song s=songsManager.getSong(songId);
-                totfeedback[i] = app.countFeedback(s.getId(),i);
-                totscorefeedback[i]=app.totScoreFeedback(s.getId(),i);
-            }
-
-            for(int i=1;i< totfeedback.length;i++){
-                media[i]=totscorefeedback[i]>0?totscorefeedback[i]/(double)totfeedback[i]:0;
-            }
-            Song s=songsManager.getSong(songId);
-            System.out.format(tableFormat,s.getTitle(),media[1],totfeedback[1],media[2],totfeedback[2],media[3],totfeedback[3],media[4],totfeedback[4],media[5],totfeedback[5],media[6],totfeedback[6],media[7],totfeedback[7],media[8],totfeedback[8],media[9],totfeedback[9]);
-            System.out.println("+——————————————————————————————————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+————————————————————+");
+        else {
+            System.out.println();
+            Display.printError("Questa canzona non ha ancora ricevuto nessuna recensione emozionale!\n");
+            return false;
         }
     }
-    
-    public static void printListNotes(EmotionalSongs app, int songId) {
+
+    /**
+     * tampa in una tabella un report sui tag emozionali delle canzoni di una playlist
+     * @param app Manager per ricavare le informazioni delle emozioni e calcolare i parametri per generare il report
+     * @param p Playlist sulla quale calcolare il report dei tag emozionali
+     */
+    public static void printReportPlaylist(CommandManager app, Playlist p){
+        Vector<Emotion> listEmotion = app.getEmotionList();
+
+        // HEADER DELLA TABELLA
+        System.out.println("\n+--------------------------------------------------+" + "----------------------+".repeat(listEmotion.size()));
+        System.out.print("|                                                  |");
+        for (int i = 0; i < listEmotion.size(); i++) { // ciclo per le emozioni
+            int spaceAfterName = 17 - listEmotion.get(i).getCategory().length();
+            System.out.print("     " + listEmotion.get(i).getCategory() + " ".repeat(spaceAfterName) + "|");
+        }
+        System.out.println("\n|                     Brano                        +" + "----------------------+".repeat(listEmotion.size()));
+        System.out.print("|                                                  |");
+        for (int i = 0; i < listEmotion.size(); i++) {
+            System.out.print(" M | # |");
+        }
+        System.out.println("\n+--------------------------------------------------+" + "----------------------+".repeat(listEmotion.size()));
+
+
+        // BODY DELLA TABELLA
+        for (int songId : p.getListIdSongs()) {
+            Song s = app.getSongById(songId);
+            int totFeedback = app.countFeedback(songId);
+
+            System.out.print("| " + s.getTitle() + " ".repeat(49 - s.getTitle().length()) + "|");
+            for (int i = 0; i < listEmotion.size(); i++) {
+                Emotion e = listEmotion.get(i);
+
+                int totScoreFeedback = app.totScoreFeedback(songId, e.getId());
+                double media = totScoreFeedback > 0 ? totScoreFeedback / (double)totFeedback : 0;
+
+                System.out.print(" " + media + " ".repeat(8 - (media + "").length()) + "|");
+                System.out.print(" " + totFeedback + " ".repeat(11 - (totFeedback + "").length()) + "|");
+            }
+            System.out.println();
+        }
+        System.out.println("+--------------------------------------------------+" + "----------------------+".repeat(listEmotion.size()));
+
+
+    }
+
+
+    public static void printComments(CommandManager app, int songId) {
+
         for (Emotion e: app.getEmotionList()) {
-            Vector<String> listNotes = app.listNotes(songId, e.getId());
-            System.out.println("* " + e.getCategory() + ":");
-            if(listNotes.isEmpty()) {
-                printInfo("Ancora nessun commento da parte degli utenti\n");
-            } else {
-                Arrays.stream(listNotes.toArray()).forEach(System.out::println);
+            Vector<Feedback> listFeedback = app.getFeedbacksIfHasNote(songId, e.getId());
+            System.out.println("\n* " + e.getCategory());
+            if (!listFeedback.isEmpty()) {
+                for (Feedback f : listFeedback) {
+                    Display.printSectionTitle(app.getUserById(f.getUserId()).getName(), false);
+                    System.out.println(": " + f.getNote());
+                }
             }
+            else Display.printInfo("Ancora nessun commento da parte degli utenti per questa canzone\n");
         }
     }
 
-    }
+
+}

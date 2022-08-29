@@ -10,7 +10,7 @@ package it.uninsubria.app.users.exceptions;
 public class UserException extends Exception {
 
     /**
-     * Costruttore di una eccezzione utente
+     * Costruttore di una eccezione utente
      * @param msg Stringa contenente il messaggio che genera l'eccezzione
      */
     public UserException(String msg){

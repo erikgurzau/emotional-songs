@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
  * @author  Alessia Metaj
  * @author  Sara Biavaschi
  * @version 1.0.0
+ * @see     it.uninsubria.app.users.utils.Address
  */
 public class Person {
     /**

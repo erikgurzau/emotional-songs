@@ -1,0 +1,287 @@
+package it.uninsubria.app.managers;
+
+import it.uninsubria.app.emotionalsongs.Emotion;
+import it.uninsubria.app.emotionalsongs.Feedback;
+import it.uninsubria.app.songs.Playlist;
+import it.uninsubria.app.songs.Song;
+import it.uninsubria.app.users.User;
+import it.uninsubria.app.users.exceptions.UserException;
+
+import java.util.Vector;
+
+/**
+ * Classe che definisce l'hub di cotrollo della gestione di tutti i manager dell'applicazione
+ * @author  Erik Gurzau
+ * @author  Alessia Metaj
+ * @author  Sara Biavaschi
+ * @version 1.0.0
+ * @see it.uninsubria.app.managers.CommandManager
+ * @see it.uninsubria.app.input.Input
+ * @see it.uninsubria.app.users.utils.TypeStreet
+ * @see it.uninsubria.app.views.Display
+ * @see it.uninsubria.app.managers.utils.SecurePassword
+ */
+public class CommandManager {
+
+    /**
+     * Gestore delle canzoni
+     */
+    private SongsManager songsManager;
+
+    /**
+     * Gestore degli utenti
+     */
+    private UsersManager usersManager;
+
+    /**
+     * Gestore delle emozioni
+     */
+    private EmotionsManager emotionsManager;
+
+    /**
+     * Gestore delle playlist
+     */
+    private PlaylistsManager playlistsManager;
+
+    /**
+     * Gestore delle recensioni degli utenti
+     */
+    private FeedbackManager feedbackManager;
+
+    /**
+     * Utente che ha effettuato l'accesso
+     */
+    private User sessionUser;
+
+    /**
+     * {@code true} Se e solo se, l'utente si è loggato all'app. Altrimenti {@code false}
+     */
+    private boolean isLogged = false;
+
+
+    /**
+     * Costruttore dell'hub di controllo di tutti i manager
+     */
+    public CommandManager() {
+        usersManager = new UsersManager();
+        songsManager = new SongsManager();
+        emotionsManager = new EmotionsManager();
+        playlistsManager = new PlaylistsManager();
+        feedbackManager = new FeedbackManager();
+    }
+
+    /**
+     * Getter per l'utente loggato
+     * @return L'utente che eseguito il login
+     */
+    public User getSessionUser() {
+        return sessionUser;
+    }
+
+    /**
+     * Ritorna lo stato dell'avvenuta autenticazione dell'utente nell'applicazione
+     * @return Restituisce {@code true} Se e solo se, l'utente si è autenticato nell'applicazione.
+     *         Altrimenti {@code false}
+     */
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    /**
+     * Effettua l'accesso all'applicazione verificando i seguenti paramentri:
+     * - Se l'email specificata esiste;
+     * - Se la password coincide esattamente con quella associata all'email;
+     * @param email Stringa che contiene l'email dell'utente che vuole eseguire l'accesso
+     * @param psw Stringa che contiene la password criptata da confrontare con quella associata all'email specificata
+     * @return {@code true} Se e solo 
+     * @throws UserException Se l'email non esiste, ovvero non ha mai effettuato la registrazione, e se la password è errata
+     */
+    public boolean login(String email, String psw) throws UserException {
+        if (!usersManager.contains(email))
+            throw new UserException("E-mail inesistente!");
+        if(!usersManager.login(email, psw))
+            throw new UserException("Password non corretta! Riprova");
+
+        this.sessionUser = this.usersManager.getUserByEmail(email);
+        return isLogged = true;
+    }
+
+    /**
+     * Esegue il logout dell'utente che ha eseguito l'accesso
+     */
+    public void logout() {
+        this.sessionUser = null;
+        this.isLogged = false;
+    }
+
+
+
+    /* SongManager ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+    /**
+     * Getter del manager delle canzoni
+     * @return
+     */
+    public SongsManager getSongsManager() {
+        return songsManager;
+    }
+
+    /**
+     * Ritorna una lista di canzoni
+     * @return Una lista di canzoni
+     */
+    public Vector<Song> getListSongs(){
+        return songsManager.getListSongs();
+    }
+
+    /**
+     * Cerca una canzone nella lista in base ad un parametro di filtraggio, ovvero il titolo della canzone.
+     * Una canzone viene inserita nella lista dei risultati se nel titolo contiene rscTitleSong
+     * @param rscTitleSong Stringa che contiene il titolo della canzone
+     * @return Una lista con le canzoni trovate in base ai parametri di ricerca specificati
+     */
+    public Vector<Song> findSongsByTitle(String rscTitleSong) {
+        return songsManager.findSongsByTitle(rscTitleSong);
+    }
+
+    /**
+     * Cerca una canzone nella lista in base a dei parametri di filtraggio, ovvero l'autore e l'anno della canzone.
+     * Una canzone viene inserita nella lista dei risultati se il nome dell'autore/i contiene rscAuth e
+     * ha come anno lo stesso di rscYear
+     * @param rscAuth Stringa che contiene il nome dell'autore
+     * @param rscYear Stringa che contiene l'anno della canzone
+     * @return Una lista con le canzoni trovate in base ai parametri di ricerca specificati
+     */
+    public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) {
+        return songsManager.findSongsByAuthorAndYear(rscAuth, rscYear);
+    }
+
+
+
+    /* UserManager ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+    /**
+     * Assegna ad un nuovo utente che si vuole registrare, il prossimo ID disponibile
+     * @return Intero che corrisponde all'ID dell'utente
+     */
+    public int nextUserId(){
+        return usersManager.nextUserId();
+    }
+
+    public User getUserById(int userId) {
+        return usersManager.getUserById(userId);
+    }
+
+    /**
+     * Registra un nuovo utente nell'applicazione.
+     * Aggiunge nell'indice la chiave (email) con il valore associato (oggetto User);
+     * Aggiunge l'utente nella lista;
+     * Aggiunge i dati dell'utente nel file divisi dal separatore ';';
+     * Setta il sessionUser con questo utente;
+     * @param user Ogetto User da registrare nell'applicazione
+     * @return {@code true} Se e solo se, l'utente è stato registrato correttamente.
+     * Altrimenti {@code false}.
+     */
+    public boolean register(User user){
+        this.sessionUser = user;
+        return usersManager.register(user);
+    }
+
+
+    /* EmotionManager ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+    /**
+     * Getter di una canzone in base all'ID della canzone
+     * @param songId Intero che rappresenta l'ID della canzone
+     * @return La canzone con l'ID specificato nei parametri
+     */
+    public Song getSongById(int songId) {
+        return songsManager.getSong(songId);
+    }
+
+    /**
+     * Ritorna la lista di emozioni disponibili per la recensione emozionale di una brano
+     * @return La lista delle emozioni
+     */
+    public Vector<Emotion> getEmotionList(){
+        return emotionsManager.getListEmotions();
+    }
+
+
+
+
+    /* PlaylistManager ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+    /**
+     * Scrive in coda una playlist nel file.
+     * I dati vengono salvati nel seguente formato:
+     * nomePlaylist;idUtente;idCanzone;idCanzone; etc.
+     * Aggionrna la mappa delle playlist
+     * @param playlist Oggetto playlist da salvare nel file
+     * @return {@code true} Se e solo se, la scrittura nel file è andata a buon fine.
+     * Altrimenti {@code false}
+     */
+    public boolean savePlaylist(Playlist playlist) {
+        return playlistsManager.savePlaylist(playlist);
+    }
+
+    /**
+     * Controlla che il nome della playlist che si vuole creare non esista già per l'utente loggato
+     * @param namePlaylist Stringa che contiene il nome scelto dall'utente
+     * @return {@code true} Se e solo se, il nome della nuova playlist non esiste nella lista
+     *          di playlist create dall'utente. Altrimenti {@code false}
+     */
+    public boolean isNamePlaylistAvailable(String namePlaylist) {
+        return playlistsManager.isNameAvailable(sessionUser.getUserId(), namePlaylist);
+    }
+
+    /**
+     * Ritorna una playlist, dell'utente loggato, che ha il nome esattamente
+     * uguale al nome spcificato nei paramentri
+     * @param namePlaylist Stringa che rappresenta il nome della playlist da cerca
+     * @return Una playlist che corrisponde ai parametri di ricerca. Se non esiste nessuna
+     * playlist con quel nome, ritorna null
+     */
+    public Playlist getPlaylistByName(String namePlaylist) {
+        return playlistsManager.getPlaylistByName(sessionUser.getUserId(), namePlaylist);
+    }
+
+    /**
+     * Ritorna una lista di playlist in base ad un userId specificato nei parametri
+     * @param userId Intero che rappresenta l'ID dell'utente registrato
+     * @return Una lista di playlist. Se l'utente non ha ancora creato una playlist, ritorna null
+     */
+    public Vector<Playlist> getPlaylistByUserId(int userId) {
+        return playlistsManager.getPlaylistByUserId(userId);
+    }
+
+
+
+
+    /* FeedbackManager ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+    public boolean saveFeedback(Vector<Feedback> listFeedback) {
+        return feedbackManager.saveFeedback(listFeedback);
+    }
+
+    public int countFeedback(int songId) {
+        return feedbackManager.countFeedback(songId);
+    }
+
+    public int totScoreFeedback(int songId, int emotionId) {
+        return feedbackManager.totScoreFeedback(songId, emotionId);
+    }
+
+    public boolean hasFeedback(String namePlaylist, int songId) {
+        return feedbackManager.hasFeedback(namePlaylist, sessionUser.getUserId(), songId);
+    }
+
+    public boolean hasFeedback(int songId) {
+        return feedbackManager.hasFeedback(songId);
+    }
+
+    public Vector<Feedback> getFeedbacksIfHasNote(int songId, int emotionId) {
+        return feedbackManager.getFeedbacksIfHasNote(songId, emotionId);
+    }
+
+}

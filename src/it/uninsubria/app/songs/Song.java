@@ -105,8 +105,7 @@ public class Song {
     }
 
     /**
-     * Converte i millisecondi in minuti e secondi nel seguente formato:
-     * mm:ss
+     * Converte i millisecondi in minuti e secondi nel formato "minuti:secondi"
      * @return Stringa con la conversione da millisecondi in minuti e secondi
      */
     public String millisToTime(){

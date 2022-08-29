@@ -5,14 +5,29 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+/**
+ * Classe che definisce la sicurezza delle password dell'applicazione
+ * @author  Erik Gurzau
+ * @author  Alessia Metaj
+ * @author  Sara Biavaschi
+ * @version 1.0.0
+ */
 public class SecurePassword {
-    private static final String CARATTERI = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&/?@[]^{}";
-    public static final int LENGTH_PSW = 16;
 
+    /**
+     * Metodo per criptare la password attraverso l'utilizzo dell'algoritmo SHA1
+     * @param password Stringa che contiene la password in chiaro da criptare
+     * @return Stringa che contiene la password criptata secondo l'algoritmo di SHA1
+     */
     public static String encrypt(String password){
         return sha1(password);
     }
 
+    /**
+     * Implementazione dell'algoritmo di SHA1
+     * @param password Stringa che contiene la password in chiaro da criptare
+     * @return Stringa che contiene la password criptata secondo l'algoritmo di SHA1
+     */
     private static String sha1(String password) {
         String sha1 = "";
         try {
@@ -27,6 +42,11 @@ public class SecurePassword {
         return sha1;
     }
 
+    /**
+     * Converte dei byte in caratteri esadecimali
+     * @param bytes Array di bytes
+     * @return Stringa che contiene la conversione dei bytes in esadecimale
+     */
     private static String bytesToHex(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {
@@ -36,11 +56,17 @@ public class SecurePassword {
     }
 
 
+    /**
+     * Genera una password lunga 16 caratteri in modo randomico
+     * @return Stringa che contiene la password in chiaro generata in modo randomico
+     */
     public static String genPsw() {
+        String lettere = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&/?@[]^{}";
+        int lengthPsw = 16;
         Random rnd = new Random();
-        StringBuilder sb = new StringBuilder(LENGTH_PSW);
-        for(int i = 0; i < LENGTH_PSW; i++) {
-            sb.append(CARATTERI.charAt(rnd.nextInt(CARATTERI.length())));
+        StringBuilder sb = new StringBuilder(lengthPsw);
+        for(int i = 0; i < lengthPsw; i++) {
+            sb.append(lettere.charAt(rnd.nextInt(lettere.length())));
         }
         return sb.toString();
     }

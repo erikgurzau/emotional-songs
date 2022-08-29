@@ -7,26 +7,35 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+/**
+ * Classe che rappresenta il sistema di gestione delle playlist all'interno dell'applicazione
+ * @author  Erik Gurzau
+ * @author  Alessia Metaj
+ * @author  Sara Biavaschi
+ * @version 1.0.0
+ * @see     it.uninsubria.app.songs.Playlist
+ * @see     it.uninsubria.app.managers.utils.FileManager
+ */
 public class PlaylistsManager {
     /**
-     * Percorso del file delle playlist create dagli utenti
+     * Percorso del file delle playlist
      */
-    private String pathFilePlaylist = "./data/Playlist.txt";
+    private final String pathFilePlaylist = "data/Playlist.txt";
 
     /**
-     * Mappa con chiave l'ID utente e come valore una lista di playlist create da quell'utente
+     * Mappa con chiave l'ID utente e come valore una lista di playlist
      */
     private HashMap<Integer, Vector<Playlist>> playlistMap;
 
 
     /**
-     * Gestore I/O del file delle playlist create dagli utenti
+     * Gestore I/O del file delle playlist
      */
     private FileManager fm;
 
 
     /**
-     * Construttore
+     * Construttore del gestore delle playlist
      */
     public PlaylistsManager() {
         playlistMap = new HashMap<>();
@@ -35,7 +44,7 @@ public class PlaylistsManager {
     }
 
     /**
-     * Legge i dati dal file e li converte in una mappa con chiave
+     * Legge i dati dal file e li popola mappa con chiave
      * l'ID dell'utente e come valore la lista delle playlist create
      * dal quel utente
      */
@@ -88,23 +97,20 @@ public class PlaylistsManager {
      * Scrive in coda una playlist nel file.
      * I dati vengono salvati nel seguente formato:
      * nomePlaylist;idUtente;idCanzone;idCanzone; etc.
+     * Aggionrna la mappa delle playlist
      * @param playlist Oggetto playlist da salvare nel file
-     * @return {@code = true} Se e solo se, la scrittura nel file è andata a buon fine.
-     * Altrimenti {@code = false}
+     * @return {@code true} Se e solo se, la scrittura nel file è andata a buon fine.
+     * Altrimenti {@code false}
      */
     public boolean savePlaylist (Playlist playlist) {
-        Vector<Playlist> currPlaylist;
-        if (playlistMap.containsKey(playlist.getUserId())) {
-            currPlaylist = playlistMap.get(playlist.getUserId());
-        } else {
+        Vector<Playlist> currPlaylist = playlistMap.get(playlist.getUserId());
+        if (currPlaylist == null)
             currPlaylist = new Vector<>();
-        }
         currPlaylist.add(playlist);
         playlistMap.put(playlist.getUserId(), currPlaylist);
         return fm.println(playlist.toString(), 'a');
     }
 
-    
     /**
      * Conta il numero di playlist create da un determinato utente, identificato
      * dal suo proprio ID
@@ -120,39 +126,42 @@ public class PlaylistsManager {
      * Controlla che il nome della playlist che si vuole creare non esista già per quell'utente
      * @param userId Intero che rappresenta l'ID utente che vuole creare una nuova playlist
      * @param namePlaylist Stringa che contiene il nome scelto dall'utente
-     * @return {@code = true} Se e solo se, il nome della nuova playlist non esiste nella lista
-     *          di playlist create dall'utente. Altrimenti {@code = false}
+     * @return {@code true} Se e solo se, il nome della nuova playlist non esiste nella lista
+     *          di playlist create dall'utente. Altrimenti {@code false}
      */
     public boolean isNameAvailable(int userId, String namePlaylist) {
-        Vector<Playlist> listPlaylist;
-        if (playlistMap.containsKey(userId)) {
-            listPlaylist = playlistMap.get(userId);
-        } else {
-            listPlaylist = new Vector<>();
-        }
-        for (Playlist p : listPlaylist)
+        Vector<Playlist> currPlaylist = playlistMap.get(userId);
+        if (currPlaylist == null)
+            return true;
+        for (Playlist p : currPlaylist)
             if (p.getName().equals(namePlaylist))
                 return false;
         return true;
     }
 
-
+    /**
+     * Ritorna una lista di playlist in base ad un userId specificato nei parametri
+     * @param userId Intero che rappresenta l'ID dell'utente registrato
+     * @return Una lista di playlist. Se l'utente non ha ancora creato una playlist, ritorna null
+     */
     public Vector<Playlist> getPlaylistByUserId(int userId) {
         return playlistMap.get(userId);
     }
 
-    public Playlist getPlaylistByName(int userId, String name) {
+    /**
+     * Ritorna una playlist, di un determinato utente, che ha il nome esattamente
+     * uguale al nome spcificato nei paramentri
+     * @param userId Intero che rappresenta l'ID dell'utente
+     * @param namePlaylist Stringa che rappresenta il nome della playlist da cerca
+     * @return Una playlist che corrisponde ai parametri di ricerca. Se non esiste nessuna
+     * playlist con quel nome, ritorna null
+     */
+    public Playlist getPlaylistByName(int userId, String namePlaylist) {
         Vector<Playlist> listPlaylist = playlistMap.get(userId);
         for(Playlist p: listPlaylist)
-            if(p.getName().equals(name))
+            if(p.getName().equals(namePlaylist))
                 return p;
-
         return null;
-    }
-
-
-    public String toString(){
-        return playlistMap.toString();
     }
 
 }

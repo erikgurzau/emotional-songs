@@ -7,11 +7,20 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+/**
+ * Classe che rappresenta il sistema di gestione della lista delle emozioni disponibili per le recensioni
+ * @author  Erik Gurzau
+ * @author  Alessia Metaj
+ * @author  Sara Biavaschi
+ * @version 1.0.0
+ * @see     it.uninsubria.app.emotionalsongs.Emotion
+ * @see     it.uninsubria.app.managers.utils.FileManager
+ */
 public class EmotionsManager {
     /**
      * Percorso del file delle emozioni da scegliere per recensire una canzone
      */
-    private String pathFile = "./data/ListaEmozioni.txt";
+    private String pathFile = "data/ListaEmozioni.txt";
 
     /**
      * Lista di emozioni
@@ -25,7 +34,7 @@ public class EmotionsManager {
 
 
     /**
-     * Costruttore
+     * Costruttore del gestore della lista di emozioni
      */
     public EmotionsManager() {
         fm = new FileManager(pathFile);
@@ -63,18 +72,13 @@ public class EmotionsManager {
         return list;
     }
 
-    public Emotion getEmotion(int emotionId) {
-        for (Emotion e : listEmotions)
-            if (e.getId() == emotionId)
-                return e;
-        return null;
-    }
 
+    /**
+     * Ritorna la lista di emozioni disponibili per la recensione emozionale di una brano
+     * @return La lista delle emozioni
+     */
     public Vector<Emotion> getListEmotions() {
         return listEmotions;
     }
 
-    public int size() {
-        return listEmotions.size();
-    }
 }
