@@ -221,6 +221,7 @@ public class Main {
                         String note = "";
                         int emotionId, score;
                         Vector<Feedback> listFeedback = new Vector<>();
+                        Feeback f;
                         do {
                             emotionId = in.readInteger("Inserisci l'ID dell'emozione: ");
                             while (emotionId < 1 || emotionId > app.emotionsListSize()) {
