@@ -155,8 +155,8 @@ public class UsersManager {
      */
     public int nextUserId(){
         if (mapUsers.isEmpty()) return 1;
-        User[] vetUsers = (User[]) mapUsers.values().toArray();
-        return vetUsers[vetUsers.length - 1].getUserId() + 1;
+        Vector<User> list = new Vector<>(mapUsers.values());
+        return list.lastElement().getUserId() + 1;
     }
 
 
