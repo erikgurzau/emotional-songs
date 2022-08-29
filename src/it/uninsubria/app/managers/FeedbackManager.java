@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import java.util.stream.Stream;
 
 /**
  * Classe che rappresenta il sistema di gestione delle recensioni emozionali all'interno dell'applicazione
@@ -145,9 +144,12 @@ public class FeedbackManager {
     }
 
     /**
-     * Conta il numero di recensioni di una canzone per una emozione
-     * @param songId
-     * @return
+     * Conta il numero di recensioni di una canzone all'interno dell'applicazione.
+     * Non conta il dettaglio della recensione, ovvero non suddivide le recensioni
+     * per emozioni ma le interpreta come gruppo.
+     * Poichè è obbligatorio inserire tutte le N emozioni appartenenti alla lista di emozioni disponibili
+     * @param songId Intero che rappresenta l'ID della canzone
+     * @return Il numero di recensioni di una canzone
      */
     public int countFeedback(int songId) {
         int count = 0;
@@ -163,6 +165,12 @@ public class FeedbackManager {
         return count;
     }
 
+    /**
+     * Esegue la somma totale dell'intesità di una emozione X rispetto ad una canzone Y
+     * @param songId Intero che rappresenta l'ID della canzone
+     * @param emotionId Intero che rappresenta l'ID dell'emozione
+     * @return La somma totale dell'intesità di una emozione X rispetto ad una canzone Y
+     */
     public int totScoreFeedback(int songId, int emotionId) {
         int sum = 0;
         for (Map.Entry<String, Vector<Feedback>> entry : mapFeedback.entrySet()) {
@@ -177,7 +185,13 @@ public class FeedbackManager {
         }
         return sum;
     }
-    
+
+    /**
+     * Ritorna una lista di feedback, che hanno una nota non vuota, rispetto ad una canzone X e a una emozione Y
+     * @param songId Intero che rappresenta l'ID della canzone
+     * @param emotionId Intero che rappresenta l'ID dell'emozione
+     * @return Una lista di recensioni emozionali
+     */
     public Vector<Feedback> getFeedbacksIfHasNote (int songId, int emotionId) {
         Vector<Feedback> notesList = new Vector<>();
         for (Map.Entry<String, Vector<Feedback>> entry : mapFeedback.entrySet()) {
