@@ -291,7 +291,7 @@ public class Display {
         }
         else {
             System.out.println();
-            Display.printError("Questa canzona non ha ancora ricevuto nessuna recensione emozionale!\n");
+            Display.printError("Questa canzone non ha ancora ricevuto nessuna recensione emozionale!\n");
             return false;
         }
     }
