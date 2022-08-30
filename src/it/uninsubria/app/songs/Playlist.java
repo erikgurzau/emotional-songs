@@ -29,7 +29,7 @@ public class Playlist {
 
     /**
      * Costruttore di una playlist
-     * @param userId Intero che rappresente l'ID dell'utente
+     * @param userId Intero che rappresenta l'ID dell'utente
      * @param name Stringa con il nome della playlist
      */
     public Playlist(int userId, String name){
@@ -81,7 +81,7 @@ public class Playlist {
 
     /**
      * Verifica se esiste un determinato ID di una canzone all'interno della lista degli ID delle canzoni
-     * @param songId Intero che rappresenta l'ID delle canzone da cercare
+     * @param songId Intero che rappresenta l'ID della canzone da cercare
      * @return {@code true} Se e solo se, l'ID della canzone da cercare è presente all'interno della lista.
      *          Altrimenti {@code false}
      */
