@@ -10,7 +10,7 @@ import it.uninsubria.app.users.exceptions.UserException;
 import java.util.Vector;
 
 /**
- * Classe che definisce l'hub di cotrollo della gestione di tutti i manager dell'applicazione
+ * Classe che definisce l'hub di controllo della gestione di tutti i manager dell'applicazione
  * @author  Erik Gurzau
  * @author  Alessia Metaj
  * @author  Sara Biavaschi
