@@ -40,7 +40,7 @@ public class SongsManager {
 
 
     /**
-     * Costruttore del gestore delle canzone
+     * Costruttore del gestore delle canzoni
      */
     public SongsManager() {
         mapSongs = new HashMap<>();
