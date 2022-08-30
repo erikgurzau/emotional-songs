@@ -35,7 +35,7 @@ public class PlaylistsManager {
 
 
     /**
-     * Construttore del gestore delle playlist
+     * Costruttore del gestore delle playlist
      */
     public PlaylistsManager() {
         playlistMap = new HashMap<>();
@@ -97,7 +97,7 @@ public class PlaylistsManager {
      * Scrive in coda una playlist nel file.
      * I dati vengono salvati nel seguente formato:
      * nomePlaylist;idUtente;idCanzone;idCanzone; etc.
-     * Aggionrna la mappa delle playlist
+     * Aggiorna la mappa delle playlist
      * @param playlist Oggetto playlist da salvare nel file
      * @return {@code true} Se e solo se, la scrittura nel file è andata a buon fine.
      * Altrimenti {@code false}
@@ -150,7 +150,7 @@ public class PlaylistsManager {
 
     /**
      * Ritorna una playlist, di un determinato utente, che ha il nome esattamente
-     * uguale al nome spcificato nei paramentri
+     * uguale al nome specificato nei parametri
      * @param userId Intero che rappresenta l'ID dell'utente
      * @param namePlaylist Stringa che rappresenta il nome della playlist da cerca
      * @return Una playlist che corrisponde ai parametri di ricerca. Se non esiste nessuna
