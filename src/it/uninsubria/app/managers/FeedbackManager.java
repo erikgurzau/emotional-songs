@@ -59,7 +59,7 @@ public class FeedbackManager {
      * Converte una lista di stringhe, che corrispondono alle righe del file .txt
      * contenenti tutte le recensioni emozionali, in una lista di recensioni.
      * Ogni riga contiene i dati della recensione fatta da un utente X su una canzone Y
-     * appartente ad una playlist Z dell'utente X
+     * appartenente ad una playlist Z dell'utente X
      * @param rowsFile Lista di stringhe con le informazioni delle recensioni
      * @return Una lista di recensioni emozionali
      */
@@ -95,7 +95,7 @@ public class FeedbackManager {
      * @param userId Intero che rappresenta l'ID dell'utente
      * @param songId Intero che rappresenta l'ID della canzone
      * @return {@code true} Se e solo se, l'utente ha recensito almeno una canzone di una sua playlist.
-     *          Altrimeni {@code false}
+     *          Altrimenti {@code false}
      */
     public boolean hasFeedback(String namePlaylist, int userId, int songId) {
         if (!mapFeedback.containsKey(namePlaylist + "-" + userId))
@@ -113,7 +113,7 @@ public class FeedbackManager {
      * Verifica che la canzone con l'ID specificato abbiamo almeno una recensione in tutta l'applicazione
      * @param songId Intero che rappresenta l'ID della canzone
      * @return {@code true} Se e solo se, ha ricevuto almeno una recensione.
-     *         Altrimeni {@code false}
+     *         Altrimenti {@code false}
      */
     public boolean hasFeedback(int songId) {
         for (Map.Entry<String, Vector<Feedback>> entry : mapFeedback.entrySet()) {
@@ -132,7 +132,7 @@ public class FeedbackManager {
      * nomePlaylist; userId; songId, emotionId, score, note (opzionale); songId, emotionId, ... etc.
      * @param listFeedback Lista di feedback dove ogni item rappresenta il dettaglio della recensione suddivisa per emozione
      * @return {@code true} Se e solo se, la scrittura nel file dei dati è andata a buon fine.
-     *       Altrimeni {@code false}
+     *       Altrimenti {@code false}
      */
     public boolean saveFeedback(Vector<Feedback> listFeedback) {
         if (listFeedback.isEmpty()) return false;
@@ -147,7 +147,7 @@ public class FeedbackManager {
      * Conta il numero di recensioni di una canzone all'interno dell'applicazione.
      * Non conta il dettaglio della recensione, ovvero non suddivide le recensioni
      * per emozioni ma le interpreta come gruppo.
-     * Poichè è obbligatorio inserire tutte le N emozioni appartenenti alla lista di emozioni disponibili
+     * Poiché è obbligatorio inserire tutte le N emozioni appartenenti alla lista di emozioni disponibili
      * @param songId Intero che rappresenta l'ID della canzone
      * @return Il numero di recensioni di una canzone
      */
@@ -157,7 +157,7 @@ public class FeedbackManager {
             Vector<Feedback> list = entry.getValue();
             /* prendo il primo item della lista perchè gli elementi della lista di
              feedback fanno riferimento tutti alla stessa recensione,
-             quinid hanno nomePlaylist, userId e songId uguali
+             quindi hanno nomePlaylist, userId e songId uguali
              */
             Feedback f = list.firstElement();
             count = f.getSongId() == songId ? count + 1 : count;
@@ -166,10 +166,10 @@ public class FeedbackManager {
     }
 
     /**
-     * Esegue la somma totale dell'intesità di una emozione X rispetto ad una canzone Y
+     * Esegue la somma totale dell'intensità di una emozione X rispetto ad una canzone Y
      * @param songId Intero che rappresenta l'ID della canzone
      * @param emotionId Intero che rappresenta l'ID dell'emozione
-     * @return La somma totale dell'intesità di una emozione X rispetto ad una canzone Y
+     * @return La somma totale dell'intensità di una emozione X rispetto ad una canzone Y
      */
     public int totScoreFeedback(int songId, int emotionId) {
         int sum = 0;
