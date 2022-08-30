@@ -91,7 +91,7 @@ public class Person {
     /**
      * Verifica se il codice fiscale fornito è valido ad essere considerato tale:
      * Controlla se ci sono 1 caratteri alfanumerici;
-     * Controlla se il codice fiscale corrisponde essattamente al seguente pattern:
+     * Controlla se il codice fiscale corrisponde esattamente al seguente pattern:
      * 3 Lettere + 2 numeri + 1 lettera + 2 numeri + 1 lettera + 3 numeri + 1 lettera
      * @param cf Stringa con il codice fiscale da validare
      * @return {@code = true} Se e solo se, il codice fiscale rispetti tutti i parametri minimi di validità.
