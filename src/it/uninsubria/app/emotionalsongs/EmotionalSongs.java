@@ -221,7 +221,7 @@ public class EmotionalSongs {
 
                         //stampa lista di emozioni
                         Display.printSubtitle("\n\nINSERIMENTO RECENSIONI EMOZIONALI");
-                        Display.printInfo("l'intensità dell'emozione provata deve essere compresa tra 1 (Per niente) e 5 (Molto)\n");
+                        Display.printInfo("L'intensità dell'emozione provata deve essere compresa tra 1 (Per niente) e 5 (Molto)\n");
 
                         Feedback f;
                         int emotionId, score;
