@@ -11,7 +11,7 @@ public class UserException extends Exception {
 
     /**
      * Costruttore di una eccezione utente
-     * @param msg Stringa contenente il messaggio che genera l'eccezzione
+     * @param msg Stringa contenente il messaggio che genera l'eccezione
      */
     public UserException(String msg){
         super(msg);
