@@ -74,8 +74,8 @@ public class EmotionalSongs {
                     }
                     Display.printSystemPause(in);
                     break;
+                    
                 case 2:
-
                     Display.printSubtitle("\nREGISTRAZIONE");
 
                     // Info Generali
@@ -113,6 +113,7 @@ public class EmotionalSongs {
                         Display.printBoxFailed(e.getMessage());
                     }
                     break;
+                    
                 case 3:
                     Display.printSubtitle("\nRICERCA UNA CANZONE");
 
@@ -190,8 +191,23 @@ public class EmotionalSongs {
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
                     }
                     break;
+                    
+                 case 5:
+                    if(app.isLogged()) {
+                        Display.printSubtitle("\nLE TUE PLAYLIST\n");
+                        Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
 
-                case 5:
+                        //stampa delle playlist
+                        Display.printPlaylist(app, userPlaylists);
+                    }
+                    else {
+                        System.out.println();
+                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
+                        Display.printSystemPause(in);
+                    }
+                    break;
+
+                case 6:
                     if(app.isLogged()) {
                         Display.printSubtitle("\nLE TUE PLAYLIST\n");
                         Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
@@ -300,6 +316,7 @@ public class EmotionalSongs {
                     } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
 
                     break;
+                    
                 case 8:
                     if(app.isLogged()) {
                         Display.printSubtitle("\nREPORT EMOZIONALE DI UNA PLAYLIST");
@@ -328,6 +345,7 @@ public class EmotionalSongs {
                     }
                     Display.printSystemPause(in);
                     break;
+                    
                 case 9:
                     Display.printListSongs(app.getListSongs());
                     break;
