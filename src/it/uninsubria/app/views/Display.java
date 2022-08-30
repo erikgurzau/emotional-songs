@@ -268,7 +268,7 @@ public class Display {
     /**
      * Stampa in una tabella un report sui tag emozionali di una canzone
      * @param app Manager per ricavare le informazioni delle emozioni e calcolare i parametri per generare il report
-     * @param songId Intero che rappresenta l'ID della canzone sulla quale bisogna calcolare i paramentri per genereare il report
+     * @param songId Intero che rappresenta l'ID della canzone sulla quale bisogna calcolare i parametri per generare il report
      */
     public static boolean printReportSong(CommandManager app, int songId) {
         String tableFormat = "| %-25s | %-13s | %-8s |%n";
@@ -342,7 +342,12 @@ public class Display {
 
     }
 
-
+    /**
+     * Stampa a video tutti i commenti rilasciati dagli utenti per una determinata canzone.
+     * Ogni commento viene anteceduto dal nome dell'utente che lo ha rilasciato.
+     * @param app Manager per ricavare le informazioni dei commenti di una canzone mediante il suo ID
+     * @param songId Intero che rappresenta l'ID della canzone della quale bisogna ricavare i commenti rilasciati
+     */
     public static void printComments(CommandManager app, int songId) {
 
         for (Emotion e: app.getEmotionList()) {
