@@ -116,7 +116,7 @@ public class UsersManager {
      * Aggiunge nell'indice la chiave (email) con il valore associato (oggetto User);
      * Aggiunge l'utente nella lista;
      * Aggiunge i dati dell'utente nel file divisi dal separatore ';'
-     * @param user Ogetto User da registrare nell'applicazione
+     * @param user Oggetto User da registrare nell'applicazione
      * @return {@code true} Se e solo se, l'utente è stato registrato correttamente.
      * Altrimenti {@code false}.
      */
@@ -162,9 +162,9 @@ public class UsersManager {
 
     /**
      * Restituisce l'utente in base all'email specificata.
-     * @param email Stringa contentente l'email dell'utente
+     * @param email Stringa contenente l'email dell'utente
      * @return Un oggetto User. Se non esiste nessun utente
-     * con l'email specificata restiruisce null.
+     * con l'email specificata restituisce null.
      */
     public User getUserByEmail(String email) {
         return mapUsers.get(email);
