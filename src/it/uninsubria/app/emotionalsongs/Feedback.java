@@ -14,7 +14,7 @@ public class Feedback {
     private String namePlaylist;
 
     /**
-     * Intero che rappresenta l'ID dell'utente che a prodotto la recensione
+     * Intero che rappresenta l'ID dell'utente che ha prodotto la recensione
      */
     private int userId;
 
@@ -44,7 +44,7 @@ public class Feedback {
      * @param userId Intero che rappresenta l'ID dell'utente
      * @param songId Intero che rappresenta l'ID della canzone
      * @param emotionId Intero che rappresenta l'ID dell'emozione
-     * @param score Intero che rappresentà l'intensità dell'emozione
+     * @param score Intero che rappresenta l'intensità dell'emozione
      * @param note Stringa che contiene le note aggiuntive
      */
     public Feedback(String namePlaylist, int userId, int songId, int emotionId, int score, String note) {
@@ -62,7 +62,7 @@ public class Feedback {
      * @param userId Intero che rappresenta l'ID dell'utente
      * @param songId Intero che rappresenta l'ID della canzone
      * @param emotionId Intero che rappresenta l'ID dell'emozione
-     * @param score Intero che rappresentà l'intensità dell'emozione
+     * @param score Intero che rappresenta l'intensità dell'emozione
      */
     public Feedback(String namePlaylist, int userId, int songId, int emotionId, int score) {
         this.namePlaylist = namePlaylist;
@@ -107,7 +107,7 @@ public class Feedback {
 
     /**
      * Getter dell'intensità dell'emozione
-     * @return Intero che rappresentà l'intensità dell'emozione
+     * @return Intero che rappresenta l'intensità dell'emozione
      */
     public int getScore() {
         return score;
