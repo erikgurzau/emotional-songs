@@ -112,6 +112,7 @@ public class EmotionalSongs {
                     } catch (UserException e) {
                         Display.printBoxFailed(e.getMessage());
                     }
+                    Display.printSystemPause(in);
                     break;
                     
                 case 3:
@@ -133,7 +134,7 @@ public class EmotionalSongs {
                                 break;
                         }
                     } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
-
+                    Display.printSystemPause(in);
                     break;
 
                 case 4:
@@ -142,10 +143,10 @@ public class EmotionalSongs {
 
                         Display.printSubtitle("\nCREA UNA PLAYLIST");
 
-                        String nomePlaylist = in.readString("Inserisci il nome della playlst: ");
+                        String nomePlaylist = in.readString("Inserisci il nome della playlist: ");
                         while (!app.isNamePlaylistAvailable(nomePlaylist)) {
                             Display.printError("Errore, il nome della playlist è già presente! Scegli un altro nome...");
-                            nomePlaylist = in.readString("\nInserisci il nome della playlst: ");
+                            nomePlaylist = in.readString("\nInserisci il nome della playlist: ");
                         }
                         Playlist playlist = new Playlist(app.getSessionUser().getUserId(), nomePlaylist);
                         do {
@@ -190,6 +191,7 @@ public class EmotionalSongs {
                         System.out.println();
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
                     }
+                    Display.printSystemPause(in);
                     break;
                     
                  case 5:
@@ -205,6 +207,7 @@ public class EmotionalSongs {
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
                         Display.printSystemPause(in);
                     }
+                    Display.printSystemPause(in);
                     break;
 
                 case 6:
@@ -290,7 +293,7 @@ public class EmotionalSongs {
                                 else {
                                     songId = in.readInteger("\nDigita l'ID della canzone che vuoi selezionare: ");
                                     boolean hasFeedbacks = Display.printReportSong(app, songId);
-                                    if (hasFeedbacks && in.readYesNo("\nVuoi visualizzare i commmenti rilasciati dagli utenti? (y/n) ") == 'y') {
+                                    if (hasFeedbacks && in.readYesNo("\nVuoi visualizzare i commenti rilasciati dagli utenti? (y/n) ") == 'y') {
                                         Display.printSubtitle("\nI COMMENTI DEGLI UTENTI");
                                         Display.printComments(app, songId);
                                     }
@@ -314,7 +317,7 @@ public class EmotionalSongs {
                         }
 
                     } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
-
+                    Display.printSystemPause(in);
                     break;
                     
                 case 8:
@@ -348,6 +351,7 @@ public class EmotionalSongs {
                     
                 case 9:
                     Display.printListSongs(app.getListSongs());
+                    Display.printSystemPause(in);
                     break;
 
 
@@ -358,7 +362,7 @@ public class EmotionalSongs {
     }
 
     /**
-     * Restituisce una stringa con la prima lettera maiscola per ogni parola
+     * Restituisce una stringa con la prima lettera maiuscola per ogni parola
      * @param str Stringa da formattare
      * @return Stringa formattata con la prima lettera maiuscola per ogni parola
      */
