@@ -150,7 +150,7 @@ public class User extends Person {
      * Controlla se contiene il DNS. es .it .com. biz .com etc.;
      * @param email Stringa da validare come email
      * @return {@code = true} Se e solo se, l'email rispetta i requisiti di validità
-     * @throws UserException Se l'email non rispetta i requisiti di vakidità
+     * @throws UserException Se l'email non rispetta i requisiti di validità
      */
     public static boolean isEmailValid(String email) throws UserException {
         String[] array = email.split("@");
