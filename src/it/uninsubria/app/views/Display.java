@@ -296,7 +296,7 @@ public class Display {
     }
 
     /**
-     * tampa in una tabella un report sui tag emozionali delle canzoni di una playlist
+     * Stampa in una tabella un report sui tag emozionali delle canzoni di una playlist
      * @param app Manager per ricavare le informazioni delle emozioni e calcolare i parametri per generare il report
      * @param p Playlist sulla quale calcolare il report dei tag emozionali
      */
