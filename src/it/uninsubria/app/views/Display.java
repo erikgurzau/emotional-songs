@@ -304,18 +304,20 @@ public class Display {
         Vector<Emotion> listEmotion = app.getEmotionList();
 
         // HEADER DELLA TABELLA
-        System.out.println("\n+--------------------------------------------------+" + "----------------------+".repeat(listEmotion.size()));
+        System.out.println("\n+--------------------------------------------------+" + "-------------+".repeat(listEmotion.size() + 1));
         System.out.print("|                                                  |");
         for (int i = 0; i < listEmotion.size(); i++) { // ciclo per le emozioni
-            int spaceAfterName = 17 - listEmotion.get(i).getCategory().length();
-            System.out.print("     " + listEmotion.get(i).getCategory() + " ".repeat(spaceAfterName) + "|");
+            int spaceAfterName = 11 - listEmotion.get(i).getCategory().length();
+            System.out.print("  " + listEmotion.get(i).getCategory() + " ".repeat(spaceAfterName) + "|");
         }
-        System.out.println("\n|                     Brano                        +" + "----------------------+".repeat(listEmotion.size()));
+        System.out.println("             |");
+        System.out.println("|                     Brano                        +" + "-------------+".repeat(listEmotion.size()) + "  Recensioni |");
         System.out.print("|                                                  |");
         for (int i = 0; i < listEmotion.size(); i++) {
-            System.out.print(" M | # |");
+            System.out.print("    Media    |");
         }
-        System.out.println("\n+--------------------------------------------------+" + "----------------------+".repeat(listEmotion.size()));
+        System.out.println("    totali   |");
+        System.out.println("+--------------------------------------------------+" + "-------------+".repeat(listEmotion.size() + 1));
 
 
         // BODY DELLA TABELLA
@@ -330,12 +332,11 @@ public class Display {
                 int totScoreFeedback = app.totScoreFeedback(songId, e.getId());
                 double media = totScoreFeedback > 0 ? totScoreFeedback / (double)totFeedback : 0;
 
-                System.out.print(" " + media + " ".repeat(8 - (media + "").length()) + "|");
-                System.out.print(" " + totFeedback + " ".repeat(11 - (totFeedback + "").length()) + "|");
+                System.out.print("     " + media + " ".repeat(8 - (media + "").length()) + "|");
             }
-            System.out.println();
+            System.out.println("     " + totFeedback + " ".repeat(8 - (totFeedback + "").length()) + "|");
         }
-        System.out.println("+--------------------------------------------------+" + "----------------------+".repeat(listEmotion.size()));
+        System.out.println("+--------------------------------------------------+" + "-------------+".repeat(listEmotion.size() + 1));
 
 
     }
