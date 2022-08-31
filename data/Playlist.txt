@@ -4,6 +4,11 @@ SummerList;2;1070;45
 Spring;2;551
 Winter;2;552;616
 Sad;2;440
-Happyyyy;2;389;550
-Wiiiiiiii;1;316;550
+Happy;2;389;550
+WiiNintendo Songs;1;316;550
 Mix2022;1;253;
+Hot;1;12;
+Vibes2022;1;12;2158;4799;
+Lol2022;1;428;4313;1201;5000;
+Hot Summer Edition;1;4730;4010;4726;
+Power2022;1;1201;
