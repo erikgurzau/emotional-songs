@@ -134,7 +134,6 @@ public class EmotionalSongs {
                                 break;
                         }
                     } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
-                    Display.printSystemPause(in);
                     break;
 
                 case 4:
@@ -157,13 +156,17 @@ public class EmotionalSongs {
                                     research = in.readString("\nInserisci il titolo della canzone: ");
                                     Display.printListSongs(app.findSongsByTitle(research));
                                     if (app.findSongsByTitle(research).isEmpty()) {
-                                        Display.printError("Nessuna canzone trovata!\n\n");
+                                        Display.printError("\nNessuna canzone trovata!\n\n");
                                     }
                                     else {
-                                        int idCanzone = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare: ");
-                                        playlist.addSong(app.getSongById(idCanzone).getId());
+                                        int songId = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare (digita 0 per annullare): ");
+                                        if (songId > 0) {
+                                            if (!playlist.contains(songId))
+                                                playlist.addSong(app.getSongById(songId).getId());
+                                            else
+                                                Display.printError("Questa playlist ha già la canzone che hai selezionato! Prova con un altro brano...\n\n");
+                                        }
                                     }
-
                                     break;
 
                                 case 2: // ricerca per autore e anno
@@ -171,17 +174,22 @@ public class EmotionalSongs {
                                     rscYear = in.readInteger("Inserisci l'anno di pubblicazione: ");
                                     Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
                                     if (app.findSongsByAuthorAndYear(rscAuth, rscYear).isEmpty()) {
-                                        Display.printError("Nessuna canzone trovata!\n\n");
+                                        Display.printError("\nNessuna canzone trovata!");
                                     }
                                     else {
-                                        int idCanzone = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
-                                        playlist.addSong(app.getSongById(idCanzone).getId());
+                                        int songId = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare (digita 0 per annullare): ");
+                                        if (songId > 0) {
+                                            if (!playlist.contains(songId))
+                                                playlist.addSong(app.getSongById(songId).getId());
+                                            else
+                                                Display.printError("Questa playlist ha già la canzone che hai selezionato! Prova con un altro brano...\n\n");
+                                        }
                                     }
                                     break;
                             }
-                        } while(in.readYesNo("Vuoi aggiungere una canzone alla playlist? (yes/no) : ") == 'y');
+                        } while(in.readYesNo("\nVuoi aggiungere un'altra canzone alla playlist? (yes/no) : ") == 'y');
 
-                        // salvo la playlist appena creata nel file
+                        // salvo la playlist appena creata nel file, se contiene almeno 1 canzone
                         if (app.savePlaylist(playlist))
                             Display.printBoxSuccess("Playlist creata con successo!");
                         else
@@ -193,8 +201,8 @@ public class EmotionalSongs {
                     }
                     Display.printSystemPause(in);
                     break;
-                    
-                 case 5:
+
+                case 5:
                     if(app.isLogged()) {
                         Display.printSubtitle("\nLE TUE PLAYLIST\n");
                         Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
@@ -228,45 +236,58 @@ public class EmotionalSongs {
                             }
                         } while (playlist == null);
 
-                        int songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
-                        while (!playlist.contains(songId)) {
-                            Display.printError("Il brano che hai scelto non c'è nella playlist! Riprova...\n");
-                            songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
-                        }
-                        while (app.hasFeedback(namePlaylist, songId)) {
-                            Display.printError("Hai già recensito il brano di questa playlist! Prova a selezionare un altro brano...\n");
-                            songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
-                        }
 
-                        //stampa lista di emozioni
-                        Display.printSubtitle("\n\nINSERIMENTO RECENSIONI EMOZIONALI");
-                        Display.printInfo("L'intensità dell'emozione provata deve essere compresa tra 1 (Per niente) e 5 (Molto)\n");
+                        String message = "Digita l'ID della canzone che vuoi selezionare (digita 0 per annullare): ";
+                        int songId;
+                        boolean containsSongId, hasFeedback, canFeedback = true;
+                        do {
+                            songId = in.readInteger(message);
 
-                        Feedback f;
-                        int emotionId, score;
-                        String note;
-                        Vector<Feedback> listFeedback = new Vector<>();
-                        for (Emotion e: app.getEmotionList()) {
-                            Display.printSectionTitle("\n" + e.getCategory(), false);
-                            System.out.println(" (" + e.getExplanation() + ")");
-                            score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
-                            while (score < 1 || score > 5) {
-                                Display.printError("Errore, l'intensità dell'emozione deve essere compreso tra 1 (Per niente) e 5 (Molto)! Riprova...\n");
+                            if (songId <= 0) {
+                                canFeedback = false;
+                                break;
+                            }
+                            containsSongId = playlist.contains(songId);
+                            hasFeedback = app.hasFeedback(namePlaylist, songId);
+
+                            if (!containsSongId)
+                                Display.printError("Il brano che hai scelto non c'è nella playlist! Riprova...\n");
+                            if (hasFeedback)
+                                Display.printError("Hai già recensito il brano di questa playlist! Prova a selezionare un altro brano...\n");
+
+                        } while (!containsSongId || hasFeedback);
+
+                        if (canFeedback) {
+                            //stampa lista di emozioni
+                            Display.printSubtitle("\n\nINSERIMENTO RECENSIONI EMOZIONALI");
+                            Display.printInfo("L'intensità dell'emozione provata deve essere compresa tra 1 (Per niente) e 5 (Molto)\n");
+
+                            Feedback f;
+                            int emotionId, score;
+                            String note;
+                            Vector<Feedback> listFeedback = new Vector<>();
+                            for (Emotion e : app.getEmotionList()) {
+                                Display.printSectionTitle("\n" + e.getCategory(), false);
+                                System.out.println(" (" + e.getExplanation() + ")");
                                 score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
-                            }
-                            if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
-                                note = in.readString("Inserisci qui una nota per la recensione: ", 1, 256);
-                                f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, e.getId(), score, note);
-                            }
-                            else f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, e.getId(), score);
+                                while (score < 1 || score > 5) {
+                                    Display.printError("Errore, l'intensità dell'emozione deve essere compreso tra 1 (Per niente) e 5 (Molto)! Riprova...\n");
+                                    score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
+                                }
+                                if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
+                                    note = in.readString("Inserisci qui una nota per la recensione: ", 1, 256);
+                                    f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, e.getId(), score, note);
+                                } else
+                                    f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, e.getId(), score);
 
-                            listFeedback.add(f);
+                                listFeedback.add(f);
+                            }
+
+                            if (app.saveFeedback(listFeedback))
+                                Display.printBoxSuccess("Recensioni aggiunte con successo!");
+                            else
+                                Display.printBoxFailed("Errore durante il processo di salvataggio! Riprova...");
                         }
-
-                        if (app.saveFeedback(listFeedback))
-                            Display.printBoxSuccess("Recensioni aggiunte con successo!");
-                        else
-                            Display.printBoxFailed("Errore durante il processo di salvataggio! Riprova...");
                     }
                     else {
                         System.out.println();
@@ -317,7 +338,6 @@ public class EmotionalSongs {
                         }
 
                     } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
-                    Display.printSystemPause(in);
                     break;
                     
                 case 8:
@@ -351,12 +371,11 @@ public class EmotionalSongs {
                     
                 case 9:
                     Display.printListSongs(app.getListSongs());
-                    Display.printSystemPause(in);
                     break;
 
 
             }
-            System.out.println("\n");
+            System.out.println();
         } while (opt != 0);
         Display.printCredits();
     }

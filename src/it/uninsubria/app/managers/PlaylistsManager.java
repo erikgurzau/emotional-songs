@@ -103,12 +103,13 @@ public class PlaylistsManager {
      * Altrimenti {@code false}
      */
     public boolean savePlaylist (Playlist playlist) {
-        Vector<Playlist> currPlaylist = playlistMap.get(playlist.getUserId());
-        if (currPlaylist == null)
-            currPlaylist = new Vector<>();
-        currPlaylist.add(playlist);
-        playlistMap.put(playlist.getUserId(), currPlaylist);
-        return fm.println(playlist.toString(), 'a');
+        if (playlist.size() > 0) {
+            Vector<Playlist> currPlaylist = playlistMap.get(playlist.getUserId());
+            if (currPlaylist == null) currPlaylist = new Vector<>();
+            currPlaylist.add(playlist);
+            playlistMap.put(playlist.getUserId(), currPlaylist);
+            return fm.println(playlist.toString(), 'a');
+        } else return false;
     }
 
     /**

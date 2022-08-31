@@ -9,6 +9,7 @@ import it.uninsubria.app.input.Input;
 import it.uninsubria.app.users.User;
 import it.uninsubria.app.views.utils.DisplayColors;
 
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -38,6 +39,7 @@ public class Display {
      * Stampa a display il titolo dell'applicazione
      */
     public static void printTitle(){
+        System.out.println();
         System.out.println("" +
                 "████████\\ ██\\      ██\\  ██████\\ ████████\\ ██████\\  ██████\\  ██\\   ██\\  ██████\\  ██\\       ██████\\   ██████\\  ██\\   ██\\  ██████\\   ██████\\  \n" +
                 "██  _____|███\\    ███ |██  __██\\\\__██  __|\\_██  _|██  __██\\ ███\\  ██ |██  __██\\ ██ |     ██  __██\\ ██  __██\\ ███\\  ██ |██  __██\\ ██  __██\\ \n" +
@@ -58,7 +60,7 @@ public class Display {
         System.out.println("(2) - Registrazione");
         System.out.println("(3) - Ricerca un brano");
         System.out.println("(4) - Crea una playlist");
-        System.out.println("(5) - Visualizza le tue playlist");
+        System.out.println("(5) - Visualizza le tue playlist;");
         System.out.println("(6) - Recensisci una o più canzoni");
         System.out.println("(7) - Visualizza un report emozionale su una canzone");
         System.out.println("(8) - Visualizza un report emozionale su una tua playlist");
@@ -79,6 +81,7 @@ public class Display {
      * Stampa a display gli autori dell'applicazione
      */
     public static void printCredits(){
+        System.out.println("Grazie per aver utilizzato EmotionalSongs!\n");
         System.out.println(
                 "Realizzato da Erik Gurzau, Alessia Metaj, Sara Biavaschi" +
                 "\n© 2022 Erik Gurzau, Alessia Metaj, Sara Biavaschi. Tutti i diritti riservati."
@@ -188,7 +191,9 @@ public class Display {
      * @param in Input che legge dalla console il tasto 'Invio'
      */
     public static void printSystemPause(Input in) {
-        in.readEnter("\nPremi un 'invio' per continuare...");
+        try {
+            in.readEnter("\nPremi un 'invio' per continuare...");
+        } catch (IOException e) { }
     }
 
 
@@ -201,10 +206,7 @@ public class Display {
      * @param list Lista di canzoni
      */
     public static void printListSongs(Vector<Song> list){
-        if (list.isEmpty()) {
-            System.out.println();
-            Display.printError("Nessuna canzone trovata!\n");
-        } else {
+        if (!list.isEmpty()) {
             Input in = new Input();
             String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
             int page = 1;
@@ -223,10 +225,10 @@ public class Display {
                 if (i == (MAX_SONG_PER_PAGE * page) - 1) {
                     System.out.println("+-------+---------------------------------------------------+------------------------------------------+--------+----------+--------+");
                     char risp = in.readYesNo("Vuoi continuare? (yes/no) : ");
-                    System.out.println();
 
-                    if (risp == 'n' || risp == 'N')
-                        break;
+
+                    if (risp == 'n' || risp == 'N') break;
+                    else System.out.println();
                     page++;
                 }
             }

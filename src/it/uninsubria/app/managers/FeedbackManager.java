@@ -136,7 +136,10 @@ public class FeedbackManager {
      */
     public boolean saveFeedback(Vector<Feedback> listFeedback) {
         if (listFeedback.isEmpty()) return false;
-        String s = listFeedback.get(0).getNamePlaylist() + ";" + listFeedback.get(0).getUserId() + ";";
+        Feedback firstElement = listFeedback.firstElement();
+        String key = firstElement.getNamePlaylist() + "-" + firstElement.getUserId();
+        mapFeedback.put(key, listFeedback);
+        String s = firstElement.getNamePlaylist() + ";" + listFeedback.get(0).getUserId() + ";";
         for (Feedback f : listFeedback) {
             s += f.toString();
         }
