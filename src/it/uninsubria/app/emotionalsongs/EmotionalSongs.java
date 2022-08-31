@@ -380,3 +380,4 @@ public class EmotionalSongs {
         }
         return capitalized;
     }
+}
