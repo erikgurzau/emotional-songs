@@ -6,6 +6,9 @@ import it.uninsubria.app.users.exceptions.UserException;
 import it.uninsubria.app.users.utils.TypeStreet;
 import it.uninsubria.app.views.Display;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -24,13 +27,14 @@ public class Input {
     /**
      * Scanner per gli input sulla console
      */
-    Scanner sc;
+    BufferedReader sc;
 
     /**
      * Costruttore di un Input
      */
     public Input() {
-        sc = new Scanner(System.in);
+        InputStreamReader r = new InputStreamReader(System.in);
+        sc = new BufferedReader(r);
     }
 
     /**
@@ -41,10 +45,10 @@ public class Input {
     public String readEmail(String message) {
         try {
             System.out.print(message);
-            String email = sc.next();
+            String email = sc.readLine();
             User.isEmailValid(email);
             return email;
-        } catch (UserException e) {
+        } catch (UserException | IOException e) {
             Display.printError(e.getMessage() + "\n");
             return readEmail(message);
         }
@@ -58,11 +62,14 @@ public class Input {
     public String readPassword(String message) {
         try {
             System.out.print(message);
-            String psw = sc.next();
+            String psw = sc.readLine();
             User.isPswValid(psw);
             return psw;
         } catch (UserException e) {
             Display.printError(e.getMessage() + "\n");
+            return readPassword(message);
+        } catch (IOException e) {
+            e.printStackTrace();
             return readPassword(message);
         }
     }
@@ -77,7 +84,7 @@ public class Input {
     public char readYesNo(String message) {
         try {
             Display.printInfo(message);
-            String risp = sc.next();
+            String risp = sc.readLine();
             char c = risp.charAt(0);
 
             if (risp.length() > 1 && !risp.equalsIgnoreCase("yes") & !risp.equalsIgnoreCase("no"))
@@ -91,6 +98,9 @@ public class Input {
         } catch (StringIndexOutOfBoundsException | InputException e) {
             Display.printError(e.getMessage());
             return readYesNo(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return readYesNo(message);
         }
     }
 
@@ -103,11 +113,14 @@ public class Input {
     public String readCF( String message) {
         try {
             System.out.print(message);
-            String cf = sc.next();
+            String cf = sc.readLine();
             User.isCFValid(cf);
             return cf;
         } catch (UserException e) {
             Display.printError(e.getMessage());
+            return readCF(message);
+        } catch (IOException e) {
+            e.printStackTrace();
             return readCF(message);
         }
     }
@@ -120,9 +133,12 @@ public class Input {
     public TypeStreet readTypeStreet( String message) {
         try {
             System.out.print(message);
-            return TypeStreet.decode(sc.next());
+            return TypeStreet.decode(sc.readLine());
         } catch (InputException e){
             Display.printError(e.getMessage());
+            return readTypeStreet(message);
+        } catch (IOException e) {
+            e.printStackTrace();
             return readTypeStreet(message);
         }
     }
@@ -135,7 +151,7 @@ public class Input {
     public String readString(String message) {
         try {
             System.out.print(message);
-            String str = sc.next();
+            String str = sc.readLine();
 
             if (str.length() == 0)
                 throw new InputException("Errore, non è possibile inserire una stringa vuota");
@@ -143,6 +159,9 @@ public class Input {
             return str;
         } catch (InputException e) {
             Display.printError(e.getMessage());
+            return readString(message);
+        } catch (IOException e) {
+            e.printStackTrace();
             return readString(message);
         }
     }
@@ -155,10 +174,10 @@ public class Input {
      * @param canBeEmpty Booleano per abilitare il controllo sulla lunghezza della stringa di input
      * @return Stringa inserita dall'utente
      */
-    public String readString(String message, boolean canBeEmpty) {
+    public String readString(String message, boolean canBeEmpty) throws IOException {
         if (canBeEmpty) {
             System.out.print(message);
-            String str = sc.next();
+            String str = sc.readLine();
             return str;
         }
         else return readString(message);
@@ -180,7 +199,7 @@ public class Input {
             maxLength = Math.max(minLength, maxLength);
 
             System.out.print(message);
-            String str = sc.next();
+            String str = sc.readLine();
 
             if (str.length() == 0)
                 throw new InputException("Errore, non è possibile inserire una stringa vuota" + "\n");
@@ -190,6 +209,9 @@ public class Input {
             return str;
         } catch (InputException e) {
             Display.printError(e.getMessage());
+            return readString(message, minLength, maxLength);
+        } catch (IOException e) {
+            e.printStackTrace();
             return readString(message, minLength, maxLength);
         }
     }
@@ -212,9 +234,12 @@ public class Input {
     public int readInteger(String message) {
         try {
             System.out.print(message);
-            return Integer.parseInt(sc.next());
+            return Integer.parseInt(sc.readLine());
         } catch (NumberFormatException | InputMismatchException e) {
             Display.printError("Errore, inserisci un numero per continuare\n");
+            return readInteger(message);
+        } catch (IOException e) {
+            e.printStackTrace();
             return readInteger(message);
         }
     }
@@ -223,12 +248,9 @@ public class Input {
      * Legge dalla console il tasto 'Invio'
      * @param message Stringa che contiene il messaggio per l'input dell'utente
      */
-    public void readEnter(String message) {
-        sc.useDelimiter("\n");
-        readString(message, true);
-        sc = sc.reset();
+    public void readEnter(String message) throws IOException {
+        System.out.println(message);
+        sc.readLine();
     }
-
-
 
 }
