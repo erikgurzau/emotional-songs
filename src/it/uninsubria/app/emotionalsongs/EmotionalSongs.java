@@ -1,4 +1,4 @@
-it.uninsubria.app.emotionalsongs;
+package it.uninsubria.app.emotionalsongs;
 
 import it.uninsubria.app.input.Input;
 import it.uninsubria.app.managers.*;
