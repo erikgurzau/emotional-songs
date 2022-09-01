@@ -9,9 +9,9 @@ import java.util.Vector;
 
 /**
  * Classe che rappresenta il sistema di gestione della lista delle emozioni disponibili per le recensioni
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see     it.uninsubria.app.emotionalsongs.Emotion
  * @see     it.uninsubria.app.managers.utils.FileManager

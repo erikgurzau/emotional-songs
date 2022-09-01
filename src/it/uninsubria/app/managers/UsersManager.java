@@ -14,9 +14,9 @@ import java.util.Vector;
 
 /**
  * Classe che rappresenta il sistema di gestione degli utenti all'interno dell'applicazione
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see     it.uninsubria.app.users.User
  * @see     it.uninsubria.app.managers.utils.FileManager
@@ -97,7 +97,7 @@ public class UsersManager {
     }
 
     /**
-     * Ricerca una un utente per un ID specificato
+     * Ricerca un utente per un ID specificato
      * @param userId Intero che rappresenta l'ID dell'utente
      * @return L'utente con l'ID specificato
      */

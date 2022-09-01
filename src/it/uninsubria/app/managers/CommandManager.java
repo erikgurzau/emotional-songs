@@ -11,9 +11,9 @@ import java.util.Vector;
 
 /**
  * Classe che definisce l'hub di controllo della gestione di tutti i manager dell'applicazione
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see it.uninsubria.app.managers.CommandManager
  * @see it.uninsubria.app.input.Input
@@ -167,7 +167,7 @@ public class CommandManager {
     public int nextUserId(){
         return usersManager.nextUserId();
     }
-    
+
     /**
      * Ricerca un utente per un ID specificato
      * @param userId Intero che rappresenta l'ID dell'utente

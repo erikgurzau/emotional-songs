@@ -9,9 +9,9 @@ import java.util.Vector;
 
 /**
  * Classe che rappresenta il sistema di gestione delle playlist all'interno dell'applicazione
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see     it.uninsubria.app.songs.Playlist
  * @see     it.uninsubria.app.managers.utils.FileManager
