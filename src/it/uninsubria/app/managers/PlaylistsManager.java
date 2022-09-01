@@ -146,7 +146,10 @@ public class PlaylistsManager {
      * @return Una lista di playlist. Se l'utente non ha ancora creato una playlist, ritorna null
      */
     public Vector<Playlist> getPlaylistByUserId(int userId) {
-        return playlistMap.get(userId);
+        if(playlistMap.containsKey(userId)){
+            return playlistMap.get(userId);
+        }
+        return null;
     }
 
     /**
@@ -158,10 +161,12 @@ public class PlaylistsManager {
      * playlist con quel nome, ritorna null
      */
     public Playlist getPlaylistByName(int userId, String namePlaylist) {
-        Vector<Playlist> listPlaylist = playlistMap.get(userId);
-        for(Playlist p: listPlaylist)
-            if(p.getName().equals(namePlaylist))
-                return p;
+        if (playlistMap.containsKey(userId)) {
+            Vector<Playlist> listPlaylist = playlistMap.get(userId);
+            for(Playlist p: listPlaylist)
+                if(p.getName().equals(namePlaylist))
+                    return p;
+        }
         return null;
     }
 
