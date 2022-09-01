@@ -1,2 +1,2 @@
-1;gurzau10@gmail.com;1f7f150f518d93cc92812dee89dd94465373672b;Erik;Gurzau;GRZRKE01A31F205D;Via;Maria Locati;9;20028;San Vittore Olona;Milanos
-2;lucasamo@outlook.com;bfc99eee326d1e8712e311cf6a8729808462a016;Luca;Salmoiraghi;LGFRKE01A31F205D;Corso;Marco Polo;45;20028;San Vittore Olona;Milano
+1;gurzau10@gmail.com;1f7f150f518d93cc92812dee89dd94465373672b;Erik;Gurzau;GRZRKE01A31F205D;Via;Maria Locati;9;20028;San Vittore Olona;Milano
+2;test@test.com;0c6ba03885f3aae765fbf20f07f514a44dbda30a;TestX;TestY;TSTTST01T01T010T;Via;Java Test;1;20001;Test;Test
