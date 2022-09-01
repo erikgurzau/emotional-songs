@@ -148,6 +148,8 @@ public class FeedbacksManager {
      * @return Il numero di recensioni di una canzone
      */
     public int countFeedback(int songId) {
+        if (!mapFeedback.contains(songId))
+           return 0;
         return mapFeedback.get(songId).size();
     }
 
