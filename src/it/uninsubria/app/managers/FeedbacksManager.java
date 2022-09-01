@@ -5,7 +5,6 @@ import it.uninsubria.app.feedbacks.FeedbackItem;
 import it.uninsubria.app.managers.utils.FileManager;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -15,7 +14,7 @@ import java.util.Vector;
  * @author  Alessia Metaj (738945, VA)
  * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
- * @see     it.uninsubria.app.emotionalsongs.Feedback
+ * @see     it.uninsubria.app.feedbacks.Feedback
  * @see     it.uninsubria.app.managers.utils.FileManager
  */
 public class FeedbacksManager {
@@ -188,6 +187,11 @@ public class FeedbacksManager {
         return notesList;
     }
 
+    /**
+     * Aggiorna la mappa aggiungendo la nuova recensione alla lista di recensioni di una canzone
+     * @param songId Intero che rappresenta l'ID della canzone alla quale aggiungere la recensione
+     * @param f La recensione da aggiungere
+     */
     private void addFeedback(int songId, Feedback f) {
         if (mapFeedback.containsKey(songId)) {
             Vector<Feedback> currFeedbackList = mapFeedback.get(songId);

@@ -70,14 +70,29 @@ public class Feedback {
     }
 
 
+    /**
+     * Getter della lista delle singole recensioni (dettaglio della recensione)
+     * @return
+     */
     public Vector<FeedbackItem> getListFeedbackItem() {
         return listFeedbackItem;
     }
 
+    /**
+     * Aggiunge un dettaglio recensione nella lista
+     * @param feedbackItem Dettaglio della recensione di una canzone rispetto ad una emozione
+     * @return {@code true} Se e solo se, l'operazione di aggiunta nella lista è a avvenuta con successo.
+     *        Altrimenti {@code false}
+     */
     public boolean addItem(FeedbackItem feedbackItem) {
         return listFeedbackItem.add(feedbackItem);
     }
 
+    /**
+     * Ritona un dettaglio della recensione in base al ad un parametro di ricerca: l'ID dell'emozione
+     * @param emotionId Intero che rappresenta l'ID dell'emozione da cercare nella lista
+     * @return Il dettaglio della recensione che ha l'ID emozione uguale all'ID dell'emozione da cercare
+     */
     public FeedbackItem getFeedbackItemByEmotionId(int emotionId) {
         for (FeedbackItem item: listFeedbackItem)
             if (item.getEmotionId() == emotionId)

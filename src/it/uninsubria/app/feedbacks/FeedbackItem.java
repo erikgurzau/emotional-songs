@@ -1,7 +1,7 @@
 package it.uninsubria.app.feedbacks;
 
 /**
- * Classe che definisce una recensione emozionale
+ * Classe che definisce il dettaglio di una emozione per una recensione di una canzone
  * @author  Erik Gurzau (749400, VA)
  * @author  Alessia Metaj (738945, VA)
  * @author  Sara Biavaschi (748698, VA)
