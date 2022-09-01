@@ -25,10 +25,8 @@ public class FeedbacksManager {
     private String pathFileEmotions = "data/Emozioni.txt";
 
     /**
-     * Mappa con chiave un codice, composto dal nome della playlist e da l'ID utente (es. "Playlist-1")
-     * e come valore una lista di recensioni dell'utente
+     * Mappa con chiave l'ID della canzone e come valore una lista di recensioni di quella canzone
      */
-    //private HashMap<String, Vector<Feedback>> mapFeedback;
     private HashMap<Integer, Vector<Feedback>> mapFeedback;
 
     /**
