@@ -15,9 +15,9 @@ import java.util.Vector;
 /**
  * Classe che definisce il display dell'applicazione, si occupa di gestire
  * tutti gli elementi basilari dell'interfaccia utente
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see     it.uninsubria.app.views.utils.DisplayColors
  * @see     it.uninsubria.app.users.User

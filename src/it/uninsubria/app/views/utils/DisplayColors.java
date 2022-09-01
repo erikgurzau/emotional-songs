@@ -1,9 +1,9 @@
 package it.uninsubria.app.views.utils;
 /**
  * Classe che definisce i colori dei testi dell'interfaccia utente
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  */
 public final class DisplayColors {
