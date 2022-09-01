@@ -243,7 +243,7 @@ public class Display {
      * @param list Lista di playlist create da un utente X
      */
     public static void printPlaylist(CommandManager app, Vector<Playlist> list) {
-        if (list.isEmpty()) {
+        if (list == null) {
             Display.printError("Nessuna playlist creata da te! ");
         } else {
             String tableFormat = "| %-5s | %-49s | %-40s | %-6s | %-8s | %-6s |%n";
