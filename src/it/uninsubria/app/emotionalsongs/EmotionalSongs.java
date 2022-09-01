@@ -10,16 +10,14 @@ import it.uninsubria.app.users.exceptions.UserException;
 import it.uninsubria.app.users.utils.Address;
 import it.uninsubria.app.users.utils.TypeStreet;
 import it.uninsubria.app.views.Display;
-
 import java.util.*;
-
 import static it.uninsubria.app.users.User.isPswValid;
 
 /**
  * Classe che definisce il main dell'applicazione
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see it.uninsubria.app.managers.CommandManager
  * @see it.uninsubria.app.input.Input
@@ -64,8 +62,7 @@ public class EmotionalSongs {
                         } catch (UserException e) {
                             Display.printBoxFailed(e.getMessage());
                         }
-                    }
-                    else {
+                    } else {
                         System.out.println();
                         Display.printError("Hai già effettuato l'accesso\n");
                         char rispLogout = in.readYesNo("Vuoi uscire dal tuo account? (yes/no) : ");
@@ -76,7 +73,7 @@ public class EmotionalSongs {
                     }
                     Display.printSystemPause(in);
                     break;
-                    
+
                 case 2:
                     Display.printSubtitle("\nREGISTRAZIONE");
 
@@ -89,37 +86,37 @@ public class EmotionalSongs {
                     // Indirizzo
                     Display.printSectionTitle("\nIndirizzo");
                     typeStreet = in.readTypeStreet("Inserisci il tipo di strada (Via, Piazza, etc.): ");
-                    streetName = EmotionalSongs.capitalize(in.readString( "Inserisci il nome della strada: ", 3, 50));
+                    streetName = EmotionalSongs.capitalize(in.readString("Inserisci il nome della strada: ", 3, 50));
                     houseNumber = in.readInteger("Inserisci il numero civico: ");
-                    postalCode = in.readString( "Inserisci il codice postale: ", 5);
-                    city = EmotionalSongs.capitalize(in.readString( "Inserisci il nome della città: ", 3 ,50));
-                    province = EmotionalSongs.capitalize(in.readString( "Inserisci il nome della provincia: ", 3, 50));
+                    postalCode = in.readString("Inserisci il codice postale: ", 5);
+                    city = EmotionalSongs.capitalize(in.readString("Inserisci il nome della città: ", 3, 50));
+                    province = EmotionalSongs.capitalize(in.readString("Inserisci il nome della provincia: ", 3, 50));
                     Address address = new Address(typeStreet, streetName, houseNumber, postalCode, city, province);
 
                     // Account
                     Display.printSectionTitle("\nAccount");
                     email = in.readEmail("Inserisci la tua email: ").toLowerCase();
-                    try{
-                            if (in.readYesNo("Vuoi generare una password? (yes/no) : ") == 'y') {
-                                do{
-                                    psw = SecurePassword.genPsw();
-                                    } while(!isPswValid(psw));
+                    try {
+                        if (in.readYesNo("Vuoi generare una password? (yes/no) : ") == 'y') {
+                            do {
+                                psw = SecurePassword.genPsw();
+                            } while (!isPswValid(psw));
 
-                                System.out.println("La tua password è: " + psw);
+                            System.out.println("La tua password è: " + psw);
 
-                            } else psw = in.readPassword("Inserisci la tua password: ");
+                        } else psw = in.readPassword("Inserisci la tua password: ");
 
 
-                            User u = new User(name, surname, cf, address, app.nextUserId(), email, SecurePassword.encrypt(psw));
-                            app.register(u);
-                            app.login(email, u.getPsw());
-                            Display.printBoxSuccess("Registrazione effettuata con successo!");
+                        User u = new User(name, surname, cf, address, app.nextUserId(), email, SecurePassword.encrypt(psw));
+                        app.register(u);
+                        app.login(email, u.getPsw());
+                        Display.printBoxSuccess("Registrazione effettuata con successo!");
                     } catch (UserException e) {
                         Display.printBoxFailed(e.getMessage());
                     }
                     Display.printSystemPause(in);
                     break;
-                    
+
                 case 3:
                     Display.printSubtitle("\nRICERCA UNA CANZONE");
 
@@ -138,7 +135,7 @@ public class EmotionalSongs {
                                 Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
                                 break;
                         }
-                    } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
+                    } while (in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
                     Display.printSystemPause(in);
                     break;
 
@@ -163,8 +160,7 @@ public class EmotionalSongs {
                                     Display.printListSongs(app.findSongsByTitle(research));
                                     if (app.findSongsByTitle(research).isEmpty()) {
                                         Display.printError("Nessuna canzone trovata!\n\n");
-                                    }
-                                    else {
+                                    } else {
                                         int idCanzone = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare: ");
                                         playlist.addSong(app.getSongById(idCanzone).getId());
                                     }
@@ -177,14 +173,13 @@ public class EmotionalSongs {
                                     Display.printListSongs(app.findSongsByAuthorAndYear(rscAuth, rscYear));
                                     if (app.findSongsByAuthorAndYear(rscAuth, rscYear).isEmpty()) {
                                         Display.printError("Nessuna canzone trovata!\n\n");
-                                    }
-                                    else {
+                                    } else {
                                         int idCanzone = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
                                         playlist.addSong(app.getSongById(idCanzone).getId());
                                     }
                                     break;
                             }
-                        } while(in.readYesNo("Vuoi aggiungere una canzone alla playlist? (yes/no) : ") == 'y');
+                        } while (in.readYesNo("Vuoi aggiungere una canzone alla playlist? (yes/no) : ") == 'y');
 
                         // salvo la playlist appena creata nel file
                         if (app.savePlaylist(playlist))
@@ -198,16 +193,15 @@ public class EmotionalSongs {
                     }
                     Display.printSystemPause(in);
                     break;
-                    
-                 case 5:
-                    if(app.isLogged()) {
+
+                case 5:
+                    if (app.isLogged()) {
                         Display.printSubtitle("\nLE TUE PLAYLIST\n");
                         Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
 
                         //stampa delle playlist
                         Display.printPlaylist(app, userPlaylists);
-                    }
-                    else {
+                    } else {
                         System.out.println();
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
                         Display.printSystemPause(in);
@@ -216,7 +210,7 @@ public class EmotionalSongs {
                     break;
 
                 case 6:
-                    if(app.isLogged()) {
+                    if (app.isLogged()) {
                         Display.printSubtitle("\nLE TUE PLAYLIST\n");
                         Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
 
@@ -251,7 +245,7 @@ public class EmotionalSongs {
                         int emotionId, score;
                         String note;
                         Vector<Feedback> listFeedback = new Vector<>();
-                        for (Emotion e: app.getEmotionList()) {
+                        for (Emotion e : app.getEmotionList()) {
                             Display.printSectionTitle("\n" + e.getCategory(), false);
                             System.out.println(" (" + e.getExplanation() + ")");
                             score = in.readInteger("Inserisci il tuo punteggio per il brano: ");
@@ -262,8 +256,8 @@ public class EmotionalSongs {
                             if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
                                 note = in.readString("Inserisci qui una nota per la recensione: ", 1, 256);
                                 f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, e.getId(), score, note);
-                            }
-                            else f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, e.getId(), score);
+                            } else
+                                f = new Feedback(namePlaylist, app.getSessionUser().getUserId(), songId, e.getId(), score);
 
                             listFeedback.add(f);
                         }
@@ -272,8 +266,7 @@ public class EmotionalSongs {
                             Display.printBoxSuccess("Recensioni aggiunte con successo!");
                         else
                             Display.printBoxFailed("Errore durante il processo di salvataggio! Riprova...");
-                    }
-                    else {
+                    } else {
                         System.out.println();
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
                         Display.printSystemPause(in);
@@ -321,12 +314,12 @@ public class EmotionalSongs {
                                 break;
                         }
 
-                    } while(in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
+                    } while (in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
                     Display.printSystemPause(in);
                     break;
-                    
+
                 case 8:
-                    if(app.isLogged()) {
+                    if (app.isLogged()) {
                         Display.printSubtitle("\nREPORT EMOZIONALE DI UNA PLAYLIST");
 
                         Display.printSubtitle("\nLE TUE PLAYLIST\n");
@@ -347,13 +340,13 @@ public class EmotionalSongs {
                         } while (playlist == null);
 
                         Display.printReportPlaylist(app, playlist);
-                    } else{
+                    } else {
                         System.out.println();
                         Display.printError("Per visionare le playlist è necessario accedere con le proprie credenziali\n ");
                     }
                     Display.printSystemPause(in);
                     break;
-                    
+
                 case 9:
                     Display.printListSongs(app.getListSongs());
                     Display.printSystemPause(in);
@@ -368,6 +361,7 @@ public class EmotionalSongs {
 
     /**
      * Restituisce una stringa con la prima lettera maiuscola per ogni parola
+     *
      * @param str Stringa da formattare
      * @return Stringa formattata con la prima lettera maiuscola per ogni parola
      */
@@ -375,7 +369,7 @@ public class EmotionalSongs {
         String[] vet = str.split(" ");
         String capitalized = "";
         for (int i = 0; i < vet.length; i++) {
-            capitalized += vet[i].substring(0,1).toUpperCase() + vet[i].substring(1).toLowerCase();
+            capitalized += vet[i].substring(0, 1).toUpperCase() + vet[i].substring(1).toLowerCase();
             capitalized += i < vet.length - 1 ? " " : "";
         }
         return capitalized;

@@ -3,9 +3,9 @@ package it.uninsubria.app.emotionalsongs;
 /**
  * Classe che definisce un'emozione che è possibile provare quando si ascolta
  * una determinata canzone
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  */
 public class Emotion {
