@@ -402,21 +402,23 @@ public class EmotionalSongs {
             Display.printSubtitle("\nLE TUE PLAYLIST\n");
             Vector<Playlist> userPlaylists = app.getPlaylistByUserId(app.getSessionUser().getUserId());
 
-
             Display.printPlaylist(app, userPlaylists);
 
             Playlist playlist;
             String namePlaylist;
-            do {
-                namePlaylist = in.readString("Digita il nome della playlist che vuoi selezionare: ");
-                playlist = app.getPlaylistByName(namePlaylist);
+            if (userPlaylists != null) {
+                do {
+                    namePlaylist = in.readString("Digita il nome della playlist che vuoi selezionare: ");
+                    playlist = app.getPlaylistByName(namePlaylist);
 
-                if (playlist == null)
-                    Display.printError("Nessuna delle tue playlist ha questo nome! Controlla bene e riprova...\n");
+                    if (playlist == null)
+                        Display.printError("Nessuna delle tue playlist ha questo nome! Controlla bene e riprova...\n");
 
-            } while (playlist == null);
+                } while (playlist == null);
 
-            Display.printReportPlaylist(app, playlist);
+                Display.printReportPlaylist(app, playlist);
+            }
+
         } else {
             System.out.println();
             Display.printError("Per visionare le playlist è necessario accedere con le proprie credenziali\n ");
