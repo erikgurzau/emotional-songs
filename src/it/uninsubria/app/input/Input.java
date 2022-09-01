@@ -153,7 +153,7 @@ public class Input {
             String str = in.readLine();
 
             if (str.length() == 0)
-                throw new InputException("Errore, non è possibile inserire una stringa vuota");
+                throw new InputException("Errore, non è possibile inserire una stringa vuota\n");
 
             return str;
         } catch (InputException e) {
