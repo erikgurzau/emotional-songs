@@ -254,7 +254,7 @@ public class EmotionalSongs {
     }
 
     /**
-     * Visualizza le playlist create dall'utente autenicato
+     * Visualizza le playlist create dall'utente autenticato
      * @param app Manager di controllo dei gestori per scambiare dati
      * @param in Gestore dell'input dell'utente sulla console
      */
