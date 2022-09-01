@@ -167,7 +167,12 @@ public class CommandManager {
     public int nextUserId(){
         return usersManager.nextUserId();
     }
-
+    
+    /**
+     * Ricerca un utente per un ID specificato
+     * @param userId Intero che rappresenta l'ID dell'utente
+     * @return L'utente con l'ID specificato
+     */
     public User getUserById(int userId) {
         return usersManager.getUserById(userId);
     }
