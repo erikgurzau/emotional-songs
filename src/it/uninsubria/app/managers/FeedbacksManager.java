@@ -148,7 +148,7 @@ public class FeedbacksManager {
      * @return Il numero di recensioni di una canzone
      */
     public int countFeedback(int songId) {
-        if (!mapFeedback.contains(songId))
+        if (!mapFeedback.containsKey(songId))
            return 0;
         return mapFeedback.get(songId).size();
     }
@@ -161,10 +161,14 @@ public class FeedbacksManager {
      */
     public int totScoreFeedback(int songId, int emotionId) {
         int sum = 0;
-        for (Feedback f: mapFeedback.get(songId)) {
-            for (FeedbackItem item: f.getListFeedbackItem())
-            if (item.getEmotionId() == emotionId)
-                sum += item.getScore();
+        if(mapFeedback.containsKey(songId)) {
+            for (Feedback f: mapFeedback.get(songId)) {
+                if(!f.getListFeedbackItem().isEmpty()) {
+                    for (FeedbackItem item: f.getListFeedbackItem())
+                        if (item.getEmotionId() == emotionId)
+                            sum += item.getScore();
+                }
+            }
         }
         return sum;
     }
