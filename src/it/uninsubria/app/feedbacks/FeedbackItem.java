@@ -15,7 +15,7 @@ public class FeedbackItem {
     private int emotionId;
 
     /**
-     * Intero che rappresenta l'intensità dell'emozione
+     * Intero che rappresenta l'intensità dell'emozione ed ha valori compresi tra 1 (Per niente) e 5 (Molto)
      */
     private int score; // da 1 a 5
 
