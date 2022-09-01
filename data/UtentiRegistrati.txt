@@ -1,2 +1,3 @@
 1;gurzau10@gmail.com;1f7f150f518d93cc92812dee89dd94465373672b;Erik;Gurzau;GRZRKE01A31F205D;Via;Maria Locati;9;20028;San Vittore Olona;Milano
 2;test@test.com;0c6ba03885f3aae765fbf20f07f514a44dbda30a;TestX;TestY;TSTTST01T01T010T;Via;Java Test;1;20001;Test;Test
+3;sara@libero.it;41d0c0e3902c9cc7402743b29094a5c677a605a4;Sara;Biavaschi;BVSSRA02G76T534C;Via;Repubblica;45;21100;Varese;Varese
