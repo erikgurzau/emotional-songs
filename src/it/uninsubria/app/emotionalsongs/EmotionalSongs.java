@@ -203,7 +203,7 @@ public class EmotionalSongs {
                         Display.printPlaylist(app, userPlaylists);
                     } else {
                         System.out.println();
-                        Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
+                        Display.printError("Per visualizzare le playlist create è necessario accedere con le proprie credenziali\n ");
                         Display.printSystemPause(in);
                     }
                     Display.printSystemPause(in);
