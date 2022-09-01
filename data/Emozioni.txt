@@ -1,8 +1,9 @@
-Playlist;1;45,1,5,Molto bella;67,1,2;
-Playlist;1;122,5,3;
-Mix;2;12,3,3,"Gustosa";
-Mix2022;1;253,6,4;
-Playlist;1;67,5,4,Molto particolare;
-Playlist;1;122,3,5;122,6,2,Divertente;
-Mix2022;1;253,1,5;
-Power2022;1;1201,1,5;1201,2,5;1201,3,1;1201,4,3;1201,5,2;1201,6,4;1201,7,4;1201,8,2;1201,9,3;
+Playlist;1;45;1,5,Molto bella;67,1,2;
+Playlist;1;122;5,3;
+Mix;2;12;3,3,Gustosa;
+Mix2022;1;253;6,4;
+Playlist;1;67;5,4,Molto particolare;
+Playlist;1;122;3,5;122,6,2,Divertente;
+Mix2022;1;253;1,5;
+Power2022;1;1201;1,5;2,5;3,1;4,3;5,2;6,4;7,4;8,2;9,3;
+Hot Summer Edition;1;4730;1,5;2,3;3,3;4,1;5,2,Deludente;6,5,La migliore del mondo;7,4;8,3,Magari l'avessi fatta io;9,1;
