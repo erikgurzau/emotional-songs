@@ -354,7 +354,7 @@ public class EmotionalSongs {
 
 
             }
-            System.out.println("\n");
+            System.out.println("");
         } while (opt != 0);
         Display.printCredits();
     }

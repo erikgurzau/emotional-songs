@@ -10,16 +10,23 @@ import it.uninsubria.app.users.exceptions.UserException;
 import java.util.Vector;
 
 /**
- * Classe che definisce l'hub di controllo della gestione di tutti i manager dell'applicazione
+ * Classe che definisce il centro di gestione di tutti i manager dell'applicazione
  * @author  Erik Gurzau (749400, VA)
  * @author  Alessia Metaj (738945, VA)
  * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
- * @see it.uninsubria.app.managers.CommandManager
- * @see it.uninsubria.app.input.Input
- * @see it.uninsubria.app.users.utils.TypeStreet
- * @see it.uninsubria.app.views.Display
- * @see it.uninsubria.app.managers.utils.SecurePassword
+ * @see     it.uninsubria.app.managers.CommandManager
+ * @see     it.uninsubria.app.managers.SongsManager
+ * @see     it.uninsubria.app.managers.UsersManager
+ * @see     it.uninsubria.app.managers.EmotionsManager
+ * @see     it.uninsubria.app.managers.PlaylistsManager
+ * @see     it.uninsubria.app.managers.FeedbackManager
+ * @see     it.uninsubria.app.songs.Song
+ * @see     it.uninsubria.app.songs.Playlist
+ * @see     it.uninsubria.app.users.User
+ * @see     it.uninsubria.app.emotionalsongs.Emotion
+ * @see     it.uninsubria.app.emotionalsongs.Feedback
+ * @see     it.uninsubria.app.input.Input
  */
 public class CommandManager {
 
