@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 
 /**
  * Classe che definisce una persona, prima che diventi un utente dell'applicazione
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see     it.uninsubria.app.users.utils.Address
  */
