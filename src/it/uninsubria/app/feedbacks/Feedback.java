@@ -89,7 +89,7 @@ public class Feedback {
     }
 
     /**
-     * Ritonra un dettaglio della recensione in base ad un parametro di ricerca: l'ID dell'emozione
+     * Ritorna un dettaglio della recensione in base ad un parametro di ricerca: l'ID dell'emozione
      * @param emotionId Intero che rappresenta l'ID dell'emozione da cercare nella lista
      * @return Il dettaglio della recensione che ha l'ID emozione uguale all'ID dell'emozione da cercare
      */
