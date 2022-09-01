@@ -20,7 +20,7 @@ import java.util.Vector;
  * @see     it.uninsubria.app.managers.UsersManager
  * @see     it.uninsubria.app.managers.EmotionsManager
  * @see     it.uninsubria.app.managers.PlaylistsManager
- * @see     it.uninsubria.app.managers.FeedbackManager
+ * @see     it.uninsubria.app.managers.FeedbacksManager
  * @see     it.uninsubria.app.songs.Song
  * @see     it.uninsubria.app.songs.Playlist
  * @see     it.uninsubria.app.users.User
@@ -53,7 +53,7 @@ public class CommandManager {
     /**
      * Gestore delle recensioni degli utenti
      */
-    private FeedbackManager feedbackManager;
+    private FeedbacksManager feedbackManager;
 
     /**
      * Utente che ha effettuato l'accesso
@@ -74,7 +74,7 @@ public class CommandManager {
         songsManager = new SongsManager();
         emotionsManager = new EmotionsManager();
         playlistsManager = new PlaylistsManager();
-        feedbackManager = new FeedbackManager();
+        feedbackManager = new FeedbacksManager();
     }
 
     /**

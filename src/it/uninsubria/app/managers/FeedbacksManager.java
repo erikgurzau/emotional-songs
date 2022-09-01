@@ -10,9 +10,9 @@ import java.util.Vector;
 
 /**
  * Classe che rappresenta il sistema di gestione delle recensioni emozionali all'interno dell'applicazione
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see     it.uninsubria.app.emotionalsongs.Feedback
  * @see     it.uninsubria.app.managers.utils.FileManager
@@ -70,10 +70,10 @@ public class FeedbacksManager {
             StringTokenizer st = new StringTokenizer(row, ";");
             String namePlaylist = st.nextToken();
             int userId = Integer.parseInt(st.nextToken());
+            int songId = Integer.parseInt(st.nextToken());
 
             while (st.hasMoreTokens()) {
                 StringTokenizer feedbackTkn = new StringTokenizer(st.nextToken(), ",");
-                int songId = Integer.parseInt(feedbackTkn.nextToken());
                 int emotionId = Integer.parseInt(feedbackTkn.nextToken());
                 int score = Integer.parseInt(feedbackTkn.nextToken());
                 String note;
@@ -139,7 +139,7 @@ public class FeedbacksManager {
         Feedback firstElement = listFeedback.firstElement();
         String key = firstElement.getNamePlaylist() + "-" + firstElement.getUserId();
         mapFeedback.put(key, listFeedback);
-        String s = firstElement.getNamePlaylist() + ";" + listFeedback.get(0).getUserId() + ";";
+        String s = firstElement.getNamePlaylist() + ";" + firstElement.getUserId() + ";" + firstElement.getSongId() + ";";
         for (Feedback f : listFeedback) {
             s += f.toString();
         }
@@ -199,16 +199,13 @@ public class FeedbacksManager {
         Vector<Feedback> notesList = new Vector<>();
         for (Map.Entry<String, Vector<Feedback>> entry : mapFeedback.entrySet()) {
             Vector<Feedback> list = entry.getValue();
-            if (list.firstElement().getSongId() == songId) {
-                for (Feedback f : list) {
-                    if (f.getEmotionId() == emotionId) {
-                        if(!f.getNote().isEmpty()) {
-                            notesList.add(f);
-                        }
+            for (Feedback f : list) {
+                if (f.getSongId() == songId && f.getEmotionId() == emotionId) {
+                    if(!f.getNote().isEmpty()) {
+                        notesList.add(f);
                     }
                 }
             }
-
         }
         return notesList;
     }

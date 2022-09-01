@@ -354,14 +354,14 @@ public class Display {
 
         for (Emotion e: app.getEmotionList()) {
             Vector<Feedback> listFeedback = app.getFeedbacksIfHasNote(songId, e.getId());
-            System.out.println("\n* " + e.getCategory());
+            Display.printSectionTitle("\n" + e.getCategory());
             if (!listFeedback.isEmpty()) {
                 for (Feedback f : listFeedback) {
-                    Display.printSectionTitle(app.getUserById(f.getUserId()).getName(), false);
+                    System.out.print(app.getUserById(f.getUserId()).getName());
                     System.out.println(": " + f.getNote());
                 }
             }
-            else Display.printInfo("Ancora nessun commento da parte degli utenti per questa canzone\n");
+            else System.out.println("Ancora nessun commento da parte degli utenti per questa canzone");
         }
     }
 

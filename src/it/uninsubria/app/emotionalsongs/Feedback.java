@@ -126,8 +126,7 @@ public class Feedback {
      * @return String che contiene i dati della recensione divisi dal separatore ';'
      */
     public String toString() {
-        return songId + "," +
-                emotionId + "," +
+        return emotionId + "," +
                 score +
                 (note.isEmpty() ? ";" : "," + note + ";" );
     }

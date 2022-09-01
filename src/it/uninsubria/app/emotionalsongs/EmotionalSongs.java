@@ -315,7 +315,6 @@ public class EmotionalSongs {
                         }
 
                     } while (in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
-                    Display.printSystemPause(in);
                     break;
 
                 case 8:
@@ -349,7 +348,6 @@ public class EmotionalSongs {
 
                 case 9:
                     Display.printListSongs(app.getListSongs());
-                    Display.printSystemPause(in);
                     break;
 
 
