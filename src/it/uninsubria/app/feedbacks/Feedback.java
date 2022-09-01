@@ -3,7 +3,7 @@ package it.uninsubria.app.feedbacks;
 import java.util.Vector;
 
 /**
- * Classe che definisce l'insieme di recensioni emozionali di una canzone in una playlist di un utente
+ * Classe che definisce una l'insieme di recensioni emozionali di una canzone in una playlist di un utente
  * @author  Erik Gurzau (749400, VA)
  * @author  Alessia Metaj (738945, VA)
  * @author  Sara Biavaschi (748698, VA)
