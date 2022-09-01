@@ -27,7 +27,7 @@ public class Feedback {
     private int songId;
 
     /**
-     * Liste che contiene le singole recensioni di ogni emozione
+     * Lista che contiene le singole recensioni di ogni emozione
      */
     private Vector<FeedbackItem> listFeedbackItem;
 

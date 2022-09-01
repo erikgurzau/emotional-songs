@@ -21,11 +21,6 @@ import static it.uninsubria.app.users.User.isPswValid;
  * @author  Alessia Metaj (738945, VA)
  * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
- * @see it.uninsubria.app.managers.CommandManager
- * @see it.uninsubria.app.input.Input
- * @see it.uninsubria.app.users.utils.TypeStreet
- * @see it.uninsubria.app.views.Display
- * @see it.uninsubria.app.managers.utils.SecurePassword
  */
 public class EmotionalSongs {
 
@@ -103,10 +98,9 @@ public class EmotionalSongs {
                             do {
                                 psw = SecurePassword.genPsw();
                             } while (!isPswValid(psw));
-
                             System.out.println("La tua password è: " + psw);
-
-                        } else psw = in.readPassword("Inserisci la tua password: ");
+                        }
+                        else psw = in.readPassword("Inserisci la tua password: ");
 
 
                         User u = new User(name, surname, cf, address, app.nextUserId(), email, SecurePassword.encrypt(psw));
@@ -138,7 +132,6 @@ public class EmotionalSongs {
                                 break;
                         }
                     } while (in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
-                    Display.printSystemPause(in);
                     break;
 
                 case 4:
@@ -163,8 +156,8 @@ public class EmotionalSongs {
                                     if (app.findSongsByTitle(research).isEmpty()) {
                                         Display.printError("Nessuna canzone trovata!\n\n");
                                     } else {
-                                        int idCanzone = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare: ");
-                                        playlist.addSong(app.getSongById(idCanzone).getId());
+                                        int songId = in.readInteger("\nDigita L'ID della canzone che vuoi selezionare: ");
+                                        playlist.addSong(app.getSongById(songId).getId());
                                     }
 
                                     break;
@@ -176,8 +169,8 @@ public class EmotionalSongs {
                                     if (app.findSongsByAuthorAndYear(rscAuth, rscYear).isEmpty()) {
                                         Display.printError("Nessuna canzone trovata!\n\n");
                                     } else {
-                                        int idCanzone = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
-                                        playlist.addSong(app.getSongById(idCanzone).getId());
+                                        int songId = in.readInteger("Digita l'ID della canzone che vuoi selezionare: ");
+                                        playlist.addSong(app.getSongById(songId).getId());
                                     }
                                     break;
                             }
@@ -206,7 +199,6 @@ public class EmotionalSongs {
                     } else {
                         System.out.println();
                         Display.printError("Per visualizzare le playlist create è necessario accedere con le proprie credenziali\n ");
-                        Display.printSystemPause(in);
                     }
                     Display.printSystemPause(in);
                     break;
@@ -257,7 +249,8 @@ public class EmotionalSongs {
                             if (in.readYesNo("Vuoi aggiungere una nota? (y/n) ") == 'y') {
                                 note = in.readString("Inserisci qui una nota per la recensione: ", 1, 256);
                                 f.addItem(new FeedbackItem(e.getId(), score, note));
-                            } else
+                            }
+                            else
                                 f.addItem(new FeedbackItem(e.getId(), score));
                         }
 
@@ -268,7 +261,6 @@ public class EmotionalSongs {
                     } else {
                         System.out.println();
                         Display.printError("Per creare una playlist è necessario accedere con le proprie credenziali\n ");
-                        Display.printSystemPause(in);
                     }
                     Display.printSystemPause(in);
                     break;
