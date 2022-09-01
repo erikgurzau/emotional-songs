@@ -13,9 +13,9 @@ import java.util.InputMismatchException;
 
 /**
  * Classe che gestisce il sistema di input sulla console dell'applicazione
- * @author  Erik Gurzau
- * @author  Alessia Metaj
- * @author  Sara Biavaschi
+ * @author  Erik Gurzau (749400, VA)
+ * @author  Alessia Metaj (738945, VA)
+ * @author  Sara Biavaschi (748698, VA)
  * @version 1.0.0
  * @see     it.uninsubria.app.users.User
  * @see     it.uninsubria.app.users.utils.TypeStreet
