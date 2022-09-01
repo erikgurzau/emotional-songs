@@ -10,7 +10,7 @@ package it.uninsubria.app.feedbacks;
 public class FeedbackItem {
 
     /**
-     * Intero che rappresenta l'ID dell'emozione provata durante l'ascolta della canzone
+     * Intero che rappresenta l'ID dell'emozione provata durante l'ascolto della canzone
      */
     private int emotionId;
 
