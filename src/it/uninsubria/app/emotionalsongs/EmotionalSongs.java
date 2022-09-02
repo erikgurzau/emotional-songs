@@ -121,50 +121,55 @@ public class EmotionalSongs {
      * @param in Gestore dell'input dell'utente sulla console
      */
     public static void registrazione(CommandManager app, Input in) {
+        if(!app.isLogged()) {
+            String name, surname, cf;
+            String streetName, postalCode, city, province;
+            TypeStreet typeStreet;
+            int houseNumber;
+            String email, psw;
 
-        String name, surname, cf;
-        String streetName, postalCode, city, province;
-        TypeStreet typeStreet;
-        int houseNumber;
-        String email, psw;
+            Display.printSubtitle("\nREGISTRAZIONE");
 
-        Display.printSubtitle("\nREGISTRAZIONE");
+            // Info Generali
+            Display.printSectionTitle("\nInfo Generali");
+            name = EmotionalSongs.capitalize(in.readString("Inserisci il tuo nome: ", 3, 30));
+            surname = EmotionalSongs.capitalize(in.readString("Inserisci il tuo cognome: ", 3, 30));
+            cf = in.readCF("Inserisci il tuo codice fiscale: ").toUpperCase();
 
-        // Info Generali
-        Display.printSectionTitle("\nInfo Generali");
-        name = EmotionalSongs.capitalize(in.readString("Inserisci il tuo nome: ", 3, 30));
-        surname = EmotionalSongs.capitalize(in.readString("Inserisci il tuo cognome: ", 3, 30));
-        cf = in.readCF("Inserisci il tuo codice fiscale: ").toUpperCase();
+            // Indirizzo
+            Display.printSectionTitle("\nIndirizzo");
+            typeStreet = in.readTypeStreet("Inserisci il tipo di strada (Via, Piazza, etc.): ");
+            streetName = EmotionalSongs.capitalize(in.readString("Inserisci il nome della strada: ", 3, 50));
+            houseNumber = in.readInteger("Inserisci il numero civico: ");
+            postalCode = in.readString("Inserisci il codice postale: ", 5);
+            city = EmotionalSongs.capitalize(in.readString("Inserisci il nome della città: ", 3, 50));
+            province = EmotionalSongs.capitalize(in.readString("Inserisci il nome della provincia: ", 3, 50));
+            Address address = new Address(typeStreet, streetName, houseNumber, postalCode, city, province);
 
-        // Indirizzo
-        Display.printSectionTitle("\nIndirizzo");
-        typeStreet = in.readTypeStreet("Inserisci il tipo di strada (Via, Piazza, etc.): ");
-        streetName = EmotionalSongs.capitalize(in.readString("Inserisci il nome della strada: ", 3, 50));
-        houseNumber = in.readInteger("Inserisci il numero civico: ");
-        postalCode = in.readString("Inserisci il codice postale: ", 5);
-        city = EmotionalSongs.capitalize(in.readString("Inserisci il nome della città: ", 3, 50));
-        province = EmotionalSongs.capitalize(in.readString("Inserisci il nome della provincia: ", 3, 50));
-        Address address = new Address(typeStreet, streetName, houseNumber, postalCode, city, province);
+            // Account
+            Display.printSectionTitle("\nAccount");
+            email = in.readEmail("Inserisci la tua email: ").toLowerCase();
+            try {
+                if (in.readYesNo("Vuoi generare una password? (yes/no) : ") == 'y') {
+                    do {
+                        psw = SecurePassword.genPsw();
+                    } while (!isPswValid(psw));
+                    System.out.println("La tua password è: " + psw);
+                }
+                else psw = in.readPassword("Inserisci la tua password: ");
 
-        // Account
-        Display.printSectionTitle("\nAccount");
-        email = in.readEmail("Inserisci la tua email: ").toLowerCase();
-        try {
-            if (in.readYesNo("Vuoi generare una password? (yes/no) : ") == 'y') {
-                do {
-                    psw = SecurePassword.genPsw();
-                } while (!isPswValid(psw));
-                System.out.println("La tua password è: " + psw);
+
+                User u = new User(name, surname, cf, address, app.nextUserId(), email, SecurePassword.encrypt(psw));
+                app.register(u);
+                app.login(email, u.getPsw());
+                Display.printBoxSuccess("Registrazione effettuata con successo!");
+            } catch (UserException e) {
+                Display.printBoxFailed(e.getMessage());
             }
-            else psw = in.readPassword("Inserisci la tua password: ");
-
-
-            User u = new User(name, surname, cf, address, app.nextUserId(), email, SecurePassword.encrypt(psw));
-            app.register(u);
-            app.login(email, u.getPsw());
-            Display.printBoxSuccess("Registrazione effettuata con successo!");
-        } catch (UserException e) {
-            Display.printBoxFailed(e.getMessage());
+            
+        } else {
+            System.out.println();
+            Display.printError("Hai già effettuato l'accesso! Per procedere con una nuova registrazione, è necessario uscire dal proprio account\n");
         }
         Display.printSystemPause(in);
     }
