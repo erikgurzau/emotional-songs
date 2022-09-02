@@ -194,6 +194,8 @@ public class EmotionalSongs {
                     break;
             }
         } while (in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
+        
+        Display.printSystemPause(in);
     }
 
     /**
@@ -248,6 +250,7 @@ public class EmotionalSongs {
                 Display.printBoxFailed("Playlist non creata correttamente");
 
         } else Display.printError("\nPer creare una playlist è necessario accedere con le proprie credenziali\n ");
+        
         Display.printSystemPause(in);
     }
 
@@ -266,6 +269,7 @@ public class EmotionalSongs {
             //stampa delle playlist
             Display.printPlaylist(app, userPlaylists);
         } else Display.printError("\nPer visualizzare le playlist create è necessario accedere con le proprie credenziali\n ");
+        
         Display.printSystemPause(in);
     }
 
@@ -393,6 +397,8 @@ public class EmotionalSongs {
             }
 
         } while (in.readYesNo("\nVuoi cercare un'altra canzone? (yes/no) : ") == 'y');
+        
+        Display.printSystemPause(in);
     }
 
     /**
