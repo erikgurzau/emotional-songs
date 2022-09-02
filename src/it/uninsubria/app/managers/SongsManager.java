@@ -44,7 +44,7 @@ public class SongsManager {
     }
 
     /**
-     * Legge i dati dal file e li converte in una lista di canzoni
+     * Legge i dati dal file e li converte in una mappa di canzoni
      */
     public void loadData(){
         parseData(fm.getContent());
@@ -53,9 +53,9 @@ public class SongsManager {
 
     /**
      * Converte una lista di stringhe, che corrispondono alle righe del file .txt
-     * contenenti tutte le canzoni dell'applicazione, in una lista di oggetti Song
+     * contenenti tutte le canzoni dell'applicazione, in una mappa con chiave
+     * l'ID della canzone e come valore l'oggetto Song
      * @param rowsFile Lista di stringhe con le informazioni delle canzoni
-     * @return Una lista di canzoni
      */
     private void parseData(Vector<String> rowsFile) {
         Vector<Song> list = new Vector<>();
