@@ -61,7 +61,7 @@ public class Display {
         System.out.println("(3) - Ricerca un brano");
         System.out.println("(4) - Crea una playlist");
         System.out.println("(5) - Visualizza le tue playlist");
-        System.out.println("(6) - Recensisci una o più canzoni");
+        System.out.println("(6) - Recensisci una canzone di una tua playlist");
         System.out.println("(7) - Visualizza un report emozionale su una canzone");
         System.out.println("(8) - Visualizza un report emozionale su una tua playlist");
         System.out.println("(9) - Visualizza tutte le canzoni");
