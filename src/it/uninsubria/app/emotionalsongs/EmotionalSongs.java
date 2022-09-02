@@ -41,8 +41,14 @@ public class EmotionalSongs {
                     break;
 
                 case 2:
-                    registrazione(app, in);
-                    break;
+          
+                    if(!app.isLogged()){
+                        registrazione(app, in);
+                        break;
+                    }else{Display.printError("Effettua il logout per poterti registrare!");
+                        Display.printSystemPause(in);
+                        break;}
+
 
                 case 3:
                     cercaBranoMusicale(app, in);
