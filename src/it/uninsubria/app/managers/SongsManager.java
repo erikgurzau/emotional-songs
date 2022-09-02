@@ -24,11 +24,6 @@ public class SongsManager {
     private String pathFile = "data/Canzoni.txt";
 
     /**
-     * Lista delle canzoni
-     */
-    private Vector<Song> listSongs;
-
-    /**
      * Indice delle canzoni con chiave l'ID della canzone e come valore l'oggetto Song
      */
     private HashMap<Integer, Song> mapSongs;
@@ -52,7 +47,7 @@ public class SongsManager {
      * Legge i dati dal file e li converte in una lista di canzoni
      */
     public void loadData(){
-        listSongs = parseData(fm.getContent());
+        parseData(fm.getContent());
     }
 
 
@@ -62,7 +57,7 @@ public class SongsManager {
      * @param rowsFile Lista di stringhe con le informazioni delle canzoni
      * @return Una lista di canzoni
      */
-    private Vector<Song> parseData(Vector<String> rowsFile) {
+    private void parseData(Vector<String> rowsFile) {
         Vector<Song> list = new Vector<>();
         mapSongs.clear();
         for (String row: rowsFile) {
@@ -79,7 +74,6 @@ public class SongsManager {
                 mapSongs.put(id, s);
             }
         }
-        return list;
     }
 
     /**
@@ -97,17 +91,7 @@ public class SongsManager {
      * @return Una lista di canzoni
      */
     public Vector<Song> getListSongs() {
-        return listSongs;
-    }
-
-    /**
-     * Crea una sotto-lista di canzoni tra un range di indici (posizioni delle canzoni nella lista)
-     * @param idxFrom Indice numerico di partenza
-     * @param idxTo Indice numerico di destinazione
-     * @return Una lista di canzoni aventi posizione nella lista compresa tra idxFrom e idxTo
-     */
-    public Vector<Song> getListSongs(int idxFrom, int idxTo){
-        return new Vector(listSongs.subList(idxFrom, idxTo));
+        return new Vector<>(mapSongs.values());
     }
 
 
@@ -119,7 +103,7 @@ public class SongsManager {
      */
     public Vector<Song> findSongsByTitle(String titleSong) {
         Vector<Song> result = new Vector<>();
-        for(Song song: listSongs) {
+        for(Song song: getListSongs()) {
             String title = song.getTitle();
             String lowTitle = title.toLowerCase();
             if(lowTitle.contains(titleSong.toLowerCase())) {
@@ -139,7 +123,7 @@ public class SongsManager {
      */
     public Vector<Song> findSongsByAuthorAndYear(String rscAuth, int rscYear) {
         Vector<Song> result = new Vector<>();
-        for(Song song: listSongs) {
+        for(Song song: getListSongs()) {
             String author = song.getAuthor();
             String lowAuth = author.toLowerCase();
             int year = song.getYear();
