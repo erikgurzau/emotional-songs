@@ -103,8 +103,7 @@ public class FeedbacksManager {
         Vector<Feedback> listFeedback = mapFeedback.get(songId);
         for (Feedback f : listFeedback) {
             if (f.getNamePlaylist().equals(namePlaylist) &&
-                f.getUserId() == userId &&
-                f.getSongId() == songId
+                f.getUserId() == userId
             )
                 return true;
         }
