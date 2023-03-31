@@ -1,1 +1,1 @@
-Qui saranno inseriti i file eseguibili
+La cartella "bin" contiene i file eseguibili dell'applicazione Emotional Songs. Per avviare l'applicazione, aprire la finestra del terminale e digitare il comando corrispondente al sistema operativo in uso.
