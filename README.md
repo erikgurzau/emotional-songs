@@ -2,11 +2,13 @@
 
 Emotional Songs è un progetto universitario che consente di creare playlist musicali in base al proprio stato d'animo.
 
+
 ## Requisiti
 
 Per far funzionare l'applicazione sono necessari i seguenti requisiti:
 
 - Java JDK 1.8 o successivo
+
 
 ## Installazione ed Esecuzione
 
@@ -56,21 +58,13 @@ java -jar emotional-songs.jar
 
 Ogni contributo al progetto è benvenuto! Se avete idee per migliorare l'applicazione, potete aprire una issue o una pull request.
 
-## Come scaricare ed eseguire
-
-Per scaricare ed eseguire Emotional Songs, segui i seguenti passaggi:
-
-1. Clona il repository su GitHub utilizzando il seguente comando:
-'''sh
-git clone https://github.com/erikgurzau/emotional-songs.git
-'''
-
-2. Importa il progetto in un ambiente di sviluppo integrato (IDE) come Eclipse o NetBeans.
-
-3. Esegui il progetto dall'IDE o esegui il file jar generato.
-
 ## Feature Future
 
 Si potrebbe sviluppare un algoritmo di suggerimento di canzoni basato sulle preferenze dell'utente, che aiuterebbe a creare playlist ancora più personalizzate e in linea con il loro stato d'animo. Questa nuova feature potrebbe fornire una maggiore interattività e coinvolgimento per gli utenti, migliorando l'esperienza d'uso dell'applicazione. 
 
 Algoritmo di analisi delle emozioni per generare una playlist di canzoni che corrispondono al tuo stato d'animo. L'algoritmo prende in input il tuo stato d'animo e le preferenze musicali e restituisce una playlist di canzoni selezionate in base all'emozione e al genere musicale
+
+## Licenza
+
+Il progetto "Emotional Songs" è distribuito con la licenza MIT. Per ulteriori informazioni, consultare il file [LICENSE](LICENSE).
+
