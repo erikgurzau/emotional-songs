@@ -10,7 +10,7 @@ Per far funzionare l'applicazione sono necessari i seguenti requisiti:
 
 ## Installazione ed Esecuzione
 
-###Generazione del file .jar
+### Generazione del file .jar
 
 - Per generare il file .jar dell'applicazione "Emotional Songs", seguire i seguenti passaggi:
 
