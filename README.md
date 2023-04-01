@@ -75,7 +75,7 @@ Ogni contributo al progetto è ben accetto! Se avete idee per migliorare l'appli
 - Sviluppare un algoritmo di analisi delle emozioni per generare una playlist di canzoni che corrispondono al tuo stato d'animo. L'algoritmo prende in input il tuo stato d'animo e le preferenze musicali e restituisce una playlist di canzoni selezionate in base all'emozione e al genere musicale
 
 ## Lingue
-🇬🇧 [English](https://breakdance.github.io/breakdance/) 
+[![English Status]([https://travis-ci.org/joemccann/dillinger.svg?branch=master](https://en.wikipedia.org/wiki/File:Flag_of_the_United_Kingdom.svg))]([https://travis-ci.org/joemccann/dillinge](https://github.com/erikgurzau/emotional-songs/blob/main/lan/README-EN.md))
 
 ## Licenza
 
