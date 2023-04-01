@@ -65,7 +65,7 @@ java -jar emotional-songs.jar
 
 ## Contributi
 
-Ogni contributo al progetto è benvenuto! Se avete idee per migliorare l'applicazione, potete aprire una issue o una pull request. Segui la guida di Github per sapere cosa fare.
+Ogni contributo al progetto è ben accetto! Se avete idee per migliorare l'applicazione, potete aprire una issue o una pull request. Segui la guida di Github per sapere cosa fare.
 
 
 ## Feature Future
