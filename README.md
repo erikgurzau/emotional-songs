@@ -77,10 +77,10 @@ Ogni contributo al progetto è ben accetto! Se avete idee per migliorare l'appli
 
 ## Lingue
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" height="16px" alt="English Flag">
+<div>
+  <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" height="12px" alt="English Flag">
   [English](https://github.com/erikgurzau/emotional-songs/blob/main/lan/README-EN.md)
-</p>
+</div>
 
 
 ## Licenza
