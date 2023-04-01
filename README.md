@@ -1,4 +1,4 @@
-# Emotional Songs [Italiano] [English](https://breakdance.github.io/breakdance/) 
+# Emotional Songs
 
 "Emotional Songs" è un progetto universitario che si propone di analizzare le emozioni percepite dagli utenti ascoltando determinate canzoni. 
 É un'applicazione sviluppata in Java, che utilizza un'interfaccia utente basata sulla CLI (Command-Line Interface). 
@@ -74,6 +74,8 @@ Ogni contributo al progetto è ben accetto! Se avete idee per migliorare l'appli
 
 - Sviluppare un algoritmo di analisi delle emozioni per generare una playlist di canzoni che corrispondono al tuo stato d'animo. L'algoritmo prende in input il tuo stato d'animo e le preferenze musicali e restituisce una playlist di canzoni selezionate in base all'emozione e al genere musicale
 
+## Lingue
+🇬🇧 [English](https://breakdance.github.io/breakdance/) 
 
 ## Licenza
 
