@@ -75,14 +75,6 @@ Any contribution to the project is welcome! If you have ideas for improving the 
 - Develop an emotion analysis algorithm to generate a playlist of songs that match your mood. The algorithm takes your mood and music preferences as input and returns a playlist of songs selected based on emotion and music genre
 
 
-## Languages
-
-<p align="left">
-  <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" height="12px" alt="English Flag">
-  <a href="https://github.com/erikgurzau/emotional-songs/blob/main/lan/README-EN.md">English Version</a>
-</p>
-
-
 ## License
 
 The "Emotional Songs" project is distributed under the MIT license. For more information, please see the [LICENSE](LICENSE) file.
