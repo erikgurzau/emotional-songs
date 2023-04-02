@@ -1,14 +1,18 @@
 # Emotional Songs
 
 "Emotional Songs" è un progetto universitario che si propone di analizzare le emozioni percepite dagli utenti ascoltando determinate canzoni. 
-É un'applicazione sviluppata in Java, che utilizza un'interfaccia utente basata sulla CLI (Command-Line Interface). 
-Grazie a questa interfaccia, gli utenti possono interagire con l'applicazione tramite comandi testuali inseriti direttamente da tastiera, in modo semplice e intuitivo. 
+É un'applicazione sviluppata in Java.
 
-Inoltre, permette di creare playlist personalizzate in base alle emozioni che i brani evocano negli utenti. Durante l'ascolto, l'applicazione registra i feedback e le emozioni associate ai singoli brani, consentendo di creare una playlist personalizzata in grado di evocare le emozioni desiderate.
+La versione `v1.0.0` utilizza un'interfaccia utente basata sulla CLI (Command-Line Interface), ovvero gli utenti possono interagire con l'applicazione tramite comandi testuali inseriti direttamente da tastiera.
+Per l'archiviazione dei dati, viene utilizzata una struttura organizzata basata su file di testo, simili per formato ai file .csv. In questo modo, i dati possono essere facilmente gestiti e manipolati senza la necessità di un database complesso.
 
-Infine, l'applicazione offre la possibilità di generare report e prospetti riassuntivi delle proprie playlist, visualizzando i punteggi associati alle diverse emozioni. Grazie a questo strumento, gli utenti possono analizzare la loro reazione emotiva ai brani, rilevando eventuali correlazioni tra le emozioni e le preferenze musicali.
+In "Emotional Songs" è possibile creare playlist personalizzate con qualsiasi brano e gli utenti hanno la possibilità di registrare le proprie reazioni emotive associate a ciascuna canzone della playlist. Per valutare l'emozione suscitata da una canzone, gli utenti possono selezionare l'emozione desiderata e assegnare un valore di intensità da 1 a 5. Questa funzionalità permette agli utenti di tenere traccia delle emozioni evocate dalle canzoni e di personalizzare le proprie playlist in base alle preferenze personali.
 
-Le emozioni monitorate dall'applicazione includono la gioia, la tristezza, la rabbia, la paura, l'euforia e la nostalgia. Grazie a questa gamma di emozioni, gli utenti possono creare playlist personalizzate in grado di evocare le sensazioni desiderate, rendendo l'ascolto della musica un'esperienza ancora più coinvolgente ed emozionante.
+Infine, l'applicazione offre la possibilità di generare report e prospetti riassuntivi sulle emozioni provate durante l'ascolto delle playlist, visualizzando l'intensità assegnata alle diverse canzoni. Grazie a questo strumento, gli utenti possono analizzare la loro reazione emotiva ai brani, rilevando eventuali correlazioni tra le emozioni e le preferenze musicali.
+
+La scala di emozioni per poter valutare emotivamente un brano musicale è la seguente: la meraviglia, la solennità, la tenerezza, la nostalgia, la calma, la potenza, la gioia, la tensione e la tristezza. Grazie a questa gamma di emozioni, gli utenti possono creare playlist personalizzate in grado di evocare le sensazioni desiderate, rendendo l'ascolto della musica un'esperienza ancora più coinvolgente ed emozionante.
+
+L'intero progetto di Emotional Songs è ispirato dal [GEMS](https://musemap.org/resources/gems) (Geneva Emotional Music Scale), un progetto di ricerca che mira a creare una scala standardizzata per misurare le emozioni suscitate dalla musica.
 
 
 ## Requisiti
