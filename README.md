@@ -12,7 +12,7 @@ Infine, l'applicazione offre la possibilità di generare report e prospetti rias
 
 La scala di emozioni per poter valutare emotivamente un brano musicale è la seguente: la meraviglia, la solennità, la tenerezza, la nostalgia, la calma, la potenza, la gioia, la tensione e la tristezza. Grazie a questa gamma di emozioni, gli utenti possono creare playlist personalizzate in grado di evocare le sensazioni desiderate, rendendo l'ascolto della musica un'esperienza ancora più coinvolgente ed emozionante.
 
-L'intero progetto di Emotional Songs è ispirato dal [GEMS](https://musemap.org/resources/gems) (Geneva Emotional Music Scale), un progetto di ricerca che mira a creare una scala standardizzata per misurare le emozioni suscitate dalla musica.
+L'intero progetto di Emotional Songs si ispira a [GEMS](https://musemap.org/resources/gems) (Geneva Emotional Music Scale), un progetto di ricerca che mira a creare una scala standardizzata per misurare le emozioni suscitate dalla musica.
 
 
 ## Requisiti
