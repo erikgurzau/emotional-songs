@@ -10,6 +10,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="es-client" />
+        <module name="client-es" />
+        <module name="server-es" />
         <module name="es-server" />
       </profile>
     </annotationProcessing>
