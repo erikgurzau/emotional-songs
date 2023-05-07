@@ -1,4 +1,5 @@
-CREATE DATABASE "Emotional_Songs" IF NOT EXISTS;
+DROP DATABASE IF EXISTS "Emotional_Songs";
+CREATE DATABASE "Emotional_Songs";
 
 CREATE TABLE "Utenti_Registrati" (
     id SERIAL PRIMARY KEY,
