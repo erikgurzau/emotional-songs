@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="main-anchor-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #131718;" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox id="side-box" prefHeight="600.0" prefWidth="230.0" spacing="30.0" style="-fx-background-color: #111111;">
+         <children>
+            <SVGPath content="M44.47 19.15a8 8 0 0 0-3.62-3.72l-1.86-1a7.84 7.84 0 0 0-3.91-9.76l-2.37-1.18-.61-.31a5.21 5.21 0 0 0-3.72-.47 5.36 5.36 0 0 0-1.22 10l4.12 2.11 1.59.82-2.64 1.22-7.51 3.47a.21.21 0 0 1-.23 0l-4.39-2-5.53-2.55L14 15c1.41-.68 2.82-1.36 4.23-2.06a5.53 5.53 0 0 0-4.89-9.93c-1.23.6-2.42 1.22-3.55 1.84a7.86 7.86 0 0 0-4 7.84 10.78 10.78 0 0 0 .32 1.52c0 .09.05.19.08.28l-.3.15-1.54.75a7.82 7.82 0 0 0-4 4.66 7.73 7.73 0 0 0 .53 6 8 8 0 0 0 3.38 3.36l1.93 1a7.81 7.81 0 0 0 4 9.74c1.07.56 2.13 1.11 3.2 1.65a5.27 5.27 0 0 0 5-9.3c-1.19-.65-2.39-1.28-3.58-1.91l-2.49-1.32.44-.21 9.83-4.52a.31.31 0 0 1 .19 0c3.27 1.49 6.52 3 9.78 4.5l.39.18-1.6.86c-1.49.81-3 1.61-4.47 2.44A5.27 5.27 0 0 0 31.69 42c1.16-.55 2.47-1.18 3.7-1.92a7.68 7.68 0 0 0 4-7.77 10.63 10.63 0 0 0-.31-1.51c0-.1-.06-.2-.08-.3l.29-.15 1.59-.83a7.9 7.9 0 0 0 3.59-10.37Zm-17.28 3.33 2.72-1.26 4.39-2a9.62 9.62 0 0 0 2.51-1.55l.66.34a22.3 22.3 0 0 1 2 1.08 4 4 0 0 1 .08 6.75 22.22 22.22 0 0 1-2 1.14l-.68.34a10.87 10.87 0 0 0-2.91-1.73l-.14-.06-5.21-2.4Zm1-15.23a1.53 1.53 0 0 1 1.41-.85 1.42 1.42 0 0 1 .64.14c1.07.53 2.21 1.1 3.34 1.74a4 4 0 0 1 2 4.41l-6.16-3.14-.55-.28a1.53 1.53 0 0 1-.63-2.02ZM28.67 36c1.76-1 3.53-1.93 5.31-2.88l1.56-.84a3.83 3.83 0 0 1-.2 2.38 4 4 0 0 1-1.82 2.05c-1.12.61-2.28 1.21-3.46 1.8a1.44 1.44 0 0 1-1.9-.63 1.38 1.38 0 0 1 .51-1.88ZM18 22.48l-4.24 1.95c-1.12.51-2.24 1-3.34 1.56a13.6 13.6 0 0 0-2 1.3c-.06 0-.08.05-.07 0l-1.11-.59c-.4-.21-.81-.43-1.21-.66a4 4 0 0 1 .16-7.26l1.23-.6 1-.5.4.28A12.33 12.33 0 0 0 10.6 19c1.9.91 3.82 1.79 5.74 2.67Zm-.67-15.14a1.7 1.7 0 0 1-.75 2.19c-.69.36-1.38.69-2.08 1l-4.77 2.31a3.87 3.87 0 0 1 1.59-4.34 30.91 30.91 0 0 1 3.92-2.06 1.34 1.34 0 0 1 .56-.12 1.52 1.52 0 0 1 .55.1 1.71 1.71 0 0 1 .98.92Zm-7.66 25 6.11 3.25c.23.12.46.23.68.36a1.44 1.44 0 0 1-1.32 2.55c-1-.52-2.25-1.12-3.42-1.78a4 4 0 0 1-2.05-4.38Zm-2.84-2.07Zm45.92-18.71c0-4.43 2.64-7.24 7-7.24 4.16 0 6.61 2.48 6.61 6.08a12.89 12.89 0 0 1-.19 2h-9.5c.08 1.92.86 2.7 3.11 2.7 1.65 0 2.37-.36 2.37-1.21v-.17h4.07V14c0 2.94-2.53 4.67-6.49 4.67-4.8.04-6.98-2.74-6.98-7.11Zm3.91-1.63h5.7c.08-1.43-.86-2.22-2.78-2.22s-2.76.77-2.92 2.22Zm11.64 8.51V4.6h3.83V7h.16a4.65 4.65 0 0 1 4.54-2.7A4.44 4.44 0 0 1 81.32 7h.13a4.83 4.83 0 0 1 4.71-2.7c3.58 0 5 2.4 5 5.34v8.78h-4.09v-8c0-1.92-.58-2.61-2.59-2.61s-2.67.61-2.67 2.61v8h-4.12v-8c0-1.92-.61-2.61-2.59-2.61s-2.7.61-2.7 2.56v8Zm24.77-6.91c0-4.4 2.64-7.21 7.1-7.21s7 2.81 7 7.21-2.59 7.18-7 7.18-7.1-2.8-7.1-7.18Zm10.1 0c0-2.7-.77-3.58-3-3.58s-3 .88-3 3.58.77 3.55 3 3.55 3-.88 3-3.55ZM110 13.9V8h-2.2V4.6h2.31l.77-3.22h3.25V4.6H118V8h-3.91v5.42c0 1.21.41 1.35 2.2 1.35H118v3.44a14.36 14.36 0 0 1-2.7.27c-3.57.01-5.3-1.31-5.3-4.58ZM119.71 3l-.06-3h4.1v3Zm0 15.41V4.6h4.13v13.84Zm5.78-6.88c0-4.4 2.64-7.21 7.1-7.21s7 2.81 7 7.21-2.58 7.18-7 7.18-7.1-2.8-7.1-7.18Zm10.1 0c0-2.7-.77-3.58-3-3.58s-3 .88-3 3.58.77 3.55 3 3.55 3-.88 3-3.55Zm5.89 6.91V4.6h3.82V7h.17a4.76 4.76 0 0 1 4.65-2.7c3.6 0 5.14 2.4 5.14 5.34v8.78h-4.12v-8c0-1.92-.64-2.61-2.73-2.61s-2.83.63-2.83 2.73v7.84Zm15.63-3.52c0-2.15 1.54-3.47 4.4-3.91l4.73-.72v-.44c0-1.62-.88-1.92-2.5-1.92s-2.34.46-2.34 1.87v.3h-3.93v-.3c0-3.3 2.55-5.48 6.46-5.48 4.08 0 6.22 2.23 6.22 5.92v8.2h-3.82v-1.87h-.17a5.49 5.49 0 0 1-4.7 2.14c-2.46 0-4.35-1.29-4.35-3.79Zm5.72.66c1.68 0 3.41-.44 3.41-2.59l-4 .6c-.85.14-1.24.42-1.24 1 0 .74.62.99 1.83.99Zm9.77 2.86V0h4.1v18.44ZM52.86 35.34v-.08h3.94v.58c0 1 .6 1.23 2.61 1.23 1.68 0 2-.24 2-.93s-.39-.91-2.23-1.24l-2.09-.38c-2.73-.5-4.21-1.66-4.21-4.21s2.09-4.38 6-4.38c3.39 0 6 1.6 6 4.71V31H60.9v-.38c0-.91-.39-1.41-2.15-1.41s-2 .36-2 1 .25.85 1.9 1.18l2.54.53c2.91.55 4.12 1.87 4.12 4.12 0 2.59-2.12 4.24-5.94 4.24-4.37.04-6.51-1.58-6.51-4.94Zm13.79-2.2c0-4.4 2.64-7.21 7.1-7.21s7 2.81 7 7.21-2.59 7.18-7 7.18-7.1-2.8-7.1-7.18Zm10.1 0c0-2.7-.77-3.58-3-3.58s-3 .88-3 3.58.77 3.55 3 3.55 3-.88 3-3.55Zm5.89 6.91V26.2h3.82v2.43h.17a4.76 4.76 0 0 1 4.65-2.7c3.6 0 5.14 2.39 5.14 5.34v8.78H92.3v-8c0-1.92-.64-2.61-2.73-2.61s-2.83.63-2.83 2.72v7.85Zm15.63-7.76c0-3.86 2.09-6.36 6-6.36a4.45 4.45 0 0 1 4.29 2.28h.14v-2h3.82v12.3c0 4.51-2.39 6.49-6.85 6.49S99 43.1 99 39.58h4.1c0 1.43.41 1.79 2.78 1.79 2.17 0 2.61-.5 2.61-2.64v-2.15h-.16a4.65 4.65 0 0 1-4.16 2c-3.86.01-5.9-2.44-5.9-6.29Zm7.13 2.86c2 0 3-.69 3-2.45v-.83c0-1.76-1-2.45-3-2.45-2.36 0-3 .91-3 2.87s.66 2.86 3 2.86Zm9.24.19v-.08h3.94v.58c0 1 .6 1.23 2.61 1.23 1.68 0 2-.24 2-.93s-.39-.91-2.23-1.24l-2.09-.38c-2.73-.5-4.21-1.66-4.21-4.21s2.09-4.38 6-4.38c3.39 0 6 1.6 6 4.71V31h-3.93v-.38c0-.91-.39-1.41-2.15-1.41s-2 .36-2 1 .24.85 1.89 1.18l2.54.53c2.91.55 4.12 1.87 4.12 4.12 0 2.59-2.12 4.24-5.94 4.24-4.43.04-6.55-1.58-6.55-4.94Z" fill="#f2f2f2" />
+            <Label opacity="0.5" prefHeight="18.0" prefWidth="213.0" text="Menu" textFill="#e7e7e7">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="378.0" prefWidth="177.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="218.0" text="Home" textFill="#e7e7e7">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label prefHeight="18.0" prefWidth="218.0" text="Login" textFill="#e7e7e7">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label prefHeight="18.0" prefWidth="218.0" text="Playlist" textFill="#e7e7e7">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <Label prefHeight="18.0" prefWidth="218.0" text="Esci" textFill="#e7e7e7">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@right-from-bracket-solid.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="228.0" layoutY="-1.0" prefHeight="600.0" prefWidth="771.0" spacing="5.0">
+         <children>
+            <HBox id="header-box" alignment="CENTER_LEFT" prefHeight="87.0" prefWidth="722.0" spacing="10.0">
+               <children>
+                  <TextField focusTraversable="false" prefHeight="27.0" prefWidth="376.0" promptText="Cerca per titolo o autore" style="-fx-background-color: #111111; -fx-background-radius: 16px;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextField>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@magnifying-glass-solid.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </HBox>
+            <VBox prefHeight="229.0" prefWidth="722.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="770.0" text="Brani piu recensiti" textFill="#e7e7e7">
+                     <font>
+                        <Font name="Calibri Bold" size="21.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <ScrollPane prefHeight="213.0" prefWidth="722.0" style="-fx-region-background: #111111; -fx-background: #111111;" vbarPolicy="NEVER">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="718.0" style="-fx-background-color: #111111;">
+                           <children>
+                              <Label alignment="CENTER" opacity="0.5" prefHeight="199.0" prefWidth="722.0" text="Nessun risultato trovato" textFill="#e7e7e7">
+                                 <font>
+                                    <Font name="Calibri Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="229.0" prefWidth="722.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="770.0" text="Ultime novità" textFill="#e7e7e7">
+                     <font>
+                        <Font name="Calibri Bold" size="21.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <ScrollPane prefHeight="213.0" prefWidth="722.0" style="-fx-region-background: #111111; -fx-background: #111111;" vbarPolicy="NEVER">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="720.0" style="-fx-background-color: #111111;">
+                           <children>
+                              <Label alignment="CENTER" opacity="0.5" prefHeight="199.0" prefWidth="722.0" text="Nessun risultato trovato" textFill="#e7e7e7">
+                                 <font>
+                                    <Font name="Calibri Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
