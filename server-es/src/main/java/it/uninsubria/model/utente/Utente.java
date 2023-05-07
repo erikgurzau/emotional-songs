@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 public class Utente extends Persona implements Serializable {
 
-    private int id;
-
+    private Integer id;
     private String email;
     private String password;
 
@@ -13,18 +12,22 @@ public class Utente extends Persona implements Serializable {
         super();
     }
 
-    public Utente(String nome, String cognome, String cod_fiscale, String indirizzo, String cap, String comune, String provincia, int id, String email, String password) {
+    public Utente(
+            String nome, String cognome, String cod_fiscale,
+            String indirizzo, String cap, String comune,
+            String provincia, Integer id, String email, String password
+    ) {
         super(nome, cognome, cod_fiscale, indirizzo, cap, comune, provincia);
         this.id = id;
         this.email = email;
         this.password = password;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

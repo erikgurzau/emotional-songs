@@ -8,9 +8,11 @@ public class API {
     private String baseURI;
     private String endpoint;
     private String metodo;
-    private int timeout;
+    private Integer timeout;
 
-    public API(String codiceGruppo, String nome, String host, String baseURI, String endpoint, String metodo, int timeout) {
+    public API() { }
+
+    public API(String codiceGruppo, String nome, String host, String baseURI, String endpoint, String metodo, Integer timeout) {
         this.codiceGruppo = codiceGruppo;
         this.nome = nome;
         this.host = host;
@@ -68,11 +70,11 @@ public class API {
         this.metodo = metodo;
     }
 
-    public int getTimeout() {
+    public Integer getTimeout() {
         return timeout;
     }
 
-    public void setTimeout(int timeout) {
+    public void setTimeout(Integer timeout) {
         this.timeout = timeout;
     }
 }

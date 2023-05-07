@@ -9,21 +9,22 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
 
+import static it.uninsubria.config.RouteConfig.PATH_ROOT_API;
 
 public class Server implements ServerConfig {
-    private HttpServer httpServer;
 
+    private HttpServer httpServer;
     private ServerController serverController;
-    private int porta;
+    private Integer porta;
     private boolean running;
 
 
     public Server() {
-        this.porta = porta;
+        this.porta = PORTA;
         serverController = new ServerController();
-        httpServer = Server.createHttpServer(PORTA, PATH_ROOT_API, serverController);
+        httpServer = Server.createHttpServer(porta, PATH_ROOT_API, serverController);
     }
-    public Server(int porta) {
+    public Server(Integer porta) {
         this.porta = porta;
         serverController = new ServerController();
         httpServer = Server.createHttpServer(porta, PATH_ROOT_API, serverController);
@@ -41,17 +42,16 @@ public class Server implements ServerConfig {
         running = false;
     }
 
-
-    static HttpServer createHttpServer(int porta, String pathURI, HttpHandler httpHandler) {
-        HttpServer httpServer = null;
+    static HttpServer createHttpServer(Integer porta, String pathURI, HttpHandler httpHandler) {
         try {
-            httpServer = HttpServer.create(new InetSocketAddress(porta), 0);
+            HttpServer httpServer = HttpServer.create(new InetSocketAddress(porta), 0);
             httpServer.createContext(pathURI, httpHandler);
             httpServer.setExecutor(null);
+            return httpServer;
         } catch (IOException e) {
             LoggerService.errore(e.getMessage());
+            return null;
         }
-        return httpServer;
     }
 
     public static void main(String[] args) {

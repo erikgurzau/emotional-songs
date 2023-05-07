@@ -4,7 +4,7 @@ import it.uninsubria.model.api.API;
 
 public interface APIConfig {
 
-    API[] apis = {
+    API[] api_catalog = {
         new API("UTENTE","get-utente", ServerConfig.HOST, "/utente", "", "GET", ServerConfig.TIMEOUT),
     };
 

@@ -1,8 +1,10 @@
-package it.uninsubria.entity;
+package it.uninsubria.entity.utente;
 
-public class UtenteEntity {
+import java.io.Serializable;
 
-    private int id;
+public class UtenteRegistratoEntity implements Serializable {
+
+    private Integer id;
     private String cod_fiscale;
     private String nome;
     private String cognome;
@@ -13,13 +15,26 @@ public class UtenteEntity {
     private String comune;
     private String provincia;
 
-    UtenteEntity() { }
+    UtenteRegistratoEntity() { }
 
-    public int getId() {
+    public UtenteRegistratoEntity(Integer id, String cod_fiscale, String nome, String cognome, String email, String psw, String indirizzo, String cap, String comune, String provincia) {
+        this.id = id;
+        this.cod_fiscale = cod_fiscale;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.psw = psw;
+        this.indirizzo = indirizzo;
+        this.cap = cap;
+        this.comune = comune;
+        this.provincia = provincia;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -94,4 +109,5 @@ public class UtenteEntity {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
+
 }

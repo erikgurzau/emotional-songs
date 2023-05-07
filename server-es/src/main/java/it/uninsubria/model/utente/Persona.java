@@ -3,6 +3,7 @@ package it.uninsubria.model.utente;
 import java.io.Serializable;
 
 public class Persona implements Serializable {
+
     private String nome;
     private String cognome;
     private String cod_fiscale ;

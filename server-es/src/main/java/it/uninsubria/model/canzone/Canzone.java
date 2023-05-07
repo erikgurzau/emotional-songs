@@ -1,17 +1,18 @@
 package it.uninsubria.model.canzone;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 public class Canzone implements Serializable {
 
-    private int id;
+    private Integer id;
     private String titolo;
     private String autore;
     private String genere;
-    private long durata;
-    private int anno;
+    private BigInteger durata;
+    private Integer anno;
 
-    public Canzone(int id, String titolo, String autore, String genere, long durata, int anno) {
+    public Canzone(Integer id, String titolo, String autore, String genere, BigInteger durata, Integer anno) {
         this.id = id;
         this.titolo = titolo;
         this.autore = autore;
@@ -20,11 +21,11 @@ public class Canzone implements Serializable {
         this.anno = anno;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,19 +53,19 @@ public class Canzone implements Serializable {
         this.genere = genere;
     }
 
-    public long getDurata() {
+    public BigInteger getDurata() {
         return durata;
     }
 
-    public void setDurata(long durata) {
+    public void setDurata(BigInteger durata) {
         this.durata = durata;
     }
 
-    public int getAnno() {
+    public Integer getAnno() {
         return anno;
     }
 
-    public void setAnno(int anno) {
+    public void setAnno(Integer anno) {
         this.anno = anno;
     }
 }
