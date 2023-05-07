@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS "Emotional_Songs";
 CREATE DATABASE "Emotional_Songs";
+USE "Emotional_Songs";
 
 CREATE TABLE "Utenti_Registrati" (
     id SERIAL PRIMARY KEY,
@@ -52,5 +53,5 @@ CREATE TABLE "Emozioni" (
     intensita INT NOT NULL,
     nota VARCHAR(255) DEFAULT NULL,
     CHECK(intensita BETWEEN 1 AND 5),
-    UNIQUE(id_assegnazione, id_emozione)
+    UNIQUE(id_assegnazione, id_stato_emozionale)
 );
