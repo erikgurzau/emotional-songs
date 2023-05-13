@@ -8,6 +8,7 @@ import it.uninsubria.service.LoggerService;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
+import it.uninsubria.utils.Utils;
 
 import static it.uninsubria.config.RouteConfig.PATH_ROOT_API;
 
@@ -22,12 +23,12 @@ public class Server implements ServerConfig {
     public Server() {
         this.porta = PORTA;
         serverController = new ServerController();
-        httpServer = Server.createHttpServer(porta, PATH_ROOT_API, serverController);
+        httpServer = Utils.createHttpServer(porta, PATH_ROOT_API, serverController);
     }
     public Server(Integer porta) {
         this.porta = porta;
         serverController = new ServerController();
-        httpServer = Server.createHttpServer(porta, PATH_ROOT_API, serverController);
+        httpServer = Utils.createHttpServer(porta, PATH_ROOT_API, serverController);
 
     }
 
@@ -40,18 +41,6 @@ public class Server implements ServerConfig {
     public void stop() {
         httpServer.stop(0);
         running = false;
-    }
-
-    static HttpServer createHttpServer(Integer porta, String pathURI, HttpHandler httpHandler) {
-        try {
-            HttpServer httpServer = HttpServer.create(new InetSocketAddress(porta), 0);
-            httpServer.createContext(pathURI, httpHandler);
-            httpServer.setExecutor(null);
-            return httpServer;
-        } catch (IOException e) {
-            LoggerService.errore(e.getMessage());
-            return null;
-        }
     }
 
     public static void main(String[] args) {

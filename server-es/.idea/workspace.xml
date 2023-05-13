@@ -4,27 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../client-es/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/AssemblerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/RouteConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/CanzoneEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/RepositoryImpl.java" afterDir="false" />
+    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="tente">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/Repository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/ServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/AssemblerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/AssemblerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/utente/UtenteAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/utente/UtenteAssembler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/APIConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/APIConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/DatabaseConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/HttpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/HttpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/UtenteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/utente/UtenteRegistratoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/constant/LogLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/LogLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/utente/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/utente/UtenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/utente/UtenteRegistratoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/utente/UtenteRegistratoEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/api/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/api/API.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/RepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/RepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/APIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/APIService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/APIService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/LoggerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/LoggerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/utente/UtenteSerivice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/utente/UtenteService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +33,19 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OEELkxdabpg0DdUeRP1KefVXdq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -51,18 +55,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature/fase-2",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/gurza/Desktop/Università/Insubria/LAB-B/project/v2.0.0/emotional-songs/client-es",
-    "onboarding.tips.debug.path": "C:/Users/gurza/Desktop/Scuola/insubria/lab-interdisciplinare-b/app/v2.0.0/emotional-songs/es-server/src/main/java/it/uninsubria/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/fase-2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gurza/Desktop/Università/Insubria/LAB-B/project/v2.0.0/emotional-songs/client-es&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/gurza/Desktop/Scuola/insubria/lab-interdisciplinare-b/app/v2.0.0/emotional-songs/es-server/src/main/java/it/uninsubria/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\gurza\Desktop\Università\Insubria\LAB-B\project\v2.0.0\emotional-songs\server-es\src\main\java\it\uninsubria\model\utente" />
@@ -72,11 +76,12 @@
       <recent name="it.uninsubria.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.uninsubria.repository" />
       <recent name="it.uninsubria.constant" />
       <recent name="it.uninsubria.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ServerES">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.uninsubria.model.Client" />
       <module name="server-es" />
@@ -118,8 +123,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ServerES" />
-        <item itemvalue="Application.ClientES" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.HttpServer" />
       </list>
     </recent_temporary>
@@ -133,6 +137,14 @@
       <option name="presentableId" value="Default" />
       <updated>1681117288046</updated>
     </task>
+    <task id="LOCAL-00001" summary="feat: model e interfacce per utente">
+      <created>1683483369954</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683483369954</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,5 +162,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../../.." />
     </ignored-roots>
+    <MESSAGE value="feat: model e interfacce per utente" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: model e interfacce per utente" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 package it.uninsubria.service;
 
 import it.uninsubria.config.ServerConfig;
-import it.uninsubria.constant.LogLevel;
+import it.uninsubria.utils.LogLevel;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

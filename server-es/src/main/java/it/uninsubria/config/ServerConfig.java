@@ -1,6 +1,6 @@
 package it.uninsubria.config;
 
-import it.uninsubria.constant.LogLevel;
+import it.uninsubria.utils.LogLevel;
 
 public interface ServerConfig {
 

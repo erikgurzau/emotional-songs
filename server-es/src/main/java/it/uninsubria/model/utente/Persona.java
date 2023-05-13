@@ -6,7 +6,7 @@ public class Persona implements Serializable {
 
     private String nome;
     private String cognome;
-    private String cod_fiscale ;
+    private String codFiscale;
     private String indirizzo;
     private String cap;
     private String comune;
@@ -14,10 +14,10 @@ public class Persona implements Serializable {
 
     public Persona() { }
 
-    public Persona(String nome, String cognome, String cod_fiscale, String indirizzo, String cap, String comune, String provincia) {
+    public Persona(String nome, String cognome, String codFiscale, String indirizzo, String cap, String comune, String provincia) {
         this.nome = nome;
         this.cognome = cognome;
-        this.cod_fiscale = cod_fiscale;
+        this.codFiscale = codFiscale;
         this.indirizzo = indirizzo;
         this.cap = cap;
         this.comune = comune;
@@ -40,12 +40,12 @@ public class Persona implements Serializable {
         this.cognome = cognome;
     }
 
-    public String getCod_fiscale() {
-        return cod_fiscale;
+    public String getCodFiscale() {
+        return codFiscale;
     }
 
-    public void setCod_fiscale(String cod_fiscale) {
-        this.cod_fiscale = cod_fiscale;
+    public void setCodFiscale(String codFiscale) {
+        this.codFiscale = codFiscale;
     }
 
     public String getIndirizzo() {

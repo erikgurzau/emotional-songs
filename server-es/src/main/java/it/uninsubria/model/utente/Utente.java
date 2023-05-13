@@ -46,4 +46,10 @@ public class Utente extends Persona implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String toString() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%d,%s,%s",
+                getNome(), getCognome(), getCodFiscale(), getIndirizzo(),
+                getCap(), getComune(), getProvincia(), getId(), getEmail(), getPassword());
+    }
 }

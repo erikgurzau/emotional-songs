@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class UtenteRegistratoEntity implements Serializable {
 
     private Integer id;
-    private String cod_fiscale;
+    private String codFiscale;
     private String nome;
     private String cognome;
     private String email;
@@ -15,11 +15,11 @@ public class UtenteRegistratoEntity implements Serializable {
     private String comune;
     private String provincia;
 
-    UtenteRegistratoEntity() { }
+    public UtenteRegistratoEntity() { }
 
-    public UtenteRegistratoEntity(Integer id, String cod_fiscale, String nome, String cognome, String email, String psw, String indirizzo, String cap, String comune, String provincia) {
+    public UtenteRegistratoEntity(Integer id, String codFiscale, String nome, String cognome, String email, String psw, String indirizzo, String cap, String comune, String provincia) {
         this.id = id;
-        this.cod_fiscale = cod_fiscale;
+        this.codFiscale = codFiscale;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
@@ -38,12 +38,12 @@ public class UtenteRegistratoEntity implements Serializable {
         this.id = id;
     }
 
-    public String getCod_fiscale() {
-        return cod_fiscale;
+    public String getCodFiscale() {
+        return codFiscale;
     }
 
-    public void setCod_fiscale(String cod_fiscale) {
-        this.cod_fiscale = cod_fiscale;
+    public void setCodFiscale(String codFiscale) {
+        this.codFiscale = codFiscale;
     }
 
     public String getNome() {

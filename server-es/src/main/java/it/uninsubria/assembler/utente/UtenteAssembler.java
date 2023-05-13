@@ -3,10 +3,9 @@ package it.uninsubria.assembler.utente;
 import it.uninsubria.assembler.AssemblerImpl;
 import it.uninsubria.entity.utente.UtenteRegistratoEntity;
 import it.uninsubria.model.utente.Utente;
-import it.uninsubria.service.LoggerService;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UtenteAssembler implements AssemblerImpl<Utente, UtenteRegistratoEntity> {
 
@@ -14,61 +13,44 @@ public class UtenteAssembler implements AssemblerImpl<Utente, UtenteRegistratoEn
 
     @Override
     public Utente toModel(UtenteRegistratoEntity utenteRegistratoEntity) {
-        return null;
+        return new Utente(
+                utenteRegistratoEntity.getNome(),
+                utenteRegistratoEntity.getCognome(),
+                utenteRegistratoEntity.getCodFiscale(),
+                utenteRegistratoEntity.getIndirizzo(),
+                utenteRegistratoEntity.getCap(),
+                utenteRegistratoEntity.getProvincia(),
+                utenteRegistratoEntity.getComune(),
+                utenteRegistratoEntity.getId(),
+                utenteRegistratoEntity.getEmail(),
+                utenteRegistratoEntity.getPsw()
+        );
     }
 
     @Override
-    public Utente toModel(ResultSet resultSet) {
-        try {
-            Utente utente = new Utente();
-            utente.setId(resultSet.getInt("id"));
-            utente.setEmail(resultSet.getString("email"));
-            utente.setEmail(resultSet.getString("password"));
-            utente.setEmail(resultSet.getString("cod_fiscale"));
-            utente.setNome(resultSet.getString("nome"));
-            utente.setNome(resultSet.getString("cognome"));
-            utente.setNome(resultSet.getString("indirizzo"));
-            utente.setNome(resultSet.getString("cap"));
-            utente.setNome(resultSet.getString("comune"));
-            utente.setNome(resultSet.getString("provincia"));
-            utente.setNome(resultSet.getString("comune"));
-            return utente;
-        }
-        catch (SQLException e) {
-            LoggerService.errore(e.getMessage());
-            return null;
-        }
+    public List<Utente> toModel(List<UtenteRegistratoEntity> utenteRegistratoEntity) {
+        return utenteRegistratoEntity.stream().map(this::toModel).collect(Collectors.toList());
     }
 
     @Override
-    public UtenteRegistratoEntity toEntity(Utente entity) {
-        return null;
+    public UtenteRegistratoEntity toEntity(Utente model) {
+        return new UtenteRegistratoEntity(
+                model.getId(),
+                model.getCodFiscale(),
+                model.getNome(),
+                model.getCognome(),
+                model.getEmail(),
+                model.getPassword(),
+                model.getIndirizzo(),
+                model.getCap(),
+                model.getComune(),
+                model.getProvincia()
+        );
     }
 
     @Override
-    public UtenteRegistratoEntity toEntity(ResultSet resultSet) {
-        return null;
+    public List<UtenteRegistratoEntity> toEntity(List<Utente> modelList) {
+        return modelList.stream().map(this::toEntity).collect(Collectors.toList());
     }
-
-//    @Override
-//    public Object toModel(Object o) {
-//        Utente utente = new Utente();
-//        utente.setId(resultSet.getInt("id"));
-//        utente.setEmail(resultSet.getString("email"));
-//        utente.setEmail(resultSet.getString("password"));
-//        utente.setEmail(resultSet.getString("cod_fiscale"));
-//        utente.setNome(resultSet.getString("nome"));
-//        utente.setNome(resultSet.getString("cognome"));
-//        utente.setNome(resultSet.getString("indirizzo"));
-//        utente.setNome(resultSet.getString("cap"));
-//        utente.setNome(resultSet.getString("comune"));
-//        utente.setNome(resultSet.getString("provincia"));
-//        utente.setNome(resultSet.getString("comune"));
-//        return utente;
-//    }
-//
-//    @Override
-//    public Object toEntity(Object entity) {
-//        return null;
-//    }
+    
 }
