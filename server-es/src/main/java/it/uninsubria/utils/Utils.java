@@ -21,6 +21,24 @@ public class Utils {
         }
     }
 
+    public static String convertToCamelCase(String input) {
+        StringBuilder sb = new StringBuilder();
+        String[] words = input.split("_");
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (i == 0) {
+                sb.append(word.substring(0, 1).toUpperCase());
+                sb.append(word.substring(1).toLowerCase());
+            } else {
+                sb.append(word.substring(0, 1).toUpperCase());
+                sb.append(word.substring(1).toLowerCase());
+            }
+        }
+        return sb.toString();
+    }
+
+
+
 
 
 

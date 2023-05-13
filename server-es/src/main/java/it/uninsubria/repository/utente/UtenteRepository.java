@@ -16,7 +16,6 @@ import java.util.Optional;
 
 public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
 
-    private UtenteAssembler utenteAssembler;
     private static final String SELECT_USER_BY_ID = "SELECT * FROM Utenti_Registrati WHERE id = ?";
     private static final String SELECT_ALL = "SELECT * FROM Utenti_Registrati";
     private static final String INSERT_USER =
@@ -24,7 +23,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public UtenteRepository() {
-        utenteAssembler = new UtenteAssembler();
+
     }
 
     @Override

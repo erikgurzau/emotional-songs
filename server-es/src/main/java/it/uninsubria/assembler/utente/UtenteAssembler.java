@@ -12,45 +12,25 @@ public class UtenteAssembler implements AssemblerImpl<Utente, UtenteRegistratoEn
     public UtenteAssembler() { }
 
     @Override
-    public Utente toModel(UtenteRegistratoEntity utenteRegistratoEntity) {
+    public Utente toModel(UtenteRegistratoEntity entity) {
         return new Utente(
-                utenteRegistratoEntity.getNome(),
-                utenteRegistratoEntity.getCognome(),
-                utenteRegistratoEntity.getCodFiscale(),
-                utenteRegistratoEntity.getIndirizzo(),
-                utenteRegistratoEntity.getCap(),
-                utenteRegistratoEntity.getProvincia(),
-                utenteRegistratoEntity.getComune(),
-                utenteRegistratoEntity.getId(),
-                utenteRegistratoEntity.getEmail(),
-                utenteRegistratoEntity.getPsw()
+                entity.getNome(),
+                entity.getCognome(),
+                entity.getCodFiscale(),
+                entity.getIndirizzo(),
+                entity.getCap(),
+                entity.getProvincia(),
+                entity.getComune(),
+                entity.getId(),
+                entity.getEmail(),
+                entity.getPsw()
         );
     }
 
     @Override
-    public List<Utente> toModel(List<UtenteRegistratoEntity> utenteRegistratoEntity) {
-        return utenteRegistratoEntity.stream().map(this::toModel).collect(Collectors.toList());
+    public List<Utente> toModel(List<UtenteRegistratoEntity> entityList) {
+        return entityList.stream().map(this::toModel).collect(Collectors.toList());
     }
 
-    @Override
-    public UtenteRegistratoEntity toEntity(Utente model) {
-        return new UtenteRegistratoEntity(
-                model.getId(),
-                model.getCodFiscale(),
-                model.getNome(),
-                model.getCognome(),
-                model.getEmail(),
-                model.getPassword(),
-                model.getIndirizzo(),
-                model.getCap(),
-                model.getComune(),
-                model.getProvincia()
-        );
-    }
-
-    @Override
-    public List<UtenteRegistratoEntity> toEntity(List<Utente> modelList) {
-        return modelList.stream().map(this::toEntity).collect(Collectors.toList());
-    }
     
 }

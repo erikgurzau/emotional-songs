@@ -1,24 +1,24 @@
 package it.uninsubria.entity.canzone;
 
-import java.math.BigInteger;
-
 public class CanzoneEntity {
 
     private Integer id;
     private String autore;
     private String titolo;
-    private String anno;
-    private String id_genere;
-    private BigInteger durata_ms;
+    private Integer anno;
+    private Integer genere_musicale_id;
+    private String genere_musicale_nome;
+    private Long durata_ms;
 
     public CanzoneEntity() { }
 
-    public CanzoneEntity(Integer id, String autore, String titolo, String anno, String id_genere, BigInteger durata_ms) {
+    public CanzoneEntity(Integer id, String autore, String titolo, Integer anno, Integer genere_musicale_id, String genere_musicale_nome, Long durata_ms) {
         this.id = id;
         this.autore = autore;
         this.titolo = titolo;
         this.anno = anno;
-        this.id_genere = id_genere;
+        this.genere_musicale_id = genere_musicale_id;
+        this.genere_musicale_nome = genere_musicale_nome;
         this.durata_ms = durata_ms;
     }
 
@@ -46,27 +46,35 @@ public class CanzoneEntity {
         this.titolo = titolo;
     }
 
-    public String getAnno() {
+    public Integer getAnno() {
         return anno;
     }
 
-    public void setAnno(String anno) {
+    public void setAnno(Integer anno) {
         this.anno = anno;
     }
 
-    public String getId_genere() {
-        return id_genere;
+    public Integer getGenereMusicaleId() {
+        return genere_musicale_id;
     }
 
-    public void setId_genere(String id_genere) {
-        this.id_genere = id_genere;
+    public void setGenereMusicaleId(Integer genere_musicale_id) {
+        this.genere_musicale_id = genere_musicale_id;
     }
 
-    public BigInteger getDurata_ms() {
+    public String getGenereMusicaleNome() {
+        return genere_musicale_nome;
+    }
+
+    public void setGenereMusicaleNome(String genere_musicale_nome) {
+        this.genere_musicale_nome = genere_musicale_nome;
+    }
+
+    public Long getDurataMs() {
         return durata_ms;
     }
 
-    public void setDurata_ms(BigInteger durata_ms) {
+    public void setDurataMs(Long durata_ms) {
         this.durata_ms = durata_ms;
     }
 }

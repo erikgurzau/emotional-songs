@@ -6,19 +6,21 @@ import java.math.BigInteger;
 public class Canzone implements Serializable {
 
     private Integer id;
-    private String titolo;
     private String autore;
-    private String genere;
-    private BigInteger durata;
+    private String titolo;
     private Integer anno;
+    private String genere;
+    private Long durata_ms;
 
-    public Canzone(Integer id, String titolo, String autore, String genere, BigInteger durata, Integer anno) {
+    public Canzone() { }
+
+    public Canzone(Integer id, String autore, String titolo, Integer anno, String genere, Long durata_ms) {
         this.id = id;
-        this.titolo = titolo;
         this.autore = autore;
-        this.genere = genere;
-        this.durata = durata;
+        this.titolo = titolo;
         this.anno = anno;
+        this.genere = genere;
+        this.durata_ms = durata_ms;
     }
 
     public Integer getId() {
@@ -29,6 +31,14 @@ public class Canzone implements Serializable {
         this.id = id;
     }
 
+    public String getAutore() {
+        return autore;
+    }
+
+    public void setAutore(String autore) {
+        this.autore = autore;
+    }
+
     public String getTitolo() {
         return titolo;
     }
@@ -37,12 +47,12 @@ public class Canzone implements Serializable {
         this.titolo = titolo;
     }
 
-    public String getAutore() {
-        return autore;
+    public Integer getAnno() {
+        return anno;
     }
 
-    public void setAutore(String autore) {
-        this.autore = autore;
+    public void setAnno(Integer anno) {
+        this.anno = anno;
     }
 
     public String getGenere() {
@@ -53,19 +63,17 @@ public class Canzone implements Serializable {
         this.genere = genere;
     }
 
-    public BigInteger getDurata() {
-        return durata;
+    public Long getDurata() {
+        return durata_ms;
     }
 
-    public void setDurata(BigInteger durata) {
-        this.durata = durata;
+    public void setDurata(Long durata_ms) {
+        this.durata_ms = durata_ms;
     }
 
-    public Integer getAnno() {
-        return anno;
-    }
-
-    public void setAnno(Integer anno) {
-        this.anno = anno;
+    public String toString() {
+        return String.format("%s,%s,%s,%s,%s,%s",
+                getId(), getAutore(), getTitolo(),
+                getAnno(), getGenere(), getDurata());
     }
 }

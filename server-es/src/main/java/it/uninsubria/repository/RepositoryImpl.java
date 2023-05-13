@@ -3,9 +3,9 @@ package it.uninsubria.repository;
 import java.util.List;
 import java.util.Optional;
 
-public interface RepositoryImpl<Entity>{
-    List<Entity> findAll();
-    Optional<Entity> findById(Integer id);
-    Entity save(Entity entity);
+public interface RepositoryImpl<T>{
+    List<T> findAll();
+    Optional<T> findById(Integer id);
+    T save(T entity);
 
 }
