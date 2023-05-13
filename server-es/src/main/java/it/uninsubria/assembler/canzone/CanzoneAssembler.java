@@ -4,6 +4,9 @@ import it.uninsubria.assembler.AssemblerImpl;
 import it.uninsubria.entity.canzone.CanzoneEntity;
 import it.uninsubria.model.canzone.Canzone;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,11 +21,10 @@ public class CanzoneAssembler implements AssemblerImpl<Canzone, CanzoneEntity> {
                 entity.getAutore(),
                 entity.getTitolo(),
                 entity.getAnno(),
-                entity.getGenereMusicaleNome(),
+                entity.getNomeGenereMusicale(),
                 entity.getDurataMs()
         );
     }
-
     @Override
     public List<Canzone> toModel(List<CanzoneEntity> entityList) {
         return entityList.stream().map(this::toModel).collect(Collectors.toList());

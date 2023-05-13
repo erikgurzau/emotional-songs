@@ -1,7 +1,6 @@
 package it.uninsubria.repository.utente;
 
 
-import it.uninsubria.assembler.utente.UtenteAssembler;
 import it.uninsubria.config.DatabaseConfig;
 import it.uninsubria.entity.utente.UtenteRegistratoEntity;
 import it.uninsubria.repository.Repository;
@@ -16,15 +15,7 @@ import java.util.Optional;
 
 public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
 
-    private static final String SELECT_USER_BY_ID = "SELECT * FROM Utenti_Registrati WHERE id = ?";
-    private static final String SELECT_ALL = "SELECT * FROM Utenti_Registrati";
-    private static final String INSERT_USER =
-            "INSERT INTO Utenti_Registrati (cod_fiscale, email, password, nome, cognome, indirizzo, cap, comune, provincia) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    public UtenteRepository() {
-
-    }
+    public UtenteRepository() { }
 
     @Override
     public List<UtenteRegistratoEntity> findAll() {
@@ -32,9 +23,11 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
+        String QUERY_SELECT_ALL = "SELECT * FROM Utenti_Registrati";
+
         try {
             connection = DatabaseConfig.getConnection();
-            statement = connection.prepareStatement(SELECT_ALL);
+            statement = connection.prepareStatement(QUERY_SELECT_ALL);
             resultSet = statement.executeQuery();
             connection.close();
             return resultSetToList(resultSet, UtenteRegistratoEntity.class);
@@ -51,9 +44,11 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
+        String QUERY_SELECT_USER_BY_ID = "SELECT * FROM Utenti_Registrati WHERE id = ?";
+
         try {
             connection = DatabaseConfig.getConnection();
-            statement = connection.prepareStatement(SELECT_USER_BY_ID);
+            statement = connection.prepareStatement(QUERY_SELECT_USER_BY_ID);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             connection.close();
@@ -65,21 +60,24 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         }
     }
 
-    @Override
-    public UtenteRegistratoEntity save(UtenteRegistratoEntity utenteRegistratoEntity) {
+    public boolean insertUtente(UtenteRegistratoEntity utenteRegistratoEntity) {
         Connection connection;
         PreparedStatement statement;
+        String QUERY_INSERT_USER =
+                "INSERT INTO Utenti_Registrati (cod_fiscale, email, password, nome, cognome, indirizzo, cap, comune, provincia) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         try {
             connection = DatabaseConfig.getConnection();
-            statement = connection.prepareStatement(INSERT_USER);
+            statement = connection.prepareStatement(QUERY_INSERT_USER);
             statement.setString(1, utenteRegistratoEntity.getNome());
             statement.setString(2, utenteRegistratoEntity.getEmail());
             statement.executeUpdate();
-            return utenteRegistratoEntity;
+            return true;
         }
         catch (SQLException e) {
             LoggerService.errore(e.getMessage());
-            return null;
+            return false;
         }
     }
 }

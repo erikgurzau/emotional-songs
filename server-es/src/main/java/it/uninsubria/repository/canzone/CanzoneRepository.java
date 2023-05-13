@@ -1,11 +1,8 @@
 package it.uninsubria.repository.canzone;
 
 
-import it.uninsubria.assembler.canzone.CanzoneAssembler;
-import it.uninsubria.assembler.utente.UtenteAssembler;
 import it.uninsubria.config.DatabaseConfig;
 import it.uninsubria.entity.canzone.CanzoneEntity;
-import it.uninsubria.entity.utente.UtenteRegistratoEntity;
 import it.uninsubria.repository.Repository;
 import it.uninsubria.service.LoggerService;
 
@@ -18,15 +15,7 @@ import java.util.Optional;
 
 public class CanzoneRepository extends Repository<CanzoneEntity> {
 
-    private static final String SELECT_SONG_BY_ID = "SELECT * FROM Canzoni WHERE id = ?";
-    private static final String SELECT_ALL = "SELECT c.id, c.autore, c.titolo, c.anno, gm.id as genere_musicale_id, gm.nome as genere_musicale_nome, c.durata_ms" +
-            "   FROM Canzoni c " +
-            "   INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
-            "   LIMIT 50";
-
-    public CanzoneRepository() {
-
-    }
+    public CanzoneRepository() { }
 
     @Override
     public List<CanzoneEntity> findAll() {
@@ -34,9 +23,14 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
+        String QUERY_SELECT_ALL = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
+                "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
+                "   FROM Canzoni c " +
+                "       INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
+                "   LIMIT 50";
         try {
             connection = DatabaseConfig.getConnection();
-            statement = connection.prepareStatement(SELECT_ALL);
+            statement = connection.prepareStatement(QUERY_SELECT_ALL);
             resultSet = statement.executeQuery();
             connection.close();
             return resultSetToList(resultSet, CanzoneEntity.class);
@@ -53,9 +47,11 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
+        String QUERY_SELECT_SONG_BY_ID = "SELECT * FROM Canzoni WHERE id = ?";
+
         try {
             connection = DatabaseConfig.getConnection();
-            statement = connection.prepareStatement(SELECT_SONG_BY_ID);
+            statement = connection.prepareStatement(QUERY_SELECT_SONG_BY_ID);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             connection.close();
@@ -67,8 +63,4 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         }
     }
 
-    @Override
-    public CanzoneEntity save(CanzoneEntity canzoneEntity) {
-       return null;
-    }
 }

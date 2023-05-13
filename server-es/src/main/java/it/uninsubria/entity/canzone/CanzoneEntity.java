@@ -6,19 +6,19 @@ public class CanzoneEntity {
     private String autore;
     private String titolo;
     private Integer anno;
-    private Integer genere_musicale_id;
-    private String genere_musicale_nome;
+    private GenereMusicaleEntity genereMusicaleEntity;
     private Long durata_ms;
 
-    public CanzoneEntity() { }
+    public CanzoneEntity() {
+        genereMusicaleEntity = new GenereMusicaleEntity();
+    }
 
-    public CanzoneEntity(Integer id, String autore, String titolo, Integer anno, Integer genere_musicale_id, String genere_musicale_nome, Long durata_ms) {
+    public CanzoneEntity(Integer id, String autore, String titolo, Integer anno, GenereMusicaleEntity genereMusicaleEntity, Long durata_ms) {
         this.id = id;
         this.autore = autore;
         this.titolo = titolo;
         this.anno = anno;
-        this.genere_musicale_id = genere_musicale_id;
-        this.genere_musicale_nome = genere_musicale_nome;
+        this.genereMusicaleEntity = genereMusicaleEntity;
         this.durata_ms = durata_ms;
     }
 
@@ -54,20 +54,28 @@ public class CanzoneEntity {
         this.anno = anno;
     }
 
-    public Integer getGenereMusicaleId() {
-        return genere_musicale_id;
+    public GenereMusicaleEntity getGenereMusicaleEntity() {
+        return genereMusicaleEntity;
     }
 
-    public void setGenereMusicaleId(Integer genere_musicale_id) {
-        this.genere_musicale_id = genere_musicale_id;
+    public void setGenereMusicaleEntity(GenereMusicaleEntity genereMusicaleEntity) {
+        this.genereMusicaleEntity = genereMusicaleEntity;
     }
 
-    public String getGenereMusicaleNome() {
-        return genere_musicale_nome;
+    public Integer getIdGenereMusicale() {
+        return genereMusicaleEntity.getId();
     }
 
-    public void setGenereMusicaleNome(String genere_musicale_nome) {
-        this.genere_musicale_nome = genere_musicale_nome;
+    public void setIdGenereMusicale(Integer id) {
+        genereMusicaleEntity.setId(id);
+    }
+
+    public String getNomeGenereMusicale() {
+        return genereMusicaleEntity.getNome();
+    }
+
+    public void setNomeGenereMusicale(String nome) {
+        genereMusicaleEntity.setNome(nome);
     }
 
     public Long getDurataMs() {
@@ -76,5 +84,13 @@ public class CanzoneEntity {
 
     public void setDurataMs(Long durata_ms) {
         this.durata_ms = durata_ms;
+    }
+
+    public String toString() {
+        return String.join(",",
+                getId().toString(), getAutore(), getTitolo(),
+                getGenereMusicaleEntity().toString(), getAnno().toString(),
+                getDurataMs().toString()
+        );
     }
 }

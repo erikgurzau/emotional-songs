@@ -48,9 +48,9 @@ public class Utente extends Persona implements Serializable {
     }
 
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
-                getId(), getEmail(), getPassword(),
-                getNome(), getCognome(), getCodFiscale(),
-                getIndirizzo(), getCap(), getComune(), getProvincia());
+        return String.join(",",
+                getId().toString(), getEmail(), getPassword(),
+                super.toString()
+        );
     }
 }

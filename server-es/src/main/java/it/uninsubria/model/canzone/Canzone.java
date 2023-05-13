@@ -1,7 +1,6 @@
 package it.uninsubria.model.canzone;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 public class Canzone implements Serializable {
 
@@ -72,8 +71,9 @@ public class Canzone implements Serializable {
     }
 
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s",
-                getId(), getAutore(), getTitolo(),
-                getAnno(), getGenere(), getDurata());
+        return String.join(",",
+                getId().toString(), getAutore(), getTitolo(),
+                getAnno().toString(), getGenere(), getDurata().toString()
+        );
     }
 }

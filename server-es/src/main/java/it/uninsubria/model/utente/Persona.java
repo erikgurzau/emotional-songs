@@ -79,4 +79,12 @@ public class Persona implements Serializable {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
+
+    public String toString() {
+        return String.join(",",
+                getNome(), getCognome(), getCodFiscale(),
+                getIndirizzo(), getCap(), getComune(), getProvincia()
+        );
+    }
+
 }

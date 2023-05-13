@@ -4,25 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="feat workflow utente">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/canzone/CanzoneAssembler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/canzone/CanzoneController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/GenereMusicaleEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/canzone/CanzoneRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/canzone/utente/CanzoneService.java" afterDir="false" />
+    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="primo impianto flusso api canzone">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/AssemblerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/AssemblerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/utente/UtenteAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/utente/UtenteAssembler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/canzone/CanzoneAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/canzone/CanzoneAssembler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/CanzoneEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/CanzoneEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/utente/UtenteRegistratoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/utente/UtenteRegistratoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/GenereMusicaleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/GenereMusicaleEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/RepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/RepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/canzone/CanzoneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/canzone/CanzoneRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683985723588</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="primo impianto flusso api canzone">
+      <created>1683993582005</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683993582005</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,6 +173,7 @@
     </ignored-roots>
     <MESSAGE value="feat: model e interfacce per utente" />
     <MESSAGE value="feat workflow utente" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat workflow utente" />
+    <MESSAGE value="primo impianto flusso api canzone" />
+    <option name="LAST_COMMIT_MESSAGE" value="primo impianto flusso api canzone" />
   </component>
 </project>
