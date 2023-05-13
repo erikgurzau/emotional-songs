@@ -23,37 +23,52 @@ CREATE TABLE Stati_Emozionali (
 
 CREATE TABLE Playlists (
     id SERIAL PRIMARY KEY,
-    id_utente INT REFERENCES Utenti_Registrati ON UPDATE CASCADE ON DELETE CASCADE,
+    id_utente INT 
+        REFERENCES Utenti_Registrati(id) 
+            ON UPDATE CASCADE 
+            ON DELETE CASCADE,
     nome VARCHAR(50),
     UNIQUE(id_utente, nome)
 );
 
 CREATE TABLE Generi_Musicali (
-	id INT PRIMARY KEY,
-	nome VARCHAR(20) UNIQUE
+    id INT PRIMARY KEY,
+    nome VARCHAR(20) UNIQUE
 );
 
 CREATE TABLE Canzoni (
     id SERIAL PRIMARY KEY,
-    autore VARCHAR(500),
-    titolo VARCHAR(500),
+    autore VARCHAR(150),
+    titolo VARCHAR(150),
     anno INT NOT NULL,
-    id_genere INT NOT NULL REFERENCES Generi_Musicali ON UPDATE CASCADE,
+    id_genere INT NOT NULL 
+        REFERENCES Generi_Musicali(id) 
+            ON UPDATE CASCADE,
     durata_ms BIGINT NOT NULL,
     UNIQUE(autore, titolo)
 );
 
 CREATE TABLE Assegnazioni_Canzoni (
     id SERIAL PRIMARY KEY,
-    id_playlist INT NOT NULL REFERENCES Playlists ON UPDATE CASCADE ON DELETE CASCADE,
-    id_canzone INT NOT NULL REFERENCES Canzoni ON UPDATE CASCADE ON DELETE CASCADE,
+    id_playlist INT NOT NULL 
+        REFERENCES Playlists(id) 
+            ON UPDATE CASCADE 
+            ON DELETE CASCADE,
+    id_canzone INT NOT NULL 
+        REFERENCES Canzoni(id) 
+            ON UPDATE CASCADE 
+            ON DELETE CASCADE,
     UNIQUE(id_playlist, id_canzone)
 );
 
 CREATE TABLE Emozioni (
     id SERIAL PRIMARY KEY,
-    id_assegnazione INT NOT NULL REFERENCES Assegnazioni_Canzoni ON UPDATE CASCADE,
-    id_stato_emozionale INT NOT NULL REFERENCES Stati_Emozionali ON UPDATE CASCADE,
+    id_assegnazione INT NOT NULL 
+        REFERENCES Assegnazioni_Canzoni(id) 
+            ON UPDATE CASCADE,
+    id_stato_emozionale INT NOT NULL
+        REFERENCES Stati_Emozionali(id) 
+            ON UPDATE CASCADE,
     intensita INT NOT NULL,
     nota VARCHAR(255) DEFAULT NULL,
     CHECK(intensita BETWEEN 1 AND 5),
