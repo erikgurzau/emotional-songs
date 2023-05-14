@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>it.uninsubria</groupId>
+  <groupId>it.uninsubria.emotionalsongs</groupId>
   <artifactId>client-es</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>client-es</name>
@@ -58,7 +58,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>it.uninsubria.esclient/it.uninsubria.esclient.EmotionalSongsApp</mainClass>
+              <mainClass>it.uninsubria.esclient/it.uninsubria.emotionalsongs.EmotionalSongsApp</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

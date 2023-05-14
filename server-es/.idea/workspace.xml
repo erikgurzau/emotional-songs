@@ -4,16 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="primo impianto flusso api canzone">
+    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="fix flusso api">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/esclient/EmotionalSongsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/emotionalsongs/EmotionalSongsApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/esclient/controllers/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/emotionalsongs/controllers/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/esclient/interfaces/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/emotionalsongs/interfaces/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/esclient/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/emotionalsongs/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/esclient/views/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/emotionalsongs/views/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/esclient/views/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/emotionalsongs/views/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/canzone/CanzoneAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/canzone/CanzoneAssembler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/CanzoneEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/CanzoneEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/GenereMusicaleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/GenereMusicaleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/canzone/CanzoneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/canzone/CanzoneRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/AssemblerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/assembler/AssemblerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/canzone/CanzoneAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/assembler/canzone/CanzoneAssembler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/utente/UtenteAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/assembler/utente/UtenteAssembler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/APIConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/DatabaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/RouteConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/RouteConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/ServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/HttpController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/canzone/CanzoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/canzone/CanzoneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/utente/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/utente/UtenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/CanzoneEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/entity/canzone/CanzoneEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/GenereMusicaleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/entity/canzone/GenereMusicaleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/utente/UtenteRegistratoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/entity/utente/UtenteRegistratoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/api/API.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/canzone/Canzone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/utente/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/utente/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/RepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/RepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/canzone/CanzoneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/canzone/CanzoneRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/utente/UtenteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/LoggerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/LoggerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/ServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/canzone/utente/CanzoneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/canzone/CanzoneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/utente/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/utente/UtenteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/LogLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/LogLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,18 +79,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature/fase-2",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/gurza/Desktop/Università/Insubria/LAB-B/project/v2.0.0/emotional-songs/server-es/src/main/java/it/uninsubria/service/canzone",
-    "onboarding.tips.debug.path": "C:/Users/gurza/Desktop/Scuola/insubria/lab-interdisciplinare-b/app/v2.0.0/emotional-songs/es-server/src/main/java/it/uninsubria/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/fase-2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gurza/Desktop/Università/Insubria/LAB-B/project/v2.0.0/emotional-songs/server-es/src/main/java/it/uninsubria/service/canzone&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/gurza/Desktop/Scuola/insubria/lab-interdisciplinare-b/app/v2.0.0/emotional-songs/es-server/src/main/java/it/uninsubria/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\gurza\Desktop\Università\Insubria\LAB-B\project\v2.0.0\emotional-songs\server-es\src\main\java\it\uninsubria\service\canzone" />
@@ -69,46 +102,20 @@
       <recent name="it.uninsubria.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.uninsubria.emotionalsongs.controller" />
+      <recent name="it.uninsubria.emotionalsongs.model.utente" />
       <recent name="it.uninsubria.assembler.canzone" />
       <recent name="it.uninsubria.repository.canzone" />
       <recent name="it.uninsubria.entity.canzone" />
-      <recent name="it.uninsubria.repository" />
-      <recent name="it.uninsubria.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.uninsubria.model.Client" />
-      <module name="server-es" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.uninsubria.model.api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HttpServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.uninsubria.model.HttpServer" />
-      <module name="server-es" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.uninsubria.model.canzone.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.uninsubria.model.Server" />
+      <option name="MAIN_CLASS_NAME" value="it.uninsubria.emotionalsongs.model.Server" />
       <module name="server-es" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.uninsubria.model.api.*" />
+          <option name="PATTERN" value="it.uninsubria.emotionalsongs.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,7 +126,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.HttpServer" />
       </list>
     </recent_temporary>
   </component>
@@ -153,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683993582005</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix flusso api">
+      <created>1683996870964</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683996870964</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +187,7 @@
     <MESSAGE value="feat: model e interfacce per utente" />
     <MESSAGE value="feat workflow utente" />
     <MESSAGE value="primo impianto flusso api canzone" />
-    <option name="LAST_COMMIT_MESSAGE" value="primo impianto flusso api canzone" />
+    <MESSAGE value="fix flusso api" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix flusso api" />
   </component>
 </project>
