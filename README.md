@@ -1,93 +1,83 @@
-# Emotional Songs
+# Emotional Songs [![HitCount](https://hits.dwyl.com/erikgurzau/emotional-songs.svg?style=flat-square)](http://hits.dwyl.com/erikgurzau/emotional-songs)
 
-"Emotional Songs" è un progetto universitario che si propone di analizzare le emozioni percepite dagli utenti ascoltando determinate canzoni. 
-É un'applicazione sviluppata in Java.
+`Emotional Songs` is a university project that aims to analyze the emotions perceived by users while listening to certain songs. 
+It is an application developed in Java.
 
-La versione `v1.0.0` utilizza un'interfaccia utente basata sulla CLI (Command-Line Interface), ovvero gli utenti possono interagire con l'applicazione tramite comandi testuali inseriti direttamente da tastiera.
-Per l'archiviazione dei dati, viene utilizzata una struttura organizzata basata su file di testo, simili per formato ai file .csv. In questo modo, i dati possono essere facilmente gestiti e manipolati senza la necessità di un database complesso.
+Version `v1.0.0` uses a CLI (Command-Line Interface) based user interface, meaning users can interact with the application through text commands entered directly from the keyboard.
+For data storage, an organized structure based on text files, similar in format to .csv files, is used. In this way, data can be easily managed and manipulated without the need for a complex database.
 
-In "Emotional Songs" è possibile creare playlist personalizzate con qualsiasi brano e gli utenti hanno la possibilità di registrare le proprie reazioni emotive associate a ciascuna canzone della playlist. Per valutare l'emozione suscitata da una canzone, gli utenti possono selezionare l'emozione desiderata e assegnare un valore di intensità da 1 a 5. Questa funzionalità permette agli utenti di tenere traccia delle emozioni evocate dalle canzoni e di personalizzare le proprie playlist in base alle preferenze personali.
+In "Emotional Songs," customized playlists can be created with any song, and users have the ability to record their emotional reactions associated with each song in the playlist. To rate the emotion aroused by a song, users can select the desired emotion and assign an intensity value from 1 to 5. This feature allows users to keep track of the emotions evoked by songs and customize their playlists according to personal preferences.
 
-Infine, l'applicazione offre la possibilità di generare report e prospetti riassuntivi sulle emozioni provate durante l'ascolto delle playlist, visualizzando l'intensità assegnata alle diverse canzoni. Grazie a questo strumento, gli utenti possono analizzare la loro reazione emotiva ai brani, rilevando eventuali correlazioni tra le emozioni e le preferenze musicali.
+Finally, the application offers the ability to generate reports and summary statements on the emotions felt while listening to the playlists, displaying the intensity assigned to different songs. Using this tool, users can analyze their emotional reaction to the songs, detecting any correlations between emotions and musical preferences.
 
-La scala di emozioni per poter valutare emotivamente un brano musicale è la seguente: la meraviglia, la solennità, la tenerezza, la nostalgia, la calma, la potenza, la gioia, la tensione e la tristezza. Grazie a questa gamma di emozioni, gli utenti possono creare playlist personalizzate in grado di evocare le sensazioni desiderate, rendendo l'ascolto della musica un'esperienza ancora più coinvolgente ed emozionante.
+The emotion scale for being able to emotionally evaluate a piece of music is as follows: wonder, solemnity, tenderness, nostalgia, calm, power, joy, tension, and sadness. With this range of emotions, users can create customized playlists that evoke the desired feelings, making listening to music an even more engaging and exciting experience.
 
-L'intero progetto di Emotional Songs è ispirato dal [GEMS](https://musemap.org/resources/gems) (Geneva Emotional Music Scale), un progetto di ricerca che mira a creare una scala standardizzata per misurare le emozioni suscitate dalla musica.
-
-
-## Requisiti
-
-Per far funzionare l'applicazione sono necessari i seguenti requisiti:
-
-- Java JDK 1.8 o successivo
+The entire Emotional Songs project is inspired by the [GEMS](https://musemap.org/resources/gems) (Geneva Emotional Music Scale), a research project that aims to create a standardized scale to measure emotions elicited by music.
 
 
-## Installazione ed Esecuzione
+## Requirements
 
-### Generazione del file .jar
+The following requirements are needed to run the application:
+- Java JDK 1.8 or later
 
-- Per generare il file .jar dell'applicazione "Emotional Songs", seguire i seguenti passaggi:
 
-1. Clonare il repository:
+## Installation and Execution
+
+### Generating the .jar file
+
+- To generate the .jar file of the "Emotional Songs" application, follow the following steps:
+
+1. Clone the repository:
   ```sh
   git clone https://github.com/erikgurzau/emotional-songs.git
   ```
   
-2. Accedere alla cartella del progetto:
+2. Access the project folder:
 ```sh
  cd emotional-songs
 ```
 
-3. Compilare l'applicazione:
+3. Compile the application:
 ```sh
 javac *.java
 ```
-Questo comando compila tutti i file Java presenti nella directory corrente.
+This command compiles all Java files in the current directory.
 
-**Nota:** per eseguire il comando `javac`, è necessario avere il JDK (Java Development Kit) installato sul proprio computer.
+**Note:** to run the `javac` command, you must have the JDK (Java Development Kit) installed on your computer.
 
-4. Generare il file .jar:
+4. Generate the .jar file:
 ```sh
 jar cvfe emotional-songs.jar Main *.class
 ```
-Questo comando crea il file .jar dell'applicazione "Emotional Songs" nella directory corrente.
+This command creates the .jar file of the "Emotional Songs" application in the current directory.
 
-**Nota:** il parametro `cvfe` indica la creazione di un file .jar con il nome specificato (`emotional-songs.jar`), l'entry point specificato (`Main`), e i file `.class` presenti nella directory corrente.
+**Note:** the `cvfe` parameter indicates the creation of a .jar file with the specified name (`emotional-songs.jar`), the specified entry point (`Main`), and the `.class` files in the current directory.
 
-### Esecuzione del file .jar
+### Running the .jar file
 
-Una volta generato il file .jar dell'applicazione "Emotional Songs", seguire i seguenti passaggi per eseguirlo:
+Once the `emotional-songs` application .jar file has been generated, follow the following steps to run it:
 
-1. Aprire il terminale o la finestra del prompt dei comandi e accedere alla directory in cui è stato generato il file .jar.
+1. Open the terminal or command prompt window and access the directory where the .jar file was generated.
 
-2. Eseguire il file .jar con il comando:
+2. Run the .jar file with the command:
 ```sh
 java -jar emotional-songs.jar
 ```
-**Nota:** Assicurarsi di avere installato la versione corretta di Java sul proprio computer. Per verificare la versione di Java installata, eseguire il comando `java -version` nel terminale o nella finestra del prompt dei comandi.
+**Note:** Make sure you have the correct version of Java installed on your computer. To check the version of Java installed, run the command `java -version` in the terminal or command prompt window.
 
 
-## Contributi
+## Contributions
 
-Ogni contributo al progetto è ben accetto! Se avete idee per migliorare l'applicazione, potete aprire una issue o una pull request. Segui la guida di Github per sapere cosa fare.
-
-
-## Feature Future
-
-- Sviluppare un algoritmo di suggerimento di canzoni basato sulle preferenze dell'utente, che aiuterebbe a creare playlist ancora più personalizzate e in linea con il loro stato d'animo. Questa nuova feature potrebbe fornire una maggiore interattività e coinvolgimento per gli utenti, migliorando l'esperienza d'uso dell'applicazione. 
-
-- Sviluppare un algoritmo di analisi delle emozioni per generare una playlist di canzoni che corrispondono al tuo stato d'animo. L'algoritmo prende in input il tuo stato d'animo e le preferenze musicali e restituisce una playlist di canzoni selezionate in base all'emozione e al genere musicale
+Any contribution to the project is welcome! If you have ideas for improving the application, you can open an issue or pull request. Follow the Github guide for what to do.
 
 
-## Lingue
+## Feature Future.
 
-<p align="left">
-  <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" height="12px" alt="English Flag">
-  <a href="https://github.com/erikgurzau/emotional-songs/blob/main/lan/README-EN.md">English Version</a>
-</p>
+- Develop a song suggestion algorithm based on user preferences, which would help create even more personalized playlists in line with their mood. This new feature could provide greater interactivity and engagement for users, improving the user experience of the app. 
+
+- Develop an emotion analysis algorithm to generate a playlist of songs that match your mood. The algorithm takes your mood and music preferences as input and returns a playlist of songs selected based on emotion and music genre
 
 
-## Licenza
+## License
 
-Il progetto "Emotional Songs" è distribuito con la licenza MIT. Per ulteriori informazioni, consultare il file [LICENSE](LICENSE).
-
+The `Emotional Songs` project is distributed under the MIT license. For more information, please see the [LICENSE](LICENSE) file.
