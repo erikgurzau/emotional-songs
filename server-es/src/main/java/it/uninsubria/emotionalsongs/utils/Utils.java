@@ -91,13 +91,6 @@ public class Utils {
         return mapper.readValue(inputStream, clazz);
     }
 
-    public static OutputStream convertObjectToOutputStream(Object obj) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        objectMapper.writeValue(outputStream, obj);
-        return outputStream;
-    }
-
     public static byte[] convertObjectToBytes(Object obj) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsBytes(obj);

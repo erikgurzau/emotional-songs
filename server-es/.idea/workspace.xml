@@ -5,48 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="fix flusso api">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/esclient/EmotionalSongsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/emotionalsongs/EmotionalSongsApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/esclient/controllers/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/emotionalsongs/controllers/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/esclient/interfaces/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/it/uninsubria/emotionalsongs/interfaces/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/esclient/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/emotionalsongs/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/esclient/views/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/emotionalsongs/views/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/esclient/views/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../client-es/src/main/resources/it/uninsubria/emotionalsongs/views/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/AssemblerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/assembler/AssemblerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/canzone/CanzoneAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/assembler/canzone/CanzoneAssembler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/assembler/utente/UtenteAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/assembler/utente/UtenteAssembler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/APIConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/DatabaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/RouteConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/RouteConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/config/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/HttpController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/canzone/CanzoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/canzone/CanzoneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/controller/utente/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/utente/UtenteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/CanzoneEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/entity/canzone/CanzoneEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/canzone/GenereMusicaleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/entity/canzone/GenereMusicaleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/entity/utente/UtenteRegistratoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/entity/utente/UtenteRegistratoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/api/API.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/canzone/Canzone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/canzone/Canzone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/utente/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/model/utente/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/utente/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/RepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/RepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/canzone/CanzoneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/canzone/CanzoneRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/repository/utente/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/utente/UtenteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/LoggerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/LoggerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/ServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/canzone/utente/CanzoneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/canzone/CanzoneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/service/utente/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/utente/UtenteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/LogLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/LogLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,11 +62,11 @@
       <recent name="it.uninsubria.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.uninsubria.emotionalsongs.controller.canzone" />
       <recent name="it.uninsubria.emotionalsongs.controller" />
       <recent name="it.uninsubria.emotionalsongs.model.utente" />
       <recent name="it.uninsubria.assembler.canzone" />
       <recent name="it.uninsubria.repository.canzone" />
-      <recent name="it.uninsubria.entity.canzone" />
     </key>
   </component>
   <component name="RunManager">
