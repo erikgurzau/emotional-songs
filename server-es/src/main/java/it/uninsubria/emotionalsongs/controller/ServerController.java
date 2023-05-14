@@ -28,6 +28,8 @@ public class ServerController extends Controller {
     }
 
     public void redirectToController(HttpExchange exchange) throws IOException {
+        LoggerService.info(this.getClass().getSimpleName() + ": manage request to " +
+                exchange.getRemoteAddress().getHostName() + " " + exchange.getRemoteAddress());
         String pathURI = exchange.getRequestURI().toString();
         String pathController = "/" + pathURI.split("/")[2];
         switch (pathController) {
