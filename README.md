@@ -1,4 +1,6 @@
-<img src="https://svgshare.com/i/t6f.svg" alt="Emotional Songs Logo" width="800"/>
+<p align="center">
+  <img src="https://svgshare.com/i/t6f.svg" alt="Emotional Songs Logo" width="500"/>
+</p>
 
 # Emotional Songs [![HitCount](https://hits.dwyl.com/erikgurzau/emotional-songs.svg?style=flat-square)](http://hits.dwyl.com/erikgurzau/emotional-songs)
 
