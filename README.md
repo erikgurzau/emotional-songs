@@ -14,7 +14,6 @@ The emotion scale for being able to emotionally evaluate a piece of music is as 
 
 The entire Emotional Songs project is inspired by the [GEMS](https://musemap.org/resources/gems) (Geneva Emotional Music Scale), a research project that aims to create a standardized scale to measure emotions elicited by music.
 
-
 ## Requirements
 
 The following requirements are needed to run the application:

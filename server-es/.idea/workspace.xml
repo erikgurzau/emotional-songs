@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="feat get path params + getUtenteById">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/canzone/CanzoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/canzone/CanzoneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/utente/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/utente/UtenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/canzone/CanzoneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/canzone/CanzoneRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/utente/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/repository/utente/UtenteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/canzone/CanzoneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/canzone/CanzoneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/utente/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/service/utente/UtenteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2OEELkxdabpg0DdUeRP1KefVXdq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/fase-2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gurza/Desktop/Università/Insubria/LAB-B/project/v2.0.0/emotional-songs/server-es/src/main/java/it/uninsubria/service/canzone&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/gurza/Desktop/Scuola/insubria/lab-interdisciplinare-b/app/v2.0.0/emotional-songs/es-server/src/main/java/it/uninsubria/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gurza\Desktop\Università\Insubria\LAB-B\project\v2.0.0\emotional-songs\server-es\src\main\java\it\uninsubria\service\canzone" />
+      <recent name="C:\Users\gurza\Desktop\Università\Insubria\LAB-B\project\v2.0.0\emotional-songs\server-es\src\main\java\it\uninsubria\controller\canzone" />
+      <recent name="C:\Users\gurza\Desktop\Università\Insubria\LAB-B\project\v2.0.0\emotional-songs\server-es\src\main\java\it\uninsubria\model\utente" />
+      <recent name="C:\Users\gurza\Desktop\Università\Insubria\LAB-B\project\v2.0.0\emotional-songs\server-es\src\main\java\it\uninsubria\repository" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="it.uninsubria.controller" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.uninsubria.emotionalsongs.controller.canzone" />
+      <recent name="it.uninsubria.emotionalsongs.controller" />
+      <recent name="it.uninsubria.emotionalsongs.model.utente" />
+      <recent name="it.uninsubria.assembler.canzone" />
+      <recent name="it.uninsubria.repository.canzone" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.uninsubria.emotionalsongs.model.Server" />
+      <module name="server-es" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.uninsubria.emotionalsongs.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Server" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="" />
+      <created>1681117288046</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681117288046</updated>
+    </task>
+    <task id="LOCAL-00001" summary="feat: model e interfacce per utente">
+      <created>1683483369954</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683483369954</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat workflow utente">
+      <created>1683985723587</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683985723588</updated>
+    </task>
+    <task id="LOCAL-00003" summary="primo impianto flusso api canzone">
+      <created>1683993582005</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683993582005</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix flusso api">
+      <created>1683996870964</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683996870964</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix import canzone controller">
+      <created>1684067454894</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684067454894</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat get path params + getUtenteById">
+      <created>1684069459035</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684069459035</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../../.." />
+    </ignored-roots>
+    <MESSAGE value="feat: model e interfacce per utente" />
+    <MESSAGE value="feat workflow utente" />
+    <MESSAGE value="primo impianto flusso api canzone" />
+    <MESSAGE value="fix flusso api" />
+    <MESSAGE value="fix import canzone controller" />
+    <MESSAGE value="feat get path params + getUtenteById" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat get path params + getUtenteById" />
+  </component>
+</project>
