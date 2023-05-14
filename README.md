@@ -1,6 +1,6 @@
-# Emotional Songs [![HitCount](https://hits.dwyl.com/erikgurzau/emotional-songs.svg?style=flat-square)](http://hits.dwyl.com/erikgurzau/emotional-songs)
+<img src="[path/to/image.svg](https://svgshare.com/i/t6f.svg)" alt="Alt text" width="200"/>
 
-![Alt text](https://svgshare.com/i/t6f.svg)
+# Emotional Songs [![HitCount](https://hits.dwyl.com/erikgurzau/emotional-songs.svg?style=flat-square)](http://hits.dwyl.com/erikgurzau/emotional-songs)
 
 `Emotional Songs` is a university project that aims to analyze the emotions perceived by users while listening to certain songs. 
 It is an application developed in Java.
