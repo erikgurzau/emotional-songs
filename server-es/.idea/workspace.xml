@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="">
+    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="refactor controllers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

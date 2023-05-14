@@ -1,4 +1,4 @@
-<img src="https://svgshare.com/i/t6f.svg" alt="Emotional Songs Logo" width="500"/>
+<img src=".\client-es\src\main\resources\it\uninsubria\emotionalsongs\assets\imgs\background_logo_emotional_songs.png" alt="Emotional Songs Logo"/>
 
 # Emotional Songs [![HitCount](https://hits.dwyl.com/erikgurzau/emotional-songs.svg?style=flat-square)](http://hits.dwyl.com/erikgurzau/emotional-songs)
 
