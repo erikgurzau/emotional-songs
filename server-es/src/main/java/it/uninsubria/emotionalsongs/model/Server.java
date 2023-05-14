@@ -12,9 +12,9 @@ import java.net.InetSocketAddress;
 
 public class Server implements ServerConfig {
 
-    private HttpServer httpServer;
-    private ServerController serverController;
-    private Integer porta;
+    private final HttpServer httpServer;
+    private final ServerController serverController;
+    private final Integer porta;
     private boolean running;
 
 

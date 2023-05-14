@@ -45,8 +45,6 @@ public class Utils {
         return sb.toString();
     }
 
-
-
     /**
      * Calcola l'hash SHA-256 di una stringa di input.
      * @param input la stringa di input da hashare

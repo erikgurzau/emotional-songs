@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="fix flusso api">
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/ServerController.java" afterDir="false" />
+    <list default="true" id="fd4f2e78-7787-46be-aa2c-155d82a7436a" name="Changes" comment="fix import canzone controller">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/config/ServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/canzone/CanzoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/canzone/CanzoneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/utente/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/controller/utente/UtenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/model/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/uninsubria/emotionalsongs/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683996870964</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix import canzone controller">
+      <created>1684067454894</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684067454894</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +160,7 @@
     <MESSAGE value="feat workflow utente" />
     <MESSAGE value="primo impianto flusso api canzone" />
     <MESSAGE value="fix flusso api" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix flusso api" />
+    <MESSAGE value="fix import canzone controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix import canzone controller" />
   </component>
 </project>

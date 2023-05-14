@@ -8,6 +8,7 @@ import it.uninsubria.emotionalsongs.service.utente.UtenteService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class UtenteController extends Controller {
 
@@ -18,7 +19,8 @@ public class UtenteController extends Controller {
         utenteService = new UtenteService();
     }
 
-    public void handle(HttpExchange exchange) throws IOException {
+    public void
+    handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
         LoggerService.info("UtenteController: " + path + " " + method);
@@ -31,8 +33,12 @@ public class UtenteController extends Controller {
             LoggerService.info("UtenteController: gestisciCreaUtente");
             gestisciCreaUtente(exchange);
         }
-        else if (path.matches(PATH_BASE_CONTROLLER + "/\\d+") && method.equals("GET")) {
-            LoggerService.info("UtenteController: gestisciGetUtentiById");
+        else if (path.matches(PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)") && method.equals("GET")) {
+            String[] pathParamsNames = {"userId"};
+            Map<String, String> mapPathParams = getPathParams(path, PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)", pathParamsNames);
+            Integer userId = Integer.valueOf(mapPathParams.get("userId"));
+            LoggerService.info("UtenteController: gestisciGetUtenteById");
+            gestisciGetUtenteById(exchange, userId);
         }
         else sendResponse(exchange, "risorsa non trovata", 404);
     }
@@ -49,6 +55,11 @@ public class UtenteController extends Controller {
         else
             sendResponse(exchange, "false", 400);
 
+    }
+
+    private void gestisciGetUtenteById(HttpExchange exchange, Integer userId) throws IOException {
+        Utente utente = utenteService.getUtenteById(userId);
+        sendResponse(exchange, utente, 200);
     }
 
 

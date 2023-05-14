@@ -22,18 +22,18 @@ public class CanzoneController extends Controller {
     public void handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
-        LoggerService.info("UtenteController: " + path + " " + method);
+        LoggerService.info("CanzoneController: " + path + " " + method);
 
 //        if (path.matches(PATH_BASE_CONTROLLER) && method.equals("GET")) {
-//            LoggerService.info("UtenteController: gestisciGetUtenti");
+//            LoggerService.info("CanzoneController: gestisciGetUtenti");
 //            gestisciGetUtenti(exchange);
 //        }
 //        else if (path.equals(PATH_BASE_CONTROLLER + "/crea") && method.equals("POST")) {
-//            LoggerService.info("UtenteController: gestisciCreaUtente");
+//            LoggerService.info("CanzoneController: gestisciCreaUtente");
 //            gestisciCreaUtente(exchange);
 //        }
 //        else if (path.matches(PATH_BASE_CONTROLLER + "/\\d+") && method.equals("GET")) {
-//            LoggerService.info("UtenteController: gestisciGetUtentiById");
+//            LoggerService.info("CanzoneController: gestisciGetUtentiById");
 //        }
 //        else sendResponse(exchange, "risorsa non trovata", 404);
     }

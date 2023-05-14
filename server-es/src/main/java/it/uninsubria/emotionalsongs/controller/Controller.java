@@ -10,6 +10,8 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class Controller implements HttpHandler, RouteConfig {
 
@@ -18,27 +20,17 @@ public abstract class Controller implements HttpHandler, RouteConfig {
      * @param exchange l'oggetto HttpExchange che rappresenta la richiesta
      * @return una mappa che associa il nome del path param al suo valore
      */
-    public static Map<String, String> getPathParams(HttpExchange exchange) {
-        Map<String, String> pathParams = new HashMap<>();
-
-        // ottiene l'URI della richiesta
-        URI uri = exchange.getRequestURI();
-        // ottiene il path dell'URI
-        String path = uri.getPath();
-
-        // analizza il path per trovare i path params
-        String[] pathSegments = path.split("/");
-        for (int i = 0; i < pathSegments.length; i++) {
-            String segment = pathSegments[i];
-            if (segment.startsWith("{") && segment.endsWith("}")) {
-                // è un path param
-                String paramName = segment.substring(1, segment.length() - 1);
-                String paramValue = exchange.getAttribute(paramName).toString();
-                pathParams.put(paramName, paramValue);
+    public static Map<String, String> getPathParams(String path, String regexPath, String ...pathKeys) {
+        Map<String, String> mappaPathParams = new HashMap<>();
+        Pattern pattern = Pattern.compile(regexPath);
+        Matcher matcher = pattern.matcher(path);
+        if (matcher.find()) {
+            for (String key: pathKeys) {
+                mappaPathParams.put(key, matcher.group(key));
             }
         }
 
-        return pathParams;
+        return mappaPathParams;
     }
 
 
