@@ -23,21 +23,21 @@ public class UtenteController extends Controller {
     handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
-        LoggerService.info("UtenteController: " + path + " " + method);
+        LoggerService.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
         if (path.matches(PATH_BASE_CONTROLLER) && method.equals("GET")) {
-            LoggerService.info("UtenteController: gestisciGetUtenti");
+            LoggerService.info(this.getClass().getSimpleName() + ": gestisciGetUtenti");
             gestisciGetUtenti(exchange);
         }
-        else if (path.equals(PATH_BASE_CONTROLLER + "/crea") && method.equals("POST")) {
-            LoggerService.info("UtenteController: gestisciCreaUtente");
+        else if (path.matches(PATH_BASE_CONTROLLER + "/crea") && method.equals("POST")) {
+            LoggerService.info(this.getClass().getSimpleName() + ": gestisciCreaUtente");
             gestisciCreaUtente(exchange);
         }
         else if (path.matches(PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)") && method.equals("GET")) {
-            String[] pathParamsNames = {"userId"};
-            Map<String, String> mapPathParams = getPathParams(path, PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)", pathParamsNames);
-            Integer userId = Integer.valueOf(mapPathParams.get("userId"));
-            LoggerService.info("UtenteController: gestisciGetUtenteById");
+            LoggerService.info(this.getClass().getSimpleName() + ": gestisciGetUtenteById");
+            String userIdPathName = "userId";
+            Map<String, String> mapPathParams = getPathParams(path, PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)", userIdPathName);
+            Integer userId = Integer.valueOf(mapPathParams.get(userIdPathName));
             gestisciGetUtenteById(exchange, userId);
         }
         else sendResponse(exchange, "risorsa non trovata", 404);

@@ -6,9 +6,11 @@ import it.uninsubria.emotionalsongs.config.RouteConfig;
 import it.uninsubria.emotionalsongs.config.ServerConfig;
 import it.uninsubria.emotionalsongs.controller.ServerController;
 import it.uninsubria.emotionalsongs.service.LoggerService;
+import it.uninsubria.emotionalsongs.utils.Utils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.security.NoSuchAlgorithmException;
 
 public class Server implements ServerConfig {
 
@@ -31,7 +33,7 @@ public class Server implements ServerConfig {
     }
 
     public void start() {
-        LoggerService.info("ServerES avviato sulla la porta " + porta);
+        LoggerService.info(this.getClass().getSimpleName() + ": running sulla porta " + porta);
         httpServer.start();
         running = true;
     }
@@ -70,7 +72,7 @@ public class Server implements ServerConfig {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
         new Server().start();
     }
 

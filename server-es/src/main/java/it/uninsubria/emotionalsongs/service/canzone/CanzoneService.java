@@ -18,7 +18,7 @@ public class CanzoneService {
         canzoneAssembler = new CanzoneAssembler();
     }
 
-    public List<Canzone> findAll() {
+    public List<Canzone> getAll() {
         return canzoneAssembler.toModel(canzoneRepository.findAll());
     }
     public Canzone getCanzoneById(Integer id) {

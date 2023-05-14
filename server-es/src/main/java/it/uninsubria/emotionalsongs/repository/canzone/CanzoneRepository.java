@@ -10,7 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class CanzoneRepository extends Repository<CanzoneEntity> {
@@ -23,14 +25,15 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
-        String QUERY_SELECT_ALL = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
+        String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
                 "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
                 "   FROM Canzoni c " +
                 "       INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
                 "   LIMIT 50";
+        LoggerService.info(this.getClass().getSimpleName() + ": findAll " + query);
         try {
             connection = DatabaseConfig.getConnection();
-            statement = connection.prepareStatement(QUERY_SELECT_ALL);
+            statement = connection.prepareStatement(query);
             resultSet = statement.executeQuery();
             connection.close();
             return resultSetToList(resultSet, CanzoneEntity.class);
@@ -47,11 +50,14 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
-        String QUERY_SELECT_SONG_BY_ID = "SELECT * FROM Canzoni WHERE id = ?";
-
+        String query = "SELECT * FROM Canzoni WHERE id = :id";
+        Map<String, Object> mapParams = new HashMap<>();
+        mapParams.put("id", id);
+        query = replaceNamedParams(query, mapParams);
+        LoggerService.info(this.getClass().getSimpleName() + ": findById " + query);
         try {
             connection = DatabaseConfig.getConnection();
-            statement = connection.prepareStatement(QUERY_SELECT_SONG_BY_ID);
+            statement = connection.prepareStatement(query);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             connection.close();

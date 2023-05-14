@@ -7,6 +7,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 /**
  * Questa classe contiene metodi di utilità generale.
@@ -70,20 +71,6 @@ public class Utils {
         return hexString.toString();
     }
 
-
-
-    public static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        StringBuilder result = new StringBuilder();
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                result.append(line);
-            }
-        }
-        return result.toString();
-    }
-
-
     public static <T> T convertInputStreamToObject(InputStream inputStream, Class<T> clazz) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(inputStream, clazz);
@@ -93,10 +80,6 @@ public class Utils {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsBytes(obj);
     }
-
-
-
-
 
 
 }

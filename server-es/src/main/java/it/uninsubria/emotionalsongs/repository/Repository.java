@@ -9,6 +9,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Repository<T> implements RepositoryImpl<T> {
 
@@ -46,6 +47,23 @@ public abstract class Repository<T> implements RepositoryImpl<T> {
 
         return list; // restituisce la lista di oggetti T creata dai dati del ResultSet
     }
+
+
+    public static String replaceNamedParams(String query, Map<String, Object> params) {
+        for (Map.Entry<String, Object> param : params.entrySet()) {
+            String paramName = param.getKey();
+            Object paramValue = param.getValue();
+            String replacement;
+            if (paramValue instanceof String) {
+                replacement = "'" + ((String) paramValue).replace("'", "''") + "'";
+            } else {
+                replacement = String.valueOf(paramValue);
+            }
+            query = query.replace(":" + paramName, replacement);
+        }
+        return query;
+    }
+
 
 
 }

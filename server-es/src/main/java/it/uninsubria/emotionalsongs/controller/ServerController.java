@@ -28,8 +28,8 @@ public class ServerController extends Controller {
     }
 
     public void redirectToController(HttpExchange exchange) throws IOException {
-        String uri = exchange.getRequestURI().toString();
-        String pathController = "/" + uri.split("/")[2];
+        String pathURI = exchange.getRequestURI().toString();
+        String pathController = "/" + pathURI.split("/")[2];
         switch (pathController) {
             case PATH_UTENTE_API -> utenteController.handle(exchange);
             case PATH_CANZONE_API -> canzoneController.handle(exchange);

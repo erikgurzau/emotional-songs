@@ -15,11 +15,7 @@ import java.util.regex.Pattern;
 
 public abstract class Controller implements HttpHandler, RouteConfig {
 
-    /**
-     * Metodo per ottenere i path params da una richiesta HttpExchange.
-     * @param exchange l'oggetto HttpExchange che rappresenta la richiesta
-     * @return una mappa che associa il nome del path param al suo valore
-     */
+
     public static Map<String, String> getPathParams(String path, String regexPath, String ...pathKeys) {
         Map<String, String> mappaPathParams = new HashMap<>();
         Pattern pattern = Pattern.compile(regexPath);
