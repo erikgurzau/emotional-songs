@@ -10,6 +10,7 @@ import it.uninsubria.emotionalsongs.service.utente.UtenteService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class CanzoneController extends Controller {
     private final CanzoneService canzoneService;
@@ -29,20 +30,25 @@ public class CanzoneController extends Controller {
             LoggerService.info(this.getClass().getSimpleName() + ": gestisciGetCanzoni");
             gestisciGetCanzoni(exchange);
         }
-//        else if (path.equals(PATH_BASE_CONTROLLER + "/crea") && method.equals("POST")) {
-//            LoggerService.info("CanzoneController: gestisciCreaUtente");
-//            gestisciCreaUtente(exchange);
-//        }
-//        else if (path.matches(PATH_BASE_CONTROLLER + "/\\d+") && method.equals("GET")) {
-//            LoggerService.info("CanzoneController: gestisciGetUtentiById");
-//        }
-//        else sendResponse(exchange, "risorsa non trovata", 404);
+        else if (path.matches(PATH_BASE_CONTROLLER + "/(?<canzoneId>[^/]+)") && method.equals("GET")) {
+            LoggerService.info(this.getClass().getSimpleName() + ": gestisciGetCanzoneById");
+            String userIdPathName = "canzoneId";
+            Map<String, String> mapPathParams = getPathParams(path, PATH_BASE_CONTROLLER + "/(?<canzoneId>[^/]+)", userIdPathName);
+            Integer userId = Integer.valueOf(mapPathParams.get(userIdPathName));
+            gestisciGetCanzoneById(exchange, userId);
+        }
+        else sendResponse(exchange, "risorsa non trovata", 404);
     }
 
 
     private void gestisciGetCanzoni(HttpExchange exchange) throws IOException {
         List<Canzone> canzoni = canzoneService.getAll();
         sendResponse(exchange, canzoni, 200);
+    }
+
+    private void gestisciGetCanzoneById(HttpExchange exchange, Integer canzoneId) throws IOException {
+        Canzone canzone = canzoneService.getCanzoneById(canzoneId);
+        sendResponse(exchange, canzone, 200);
     }
 
 

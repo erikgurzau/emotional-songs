@@ -27,8 +27,7 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
 
         String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
                 "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
-                "   FROM Canzoni c " +
-                "       INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
+                "   FROM Canzoni c INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
                 "   LIMIT 50";
         LoggerService.info(this.getClass().getSimpleName() + ": findAll " + query);
         try {
@@ -50,7 +49,10 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
-        String query = "SELECT * FROM Canzoni WHERE id = :id";
+        String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
+                "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
+                "   FROM Canzoni c INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
+                "   WHERE c.id = :id";
         Map<String, Object> mapParams = new HashMap<>();
         mapParams.put("id", id);
         query = replaceNamedParams(query, mapParams);
@@ -58,7 +60,6 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         try {
             connection = DatabaseConfig.getConnection();
             statement = connection.prepareStatement(query);
-            statement.setInt(1, id);
             resultSet = statement.executeQuery();
             connection.close();
             return resultSetToList(resultSet, CanzoneEntity.class).stream().findFirst();
