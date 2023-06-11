@@ -5,8 +5,7 @@ import it.uninsubria.emotionalsongs.config.DatabaseConfig;
 import it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
 import it.uninsubria.emotionalsongs.repository.Repository;
-import it.uninsubria.emotionalsongs.service.LoggerService;
-import it.uninsubria.emotionalsongs.utils.Utils;
+import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +27,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         ResultSet resultSet;
 
         String query = "SELECT * FROM Utenti_Registrati";
-        LoggerService.info("UtenteRepository: findAll " + query);
+        Logger.info("UtenteRepository: findAll " + query);
         try {
             connection = DatabaseConfig.getConnection();
             statement = connection.prepareStatement(query);
@@ -37,7 +36,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return resultSetToList(resultSet, UtenteRegistratoEntity.class);
         }
         catch (SQLException e) {
-            LoggerService.errore(e.getMessage());
+            Logger.errore(e.getMessage());
             return null;
         }
     }
@@ -52,7 +51,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         Map<String, Object> mapParams = new HashMap<>();
         mapParams.put("id", id);
         query = replaceNamedParams(query, mapParams);
-        LoggerService.info(this.getClass().getSimpleName() + ": findById " + query);
+        Logger.info(this.getClass().getSimpleName() + ": findById " + query);
         try {
             connection = DatabaseConfig.getConnection();
             statement = connection.prepareStatement(query);
@@ -61,7 +60,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return resultSetToList(resultSet, UtenteRegistratoEntity.class).stream().findFirst();
         }
         catch (SQLException e) {
-            LoggerService.errore(e.getMessage());
+            Logger.errore(e.getMessage());
             return Optional.empty();
         }
     }
@@ -83,7 +82,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         mapParams.put("comune", utente.getComune());
         mapParams.put("provincia", utente.getProvincia());
         query = replaceNamedParams(query, mapParams);
-        LoggerService.info(this.getClass().getSimpleName() + ": createUtente " + query);
+        Logger.info(this.getClass().getSimpleName() + ": createUtente " + query);
         try {
             connection = DatabaseConfig.getConnection();
             statement = connection.prepareStatement(query);
@@ -91,8 +90,32 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return true;
         }
         catch (SQLException e) {
-            LoggerService.errore(e.getMessage());
+            Logger.errore(e.getMessage());
             return false;
+        }
+    }
+
+    public Optional<UtenteRegistratoEntity> findByEmailAndPassword(String email, String password) {
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet resultSet;
+
+        String query = "SELECT * FROM Utenti_Registrati WHERE email = :email AND psw = :password";
+        Map<String, Object> mapParams = new HashMap<>();
+        mapParams.put("email", email);
+        mapParams.put("password", password);
+        query = replaceNamedParams(query, mapParams);
+        Logger.info(this.getClass().getSimpleName() + ": findById " + query);
+        try {
+            connection = DatabaseConfig.getConnection();
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+            connection.close();
+            return resultSetToList(resultSet, UtenteRegistratoEntity.class).stream().findFirst();
+        }
+        catch (SQLException e) {
+            Logger.errore(e.getMessage());
+            return Optional.empty();
         }
     }
 }

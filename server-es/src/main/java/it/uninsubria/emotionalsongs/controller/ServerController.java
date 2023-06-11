@@ -1,20 +1,24 @@
 package it.uninsubria.emotionalsongs.controller;
 
 import com.sun.net.httpserver.HttpExchange;
+import it.uninsubria.emotionalsongs.config.ApiConfig;
 import it.uninsubria.emotionalsongs.controller.canzone.CanzoneController;
+import it.uninsubria.emotionalsongs.controller.sessione.SessioneController;
 import it.uninsubria.emotionalsongs.controller.utente.UtenteController;
-import it.uninsubria.emotionalsongs.service.LoggerService;
+import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.io.IOException;
 
-public class ServerController extends Controller {
+public class ServerController extends Controller implements ApiConfig {
 
     private final UtenteController utenteController;
     private final CanzoneController canzoneController;
+    private final SessioneController sessioneController;
 
     public ServerController() {
         utenteController = new UtenteController();
         canzoneController = new CanzoneController();
+        sessioneController = new SessioneController();
     }
 
     @Override
@@ -23,18 +27,18 @@ public class ServerController extends Controller {
             redirectToController(exchange);
         }
         catch (IOException e) {
-            LoggerService.errore(e.getMessage());
+            Logger.errore(e.getMessage());
         }
     }
 
     public void redirectToController(HttpExchange exchange) throws IOException {
-        LoggerService.info(this.getClass().getSimpleName() + ": manage request to " +
-                exchange.getRemoteAddress().getHostName() + " " + exchange.getRemoteAddress());
+        Logger.info(this.getClass().getSimpleName() + ": redirecting to controller");
         String pathURI = exchange.getRequestURI().toString();
         String pathController = "/" + pathURI.split("/")[2];
         switch (pathController) {
             case PATH_UTENTE_API -> utenteController.handle(exchange);
             case PATH_CANZONE_API -> canzoneController.handle(exchange);
+            case PATH_SESSIONE_API -> sessioneController.handle(exchange);
         }
     }
 }

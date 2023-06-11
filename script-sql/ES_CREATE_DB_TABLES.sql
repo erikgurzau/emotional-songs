@@ -76,28 +76,12 @@ CREATE TABLE Emozioni (
 );
 
 INSERT INTO Generi_Musicali VALUES
-(1,'Blues'),
-(2,'Black Metal'),
-(3,'Country'),
-(4,'Dark'),
-(5,'Death Metal'),
-(6,'Folk'),
-(7,'Funky'),
-(8,'Gospel'),
-(9,'Hard Rock'),
-(10,'Hip-Hop'),
-(11,'Industrial'),
-(12,'Jazz'),
-(13,'Liscio'),
-(14,'Metal'),
-(15,'Musica classica'),
-(16,'Musica dance'),
-(17,'New-Wave'),
-(18,'Pop'),
-(19,'Punk Rock'),
-(20,'Rock & roll'),
-(21,'Latina'),
-(22,'Underground');
+(1,'Blues'), (2,'Black Metal'), (3,'Country'), (4,'Dark'),
+(5,'Death Metal'), (6,'Folk'), (7,'Funky'), (8,'Gospel'),
+(9,'Hard Rock'), (10,'Hip-Hop'), (11,'Industrial'), (12,'Jazz'),
+(13,'Liscio'), (14,'Metal'), (15,'Musica classica'), (16,'Musica dance'),
+(17,'New-Wave'), (18,'Pop'), (19,'Punk Rock'), (20,'Rock & roll'),
+(21,'Latina'), (22,'Underground');
 
 INSERT INTO Stati_Emozionali VALUES
 (1,'Amazement','Feeling of wonder or happiness'),

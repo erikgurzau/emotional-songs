@@ -1,8 +1,6 @@
 package it.uninsubria.emotionalsongs.entity.utente;
 
-import java.io.Serializable;
-
-public class UtenteRegistratoEntity implements Serializable {
+public class UtenteRegistratoEntity {
 
     private Integer id;
     private String cod_fiscale;
