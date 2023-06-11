@@ -7,6 +7,7 @@ import it.uninsubria.emotionalsongs.model.utente.Utente;
 import it.uninsubria.emotionalsongs.utils.Logger;
 import it.uninsubria.emotionalsongs.service.utente.UtenteService;
 import it.uninsubria.emotionalsongs.service.SharedService;
+import it.uninsubria.emotionalsongs.utils.Utils;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,7 +37,7 @@ public class UtenteController extends Controller implements ApiConfig {
         }
         else if (UtenteApi.GET_UTENTE_BY_ID.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenteById");
-            Map<String, String> pathVariables = getPathVariables(UtenteApi.GET_UTENTE_BY_ID.getPath(), path);
+            Map<String, String> pathVariables = Utils.getPathVariables(UtenteApi.GET_UTENTE_BY_ID.getPath(), path);
             Integer userId = Integer.valueOf(pathVariables.get("userId"));
             gestisciGetUtenteById(exchange, userId);
         }

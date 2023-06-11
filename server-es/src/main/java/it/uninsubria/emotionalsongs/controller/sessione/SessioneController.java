@@ -8,6 +8,7 @@ import it.uninsubria.emotionalsongs.model.utente.Utente;
 import it.uninsubria.emotionalsongs.service.SharedService;
 import it.uninsubria.emotionalsongs.service.sessione.SessioneService;
 import it.uninsubria.emotionalsongs.utils.Logger;
+import it.uninsubria.emotionalsongs.utils.Utils;
 
 import java.io.IOException;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class SessioneController extends Controller implements ApiConfig {
         }
         else if (SessioneApi.GET_SESSIONE_BY_ID.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetSessione");
-            Map<String, String> pathVariables = getPathVariables(SessioneApi.GET_SESSIONE_BY_ID.getPath(), path);
+            Map<String, String> pathVariables = Utils.getPathVariables(SessioneApi.GET_SESSIONE_BY_ID.getPath(), path);
             String sessionId = pathVariables.get("sessionId");
             gestisciGetSessione(exchange, sessionId);
         }

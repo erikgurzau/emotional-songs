@@ -6,6 +6,7 @@ import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.model.canzone.Canzone;
 import it.uninsubria.emotionalsongs.utils.Logger;
 import it.uninsubria.emotionalsongs.service.canzone.CanzoneService;
+import it.uninsubria.emotionalsongs.utils.Utils;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,7 +31,7 @@ public class CanzoneController extends Controller implements ApiConfig {
         }
         else if (CanzoneApi.GET_CANZONE_BY_ID.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetCanzoneById");
-            Map<String, String> pathVariables = getPathVariables(CanzoneApi.GET_CANZONE_BY_ID.getPath(), path);
+            Map<String, String> pathVariables = Utils.getPathVariables(CanzoneApi.GET_CANZONE_BY_ID.getPath(), path);
             Integer id = Integer.valueOf(pathVariables.get("id"));
             gestisciGetCanzoneById(exchange, id);
         }

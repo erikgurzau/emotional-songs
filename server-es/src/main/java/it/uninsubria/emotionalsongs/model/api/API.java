@@ -1,6 +1,7 @@
 package it.uninsubria.emotionalsongs.model.api;
 
 import it.uninsubria.emotionalsongs.controller.Controller;
+import it.uninsubria.emotionalsongs.utils.Utils;
 
 public class API {
     private String path;
@@ -24,6 +25,6 @@ public class API {
     }
 
     public boolean match(String path, String httpMethod) {
-        return Controller.isPathMatching(this.path, path) && this.httpMethod.equals(httpMethod);
+        return Utils.isPathMatching(this.path, path) && this.httpMethod.equals(httpMethod);
     }
 }
