@@ -1,6 +1,7 @@
 package it.uninsubria.emotionalsongs.controller.utente;
 
 import com.sun.net.httpserver.HttpExchange;
+import it.uninsubria.emotionalsongs.config.UtenteApiConfig;
 import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
 import it.uninsubria.emotionalsongs.utils.Logger;
@@ -14,34 +15,34 @@ import java.util.Map;
 import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_ROOT_API;
 import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_UTENTE_API;
 
-public class UtenteController extends Controller {
+public class UtenteController extends Controller implements UtenteApiConfig {
 
     private final UtenteService utenteService;
-    public static final String PATH_BASE_CONTROLLER = PATH_ROOT_API + PATH_UTENTE_API;
 
     public UtenteController() {
         utenteService = SharedService.getUtenteService();
     }
 
-    public void
-    handle(HttpExchange exchange) throws IOException {
+    public void handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
-        if (path.matches(PATH_BASE_CONTROLLER) && method.equals("GET")) {
+//        System.out.println(isPathMatching(GET_UTENTE_BY_ID, path));
+        System.out.println(path);
+        System.out.println(GET_UTENTE_BY_ID);
+        if (method.equals("GET") && isPathMatching(PATH_BASE_CONTROLLER, path)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenti");
             gestisciGetUtenti(exchange);
         }
-        else if (path.matches(PATH_BASE_CONTROLLER + "/crea") && method.equals("POST")) {
+        else if (method.equals("POST") && isPathMatching(CREA_UTENTE, path)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciCreaUtente");
             gestisciCreaUtente(exchange);
         }
-        else if (path.matches(PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)") && method.equals("GET")) {
+        else if (method.equals("GET") && isPathMatching(GET_UTENTE_BY_ID, path)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenteById");
-            String userIdPathName = "userId";
-            Map<String, String> mapPathParams = getPathParams(path, PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)", userIdPathName);
-            Integer userId = Integer.valueOf(mapPathParams.get(userIdPathName));
+            Map<String, String> pathVariables = getPathVariables(GET_UTENTE_BY_ID, path);
+            Integer userId = Integer.valueOf(pathVariables.get("userId"));
             gestisciGetUtenteById(exchange, userId);
         }
         else sendResponse(exchange, "risorsa non trovata", 404);

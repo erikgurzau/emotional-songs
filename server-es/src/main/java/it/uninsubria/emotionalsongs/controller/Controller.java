@@ -7,12 +7,10 @@ import it.uninsubria.emotionalsongs.utils.Utils;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public abstract class Controller implements HttpHandler {
 
@@ -60,58 +58,70 @@ public abstract class Controller implements HttpHandler {
 
     /**
      * Risolve le variabili di percorso dal pattern e dal percorso specificati.
+     *
      * @param pattern il pattern contenente le variabili di percorso
      * @param path    il percorso da confrontare con il pattern
      * @return una mappa contenente le variabili di percorso risolte
      */
     public static Map<String, String> getPathVariables(String pattern, String path) {
-        Map<String, String> variabiliPercorso = new HashMap<>();
+        Map<String, String> pathVariables = new HashMap<>();
         Pattern compiledPattern = compilePattern(pattern);
         Matcher matcher = compiledPattern.matcher(path);
 
         // Verifica se il percorso corrisponde al pattern
         if (matcher.matches()) {
+            // Ottiene i nomi delle variabili di percorso dal pattern
             Pattern variablePattern = Pattern.compile(":([^/]+)");
             Matcher variableMatcher = variablePattern.matcher(pattern);
 
-            // Trova i nomi delle variabili e i valori corrispondenti
+            // Ottiene i valori corrispondenti delle variabili di percorso dal percorso
+            int groupCount = matcher.groupCount();
             while (variableMatcher.find()) {
-                String nomeVariabile = variableMatcher.group(1);
-                String valoreVariabile = matcher.group(nomeVariabile);
-                variabiliPercorso.put(nomeVariabile, valoreVariabile);
+                String variableName = variableMatcher.group(1);
+                for (int i = 1; i <= groupCount; i++) {
+                    String group = matcher.group(i);
+                    pathVariables.put(variableName, group);
+                    break;
+                }
             }
         }
 
-        return variabiliPercorso;
+        return pathVariables;
     }
+
+
 
     /**
      * Compila il pattern effettuando l'escape delle barre e convertendo i nomi delle variabili in gruppi di cattura denominati.
-     *
      * @param pattern il pattern da compilare
      * @return il pattern compilato
      */
     private static Pattern compilePattern(String pattern) {
-        // Esegue l'escape delle barre e converte i nomi delle variabili in gruppi di cattura denominati
-        String regex = pattern
-                .replaceAll("/", "\\\\/")
-                .replaceAll(":([^/]+)", "(?<$1>[^/]+)");
-        return Pattern.compile(regex);
+        String escapedPattern = pattern.replaceAll(":([^/]+)", "(?<$1>[^/]+)");
+        return Pattern.compile(escapedPattern);
     }
-
 
 
     /**
      * Verifica se un percorso corrisponde a un determinato pattern.
+     *
      * @param pattern il pattern da confrontare
      * @param path    il percorso da verificare
      * @return true se il percorso corrisponde al pattern, false altrimenti
      */
     public static boolean isPathMatching(String pattern, String path) {
-        Pattern compiledPattern = compilePattern(pattern);
-        Matcher matcher = compiledPattern.matcher(path);
+        String regex = pattern.replaceAll(":([^/]+)", "(?<$1>[^/]+)");
 
-        return matcher.matches();
+        regex = "^" + regex + "$";
+
+        try {
+            Pattern compiledPattern = Pattern.compile(regex);
+            Matcher matcher = compiledPattern.matcher(path);
+            return matcher.matches();
+        } catch (PatternSyntaxException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
