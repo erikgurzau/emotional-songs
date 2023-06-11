@@ -7,6 +7,8 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 /**
@@ -80,6 +82,20 @@ public class Utils {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsBytes(obj);
     }
+
+
+    public static boolean isNull(Object obj) {
+        return obj == null;
+    }
+
+    public static boolean isEmpty(Object obj) {
+        return isNull(obj) || obj == "";
+    }
+
+    public static String formatLocalDateTime(String pattern) {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(pattern));
+    }
+
 
 
 }

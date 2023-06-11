@@ -3,12 +3,16 @@ package it.uninsubria.emotionalsongs.controller.utente;
 import com.sun.net.httpserver.HttpExchange;
 import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
-import it.uninsubria.emotionalsongs.service.LoggerService;
+import it.uninsubria.emotionalsongs.utils.Logger;
 import it.uninsubria.emotionalsongs.service.utente.UtenteService;
+import it.uninsubria.emotionalsongs.service.SharedService;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_ROOT_API;
+import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_UTENTE_API;
 
 public class UtenteController extends Controller {
 
@@ -16,25 +20,25 @@ public class UtenteController extends Controller {
     public static final String PATH_BASE_CONTROLLER = PATH_ROOT_API + PATH_UTENTE_API;
 
     public UtenteController() {
-        utenteService = new UtenteService();
+        utenteService = SharedService.getUtenteService();
     }
 
     public void
     handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
-        LoggerService.info(this.getClass().getSimpleName() + ": " + path + " " + method);
+        Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
         if (path.matches(PATH_BASE_CONTROLLER) && method.equals("GET")) {
-            LoggerService.info(this.getClass().getSimpleName() + ": gestisciGetUtenti");
+            Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenti");
             gestisciGetUtenti(exchange);
         }
         else if (path.matches(PATH_BASE_CONTROLLER + "/crea") && method.equals("POST")) {
-            LoggerService.info(this.getClass().getSimpleName() + ": gestisciCreaUtente");
+            Logger.info(this.getClass().getSimpleName() + ": gestisciCreaUtente");
             gestisciCreaUtente(exchange);
         }
         else if (path.matches(PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)") && method.equals("GET")) {
-            LoggerService.info(this.getClass().getSimpleName() + ": gestisciGetUtenteById");
+            Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenteById");
             String userIdPathName = "userId";
             Map<String, String> mapPathParams = getPathParams(path, PATH_BASE_CONTROLLER + "/(?<userId>[^/]+)", userIdPathName);
             Integer userId = Integer.valueOf(mapPathParams.get(userIdPathName));

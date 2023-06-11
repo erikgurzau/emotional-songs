@@ -4,7 +4,7 @@ import it.uninsubria.emotionalsongs.assembler.utente.UtenteAssembler;
 import it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
 import it.uninsubria.emotionalsongs.repository.utente.UtenteRepository;
-import it.uninsubria.emotionalsongs.service.LoggerService;
+import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,16 +20,22 @@ public class UtenteService {
     }
 
     public List<Utente> getAll() {
-        LoggerService.info(this.getClass().getSimpleName() + ": getAll ");
+        Logger.info(this.getClass().getSimpleName() + ": getAll ");
         return utenteAssembler.toModel(utenteRepository.findAll());
     }
     public Utente getUtenteById(Integer id) {
-        LoggerService.info(this.getClass().getSimpleName() + ": getUtenteById " + id);
+        Logger.info(this.getClass().getSimpleName() + ": getUtenteById " + id);
         Optional<UtenteRegistratoEntity> optionalUtente = utenteRepository.findById(id);
         return optionalUtente.isPresent() ? utenteAssembler.toModel(optionalUtente.get()) : null;
     }
 
     public boolean createUtente(Utente utente) {
         return utenteRepository.createUtente(utente);
+    }
+
+    public Utente getUtenteByEmailAndPassword(String email, String password) {
+        Logger.info(this.getClass().getSimpleName() + ": getUtenteByEmailAndPassword ", email, password);
+        Optional<UtenteRegistratoEntity> optionalUtente = utenteRepository.findByEmailAndPassword(email, password);
+        return optionalUtente.isPresent() ? utenteAssembler.toModel(optionalUtente.get()) : null;
     }
 }

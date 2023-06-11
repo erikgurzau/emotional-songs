@@ -7,10 +7,24 @@ import it.uninsubria.emotionalsongs.model.utente.Utente;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UtenteAssembler implements AssemblerImpl<Utente, UtenteRegistratoEntity> {
+/**
+ * Questa classe è responsabile della conversione tra l'entità UtenteRegistratoEntity e il modello Utente.
+ * Implementa l'interfaccia AssemblerImpl per definire le operazioni di conversione.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 1.0.0
+ */
+public class UtenteAssembler implements AssemblerImpl<UtenteRegistratoEntity, Utente> {
 
+    /*
+     * Costruttore della classe.
+     */
     public UtenteAssembler() { }
 
+    /*
+     * Converte un'istanza di UtenteRegistratoEntity in un'istanza di Utente.
+     */
     @Override
     public Utente toModel(UtenteRegistratoEntity entity) {
         return new Utente(
@@ -27,10 +41,13 @@ public class UtenteAssembler implements AssemblerImpl<Utente, UtenteRegistratoEn
         );
     }
 
+    /*
+     * Converte una lista di UtenteRegistratoEntity in una lista di Utente
+     * utilizzando il metodo toModel per ogni elemento della lista.
+     */
     @Override
     public List<Utente> toModel(List<UtenteRegistratoEntity> entityList) {
         return entityList.stream().map(this::toModel).collect(Collectors.toList());
     }
-
     
 }

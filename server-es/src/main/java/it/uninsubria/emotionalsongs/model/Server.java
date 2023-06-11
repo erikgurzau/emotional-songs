@@ -2,17 +2,17 @@ package it.uninsubria.emotionalsongs.model;
 
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import it.uninsubria.emotionalsongs.config.RouteConfig;
-import it.uninsubria.emotionalsongs.config.ServerConfig;
 import it.uninsubria.emotionalsongs.controller.ServerController;
-import it.uninsubria.emotionalsongs.service.LoggerService;
-import it.uninsubria.emotionalsongs.utils.Utils;
+import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.security.NoSuchAlgorithmException;
 
-public class Server implements ServerConfig {
+import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_ROOT_API;
+import static it.uninsubria.emotionalsongs.utils.Costanti.PORTA_SERVER;
+
+public class Server {
 
     private final HttpServer httpServer;
     private final ServerController serverController;
@@ -21,19 +21,19 @@ public class Server implements ServerConfig {
 
 
     public Server() {
-        this.porta = PORTA;
+        this.porta = PORTA_SERVER;
         serverController = new ServerController();
-        httpServer = createHttpServer(porta, RouteConfig.PATH_ROOT_API, serverController);
+        httpServer = createHttpServer(porta, PATH_ROOT_API, serverController);
     }
     public Server(Integer porta) {
         this.porta = porta;
         serverController = new ServerController();
-        httpServer = createHttpServer(porta, RouteConfig.PATH_ROOT_API, serverController);
+        httpServer = createHttpServer(porta, PATH_ROOT_API, serverController);
 
     }
 
     public void start() {
-        LoggerService.info(this.getClass().getSimpleName() + ": running sulla porta " + porta);
+        Logger.info(this.getClass().getSimpleName() + ": running sulla porta " + porta);
         httpServer.start();
         running = true;
     }
@@ -67,7 +67,7 @@ public class Server implements ServerConfig {
             return httpServer;
         } catch (IOException e) {
             // Se si verifica un'eccezione durante la creazione, stampa l'errore e restituisce null
-            LoggerService.errore(e.getMessage());
+            Logger.errore(e.getMessage());
             return null;
         }
     }
