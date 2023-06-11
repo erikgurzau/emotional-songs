@@ -1,6 +1,7 @@
 package it.uninsubria.emotionalsongs.controller.canzone;
 
 import com.sun.net.httpserver.HttpExchange;
+import it.uninsubria.emotionalsongs.config.ApiConfig;
 import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.model.canzone.Canzone;
 import it.uninsubria.emotionalsongs.utils.Logger;
@@ -10,13 +11,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_CANZONE_API;
-import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_ROOT_API;
 
-public class CanzoneController extends Controller {
+public class CanzoneController extends Controller implements ApiConfig {
     private final CanzoneService canzoneService;
-
-    public static final String PATH_BASE_CONTROLLER = PATH_ROOT_API + PATH_CANZONE_API;
 
     public CanzoneController() {
         canzoneService = new CanzoneService();
@@ -27,16 +24,15 @@ public class CanzoneController extends Controller {
         String method = exchange.getRequestMethod();
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
-        if (path.matches(PATH_BASE_CONTROLLER) && method.equals("GET")) {
+        if (CanzoneApi.GET_ALL_CANZONI.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetCanzoni");
             gestisciGetCanzoni(exchange);
         }
-        else if (path.matches(PATH_BASE_CONTROLLER + "/(?<canzoneId>[^/]+)") && method.equals("GET")) {
+        else if (CanzoneApi.GET_CANZONE_BY_ID.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetCanzoneById");
-            String userIdPathName = "canzoneId";
-            Map<String, String> mapPathParams = getPathParams(path, PATH_BASE_CONTROLLER + "/(?<canzoneId>[^/]+)", userIdPathName);
-            Integer userId = Integer.valueOf(mapPathParams.get(userIdPathName));
-            gestisciGetCanzoneById(exchange, userId);
+            Map<String, String> pathVariables = getPathVariables(CanzoneApi.GET_CANZONE_BY_ID.getPath(), path);
+            Integer id = Integer.valueOf(pathVariables.get("id"));
+            gestisciGetCanzoneById(exchange, id);
         }
         else sendResponse(exchange, "risorsa non trovata", 404);
     }

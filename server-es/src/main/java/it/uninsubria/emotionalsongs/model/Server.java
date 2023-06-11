@@ -2,6 +2,7 @@ package it.uninsubria.emotionalsongs.model;
 
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import it.uninsubria.emotionalsongs.config.ApiConfig;
 import it.uninsubria.emotionalsongs.controller.ServerController;
 import it.uninsubria.emotionalsongs.utils.Logger;
 
@@ -9,7 +10,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.security.NoSuchAlgorithmException;
 
-import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_ROOT_API;
 import static it.uninsubria.emotionalsongs.utils.Costanti.PORTA_SERVER;
 
 public class Server {
@@ -23,12 +23,12 @@ public class Server {
     public Server() {
         this.porta = PORTA_SERVER;
         serverController = new ServerController();
-        httpServer = createHttpServer(porta, PATH_ROOT_API, serverController);
+        httpServer = createHttpServer(porta, ApiConfig.PATH_SERVER_API, serverController);
     }
     public Server(Integer porta) {
         this.porta = porta;
         serverController = new ServerController();
-        httpServer = createHttpServer(porta, PATH_ROOT_API, serverController);
+        httpServer = createHttpServer(porta, ApiConfig.PATH_SERVER_API, serverController);
 
     }
 

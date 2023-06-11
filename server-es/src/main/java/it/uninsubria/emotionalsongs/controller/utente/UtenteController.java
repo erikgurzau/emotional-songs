@@ -1,7 +1,7 @@
 package it.uninsubria.emotionalsongs.controller.utente;
 
 import com.sun.net.httpserver.HttpExchange;
-import it.uninsubria.emotionalsongs.config.UtenteApiConfig;
+import it.uninsubria.emotionalsongs.config.ApiConfig;
 import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
 import it.uninsubria.emotionalsongs.utils.Logger;
@@ -12,10 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_ROOT_API;
-import static it.uninsubria.emotionalsongs.utils.Costanti.PATH_UTENTE_API;
-
-public class UtenteController extends Controller implements UtenteApiConfig {
+public class UtenteController extends Controller implements ApiConfig {
 
     private final UtenteService utenteService;
 
@@ -28,20 +25,18 @@ public class UtenteController extends Controller implements UtenteApiConfig {
         String method = exchange.getRequestMethod();
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
-//        System.out.println(isPathMatching(GET_UTENTE_BY_ID, path));
-        System.out.println(path);
-        System.out.println(GET_UTENTE_BY_ID);
-        if (method.equals("GET") && isPathMatching(PATH_BASE_CONTROLLER, path)) {
+
+        if (UtenteApi.GET_ALL_UTENTI.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenti");
             gestisciGetUtenti(exchange);
         }
-        else if (method.equals("POST") && isPathMatching(CREA_UTENTE, path)) {
+        else if (UtenteApi.REGISTRA_UTENTE.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciCreaUtente");
             gestisciCreaUtente(exchange);
         }
-        else if (method.equals("GET") && isPathMatching(GET_UTENTE_BY_ID, path)) {
+        else if (UtenteApi.GET_UTENTE_BY_ID.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenteById");
-            Map<String, String> pathVariables = getPathVariables(GET_UTENTE_BY_ID, path);
+            Map<String, String> pathVariables = getPathVariables(UtenteApi.GET_UTENTE_BY_ID.getPath(), path);
             Integer userId = Integer.valueOf(pathVariables.get("userId"));
             gestisciGetUtenteById(exchange, userId);
         }

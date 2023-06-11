@@ -1,7 +1,7 @@
 package it.uninsubria.emotionalsongs.controller.sessione;
 
 import com.sun.net.httpserver.HttpExchange;
-import it.uninsubria.emotionalsongs.config.SessioneApiConfig;
+import it.uninsubria.emotionalsongs.config.ApiConfig;
 import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.model.sessione.Sessione;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
 
-public class SessioneController extends Controller implements SessioneApiConfig {
+public class SessioneController extends Controller implements ApiConfig {
 
     private final SessioneService sessioneService;
 
@@ -28,13 +28,13 @@ public class SessioneController extends Controller implements SessioneApiConfig 
         String method = exchange.getRequestMethod();
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
-        if (method.equals("POST") && isPathMatching(CREA_SESSIONE, path)) {
+        if (SessioneApi.CREA_SESSIONE.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciCreaSessione");
             gestisciCreaSessione(exchange);
         }
-        else if (method.equals("GET") && isPathMatching(GET_SESSIONE_BY_ID, path)) {
+        else if (SessioneApi.GET_SESSIONE_BY_ID.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetSessione");
-            Map<String, String> pathVariables = getPathVariables(GET_SESSIONE_BY_ID, path);
+            Map<String, String> pathVariables = getPathVariables(SessioneApi.GET_SESSIONE_BY_ID.getPath(), path);
             String sessionId = pathVariables.get("sessionId");
             gestisciGetSessione(exchange, sessionId);
         }
