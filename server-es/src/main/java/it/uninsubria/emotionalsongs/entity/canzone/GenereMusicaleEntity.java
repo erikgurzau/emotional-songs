@@ -27,10 +27,4 @@ public class GenereMusicaleEntity {
     public void setNome(String nome) {
         this.nome = nome;
     }
-//
-//    public String toString() {
-//        return String.join(",",
-//                getId().toString(), getNome()
-//        );
-//    }
 }

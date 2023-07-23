@@ -7,6 +7,7 @@ import it.uninsubria.emotionalsongs.model.sessione.Sessione;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
 import it.uninsubria.emotionalsongs.service.SharedService;
 import it.uninsubria.emotionalsongs.service.sessione.SessioneService;
+import it.uninsubria.emotionalsongs.utils.Costanti;
 import it.uninsubria.emotionalsongs.utils.Logger;
 import it.uninsubria.emotionalsongs.utils.Utils;
 
@@ -29,9 +30,14 @@ public class SessioneController extends Controller implements ApiConfig {
         String method = exchange.getRequestMethod();
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
-        if (SessioneApi.CREA_SESSIONE.match(path, method)) {
+        if (
+            SessioneApi.CREA_SESSIONE_AUTO_ID.match(path, method) ||
+            SessioneApi.CREA_SESSIONE_ID.match(path, method)
+        ) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciCreaSessione");
-            gestisciCreaSessione(exchange);
+            Map<String, String> pathVariables = Utils.getPathVariables(SessioneApi.GET_SESSIONE_BY_ID.getPath(), path);
+            String sessionId = pathVariables.get("sessionId");
+            gestisciCreaSessione(exchange, sessionId);
         }
         else if (SessioneApi.GET_SESSIONE_BY_ID.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetSessione");
@@ -39,25 +45,24 @@ public class SessioneController extends Controller implements ApiConfig {
             String sessionId = pathVariables.get("sessionId");
             gestisciGetSessione(exchange, sessionId);
         }
-        else sendResponse(exchange, "risorsa non trovata", 404);
+        else sendResponse(exchange, Costanti.ErrorCode.PAGE_NOT_FOUND, Costanti.ErrorCode.PAGE_NOT_FOUND.getStatusCode());
     }
 
-    private void gestisciCreaSessione(HttpExchange exchange) throws IOException {
+    private void gestisciCreaSessione(HttpExchange exchange, String sessionId) throws IOException {
         Utente utente = getRequestBody(exchange, Utente.class);
-        Sessione sessione = sessioneService.creaSessione(utente.getEmail(), utente.getPassword());
+        Sessione sessione = sessioneService.creaSessione(sessionId, utente.getEmail(), utente.getPassword());
         if(!isNull(sessione))
-            sendResponse(exchange, sessione.getSessionId(), 201);
+            sendResponse(exchange, sessione.getSessionId(), Costanti.StatusCode.CREATED);
         else
-            sendResponse(exchange, "sessione non creata", 400);
-
+            sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
     }
 
     private void gestisciGetSessione(HttpExchange exchange, String sessionId) throws IOException {
         Sessione sessione = sessioneService.getSessione(sessionId);
         if(!isNull(sessione))
-            sendResponse(exchange, sessione, 201);
+            sendResponse(exchange, sessione, Costanti.StatusCode.CREATED);
         else
-            sendResponse(exchange, "sessione non trovata", 400);
+            sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
     }
 
 

@@ -79,9 +79,13 @@ public class Utils {
     }
 
     public static <T> T convertInputStreamToObject(InputStream inputStream, Class<T> clazz) throws IOException {
+        if (inputStream.available() == 0)
+            return null;
+
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(inputStream, clazz);
     }
+
 
     public static byte[] convertObjectToBytes(Object obj) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();

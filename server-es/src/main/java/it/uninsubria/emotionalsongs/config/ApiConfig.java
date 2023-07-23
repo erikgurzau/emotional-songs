@@ -27,7 +27,8 @@ public interface ApiConfig {
 
     interface SessioneApi {
         String ROOT = PATH_SERVER_API + PATH_SESSIONE_API;
-        API CREA_SESSIONE = new API(ROOT, Costanti.HttpMethod.POST);
+        API CREA_SESSIONE_AUTO_ID = new API(ROOT, Costanti.HttpMethod.POST);
+        API CREA_SESSIONE_ID = new API(ROOT + "/:sessionId", Costanti.HttpMethod.POST);
         API GET_SESSIONE_BY_ID = new API(ROOT + "/:sessionId", Costanti.HttpMethod.GET);
     }
     

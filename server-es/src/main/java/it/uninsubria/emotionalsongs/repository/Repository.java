@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Repository<T> implements RepositoryImpl<T> {
+public abstract class Repository<T> {
 
     /**
      * Converte un ResultSet in una lista di oggetti di tipo T.

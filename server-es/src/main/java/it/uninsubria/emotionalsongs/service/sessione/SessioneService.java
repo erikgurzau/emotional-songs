@@ -31,14 +31,16 @@ public class SessioneService {
         utenteAssembler = new UtenteAssembler();
     }
 
-    public Sessione creaSessione(String email, String password) {
+    public Sessione creaSessione(String sessionId, String email, String password) {
         Optional<Sessione> optSessione = findSessioneAttiva(email);
         if (optSessione.isPresent())
             return optSessione.get();
 
         Optional<Utente> optUtente = login(email, password);
         if (optUtente.isPresent()) {
-            Sessione sessione = new Sessione(optUtente.get());
+            Sessione sessione = isNull(sessionId)
+                ? new Sessione(optUtente.get())
+                : new Sessione(sessionId, optUtente.get());
             mappaSessioni.put(sessione.getSessionId(), sessione);
             return sessione;
         }
@@ -62,11 +64,15 @@ public class SessioneService {
                 .map(utenteAssembler::toModel);
     }
 
-
     public Optional<Sessione> findSessioneAttiva(String email) {
         return mappaSessioni.values().stream()
                 .filter(s -> s.getUtente().getEmail().equals(email) && !s.isScaduta())
                 .findFirst();
+    }
+
+    public boolean hasSessioneAttiva(String sessionId) {
+        return mappaSessioni.containsKey(sessionId) &&
+                !mappaSessioni.get(sessionId).isScaduta();
     }
 
 

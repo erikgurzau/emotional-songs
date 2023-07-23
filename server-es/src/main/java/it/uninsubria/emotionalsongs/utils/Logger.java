@@ -21,9 +21,5 @@ public class Logger {
         return false;
     }
 
-    public static void errore(String arg) {
-        System.out.println(formatLocalDateTime(Costanti.DATA_ORA_PATTERN) + "\t[ERROR]\t" + arg);
-    }
-
 
 }

@@ -67,7 +67,7 @@ public class Server {
             return httpServer;
         } catch (IOException e) {
             // Se si verifica un'eccezione durante la creazione, stampa l'errore e restituisce null
-            Logger.errore(e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }

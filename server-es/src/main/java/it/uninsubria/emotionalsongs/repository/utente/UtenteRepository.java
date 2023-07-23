@@ -20,7 +20,6 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
 
     public UtenteRepository() { }
 
-    @Override
     public List<UtenteRegistratoEntity> findAll() {
         Connection connection;
         PreparedStatement statement;
@@ -36,12 +35,11 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return resultSetToList(resultSet, UtenteRegistratoEntity.class);
         }
         catch (SQLException e) {
-            Logger.errore(e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }
 
-    @Override
     public Optional<UtenteRegistratoEntity> findById(Integer id) {
         Connection connection;
         PreparedStatement statement;
@@ -60,7 +58,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return resultSetToList(resultSet, UtenteRegistratoEntity.class).stream().findFirst();
         }
         catch (SQLException e) {
-            Logger.errore(e.getMessage());
+            e.printStackTrace();
             return Optional.empty();
         }
     }
@@ -90,7 +88,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return true;
         }
         catch (SQLException e) {
-            Logger.errore(e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }
@@ -114,7 +112,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return resultSetToList(resultSet, UtenteRegistratoEntity.class).stream().findFirst();
         }
         catch (SQLException e) {
-            Logger.errore(e.getMessage());
+            e.printStackTrace();
             return Optional.empty();
         }
     }

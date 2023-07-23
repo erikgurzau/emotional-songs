@@ -4,6 +4,7 @@ package it.uninsubria.emotionalsongs.repository.canzone;
 import it.uninsubria.emotionalsongs.config.DatabaseConfig;
 import it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity;
 import it.uninsubria.emotionalsongs.repository.Repository;
+import it.uninsubria.emotionalsongs.utils.Costanti;
 import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.sql.Connection;
@@ -15,12 +16,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
+
 public class CanzoneRepository extends Repository<CanzoneEntity> {
 
     public CanzoneRepository() { }
 
-    @Override
-    public List<CanzoneEntity> findAll() {
+    public List<CanzoneEntity> getAll(Integer numeroPagina, Integer dimensionePagina) {
         Connection connection;
         PreparedStatement statement;
         ResultSet resultSet;
@@ -28,7 +30,7 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
                 "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
                 "   FROM Canzoni c INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
-                "   LIMIT 50";
+                "   LIMIT " + dimensionePagina + " OFFSET " + numeroPagina;;
         Logger.info(this.getClass().getSimpleName() + ": findAll " + query);
         try {
             connection = DatabaseConfig.getConnection();
@@ -38,12 +40,11 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
             return resultSetToList(resultSet, CanzoneEntity.class);
         }
         catch (SQLException e) {
-            Logger.errore(e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }
 
-    @Override
     public Optional<CanzoneEntity> findById(Integer id) {
         Connection connection;
         PreparedStatement statement;
@@ -65,8 +66,31 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
             return resultSetToList(resultSet, CanzoneEntity.class).stream().findFirst();
         }
         catch (SQLException e) {
-            Logger.errore(e.getMessage());
+            e.printStackTrace();
             return Optional.empty();
+        }
+    }
+
+    public Integer getTotaleCanzoni() {
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet resultSet;
+
+        String query = "SELECT COUNT(*) FROM Canzoni c";
+        Logger.info(this.getClass().getSimpleName() + ": getTotaleCanzoni " + query);
+        try {
+            connection = DatabaseConfig.getConnection();
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+            connection.close();
+            int totale = 0;
+            if (resultSet.next())
+                totale = resultSet.getInt(1);
+            return totale;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

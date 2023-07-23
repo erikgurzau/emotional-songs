@@ -1,6 +1,5 @@
 package it.uninsubria.emotionalsongs.model.api;
 
-import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.utils.Utils;
 
 public class API {

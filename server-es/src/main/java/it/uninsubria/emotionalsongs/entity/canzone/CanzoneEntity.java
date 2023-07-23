@@ -86,11 +86,4 @@ public class CanzoneEntity {
         this.durata_ms = durata_ms;
     }
 
-//    public String toString() {
-//        return String.join(",",
-//                getId().toString(), getAutore(), getTitolo(),
-//                getGenereMusicaleEntity().toString(), getAnno().toString(),
-//                getDurataMs().toString()
-//        );
-//    }
 }
