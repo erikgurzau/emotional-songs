@@ -1,6 +1,9 @@
 package it.uninsubria.emotionalsongs.model.utente;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * La classe Utente rappresenta un utente del sistema.
@@ -15,16 +18,19 @@ public class Utente extends Persona implements Serializable {
     /**
      * L'ID dell'utente.
      */
+    @JsonProperty("id")
     private Integer id;
 
     /**
      * L'email dell'utente.
      */
+    @JsonProperty("email")
     private String email;
 
     /**
      * La password dell'utente.
      */
+    @JsonProperty("password")
     private String password;
 
     /**
@@ -112,7 +118,9 @@ public class Utente extends Persona implements Serializable {
      */
     public String toString() {
         return String.join(",",
-                getId().toString(), getEmail(), getPassword(),
+                !Objects.isNull(getId()) ? getId().toString() : null,
+                getEmail(),
+                getPassword(),
                 super.toString()
         );
     }

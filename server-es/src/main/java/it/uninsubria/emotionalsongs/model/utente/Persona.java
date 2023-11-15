@@ -1,15 +1,30 @@
 package it.uninsubria.emotionalsongs.model.utente;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class Persona implements Serializable {
 
+    @JsonProperty("nome")
     private String nome;
+
+    @JsonProperty("cognome")
     private String cognome;
+
+    @JsonProperty("cod_fiscale")
     private String cod_fiscale;
+
+    @JsonProperty("indirizzo")
     private String indirizzo;
+
+    @JsonProperty("cap")
     private String cap;
+
+    @JsonProperty("comune")
     private String comune;
+
+    @JsonProperty("provincia")
     private String provincia;
 
     public Persona() { }
