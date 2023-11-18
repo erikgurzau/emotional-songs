@@ -17,7 +17,6 @@ import java.util.Map;
 
 import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
 
-
 public class CanzoneController extends Controller implements ApiConfig {
     private final CanzoneService canzoneService;
     private final SessioneService sessioneService;
@@ -34,9 +33,9 @@ public class CanzoneController extends Controller implements ApiConfig {
         String sessionId = super.getSessionId(exchange);
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
-        if (!sessioneService.hasSessioneAttiva(sessionId)) {
-            sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
-        }
+        //if (!sessioneService.hasSessioneAttiva(sessionId)) {
+          //  sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
+        //}
         if (CanzoneApi.GET_ALL_CANZONI.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetCanzoni");
             gestisciGetCanzoni(exchange);

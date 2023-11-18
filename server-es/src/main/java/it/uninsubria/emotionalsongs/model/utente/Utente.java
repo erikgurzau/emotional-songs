@@ -1,6 +1,9 @@
 package it.uninsubria.emotionalsongs.model.utente;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * La classe Utente rappresenta un utente del sistema.
@@ -15,16 +18,19 @@ public class Utente extends Persona implements Serializable {
     /**
      * L'ID dell'utente.
      */
+    @JsonProperty("id")
     private Integer id;
 
     /**
      * L'email dell'utente.
      */
+    @JsonProperty("email")
     private String email;
 
     /**
      * La password dell'utente.
      */
+    @JsonProperty("password")
     private String password;
 
     /**
@@ -38,7 +44,7 @@ public class Utente extends Persona implements Serializable {
      * Costruttore con parametri.
      * @param nome il nome dell'utente
      * @param cognome il cognome dell'utente
-     * @param cod_fiscale il codice fiscale dell'utente
+     * @param codFiscale il codice fiscale dell'utente
      * @param indirizzo l'indirizzo dell'utente
      * @param cap il CAP dell'utente
      * @param comune il comune dell'utente
@@ -48,11 +54,11 @@ public class Utente extends Persona implements Serializable {
      * @param password la password dell'utente
      */
     public Utente(
-            String nome, String cognome, String cod_fiscale,
+            String nome, String cognome, String codFiscale,
             String indirizzo, String cap, String comune,
             String provincia, Integer id, String email, String password
     ) {
-        super(nome, cognome, cod_fiscale, indirizzo, cap, comune, provincia);
+        super(nome, cognome, codFiscale, indirizzo, cap, comune, provincia);
         this.id = id;
         this.email = email;
         this.password = password;
@@ -112,7 +118,9 @@ public class Utente extends Persona implements Serializable {
      */
     public String toString() {
         return String.join(",",
-                getId().toString(), getEmail(), getPassword(),
+                !Objects.isNull(getId()) ? getId().toString() : null,
+                getEmail(),
+                getPassword(),
                 super.toString()
         );
     }

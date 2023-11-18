@@ -86,7 +86,6 @@ public class Utils {
         return mapper.readValue(inputStream, clazz);
     }
 
-
     public static byte[] convertObjectToBytes(Object obj) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsBytes(obj);

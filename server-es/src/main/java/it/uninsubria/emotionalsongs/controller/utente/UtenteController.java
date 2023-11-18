@@ -32,9 +32,9 @@ public class UtenteController extends Controller implements ApiConfig {
         String sessionId = super.getSessionId(exchange);
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
 
-        if (!sessioneService.hasSessioneAttiva(sessionId)) {
-            sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
-        }
+        //if (!sessioneService.hasSessioneAttiva(sessionId)) {
+          //  sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
+        //}
 
         if (UtenteApi.GET_ALL_UTENTI.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciGetUtenti");
@@ -83,12 +83,5 @@ public class UtenteController extends Controller implements ApiConfig {
         Utente utente = utenteService.getUtenteById(userId);
         sendResponse(exchange, utente, Costanti.StatusCode.OK);
     }
-
-
-
-
-
-
-
 
 }

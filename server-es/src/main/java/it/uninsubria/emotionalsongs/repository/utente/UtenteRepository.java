@@ -25,7 +25,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
-        String query = "SELECT * FROM Utenti_Registrati";
+        String query = "SELECT * FROM utenti_registrati";
         Logger.info("UtenteRepository: findAll " + query);
         try {
             connection = DatabaseConfig.getConnection();
@@ -45,7 +45,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
-        String query = "SELECT * FROM Utenti_Registrati WHERE id = :id";
+        String query = "SELECT * FROM utenti_registrati WHERE id = :id";
         Map<String, Object> mapParams = new HashMap<>();
         mapParams.put("id", id);
         query = replaceNamedParams(query, mapParams);
@@ -67,14 +67,14 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         Connection connection;
         PreparedStatement statement;
         String query =
-                "INSERT INTO Utenti_Registrati (cod_fiscale, email, psw, nome, cognome, indirizzo, cap, comune, provincia) " +
-                        "VALUES (:cod_fiscale, :email, :psw, :nome, :cognome, :indirizzo, :cap , :comune, :provincia)";
+                "INSERT INTO utenti_registrati (cod_fiscale, nome, cognome, email, psw,  indirizzo, cap, comune, provincia) " +
+                        "VALUES (:cod_fiscale, :nome, :cognome, :email, :psw,  :indirizzo, :cap , :comune, :provincia)";
         Map<String, Object> mapParams = new HashMap<>();
         mapParams.put("cod_fiscale", utente.getCodFiscale());
-        mapParams.put("email", utente.getEmail());
-        mapParams.put("psw", utente.getPassword());
         mapParams.put("nome", utente.getNome());
         mapParams.put("cognome", utente.getCognome());
+        mapParams.put("email", utente.getEmail());
+        mapParams.put("psw", utente.getPassword());
         mapParams.put("indirizzo", utente.getIndirizzo());
         mapParams.put("cap", utente.getCap());
         mapParams.put("comune", utente.getComune());
@@ -98,7 +98,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         PreparedStatement statement;
         ResultSet resultSet;
 
-        String query = "SELECT * FROM Utenti_Registrati WHERE email = :email AND psw = :password";
+        String query = "SELECT * FROM utenti_registrati WHERE email = :email AND psw = :password";
         Map<String, Object> mapParams = new HashMap<>();
         mapParams.put("email", email);
         mapParams.put("password", password);

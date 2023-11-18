@@ -9,6 +9,8 @@ public interface ApiConfig {
     String PATH_SESSIONE_API = "/sessione";
     String PATH_UTENTE_API = "/utente";
     String PATH_CANZONE_API = "/canzone";
+    String PATH_PLAYLIST_API = "/playlist";
+    String PATH_ASSEGNAZIONE_API = "/assegnazione";
 
 
     interface UtenteApi {
@@ -30,6 +32,25 @@ public interface ApiConfig {
         API CREA_SESSIONE_AUTO_ID = new API(ROOT, Costanti.HttpMethod.POST);
         API CREA_SESSIONE_ID = new API(ROOT + "/:sessionId", Costanti.HttpMethod.POST);
         API GET_SESSIONE_BY_ID = new API(ROOT + "/:sessionId", Costanti.HttpMethod.GET);
+    }
+
+    interface PlaylistApi {
+        String ROOT = PATH_SERVER_API + PATH_PLAYLIST_API;
+
+        API GET_ALL_PLAYLIST = new API(ROOT, Costanti.HttpMethod.GET);
+
+        API CREA_PLAYLIST = new API(ROOT, Costanti.HttpMethod.POST);
+
+        //API AGGIUNGI_CANZONI = new API(ROOT + "/canzoni", Costanti.HttpMethod.POST);
+
+    }
+
+    interface AssegnCanzApi {
+        String ROOT = PATH_SERVER_API + PATH_ASSEGNAZIONE_API;
+
+        API GET_ALL_ASSEGNAZIONI = new API(ROOT, Costanti.HttpMethod.GET);
+
+        API INSERT_ASSEGNAZIONE = new API(ROOT, Costanti.HttpMethod.POST);
     }
     
 
