@@ -1,8 +1,10 @@
 package it.uninsubria.emotionalsongs.model.playlist;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * La classe Playlist rappresenta una playlist creata da un utente del sistema.
@@ -33,6 +35,12 @@ public class Playlist implements Serializable {
     private String nome;
 
     /**
+     * Le canzoni assegnate alla playlist.
+     */
+    @JsonProperty("canzoni")
+    private List<CanzoneEntity> canzoni;
+
+    /**
      * Costruttore di default.
      */
     public Playlist() { }
@@ -43,10 +51,11 @@ public class Playlist implements Serializable {
      * @param idUtente l'ID dell'utente creatore della playlist
      * @param nome il nome della playlist
      */
-    public Playlist(Integer id, Integer idUtente, String nome) {
+    public Playlist(Integer id, Integer idUtente, String nome, List<CanzoneEntity> canzoni) {
         this.id = id;
         this.idUtente = idUtente;
         this.nome = nome;
+        this.canzoni = canzoni;
     }
 
     /**
@@ -97,6 +106,17 @@ public class Playlist implements Serializable {
         this.nome = nome;
     }
 
+    /**
+     * Restituisce la lista di canzoni assegnate alla playlist.
+     * @return la lista di canzoni assegnate della playlist
+     */
+    public List<CanzoneEntity> getCanzoni() { return canzoni; }
+
+    /**
+     * Imposta la lista di canzoni da assegnare alla playlist.
+     * @param canzoni la lista delle canzoni da assegnare alla playlist
+     */
+    public void setCanzoni(List<CanzoneEntity> canzoni) { this.canzoni = canzoni; }
 
     /**
      * Restituisce una rappresentazione testuale dell'oggetto Playlist.
@@ -105,7 +125,7 @@ public class Playlist implements Serializable {
      */
     public String toString() {
         return String.join(",",
-                getId().toString(), getUtente().toString(), getNome()
+                getId().toString(), getUtente().toString(), getNome(), getCanzoni().toString()
         );
     }
 }

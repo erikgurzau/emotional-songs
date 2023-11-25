@@ -31,7 +31,8 @@ public class PlaylistAssembler implements AssemblerImpl<PlaylistEntity, Playlist
                 entity.getId(),
                 //entity.getIdUtenteRegistratoEntity(),
                 entity.getIdUtente(),
-                entity.getNome()
+                entity.getNome(),
+                entity.getCanzoni()
         );
     }
 
