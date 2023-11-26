@@ -18,7 +18,7 @@ public class AssegnCanzController extends Controller implements ApiConfig {
     private final SessioneService sessioneService;
 
     public AssegnCanzController() {
-        assegnCanzService = new AssegnCanzService();
+        assegnCanzService = SharedService.getAssegnCanzService();
         sessioneService = SharedService.getSessioneService();
     }
 
