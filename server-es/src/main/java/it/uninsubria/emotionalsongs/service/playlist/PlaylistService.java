@@ -12,12 +12,10 @@ public class PlaylistService {
 
     private final PlaylistRepository playlistRepository;
     private final PlaylistAssembler playlistAssembler;
-    //private final CanzoneAssembler canzoneAssembler;
 
     public PlaylistService() {
         playlistRepository = new PlaylistRepository();
         playlistAssembler = new PlaylistAssembler();
-        //canzoneAssembler = new CanzoneAssembler();
     }
 
     public List<Playlist> getAll() {
@@ -30,10 +28,4 @@ public class PlaylistService {
         Logger.info(this.getClass().getSimpleName() + ": createPlaylist ");
         return playlistRepository.createPlaylist(playlist);
     }
-
-    /*public List<Canzone> addCanzoni() {
-        Logger.info(this.getClass().getSimpleName() + ": addCanzoni ");
-        List<Canzone> canzoniList = playlistRepository.addCanzoni();
-        return canzoneAssembler.toModel(canzoniList);
-    }*/
 }
