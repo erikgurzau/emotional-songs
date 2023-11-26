@@ -1,7 +1,9 @@
 package it.uninsubria.emotionalsongs.service;
 
+import it.uninsubria.emotionalsongs.service.assegnazioni_canzoni.AssegnCanzService;
 import it.uninsubria.emotionalsongs.service.canzone.CanzoneService;
 import it.uninsubria.emotionalsongs.service.playlist.PlaylistService;
+import it.uninsubria.emotionalsongs.service.report.ReportService;
 import it.uninsubria.emotionalsongs.service.sessione.SessioneService;
 import it.uninsubria.emotionalsongs.service.utente.UtenteService;
 
@@ -18,6 +20,8 @@ public class SharedService {
     private static CanzoneService canzoneService = new CanzoneService();
     private static PlaylistService playlistService = new PlaylistService();
     private static SessioneService sessioneService = new SessioneService();
+    private static AssegnCanzService assegnCanzService = new AssegnCanzService();
+    private static ReportService reportService = new ReportService();
 
 
     public static UtenteService getUtenteService() {
@@ -29,6 +33,10 @@ public class SharedService {
     public static PlaylistService getPlaylistService() {
         return playlistService;
     }
+    public static AssegnCanzService getAssegnCanzService() {
+        return assegnCanzService;
+    }
+    public static ReportService getReportService() { return reportService; }
     public static synchronized SessioneService getSessioneService() {
         return sessioneService;
     }

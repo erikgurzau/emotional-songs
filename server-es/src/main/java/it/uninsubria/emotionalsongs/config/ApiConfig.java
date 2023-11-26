@@ -11,6 +11,7 @@ public interface ApiConfig {
     String PATH_CANZONE_API = "/canzone";
     String PATH_PLAYLIST_API = "/playlist";
     String PATH_ASSEGNAZIONE_API = "/assegnazione";
+    String PATH_REPORT_API = "/report";
 
 
     interface UtenteApi {
@@ -41,8 +42,6 @@ public interface ApiConfig {
 
         API CREA_PLAYLIST = new API(ROOT, Costanti.HttpMethod.POST);
 
-        //API AGGIUNGI_CANZONI = new API(ROOT + "/canzoni", Costanti.HttpMethod.POST);
-
     }
 
     interface AssegnCanzApi {
@@ -52,6 +51,12 @@ public interface ApiConfig {
 
         API INSERT_ASSEGNAZIONE = new API(ROOT, Costanti.HttpMethod.POST);
     }
-    
+
+    interface ReportApi {
+        String ROOT = PATH_SERVER_API + PATH_REPORT_API;
+
+        API GET_REPORT = new API(ROOT+ "/:id", Costanti.HttpMethod.GET);
+
+    }
 
 }
