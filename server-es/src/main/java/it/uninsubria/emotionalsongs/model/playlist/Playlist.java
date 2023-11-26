@@ -19,13 +19,13 @@ public class Playlist implements Serializable {
     /**
      * L'ID della playlist.
      */
-    @JsonProperty("id")
+    //@JsonProperty("id")
     private Integer id;
 
     /**
      * LID dell'utente che ha creato la playlist.
      */
-    @JsonProperty("idUtente")
+    //@JsonProperty("idUtente")
     private Integer idUtente;
 
     /**
