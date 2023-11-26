@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import it.uninsubria.emotionalsongs.config.ApiConfig;
 import it.uninsubria.emotionalsongs.controller.Controller;
 import it.uninsubria.emotionalsongs.model.playlist.Playlist;
+import it.uninsubria.emotionalsongs.service.SharedService;
 import it.uninsubria.emotionalsongs.service.playlist.PlaylistService;
 import it.uninsubria.emotionalsongs.utils.Costanti;
 import it.uninsubria.emotionalsongs.utils.Logger;
@@ -16,7 +17,7 @@ public class PlaylistController extends Controller implements ApiConfig {
     private final PlaylistService playlistService;
 
     public PlaylistController() {
-        playlistService = new PlaylistService();
+        playlistService = SharedService.getPlaylistService();
     }
 
     public void handle(HttpExchange exchange) throws IOException {
@@ -36,19 +37,13 @@ public class PlaylistController extends Controller implements ApiConfig {
             Logger.info(this.getClass().getSimpleName() + ": gestisciCreaPlaylist");
             gestisciCreaPlaylist(exchange);
         }
-        /*else if (PlaylistApi.AGGIUNGI_CANZONI.match(path, method)) {
-            Logger.info(this.getClass().getSimpleName() + ": gestisciAggiungiCanzoni");
-            gestisciAggiungiCanzoni(exchange);
-        }*/
         else sendResponse(exchange, Costanti.ErrorCode.PAGE_NOT_FOUND, Costanti.ErrorCode.PAGE_NOT_FOUND.getStatusCode());
     }
-
 
     private void gestisciGetPlaylist(HttpExchange exchange) throws IOException {
         List<Playlist> playlists = playlistService.getAll();
         sendResponse(exchange, playlists, Costanti.StatusCode.OK);
     }
-
 
     private void gestisciCreaPlaylist(HttpExchange exchange) throws IOException {
         try {
@@ -64,9 +59,4 @@ public class PlaylistController extends Controller implements ApiConfig {
             throw new RuntimeException(e);
         }
     }
-
-    /*private void gestisciAggiungiCanzoni(HttpExchange exchange) throws IOException {
-        List<Canzone> canzoni = PlaylistService.addCanzoni();
-        sendResponse(exchange, canzoni, Costanti.StatusCode.OK);
-    }*/
 }
