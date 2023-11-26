@@ -31,21 +31,11 @@ public class AssegnCanzController extends Controller implements ApiConfig {
         //if (!sessioneService.hasSessioneAttiva(sessionId)) {
         //  sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
         //}
-
-        if (ApiConfig.AssegnCanzApi.GET_ALL_ASSEGNAZIONI.match(path, method)) {
-            Logger.info(this.getClass().getSimpleName() + ": gestisciGetAssegnazioni");
-            gestisciGetAssegnazioni(exchange);
-        }
-        else if (ApiConfig.AssegnCanzApi.INSERT_ASSEGNAZIONE.match(path, method)) {
+        if (ApiConfig.AssegnCanzApi.INSERT_ASSEGNAZIONE.match(path, method)) {
             Logger.info(this.getClass().getSimpleName() + ": gestisciInsertAssegnazione");
             gestisciInsertAssegnazione(exchange);
         }
         else sendResponse(exchange, Costanti.ErrorCode.PAGE_NOT_FOUND, Costanti.ErrorCode.PAGE_NOT_FOUND.getStatusCode());
-    }
-
-    private void gestisciGetAssegnazioni(HttpExchange exchange) {
-        List<AssegnCanzone> assegnazioni = assegnCanzService.getAll();
-        sendResponse(exchange, assegnazioni, Costanti.StatusCode.OK);
     }
 
     private void gestisciInsertAssegnazione(HttpExchange exchange) {

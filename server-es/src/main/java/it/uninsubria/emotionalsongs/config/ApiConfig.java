@@ -47,8 +47,6 @@ public interface ApiConfig {
     interface AssegnCanzApi {
         String ROOT = PATH_SERVER_API + PATH_ASSEGNAZIONE_API;
 
-        API GET_ALL_ASSEGNAZIONI = new API(ROOT, Costanti.HttpMethod.GET);
-
         API INSERT_ASSEGNAZIONE = new API(ROOT, Costanti.HttpMethod.POST);
     }
 

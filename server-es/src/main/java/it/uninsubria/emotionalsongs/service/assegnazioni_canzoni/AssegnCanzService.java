@@ -17,11 +17,6 @@ public class AssegnCanzService {
         assegnCanzAssembler = new AssegnCanzAssembler();
     }
 
-    public List<AssegnCanzone> getAll() {
-        Logger.info(this.getClass().getSimpleName() + ": getAll ");
-        return assegnCanzAssembler.toModel(assegnCanzRepository.getAll());
-    }
-
     public boolean insertAssegnazione(AssegnCanzone assegnazione) {
         Logger.info("AssegnCanzService: insertAssegnazione ");
         return assegnCanzRepository.insertAssegnazione(assegnazione);
