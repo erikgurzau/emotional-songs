@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import it.uninsubria.emotionalsongs.config.ApiConfig;
 import it.uninsubria.emotionalsongs.controller.assegnazioni_canzoni.AssegnCanzController;
 import it.uninsubria.emotionalsongs.controller.canzone.CanzoneController;
+import it.uninsubria.emotionalsongs.controller.emozione.EmozioneController;
 import it.uninsubria.emotionalsongs.controller.playlist.PlaylistController;
 import it.uninsubria.emotionalsongs.controller.report.ReportController;
 import it.uninsubria.emotionalsongs.controller.sessione.SessioneController;
