@@ -2,6 +2,7 @@ package it.uninsubria.emotionalsongs.service;
 
 import it.uninsubria.emotionalsongs.service.assegnazioni_canzoni.AssegnCanzService;
 import it.uninsubria.emotionalsongs.service.canzone.CanzoneService;
+import it.uninsubria.emotionalsongs.service.emozione.EmozioneService;
 import it.uninsubria.emotionalsongs.service.playlist.PlaylistService;
 import it.uninsubria.emotionalsongs.service.report.ReportService;
 import it.uninsubria.emotionalsongs.service.sessione.SessioneService;
