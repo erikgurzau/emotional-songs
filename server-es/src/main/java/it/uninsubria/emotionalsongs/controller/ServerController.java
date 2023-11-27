@@ -21,6 +21,7 @@ public class ServerController extends Controller implements ApiConfig {
     private final PlaylistController playlistController;
     private final AssegnCanzController assegnCanzController;
     private final ReportController reportController;
+    private final EmozioneController emozioneController;
 
     public ServerController() {
         utenteController = new UtenteController();
@@ -29,6 +30,7 @@ public class ServerController extends Controller implements ApiConfig {
         playlistController = new PlaylistController();
         assegnCanzController = new AssegnCanzController();
         reportController = new ReportController();
+        emozioneController = new EmozioneController();
     }
 
     @Override
@@ -52,6 +54,7 @@ public class ServerController extends Controller implements ApiConfig {
             case PATH_PLAYLIST_API -> playlistController.handle(exchange);
             case PATH_ASSEGNAZIONE_API -> assegnCanzController.handle(exchange);
             case PATH_REPORT_API -> reportController.handle(exchange);
+            case PATH_EMOZIONE_API -> emozioneController.handle(exchange);
             default -> sendResponse(exchange, Costanti.ErrorCode.PAGE_NOT_FOUND, 404);
         }
     }

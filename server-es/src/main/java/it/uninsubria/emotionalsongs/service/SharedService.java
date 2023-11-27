@@ -22,6 +22,7 @@ public class SharedService {
     private static SessioneService sessioneService = new SessioneService();
     private static AssegnCanzService assegnCanzService = new AssegnCanzService();
     private static ReportService reportService = new ReportService();
+    private static EmozioneService emozioneService = new EmozioneService();
 
 
     public static UtenteService getUtenteService() {
@@ -35,6 +36,9 @@ public class SharedService {
     }
     public static AssegnCanzService getAssegnCanzService() {
         return assegnCanzService;
+    }
+    public static EmozioneService getEmozioneService(){
+        return emozioneService; 
     }
     public static ReportService getReportService() { return reportService; }
     public static synchronized SessioneService getSessioneService() {
