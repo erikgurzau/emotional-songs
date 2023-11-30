@@ -148,13 +148,13 @@ public class Utils {
 
             // Ottiene i valori corrispondenti delle variabili di percorso dal percorso
             int groupCount = matcher.groupCount();
-            while (variableMatcher.find()) {
+            int groupIndex = 1;
+
+            while (variableMatcher.find() && groupIndex <= groupCount) {
                 String variableName = variableMatcher.group(1);
-                for (int i = 1; i <= groupCount; i++) {
-                    String group = matcher.group(i);
-                    pathVariables.put(variableName, group);
-                    break;
-                }
+                String group = matcher.group(groupIndex);
+                pathVariables.put(variableName, group);
+                groupIndex++;
             }
         }
 
