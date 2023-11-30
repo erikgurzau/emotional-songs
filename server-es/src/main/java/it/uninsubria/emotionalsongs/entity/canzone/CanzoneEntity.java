@@ -54,12 +54,20 @@ public class CanzoneEntity {
         this.anno = anno;
     }
 
-    public GenereMusicaleEntity getGenereMusicaleEntity() {
-        return genereMusicaleEntity;
+    public Integer getIdGenereMusicale() {
+        return genereMusicaleEntity.getId();
     }
 
-    public void setGenereMusicaleEntity(GenereMusicaleEntity genereMusicaleEntity) {
-        this.genereMusicaleEntity = genereMusicaleEntity;
+    public void setIdGenereMusicale(Integer id) {
+        genereMusicaleEntity.setId(id);
+    }
+
+    public String getNomeGenereMusicale() {
+        return genereMusicaleEntity.getNome();
+    }
+
+    public void setNomeGenereMusicale(String nome) {
+        genereMusicaleEntity.setNome(nome);
     }
 
     public Long getDurataMs() {

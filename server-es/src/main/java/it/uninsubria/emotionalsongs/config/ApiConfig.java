@@ -27,6 +27,9 @@ public interface ApiConfig {
         String ROOT = PATH_SERVER_API + PATH_CANZONE_API;
         API GET_ALL_CANZONI = new API(ROOT, Costanti.HttpMethod.GET);
         API GET_CANZONE_BY_ID = new API(ROOT + "/:id", Costanti.HttpMethod.GET);
+        API GET_CANZONE_BY_TITOLO = new API(ROOT + "/ricercaTitolo" + "/:titolo", Costanti.HttpMethod.GET);
+        API GET_CANZONE_BY_AUTORE_E_ANNO = new API(ROOT + "/ricercaAutoreAnno" + "/:autore/:anno", Costanti.HttpMethod.GET);
+
     }
 
     interface SessioneApi {
@@ -38,30 +41,24 @@ public interface ApiConfig {
 
     interface PlaylistApi {
         String ROOT = PATH_SERVER_API + PATH_PLAYLIST_API;
-
         API GET_ALL_PLAYLIST = new API(ROOT, Costanti.HttpMethod.GET);
-
         API CREA_PLAYLIST = new API(ROOT, Costanti.HttpMethod.POST);
 
     }
 
     interface AssegnCanzApi {
         String ROOT = PATH_SERVER_API + PATH_ASSEGNAZIONE_API;
-
         API INSERT_ASSEGNAZIONE = new API(ROOT, Costanti.HttpMethod.POST);
     }
 
     interface ReportApi {
         String ROOT = PATH_SERVER_API + PATH_REPORT_API;
-
         API GET_REPORT = new API(ROOT+ "/:id", Costanti.HttpMethod.GET);
 
     }
     
      interface EmozioneApi {
-
         String ROOT = PATH_SERVER_API + PATH_EMOZIONE_API;
-
         API CREA_RECENSIONE = new API(ROOT, Costanti.HttpMethod.POST);
     }
 

@@ -32,8 +32,7 @@ public class CanzoneAssembler implements AssemblerImpl<CanzoneEntity, Canzone> {
                 entity.getAutore(),
                 entity.getTitolo(),
                 entity.getAnno(),
-                entity.getGenereMusicaleEntity().getNome(),
-                //entity.getNomeGenereMusicale(),
+                entity.getNomeGenereMusicale(),
                 entity.getDurataMs()
         );
     }

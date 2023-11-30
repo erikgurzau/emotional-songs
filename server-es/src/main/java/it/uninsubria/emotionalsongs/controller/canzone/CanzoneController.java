@@ -13,6 +13,7 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 import it.uninsubria.emotionalsongs.utils.Utils;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
@@ -46,6 +47,19 @@ public class CanzoneController extends Controller implements ApiConfig {
             Integer id = Integer.valueOf(pathVariables.get("id"));
             gestisciGetCanzoneById(exchange, id);
         }
+        else if (CanzoneApi.GET_CANZONE_BY_TITOLO.match(path, method)) {
+            Logger.info(this.getClass().getSimpleName() + ": gestisciGetCanzoneByTitolo");
+            Map<String, String> pathVariables = Utils.getPathVariables(CanzoneApi.GET_CANZONE_BY_TITOLO.getPath(), path);
+            String titolo = pathVariables.get("titolo");
+            gestisciGetCanzoneByTitolo(exchange, titolo);
+        }
+        else if (CanzoneApi.GET_CANZONE_BY_AUTORE_E_ANNO.match(path, method)) {
+            Logger.info(this.getClass().getSimpleName() + ": gestisciGetCanzoneByAutoreAnno");
+            Map<String, String> pathVariables = Utils.getPathVariables(CanzoneApi.GET_CANZONE_BY_AUTORE_E_ANNO.getPath(), path);
+            String autore = pathVariables.get("autore");
+            Integer anno = Integer.valueOf(pathVariables.get("anno"));
+            gestisciGetCanzoneByAutoreAnno(exchange, autore, anno);
+        }
         else sendResponse(exchange, Costanti.ErrorCode.PAGE_NOT_FOUND, Costanti.ErrorCode.PAGE_NOT_FOUND.getStatusCode());
     }
 
@@ -72,6 +86,16 @@ public class CanzoneController extends Controller implements ApiConfig {
     private void gestisciGetCanzoneById(HttpExchange exchange, Integer canzoneId) throws IOException {
         Canzone canzone = canzoneService.getCanzoneById(canzoneId);
         sendResponse(exchange, canzone, Costanti.StatusCode.OK);
+    }
+
+    private void gestisciGetCanzoneByTitolo(HttpExchange exchange, String ricerca) throws IOException {
+        List<Canzone> canzoni = canzoneService.getCanzoneByTitolo(ricerca);
+        sendResponse(exchange, canzoni, Costanti.StatusCode.OK);
+    }
+
+    private void gestisciGetCanzoneByAutoreAnno(HttpExchange exchange, String autore, Integer anno) throws IOException {
+        List<Canzone> canzoni = canzoneService.getCanzoneByAutoreAnno(autore, anno);
+        sendResponse(exchange, canzoni, Costanti.StatusCode.OK);
     }
 
 }
