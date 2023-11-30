@@ -1,7 +1,7 @@
 package it.uninsubria.emotionalsongs.entity.playlist;
 
-import it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity;
 import it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity;
+import it.uninsubria.emotionalsongs.model.canzone.Canzone;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ public class PlaylistEntity {
     //private UtenteRegistratoEntity utenteRegistratoEntity;
     private String nome;
 
-    private List<CanzoneEntity> canzoni;
+    private List<Canzone> canzoni;
 
     public PlaylistEntity() { }
     //public PlaylistEntity() { utenteRegistratoEntity = new UtenteRegistratoEntity();   }
 
-    public PlaylistEntity(Integer id, Integer id_utente, String nome, List<CanzoneEntity> canzoni) {
+    public PlaylistEntity(Integer id, Integer id_utente, String nome, List<Canzone> canzoni) {
         this.id = id;
         this.id_utente = id_utente;
         this.nome = nome;
@@ -55,9 +55,9 @@ public class PlaylistEntity {
         this.nome = nome;
     }
 
-    public List<CanzoneEntity> getCanzoni() { return canzoni; }
+    public List<Canzone> getCanzoni() { return canzoni; }
 
-    public void setCanzoni(List<CanzoneEntity> canzoni) { this.canzoni = canzoni; }
+    public void setCanzoni(List<Canzone> canzoni) { this.canzoni = canzoni; }
 
 
 }

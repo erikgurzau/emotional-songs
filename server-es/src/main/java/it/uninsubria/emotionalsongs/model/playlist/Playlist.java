@@ -1,7 +1,7 @@
 package it.uninsubria.emotionalsongs.model.playlist;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity;
+import it.uninsubria.emotionalsongs.model.canzone.Canzone;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,13 +19,13 @@ public class Playlist implements Serializable {
     /**
      * L'ID della playlist.
      */
-    //@JsonProperty("id")
+    @JsonProperty("id")
     private Integer id;
 
     /**
      * LID dell'utente che ha creato la playlist.
      */
-    //@JsonProperty("idUtente")
+    @JsonProperty("utente")
     private Integer idUtente;
 
     /**
@@ -38,7 +38,7 @@ public class Playlist implements Serializable {
      * Le canzoni assegnate alla playlist.
      */
     @JsonProperty("canzoni")
-    private List<CanzoneEntity> canzoni;
+    private List<Canzone> canzoni;
 
     /**
      * Costruttore di default.
@@ -51,7 +51,7 @@ public class Playlist implements Serializable {
      * @param idUtente l'ID dell'utente creatore della playlist
      * @param nome il nome della playlist
      */
-    public Playlist(Integer id, Integer idUtente, String nome, List<CanzoneEntity> canzoni) {
+    public Playlist(Integer id, Integer idUtente, String nome, List<Canzone> canzoni) {
         this.id = id;
         this.idUtente = idUtente;
         this.nome = nome;
@@ -110,13 +110,13 @@ public class Playlist implements Serializable {
      * Restituisce la lista di canzoni assegnate alla playlist.
      * @return la lista di canzoni assegnate della playlist
      */
-    public List<CanzoneEntity> getCanzoni() { return canzoni; }
+    public List<Canzone> getCanzoni() { return canzoni; }
 
     /**
      * Imposta la lista di canzoni da assegnare alla playlist.
      * @param canzoni la lista delle canzoni da assegnare alla playlist
      */
-    public void setCanzoni(List<CanzoneEntity> canzoni) { this.canzoni = canzoni; }
+    public void setCanzoni(List<Canzone> canzoni) { this.canzoni = canzoni; }
 
     /**
      * Restituisce una rappresentazione testuale dell'oggetto Playlist.
