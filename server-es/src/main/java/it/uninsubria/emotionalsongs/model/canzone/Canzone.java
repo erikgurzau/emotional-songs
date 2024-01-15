@@ -47,7 +47,7 @@ public class Canzone implements Serializable {
     /**
      * La durata della canzone espressa in millisecondi.
      */
-    @JsonProperty("durataMs")
+    @JsonProperty("durata")
     private Long durataMs;
 
     /**

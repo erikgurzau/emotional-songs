@@ -29,9 +29,9 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
 
         String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
                 "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
-                "   FROM Canzoni c INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
+                "   FROM canzoni c INNER JOIN generi_musicali gm ON c.id_genere = gm.id" +
                 "   LIMIT " + dimensionePagina + " OFFSET " + numeroPagina;;
-        Logger.info(this.getClass().getSimpleName() + ": findAll " + query);
+        Logger.info("CanzoneRepository : findAll " + query);
         try {
             connection = DatabaseConfig.getConnection();
             statement = connection.prepareStatement(query);
@@ -52,12 +52,12 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
 
         String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
                 "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
-                "   FROM Canzoni c INNER JOIN Generi_Musicali gm ON c.id_genere = gm.id" +
+                "   FROM canzoni c INNER JOIN generi_musicali gm ON c.id_genere = gm.id" +
                 "   WHERE c.id = :id";
         Map<String, Object> mapParams = new HashMap<>();
         mapParams.put("id", id);
         query = replaceNamedParams(query, mapParams);
-        Logger.info(this.getClass().getSimpleName() + ": findById " + query);
+        Logger.info("CanzoneRepository : findById " + query);
         try {
             connection = DatabaseConfig.getConnection();
             statement = connection.prepareStatement(query);
@@ -71,13 +71,68 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         }
     }
 
+    public List<CanzoneEntity> findByTitolo(String ricerca) {
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet resultSet;
+
+        String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
+                "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
+                "   FROM canzoni c INNER JOIN generi_musicali gm ON c.id_genere = gm.id" +
+                "   WHERE c.titolo LIKE ?";
+        Logger.info("CanzoneRepository : findByTitolo " + query);
+        try {
+            connection = DatabaseConfig.getConnection();
+            statement = connection.prepareStatement(query);
+            statement.setString(1, "%" + ricerca + "%");
+            resultSet = statement.executeQuery();
+
+            List<CanzoneEntity> result = resultSetToList(resultSet, CanzoneEntity.class);
+            connection.close();
+            return result;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<CanzoneEntity> findByAutoreAnno(String autore, Integer anno) {
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet resultSet;
+        System.out.println("ciao");
+
+        String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
+                "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +
+                "   FROM canzoni c INNER JOIN generi_musicali gm ON c.id_genere = gm.id" +
+                "   WHERE c.autore = ? AND c.anno = ?";
+        Logger.info("CanzoneRepository : findByAutoreAnno " + query);
+        try {
+            connection = DatabaseConfig.getConnection();
+            statement = connection.prepareStatement(query);
+
+            statement.setString(1, autore);
+            statement.setInt(2, anno);
+            resultSet = statement.executeQuery();
+
+            List<CanzoneEntity> result = resultSetToList(resultSet, CanzoneEntity.class);
+            connection.close();
+            return result;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public Integer getTotaleCanzoni() {
         Connection connection;
         PreparedStatement statement;
         ResultSet resultSet;
 
         String query = "SELECT COUNT(*) FROM Canzoni c";
-        Logger.info(this.getClass().getSimpleName() + ": getTotaleCanzoni " + query);
+        Logger.info("CanzoneRepository : getTotaleCanzoni " + query);
         try {
             connection = DatabaseConfig.getConnection();
             statement = connection.prepareStatement(query);

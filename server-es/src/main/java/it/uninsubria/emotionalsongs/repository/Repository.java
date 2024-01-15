@@ -7,9 +7,7 @@ import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Repository<T> {
 
@@ -47,7 +45,6 @@ public abstract class Repository<T> {
 
         return list; // restituisce la lista di oggetti T creata dai dati del ResultSet
     }
-
 
     public static String replaceNamedParams(String query, Map<String, Object> params) {
         for (Map.Entry<String, Object> param : params.entrySet()) {

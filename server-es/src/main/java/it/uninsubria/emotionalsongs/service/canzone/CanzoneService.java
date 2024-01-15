@@ -28,6 +28,16 @@ public class CanzoneService {
         return optionalUtente.isPresent() ? canzoneAssembler.toModel(optionalUtente.get()) : null;
     }
 
+    public List<Canzone> getCanzoneByTitolo(String ricerca) {
+        List<CanzoneEntity> canzoni = canzoneRepository.findByTitolo(ricerca);
+        return canzoneAssembler.toModel(canzoni);
+    }
+
+    public List<Canzone> getCanzoneByAutoreAnno(String autore, Integer anno) {
+        List<CanzoneEntity> canzoni = canzoneRepository.findByAutoreAnno(autore, anno);
+        return canzoneAssembler.toModel(canzoni);
+    }
+
     public Integer getTotaleCanzoni() {
         return canzoneRepository.getTotaleCanzoni();
     }

@@ -4,6 +4,7 @@ import it.uninsubria.emotionalsongs.config.DatabaseConfig;
 import it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity;
 import it.uninsubria.emotionalsongs.entity.canzone.GenereMusicaleEntity;
 import it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity;
+import it.uninsubria.emotionalsongs.model.canzone.Canzone;
 import it.uninsubria.emotionalsongs.model.playlist.Playlist;
 import it.uninsubria.emotionalsongs.repository.Repository;
 import it.uninsubria.emotionalsongs.utils.Logger;
@@ -45,7 +46,7 @@ public class PlaylistRepository extends Repository<PlaylistEntity> {
                 String autore = resultSet.getString("autore");
                 String titolo = resultSet.getString("titolo");
                 int anno = resultSet.getInt("anno");
-                int idGenere = resultSet.getInt("id_genere");
+                //int idGenere = resultSet.getInt("id_genere");
                 String nomeGenere = resultSet.getString("nome_genere");
                 long durataMs = resultSet.getLong("durata_ms");
 
@@ -58,13 +59,14 @@ public class PlaylistRepository extends Repository<PlaylistEntity> {
                     return newPlaylist;
                 });
 
-                CanzoneEntity canzone = new CanzoneEntity();
+                Canzone canzone = new Canzone();
                 canzone.setId(canzoneId);
                 canzone.setAutore(autore);
                 canzone.setTitolo(titolo);
                 canzone.setAnno(anno);
-                canzone.setGenereMusicaleEntity(new GenereMusicaleEntity(idGenere, nomeGenere));
-                canzone.setDurataMs(durataMs);
+                canzone.setGenere(nomeGenere);
+                canzone.setDurata(durataMs);
+
 
                 playlist.getCanzoni().add(canzone);
             }
