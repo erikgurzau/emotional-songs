@@ -9,6 +9,13 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Questa classe contiene le costanti utilizzate nell'applicazione.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ */
 public class UtenteService {
 
     private final UtenteRepository utenteRepository;

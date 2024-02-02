@@ -78,6 +78,13 @@ public class Utils {
         return hexString.toString();
     }
 
+    /**
+     * Converte un flusso di input in un oggetto di tipo specificato.
+     * @param inputStream il flusso di input da convertire in oggetto.
+     * @param clazz  la classe dell'oggetto di destinazione.
+     * @return   l'oggetto risultante, o null se il flusso di input è vuoto.
+     * @throws IOException se si verifica un errore durante la lettura dal flusso di input.
+     */
     public static <T> T convertInputStreamToObject(InputStream inputStream, Class<T> clazz) throws IOException {
         if (inputStream.available() == 0)
             return null;
@@ -86,20 +93,42 @@ public class Utils {
         return mapper.readValue(inputStream, clazz);
     }
 
+    /**
+     * Converte un oggetto in un array di byte.
+     * @param obj l'oggetto da convertire.
+     * @return l'array di byte rappresentante l'oggetto.
+     * @throws JsonProcessingException se si verifica un errore durante la conversione dell'oggetto in formato JSON.
+     */
     public static byte[] convertObjectToBytes(Object obj) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsBytes(obj);
     }
 
 
+    /**
+     * Verifica se un oggetto è nullo.
+     * @param obj l'oggetto da verificare.
+     * @return true se l'oggetto è nullo, false altrimenti.
+     */
     public static boolean isNull(Object obj) {
         return obj == null;
     }
 
+    /**
+     * Verifica se una stringa è vuota o nulla.
+     * @param obj la stringa da verificare.
+     * @return true se la stringa è vuota o nulla, false altrimenti.
+     */
     public static boolean isEmpty(Object obj) {
         return isNull(obj) || obj == "";
     }
 
+
+    /**
+     * Formatta la data e l'ora corrente secondo il pattern specificato.
+     * @param pattern il pattern di formattazione della data e dell'ora.
+     * @return  la data e l'ora formattate come stringa.
+     */
     public static String formatLocalDateTime(String pattern) {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(pattern));
     }
@@ -130,7 +159,6 @@ public class Utils {
 
     /**
      * Risolve le variabili di percorso dal pattern e dal percorso specificati.
-     *
      * @param pattern il pattern contenente le variabili di percorso
      * @param path    il percorso da confrontare con il pattern
      * @return una mappa contenente le variabili di percorso risolte
@@ -176,7 +204,6 @@ public class Utils {
 
     /**
      * Verifica se un percorso corrisponde a un determinato pattern.
-     *
      * @param pattern il pattern da confrontare
      * @param path    il percorso da verificare
      * @return true se il percorso corrisponde al pattern, false altrimenti
