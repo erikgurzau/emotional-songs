@@ -13,16 +13,22 @@ import java.util.stream.Collectors;
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.AssemblerImpl
+ * @see it.uninsubria.emotionalsongs.entity.assegnazioni_canzoni.AssegnCanzEntity
+ * @see it.uninsubria.emotionalsongs.model.assegnazioni_canzoni.AssegnCanzone
  */
 public class AssegnCanzAssembler implements AssemblerImpl<AssegnCanzEntity, AssegnCanzone> {
-    /*
+
+    /**
      * Costruttore della classe.
      */
     public AssegnCanzAssembler() { }
 
-    /*
-     * Converte un'istanza di UtenteRegistratoEntity in un'istanza di Utente.
+    /**
+     * Converte un'istanza di AssegnCanzEntity in un'istanza di AssegnCanzone.
+     * @param entity L'entità da convertire
+     * @return Un'assegnazione
      */
     @Override
     public AssegnCanzone toModel(AssegnCanzEntity entity) {
@@ -33,9 +39,11 @@ public class AssegnCanzAssembler implements AssemblerImpl<AssegnCanzEntity, Asse
         );
     }
 
-    /*
-     * Converte una lista di UtenteRegistratoEntity in una lista di Utente
+    /**
+     * Converte una lista di AssegnCanzEntity in una lista di AssegnCanzone
      * utilizzando il metodo toModel per ogni elemento della lista.
+     * @param entityList La lista da convertire
+     * @return Una lista di assegnazioni di canzoni
      */
     @Override
     public List<AssegnCanzone> toModel(List<AssegnCanzEntity> entityList) {

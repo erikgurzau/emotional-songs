@@ -18,16 +18,48 @@ import java.util.Map;
 
 import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
 
+/**
+ * Questa classe è responsabile della gestione delle richieste HTTP relative alle canzoni.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.ApiConfig
+ * @see it.uninsubria.emotionalsongs.controller.Controller
+ * @see it.uninsubria.emotionalsongs.model.canzone.Canzone
+ * @see it.uninsubria.emotionalsongs.model.pagina.Pagina
+ * @see it.uninsubria.emotionalsongs.service.SharedService
+ * @see it.uninsubria.emotionalsongs.service.canzone.CanzoneService
+ * @see it.uninsubria.emotionalsongs.service.sessione.SessioneService
+ * @see it.uninsubria.emotionalsongs.utils.Costanti
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ * @see it.uninsubria.emotionalsongs.utils.Utils
+ */
 public class CanzoneController extends Controller implements ApiConfig {
+
+    /**
+     * Istanza del servizio relativo alle canzoni.
+     */
     private final CanzoneService canzoneService;
+
+    /**
+     * Istanza del servizio di sessione.
+     */
     private final SessioneService sessioneService;
 
-
+    /**
+     * Costruttore della classe.
+     */
     public CanzoneController() {
         canzoneService = new CanzoneService();
         sessioneService = SharedService.getSessioneService();
     }
 
+    /**
+     * Seleziona il metodo specifico che deve gestire la richiesta HTTP.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @throws IOException se occorrono errori di tipo I/O
+     */
     public void handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
@@ -63,7 +95,11 @@ public class CanzoneController extends Controller implements ApiConfig {
         else sendResponse(exchange, Costanti.ErrorCode.PAGE_NOT_FOUND, Costanti.ErrorCode.PAGE_NOT_FOUND.getStatusCode());
     }
 
-
+    /**
+     * Gestisce la richiesta di visualizzazione di una lista con tutte le canzoni.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @throws IOException se occorrono errori di tipo I/O
+     */
     private void gestisciGetCanzoni(HttpExchange exchange) throws IOException {
         Pagina pagina = getRequestBody(exchange, Pagina.class);
 
@@ -82,17 +118,32 @@ public class CanzoneController extends Controller implements ApiConfig {
         sendResponse(exchange, pagina, Costanti.StatusCode.OK);
     }
 
-
+    /**
+     * Gestisce la richiesta di ricerca della canzone con l'ID fornito.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @param canzoneId L'ID della canzone da cercare
+     */
     private void gestisciGetCanzoneById(HttpExchange exchange, Integer canzoneId) throws IOException {
         Canzone canzone = canzoneService.getCanzoneById(canzoneId);
         sendResponse(exchange, canzone, Costanti.StatusCode.OK);
     }
 
+    /**
+     * Gestisce la richiesta la ricerca della canzone corrispondente/contenente il titolo fornito.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @param ricerca Il titolo della canzone da cercare
+     */
     private void gestisciGetCanzoneByTitolo(HttpExchange exchange, String ricerca) throws IOException {
         List<Canzone> canzoni = canzoneService.getCanzoneByTitolo(ricerca);
         sendResponse(exchange, canzoni, Costanti.StatusCode.OK);
     }
 
+    /**
+     * Gestisce la richiesta la ricerca della canzone con l'autore e l'anno di produzione forniti.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @param autore L'autore della canzone da cercare
+     * @param anno L'anno della canzone da cercare
+     */
     private void gestisciGetCanzoneByAutoreAnno(HttpExchange exchange, String autore, Integer anno) throws IOException {
         List<Canzone> canzoni = canzoneService.getCanzoneByAutoreAnno(autore, anno);
         sendResponse(exchange, canzoni, Costanti.StatusCode.OK);

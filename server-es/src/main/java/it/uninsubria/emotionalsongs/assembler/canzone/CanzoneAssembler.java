@@ -13,17 +13,22 @@ import java.util.stream.Collectors;
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.AssemblerImpl
+ * @see it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity
+ * @see it.uninsubria.emotionalsongs.model.canzone.Canzone
  */
 public class CanzoneAssembler implements AssemblerImpl<CanzoneEntity, Canzone> {
 
-    /*
+    /**
      * Costruttore della classe.
      */
     public CanzoneAssembler() { }
 
-    /*
+    /**
      * Converte un'istanza di CanzoneEntity in un'istanza di Canzone.
+     * @param entity L'entità da convertire
+     * @return Una canzone
      */
     @Override
     public Canzone toModel(CanzoneEntity entity) {
@@ -37,14 +42,15 @@ public class CanzoneAssembler implements AssemblerImpl<CanzoneEntity, Canzone> {
         );
     }
 
-    /*
+    /**
      * Converte una lista di CanzoneEntity in una lista di Canzone
      * utilizzando il metodo toModel per ogni elemento della lista.
+     * @param entityList La lista da convertire
+     * @return Una lista di canzoni
      */
     @Override
     public List<Canzone> toModel(List<CanzoneEntity> entityList) {
         return entityList.stream().map(this::toModel).collect(Collectors.toList());
     }
-
     
 }

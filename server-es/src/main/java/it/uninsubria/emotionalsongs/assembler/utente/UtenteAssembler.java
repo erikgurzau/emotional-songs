@@ -13,17 +13,22 @@ import java.util.stream.Collectors;
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.AssemblerImpl
+ * @see it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity
+ * @see it.uninsubria.emotionalsongs.model.utente.Utente
  */
 public class UtenteAssembler implements AssemblerImpl<UtenteRegistratoEntity, Utente> {
 
-    /*
+    /**
      * Costruttore della classe.
      */
     public UtenteAssembler() { }
 
-    /*
+    /**
      * Converte un'istanza di UtenteRegistratoEntity in un'istanza di Utente.
+     * @param entity L'entità da convertire
+     * @return Un utente
      */
     @Override
     public Utente toModel(UtenteRegistratoEntity entity) {
@@ -41,9 +46,11 @@ public class UtenteAssembler implements AssemblerImpl<UtenteRegistratoEntity, Ut
         );
     }
 
-    /*
+    /**
      * Converte una lista di UtenteRegistratoEntity in una lista di Utente
      * utilizzando il metodo toModel per ogni elemento della lista.
+     * @param entityList La lista da convertire
+     * @return Una lista di utenti
      */
     @Override
     public List<Utente> toModel(List<UtenteRegistratoEntity> entityList) {
