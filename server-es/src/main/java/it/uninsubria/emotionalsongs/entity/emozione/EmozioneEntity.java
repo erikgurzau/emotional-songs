@@ -38,7 +38,7 @@ public class EmozioneEntity {
     private String nota;
 
     /**
-     * Costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public EmozioneEntity() {
         assegnCanzEntity=new AssegnCanzEntity();

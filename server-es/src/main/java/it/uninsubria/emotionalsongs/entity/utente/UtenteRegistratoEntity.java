@@ -60,7 +60,7 @@ public class UtenteRegistratoEntity {
     private String provincia;
 
     /**
-     * Il costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public UtenteRegistratoEntity() { }
 

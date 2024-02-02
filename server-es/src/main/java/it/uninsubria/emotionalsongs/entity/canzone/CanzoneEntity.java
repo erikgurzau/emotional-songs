@@ -40,14 +40,14 @@ public class CanzoneEntity {
     private Long durata_ms;
 
     /**
-     * Il costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public CanzoneEntity() {
         genereMusicaleEntity = new GenereMusicaleEntity();
     }
 
     /**
-     * Il costruttore con parametri della classe.
+     * Costruttore con parametri della classe.
      * @param id L'ID della canzone
      * @param autore L'autore della canzone
      * @param titolo Il titolo della canzone

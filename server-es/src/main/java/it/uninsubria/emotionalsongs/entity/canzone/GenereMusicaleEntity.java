@@ -20,12 +20,12 @@ public class GenereMusicaleEntity {
     private String nome;
 
     /**
-     * Il costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public GenereMusicaleEntity() { }
 
     /**
-     * Il costruttore con parametri della classe.
+     * Costruttore con parametri della classe.
      * @param id L'ID del genere musicale
      * @param nome Il nome del genere musicale
      */

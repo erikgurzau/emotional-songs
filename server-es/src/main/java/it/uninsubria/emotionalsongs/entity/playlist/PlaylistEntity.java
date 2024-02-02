@@ -37,7 +37,7 @@ public class PlaylistEntity {
     private List<Canzone> canzoni;
 
     /**
-     * Costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public PlaylistEntity() { }
     //public PlaylistEntity() { utenteRegistratoEntity = new UtenteRegistratoEntity();   }

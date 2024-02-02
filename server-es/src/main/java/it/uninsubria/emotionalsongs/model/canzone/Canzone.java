@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * La classe Canzone rappresenta una canzone.
+ * Questa classe è responsabile della rappresentazione di una canzone.
  * Implementa l'interfaccia Serializable.
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class Canzone implements Serializable {
 
@@ -51,18 +51,18 @@ public class Canzone implements Serializable {
     private Long durataMs;
 
     /**
-     * Costruttore di default.
+     * Costruttore di defualt della classe.
      */
     public Canzone() { }
 
     /**
-     * Costruttore con parametri.
-     * @param id l'id della canzone
-     * @param autore l'autore della canzone
-     * @param titolo il titolo della canzone
-     * @param anno l'anno della canzone
-     * @param genere il genere della canzone
-     * @param durataMs la durata in ms della canzone
+     * Costruttore con parametri della classe.
+     * @param id L'id della canzone
+     * @param autore L'autore della canzone
+     * @param titolo Il titolo della canzone
+     * @param anno L'anno della canzone
+     * @param genere Il genere della canzone
+     * @param durataMs La durata in ms della canzone
      */
     public Canzone(Integer id, String autore, String titolo, Integer anno, String genere, Long durataMs) {
         this.id = id;
@@ -74,96 +74,96 @@ public class Canzone implements Serializable {
     }
 
     /**
-     * Restituisce l'ID della canzone.
-     * @return l'ID della canzone
+     * Getter dell'ID della canzone.
+     * @return L'intero che rappresenta l'ID della canzone
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * Imposta l'ID della canzone.
-     * @param id l'ID della canzone
+     * Setter l'ID della canzone.
+     * @param id L'intero che rappresenta l'ID della canzone
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * Restituisce l'autore della canzone.
-     * @return l'autore della canzone
+     * Getter dell'autore della canzone.
+     * @return La stringa che rappresenta l'autore della canzone
      */
     public String getAutore() {
         return autore;
     }
 
     /**
-     * Imposta l'autore' della canzone.
-     * @param autore l'autore della canzone
+     * Setter dell'autore della canzone.
+     * @param autore La stringa che rappresenta l'autore della canzone
      */
     public void setAutore(String autore) {
         this.autore = autore;
     }
 
     /**
-     * Restituisce il titolo della canzone.
-     * @return il titolo della canzone
+     * Getter del titolo della canzone.
+     * @return La stringa che rappresenta il titolo della canzone
      */
     public String getTitolo() {
         return titolo;
     }
 
     /**
-     * Imposta il titolo della canzone.
-     * @param titolo il titolo della canzone
+     * Setter del titolo della canzone.
+     * @param titolo La stringa che rappresenta il titolo della canzone
      */
     public void setTitolo(String titolo) {
         this.titolo = titolo;
     }
 
     /**
-     * Restituisce l'anno di uscita della canzone.
-     * @return l'anno di uscita della canzone
+     * Getter dell'anno di uscita della canzone.
+     * @return L'intero che rappresenta l'anno di uscita della canzone
      */
     public Integer getAnno() {
         return anno;
     }
 
     /**
-     * Imposta l'anno di uscita della canzone.
-     * @param anno l'anno di uscita della canzone
+     * Setter dell'anno di uscita della canzone.
+     * @param anno L'intero che rappresenta l'anno di uscita della canzone
      */
     public void setAnno(Integer anno) {
         this.anno = anno;
     }
 
     /**
-     * Restituisce il genere della canzone.
-     * @return il genere della canzone
+     * Getter del genere della canzone.
+     * @return La stringa che rappresenta il genere della canzone
      */
     public String getGenere() {
         return genere;
     }
 
     /**
-     * Imposta il genere della canzone.
-     * @param genere il genere della canzone
+     * Setter del genere della canzone.
+     * @param genere La stringa che rappresenta il genere della canzone
      */
     public void setGenere(String genere) {
         this.genere = genere;
     }
 
     /**
-     * Restituisce la durata in ms della canzone.
-     * @return la durata in ms della canzone
+     * Getter della durata in ms della canzone.
+     * @return Long che rappresenta la durata in ms della canzone
      */
     public Long getDurata() {
         return durataMs;
     }
 
     /**
-     * Imposta la durata in ms della canzone.
-     * @param durataMs la durata in ms della canzone
+     * Setter della durata in ms della canzone.
+     * @param durataMs Long che rappresenta la durata in ms della canzone
      */
     public void setDurata(Long durataMs) {
         this.durataMs = durataMs;
@@ -180,4 +180,5 @@ public class Canzone implements Serializable {
                 getAnno().toString(), getGenere(), getDurata().toString()
         );
     }
+
 }

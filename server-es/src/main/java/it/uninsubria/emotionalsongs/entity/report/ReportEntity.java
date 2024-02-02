@@ -22,7 +22,7 @@ public class ReportEntity {
     private List<EmotionalState> statiEmozionali;
 
     /**
-     * Costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public ReportEntity() { }
 

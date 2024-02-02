@@ -7,14 +7,16 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * La classe Sessione rappresenta una sessione aperta da un utente.
+ * Questa classe è responsabile della rappresentazione una sessione aperta da un utente.
  * Implementa l'interfaccia Serializable.
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.model.utente.Utente
  */
 public class Sessione implements Serializable {
+
     /**
      * L'ID della sessione.
      */
@@ -41,9 +43,9 @@ public class Sessione implements Serializable {
     private static final long SESSION_TIMEOUT = 10 * 60 * 1000; // 10 minuti
 
     /**
-     * Costruttore con parametri.
-     * @param sessionId l'ID della sessione
-     * @param utente l'utente che ha aperto la sessione
+     * Costruttore con parametri della classe.
+     * @param sessionId L'ID della sessione
+     * @param utente L'utente che ha aperto la sessione
      */
     public Sessione(String sessionId, Utente utente) {
         this.sessionId = sessionId;
@@ -53,8 +55,8 @@ public class Sessione implements Serializable {
     }
 
     /**
-     * Costruttore con parametri.
-     * @param utente l'utente che ha aperto la sessione
+     * Costruttore con parametri della classe.
+     * @param utente L'utente che ha aperto la sessione
      */
     public Sessione(Utente utente) {
         this.sessionId = generaSessionId();
@@ -64,32 +66,32 @@ public class Sessione implements Serializable {
     }
 
     /**
-     * Restituisce l'ID della sessione.
-     * @return l'ID della sessione
+     * Getter dell'ID della sessione.
+     * @return La stringa che rappresenta l'ID della sessione
      */
     public String getSessionId() {
         return sessionId;
     }
 
     /**
-     * Restituisce l'utente che ha aperto la sessione.
-     * @return l'utente che ha aperto la sessione
+     * Getter dell'utente che ha aperto la sessione.
+     * @return L'utente che ha aperto la sessione
      */
     public Utente getUtente() {
         return utente;
     }
 
     /**
-     * Restituisce la data della creazioone della sessione.
-     * @return la data della creazioone della sessione
+     * Getter della data della creazioone della sessione.
+     * @return La data della creazioone della sessione
      */
     public Date getDataCreazione() {
         return dataCreazione;
     }
 
     /**
-     * Restituisce la data dell'ultimo accesso.
-     * @return la data dell'ultimo accesso
+     * Getter della data dell'ultimo accesso.
+     * @return La data dell'ultimo accesso
      */
     public Date getDataUltimoAccesso() {
         return dataUltimoAccesso;
@@ -99,7 +101,6 @@ public class Sessione implements Serializable {
      * Aggiorna la data dell'ultimo accesso.
      */
     public void aggiornaUltimoAccesso() {
-
         this.dataUltimoAccesso = new Date();
     }
 
@@ -119,7 +120,5 @@ public class Sessione implements Serializable {
     private String generaSessionId() {
         return UUID.randomUUID().toString();
     }
-
-
 
 }

@@ -14,21 +14,51 @@ import java.util.concurrent.Executors;
 import static it.uninsubria.emotionalsongs.utils.Costanti.PORTA_SERVER;
 
 /**
- * Classe
+ * Questa classe è responsabile della rappresentazione e della gestione del server su una specifica porta.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.ApiConfig
+ * @see it.uninsubria.emotionalsongs.controller.ServerController
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ * @see it.uninsubria.emotionalsongs.utils.Costanti
  */
 public class Server {
 
+    /**
+     * Il server HTTP.
+     */
     private final HttpServer httpServer;
+
+    /**
+     * Il controller del server.
+     */
     private final ServerController serverController;
+
+    /**
+     * La porta di ascolto del server.
+     */
     private final Integer porta;
+
+    /**
+     * Lo stato di esecuzione del server, {@code true} se è attivo e {@code false} altrimenti.
+     */
     private boolean running;
 
-
+    /**
+     * Costruttore di default della classe.
+     */
     public Server() {
         this.porta = PORTA_SERVER;
         serverController = new ServerController();
         httpServer = createHttpServer(porta, ApiConfig.PATH_SERVER_API, serverController);
     }
+
+    /**
+     * Costruttore con parametri della classe.
+     * @param porta La porta di ascolto del server
+     */
     public Server(Integer porta) {
         this.porta = porta;
         serverController = new ServerController();
@@ -36,17 +66,22 @@ public class Server {
 
     }
 
+    /**
+     * Avvia il server HTTP e imposta lo stato di esecuzione del server su {@code true}.
+     */
     public void start() {
         Logger.info(this.getClass().getSimpleName() + ": running sulla porta " + porta);
         httpServer.start();
         running = true;
     }
 
+    /**
+     * Interrompe il server HTTP e imposta lo stato di esecuzione del server su {@code false}.
+     */
     public void stop() {
         httpServer.stop(0);
         running = false;
     }
-
 
     /**
      * Crea e restituisce un'istanza di HttpServer configurata con la porta e l'URI specificati,
@@ -76,6 +111,9 @@ public class Server {
         }
     }
 
+    /**
+     * Punto di ingresso principale dell'applicazione che lancia il server HTTP.
+     */
     public static void main(String[] args) throws NoSuchAlgorithmException {
         new Server().start();
     }

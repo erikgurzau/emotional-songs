@@ -25,7 +25,7 @@ public class StatoEmozionaleEntity {
     private String descrizione;
 
     /**
-     * Costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public StatoEmozionaleEntity(){ }
 

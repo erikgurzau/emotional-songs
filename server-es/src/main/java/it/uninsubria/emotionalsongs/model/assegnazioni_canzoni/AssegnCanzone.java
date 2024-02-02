@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * La classe AssegnCanzoni rappresenta l'assegnazione di una o più
+ * Questa classe è responsabile della rappresentazione dell'assegnazione di una o più
  * canzoni ad una playlist creata da un utente.
  * Implementa l'interfaccia Serializable.
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class AssegnCanzone implements Serializable {
 
@@ -36,15 +36,15 @@ public class AssegnCanzone implements Serializable {
     private List<Integer> idCanzone;
 
     /**
-     * Costruttore di default.
+     * Costruttore di default della classe.
      */
     public AssegnCanzone() { }
 
     /**
-     * Costruttore con parametri.
-     * @param id l'id dell'assegnazione
-     * @param idPlaylist l'id della playlist a cui si riferisce l'assegnazione
-     * @param idCanzone l'id della/e canzone/i da assegnare alla playlist.
+     * Costruttore con parametri della classe.
+     * @param id L'id dell'assegnazione
+     * @param idPlaylist L'id della playlist a cui si riferisce l'assegnazione
+     * @param idCanzone L'id della/e canzone/i da assegnare alla playlist.
      */
     public AssegnCanzone(Integer id, Integer idPlaylist, List<Integer> idCanzone) {
         this.id = id;
@@ -53,52 +53,52 @@ public class AssegnCanzone implements Serializable {
     }
 
     /**
-     * Restituisce l'ID dell'assegnazione.
-     * @return l'ID dell'assegnazione
+     * Getter dell'ID dell'assegnazione.
+     * @return L'intero che rappresenta l'ID dell'assegnazione
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * Imposta l'ID dell'assegnazione.
-     * @param id l'ID dell'assegnazione
+     * Setter dell'ID dell'assegnazione.
+     * @param id L'intero che rappresenta l'ID dell'assegnazione
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * Restituisce l'id della playlist.
-     * @return l'id della playlist
+     * Getter dell'ID della playlist.
+     * @return L'intero che rappresenta l'ID della playlist
      */
     public Integer getIdPlaylist() {
         return idPlaylist;
     }
 
     /**
-     * Imposta l'id della playlist.
-     * @param idPlaylist l'id della playlist
+     * Setter dell'ID della playlist.
+     * @param idPlaylist L'intero che rappresenta l'ID della playlist
      */
     public void setIdPlaylist(Integer idPlaylist) {
         this.idPlaylist = idPlaylist;
     }
 
     /**
-     * Restituisce l'id della/e canzone/i da assegnare alla playlist.
-     * @return l'id della/e canzone/i da assegnare alla playlist
+     * Getter degli ID delle canzoni da assegnare alla playlist.
+     * @return La lista degli ID delle canzoni da assegnare alla playlist
      */
     public List<Integer> getIdCanzone() { return idCanzone; }
 
     /**
-     * Imposta l'id della/e canzone/i da assegnare alla playlist.
-     * @param idCanzone l'id della/e canzone/i da assegnare alla playlist
+     * Setter degli ID delle canzoni da assegnare alla playlist.
+     * @param idCanzone La lista di ID delle canzoni da assegnare alla playlist
      */
     public void setIdCanzone(List<Integer> idCanzone) { this.idCanzone = idCanzone; }
 
     /**
      * Restituisce una rappresentazione testuale dell'oggetto AssegnCanzoni.
-     * @return una stringa contenente l'ID, l'ID della playlist, l'ID della/e canzone/i.
+     * @return Una stringa contenente l'ID, l'ID della playlist, l'ID delle canzoni.
      */
     public String toString() {
         return String.join(",",
@@ -107,4 +107,5 @@ public class AssegnCanzone implements Serializable {
                 getIdCanzone().toString()
         );
     }
+
 }

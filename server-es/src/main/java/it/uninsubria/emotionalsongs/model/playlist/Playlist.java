@@ -7,12 +7,13 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * La classe Playlist rappresenta una playlist creata da un utente del sistema.
+ * Questa classe è responsabile della rappresentazione di una playlist creata da un utente del sistema.
  * Implementa l'interfaccia Serializable.
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.model.canzone.Canzone
  */
 public class Playlist implements Serializable {
 
@@ -41,15 +42,15 @@ public class Playlist implements Serializable {
     private List<Canzone> canzoni;
 
     /**
-     * Costruttore di default.
+     * Costruttore di default della classe.
      */
     public Playlist() { }
 
     /**
-     * Costruttore con parametri.
-     * @param id l'ID della playlist
-     * @param idUtente l'ID dell'utente creatore della playlist
-     * @param nome il nome della playlist
+     * Costruttore con parametri della classe.
+     * @param id L'ID della playlist
+     * @param idUtente L'ID dell'utente creatore della playlist
+     * @param nome Il nome della playlist
      */
     public Playlist(Integer id, Integer idUtente, String nome, List<Canzone> canzoni) {
         this.id = id;
@@ -59,62 +60,62 @@ public class Playlist implements Serializable {
     }
 
     /**
-     * Restituisce l'ID della playlist.
-     * @return l'ID della playlist
+     * Getter dell'ID della playlist.
+     * @return L'intero che rappresenta l'ID della playlist
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * Imposta l'ID della playlist.
-     * @param id l'ID della playlist
+     * Setter dell'ID della playlist.
+     * @param id L'intero che rappresenta l'ID della playlist
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * Restituisce l'ID dell'utente creatore playlist.
-     * @return l'ID dell'utente creatore della playlist
+     * Getter dell'ID dell'utente creatore playlist.
+     * @return L'intero che rappresenta l'ID dell'utente creatore della playlist
      */
     public Integer getUtente() {
         return idUtente;
     }
 
     /**
-     * Imposta l'ID dell'utente creatore della playlist.
-     * @param idUtente l'ID dell'utente creatore della playlist
+     * Setter l'ID dell'utente creatore della playlist.
+     * @param idUtente L'intero che rappresenta l'ID dell'utente creatore della playlist
      */
     public void setUtente(Integer idUtente) {
         this.idUtente = idUtente;
     }
 
     /**
-     * Restituisce il nome della playlist.
-     * @return il nome della playlist
+     * Getter del nome della playlist.
+     * @return La stringa che rappresenta  il nome della playlist
      */
     public String getNome() {
         return nome;
     }
 
     /**
-     * Imposta il nome della playlist.
-     * @param nome il nome della playlist
+     * Setter il nome della playlist.
+     * @param nome La stringa che rappresenta il nome della playlist
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * Restituisce la lista di canzoni assegnate alla playlist.
-     * @return la lista di canzoni assegnate della playlist
+     * Getter della lista di canzoni assegnate alla playlist.
+     * @return La lista di canzoni assegnate alla playlist
      */
     public List<Canzone> getCanzoni() { return canzoni; }
 
     /**
-     * Imposta la lista di canzoni da assegnare alla playlist.
-     * @param canzoni la lista delle canzoni da assegnare alla playlist
+     * Setter della lista di canzoni da assegnare alla playlist.
+     * @param canzoni La lista delle canzoni da assegnare alla playlist
      */
     public void setCanzoni(List<Canzone> canzoni) { this.canzoni = canzoni; }
 
@@ -128,4 +129,5 @@ public class Playlist implements Serializable {
                 getId().toString(), getUtente().toString(), getNome(), getCanzoni().toString()
         );
     }
+
 }

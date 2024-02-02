@@ -28,12 +28,12 @@ public class AssegnCanzEntity {
     private List<Integer> idCanzone;
 
     /**
-     * Il costruttore vuoto della classe.
+     * Costruttore di default della classe.
      */
     public AssegnCanzEntity() { }
 
     /**
-     * Il costruttore con parametri della classe.
+     * Costruttore con parametri della classe.
      * @param id L'ID dell'assegnazione
      * @param idPlaylist L'ID della playlist
      * @param idCanzone La lista di ID delle canzoni
