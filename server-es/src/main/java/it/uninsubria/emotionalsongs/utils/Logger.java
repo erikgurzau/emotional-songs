@@ -2,9 +2,8 @@ package it.uninsubria.emotionalsongs.utils;
 
 import static it.uninsubria.emotionalsongs.utils.Utils.formatLocalDateTime;
 
-
 /**
- * Questa classe fornisce delle funzionalità di registrazione all'applicazione.
+ * Questa classe fornisce dei meccanismi di logging per la stampa delle informazioni sulla console.
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
@@ -25,6 +24,7 @@ public class Logger {
         }
         return false;
     }
+
     /**
      * Registra dei messaggi di debug se il livello di log è impostato su DEBUG.
      * @param args Gli argomenti da registrare.
@@ -38,6 +38,5 @@ public class Logger {
         }
         return false;
     }
-
 
 }

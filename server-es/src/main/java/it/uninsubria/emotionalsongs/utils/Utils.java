@@ -25,7 +25,6 @@ import java.util.regex.PatternSyntaxException;
  */
 public class Utils {
 
-
     /**
      * Converte una stringa in formato snake_case in CamelCase.
      * Esempio: "test_string" diventa" diventa "TestString"
@@ -81,8 +80,8 @@ public class Utils {
     /**
      * Converte un flusso di input in un oggetto di tipo specificato.
      * @param inputStream il flusso di input da convertire in oggetto.
-     * @param clazz  la classe dell'oggetto di destinazione.
-     * @return   l'oggetto risultante, o null se il flusso di input è vuoto.
+     * @param clazz la classe dell'oggetto di destinazione.
+     * @return l'oggetto risultante, o null se il flusso di input è vuoto.
      * @throws IOException se si verifica un errore durante la lettura dal flusso di input.
      */
     public static <T> T convertInputStreamToObject(InputStream inputStream, Class<T> clazz) throws IOException {
@@ -104,7 +103,6 @@ public class Utils {
         return objectMapper.writeValueAsBytes(obj);
     }
 
-
     /**
      * Verifica se un oggetto è nullo.
      * @param obj l'oggetto da verificare.
@@ -122,7 +120,6 @@ public class Utils {
     public static boolean isEmpty(Object obj) {
         return isNull(obj) || obj == "";
     }
-
 
     /**
      * Formatta la data e l'ora corrente secondo il pattern specificato.
@@ -154,8 +151,6 @@ public class Utils {
         }
         return queryParams;
     }
-
-
 
     /**
      * Risolve le variabili di percorso dal pattern e dal percorso specificati.
@@ -189,8 +184,6 @@ public class Utils {
         return pathVariables;
     }
 
-
-
     /**
      * Compila il pattern effettuando l'escape delle barre e convertendo i nomi delle variabili in gruppi di cattura denominati.
      * @param pattern il pattern da compilare
@@ -200,7 +193,6 @@ public class Utils {
         String escapedPattern = pattern.replaceAll(":([^/]+)", "(?<$1>[^/]+)");
         return Pattern.compile(escapedPattern);
     }
-
 
     /**
      * Verifica se un percorso corrisponde a un determinato pattern.
@@ -222,9 +214,5 @@ public class Utils {
             return false;
         }
     }
-
-
-
-
 
 }

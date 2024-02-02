@@ -10,6 +10,7 @@ import java.util.Arrays;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.model.errore.Errore
  */
 public class Costanti {
 
@@ -32,7 +33,6 @@ public class Costanti {
 
     /** Contiene le costanti per i metodi HTTP. */
     public static class HttpMethod {
-
 
         /** Metodo HTTP GET. */
         public static final String GET = "GET";
@@ -130,8 +130,4 @@ public class Costanti {
         public static final int INTERNAL_SERVER_ERROR = 500;
     }
 
-
 }
-
-
-
