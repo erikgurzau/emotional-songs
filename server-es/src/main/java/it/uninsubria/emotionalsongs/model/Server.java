@@ -13,6 +13,9 @@ import java.util.concurrent.Executors;
 
 import static it.uninsubria.emotionalsongs.utils.Costanti.PORTA_SERVER;
 
+/**
+ * Classe
+ */
 public class Server {
 
     private final HttpServer httpServer;
