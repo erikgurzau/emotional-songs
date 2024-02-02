@@ -9,6 +9,7 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.Executors;
 
 import static it.uninsubria.emotionalsongs.utils.Costanti.PORTA_SERVER;
 
@@ -60,8 +61,8 @@ public class Server {
             // Crea un contesto HTTP associato all'URI specificato e all'HttpHandler fornito
             httpServer.createContext(pathURI, httpHandler);
 
-            // Imposta il thread pool dell'HttpServer a null
-            httpServer.setExecutor(null);
+            // Imposta il thread pool dell'HttpServer a 4
+            httpServer.setExecutor(Executors.newFixedThreadPool(4));
 
             // Restituisce l'istanza di HttpServer configurata
             return httpServer;
