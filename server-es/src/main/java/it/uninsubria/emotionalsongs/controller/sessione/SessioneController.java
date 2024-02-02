@@ -16,16 +16,41 @@ import java.util.Map;
 
 import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
 
+/**
+ * Questa classe è responsabile della gestione delle richieste HTTP relative alle sessioni utente.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.ApiConfig
+ * @see it.uninsubria.emotionalsongs.controller.Controller
+ * @see it.uninsubria.emotionalsongs.model.sessione.Sessione
+ * @see it.uninsubria.emotionalsongs.service.SharedService
+ * @see it.uninsubria.emotionalsongs.service.sessione.SessioneService
+ * @see it.uninsubria.emotionalsongs.utils.Costanti
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ * @see it.uninsubria.emotionalsongs.utils.Utils
+ */
 public class SessioneController extends Controller implements ApiConfig {
 
+    /**
+     * Istanza del servizio di sessione.
+     */
     private final SessioneService sessioneService;
 
+    /**
+     * Costruttore della classe
+     */
     public SessioneController() {
         sessioneService = SharedService.getSessioneService();
     }
 
-    public void
-    handle(HttpExchange exchange) throws IOException {
+    /**
+     * Seleziona il metodo specifico che deve gestire la richiesta HTTP.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @throws IOException se occorrono errori di tipo I/O
+     */
+    public void handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
         Logger.info(this.getClass().getSimpleName() + ": " + path + " " + method);
@@ -48,6 +73,11 @@ public class SessioneController extends Controller implements ApiConfig {
         else sendResponse(exchange, Costanti.ErrorCode.PAGE_NOT_FOUND, Costanti.ErrorCode.PAGE_NOT_FOUND.getStatusCode());
     }
 
+    /**
+     * Gestisce la richiesta di creazione di una nuova sessione.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @param sessionId L'ID della sessione
+     */
     private void gestisciCreaSessione(HttpExchange exchange, String sessionId) throws IOException {
         Utente utente = getRequestBody(exchange, Utente.class);
         Sessione sessione = sessioneService.creaSessione(sessionId, utente.getEmail(), utente.getPassword());
@@ -57,6 +87,11 @@ public class SessioneController extends Controller implements ApiConfig {
             sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
     }
 
+    /**
+     * Gestisce la richiesta di ricerca della sessione con l'ID fornito.
+     * @param exchange Oggetto contenente la richiesta HTTP del client e usato per inviare la risposta
+     * @param sessionId L'ID della sessione
+     */
     private void gestisciGetSessione(HttpExchange exchange, String sessionId) throws IOException {
         Sessione sessione = sessioneService.getSessione(sessionId);
         if(!isNull(sessione))
@@ -64,12 +99,5 @@ public class SessioneController extends Controller implements ApiConfig {
         else
             sendResponse(exchange, Costanti.ErrorCode.SESSION_NON_VALIDA, Costanti.ErrorCode.SESSION_NON_VALIDA.getStatusCode());
     }
-
-
-
-
-
-
-
 
 }

@@ -13,17 +13,22 @@ import java.util.stream.Collectors;
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.AssemblerImpl
+ * @see it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity
+ * @see it.uninsubria.emotionalsongs.model.playlist.Playlist
  */
 public class PlaylistAssembler implements AssemblerImpl<PlaylistEntity, Playlist> {
 
-    /*
+    /**
      * Costruttore della classe.
      */
     public PlaylistAssembler() { }
 
-    /*
+    /**
      * Converte un'istanza di PlaylistEntity in un'istanza di Playlist.
+     * @param entity L'entità da convertire
+     * @return Una playlist
      */
     @Override
     public Playlist toModel(PlaylistEntity entity) {
@@ -36,14 +41,15 @@ public class PlaylistAssembler implements AssemblerImpl<PlaylistEntity, Playlist
         );
     }
 
-    /*
+    /**
      * Converte una lista di PlaylistEntity in una lista di Playlist
      * utilizzando il metodo toModel per ogni elemento della lista.
+     * @param entityList La lista da convertire
+     * @return Una lista di playlists
      */
     @Override
     public List<Playlist> toModel(List<PlaylistEntity> entityList) {
         return entityList.stream().map(this::toModel).collect(Collectors.toList());
     }
-
 
 }
