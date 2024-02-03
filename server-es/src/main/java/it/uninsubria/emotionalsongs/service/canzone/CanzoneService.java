@@ -15,6 +15,11 @@ import java.util.Optional;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 1.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.canzone.CanzoneAssembler
+ * @see it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity
+ * @see it.uninsubria.emotionalsongs.model.canzone.Canzone
+ * @see it.uninsubria.emotionalsongs.model.pagina.Pagina
+ * @see it.uninsubria.emotionalsongs.repository.canzone.CanzoneRepository
  */
 public class CanzoneService {
 

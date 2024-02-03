@@ -13,6 +13,10 @@ import java.util.List;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 1.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.assegnazioni_canzoni.AssegnCanzAssembler
+ * @see it.uninsubria.emotionalsongs.model.assegnazioni_canzoni.AssegnCanzone
+ * @see it.uninsubria.emotionalsongs.repository.assegnazioni_canzoni.AssegnCanzRepository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
  */
 
 public class AssegnCanzService {

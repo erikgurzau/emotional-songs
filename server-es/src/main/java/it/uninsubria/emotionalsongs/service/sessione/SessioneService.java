@@ -22,6 +22,13 @@ import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 1.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.utente.UtenteAssembler
+ * @see it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity
+ * @see it.uninsubria.emotionalsongs.model.sessione.Sessione
+ * @see it.uninsubria.emotionalsongs.model.utente.Utente
+ * @see it.uninsubria.emotionalsongs.repository.utente.UtenteRepository
+ * @see it.uninsubria.emotionalsongs.service.SharedService
+ * @see it.uninsubria.emotionalsongs.utils.Logger
  */
 public class SessioneService {
 

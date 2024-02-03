@@ -14,6 +14,11 @@ import java.util.List;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 1.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.playlist.PlaylistAssembler
+ * @see it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity
+ * @see it.uninsubria.emotionalsongs.model.playlist.Playlist
+ * @see it.uninsubria.emotionalsongs.repository.playlist.PlaylistRepository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
  */
 public class PlaylistService {
 

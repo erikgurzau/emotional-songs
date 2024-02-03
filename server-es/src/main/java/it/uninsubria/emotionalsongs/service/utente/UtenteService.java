@@ -15,7 +15,13 @@ import java.util.Optional;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.utente.UtenteAssembler
+ * @see it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity
+ * @see it.uninsubria.emotionalsongs.model.utente.Utente
+ * @see it.uninsubria.emotionalsongs.repository.utente.UtenteRepository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
  */
+
 public class UtenteService {
 
     private final UtenteRepository utenteRepository;

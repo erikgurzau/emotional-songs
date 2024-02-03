@@ -10,6 +10,9 @@ import it.uninsubria.emotionalsongs.repository.emozione.EmozioneRepository;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 1.0.0
+ * @see it.uninsubria.emotionalsongs.assembler.emozione.EmozioneAssembler
+ * @see it.uninsubria.emotionalsongs.model.emozione.Emozione
+ * @see it.uninsubria.emotionalsongs.repository.emozione.EmozioneRepository
  */
 public class EmozioneService {
 
