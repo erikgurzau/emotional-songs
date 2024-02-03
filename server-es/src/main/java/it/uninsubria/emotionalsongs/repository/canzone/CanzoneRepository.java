@@ -1,10 +1,8 @@
 package it.uninsubria.emotionalsongs.repository.canzone;
 
-
 import it.uninsubria.emotionalsongs.config.DatabaseConfig;
 import it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity;
 import it.uninsubria.emotionalsongs.repository.Repository;
-import it.uninsubria.emotionalsongs.utils.Costanti;
 import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.sql.Connection;
@@ -16,12 +14,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
-
+/**
+ * Questa classe è responsabile dell'interazione con i dati nel database
+ * fornendo metodi relativi alle canzoni.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.DatabaseConfig
+ * @see it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity
+ * @see it.uninsubria.emotionalsongs.repository.Repository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ */
 public class CanzoneRepository extends Repository<CanzoneEntity> {
 
+    /**
+     * Costruttore della classe.
+     */
     public CanzoneRepository() { }
 
+    /**
+     * Recupera un elenco paginato di tutte le canzoni presenti nel database.
+     * @param numeroPagina Il numero di pagina
+     * @param dimensionePagina La dimensione della pagina
+     * @return Una lista di entità di tipo canzone
+     */
     public List<CanzoneEntity> getAll(Integer numeroPagina, Integer dimensionePagina) {
         Connection connection;
         PreparedStatement statement;
@@ -45,6 +62,11 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         }
     }
 
+    /**
+     * Restituisce la canzone corrispondente all'ID specificato, se presente.
+     * @param id L'ID della canzone da cercare
+     * @return Un'entità di tipo canzone
+     */
     public Optional<CanzoneEntity> findById(Integer id) {
         Connection connection;
         PreparedStatement statement;
@@ -71,6 +93,11 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         }
     }
 
+    /**
+     * Restituisce le canzoni che contengono nel titolo la stringa ricercata.
+     * @param ricerca La stinga della ricerca
+     * @return Una lista di entità di tipo canzone
+     */
     public List<CanzoneEntity> findByTitolo(String ricerca) {
         Connection connection;
         PreparedStatement statement;
@@ -97,6 +124,12 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         }
     }
 
+    /**
+     * Restituisce le canzoni che possiedono l'autore e l'anno di pubblicazione forniti come argomento.
+     * @param autore L'autore della canzone da cercare
+     * @param anno L'anno della canzone da cercare
+     * @return Una lista di entità di tipo canzone
+     */
     public List<CanzoneEntity> findByAutoreAnno(String autore, Integer anno) {
         Connection connection;
         PreparedStatement statement;
@@ -126,6 +159,10 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
         }
     }
 
+    /**
+     * Restituisce il numero totale di canzoni presenti nel database.
+     * @return L'intero che rappresenta il totale delle canzoni
+     */
     public Integer getTotaleCanzoni() {
         Connection connection;
         PreparedStatement statement;

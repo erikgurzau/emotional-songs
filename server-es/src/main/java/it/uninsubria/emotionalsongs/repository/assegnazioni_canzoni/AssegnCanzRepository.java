@@ -9,9 +9,31 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Questa classe è responsabile dell'interazione con i dati nel database
+ * fornendo metodi relativi alle assegnazioni di canzoni ad una playlist.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.DatabaseConfig
+ * @see it.uninsubria.emotionalsongs.entity.assegnazioni_canzoni.AssegnCanzEntity
+ * @see it.uninsubria.emotionalsongs.model.assegnazioni_canzoni.AssegnCanzone
+ * @see it.uninsubria.emotionalsongs.repository.Repository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ */
 public class AssegnCanzRepository extends Repository<AssegnCanzEntity> {
+
+    /**
+     * Costruttore della classe.
+     */
     public AssegnCanzRepository() { }
 
+    /**
+     * Inserisce una nuova assegnazione ad una playlist.
+     * @param assegnazione L'assegnazione da inserire
+     * @return {@code true} se l'inserimento avviene con successo, {@code false} altrimenti
+     */
     public boolean insertAssegnazione(AssegnCanzone assegnazione) {
         Connection connection;
         PreparedStatement statement;
@@ -39,4 +61,5 @@ public class AssegnCanzRepository extends Repository<AssegnCanzEntity> {
         }
         return res;
     }
+
 }

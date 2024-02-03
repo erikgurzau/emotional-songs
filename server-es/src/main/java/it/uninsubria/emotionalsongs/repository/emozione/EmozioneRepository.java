@@ -12,10 +12,32 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Questa classe è responsabile dell'interazione con i dati nel database
+ * fornendo metodi relativi alle recensioni emozionali delle canzoni di una playlist.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.DatabaseConfig
+ * @see it.uninsubria.emotionalsongs.entity.emozione.EmozioneEntity
+ * @see it.uninsubria.emotionalsongs.model.emozione.Emozione
+ * @see it.uninsubria.emotionalsongs.repository.Repository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ */
 public class EmozioneRepository extends Repository<EmozioneEntity> {
-    public EmozioneRepository(){}
-    public boolean aggiungiEmozione(Emozione emozione){
 
+    /**
+     * Il costruttore della classe.
+     */
+    public EmozioneRepository() { }
+
+    /**
+     * Inserisce una nuova recensione emozionale utilizzando i dati dell'oggetto Emozione forniti come argomento.
+     * @param emozione I dati per la recensione emozionale
+     * @return {@code true} se l'inserimento avviene con successo, {@code false} altrimenti
+     */
+    public boolean aggiungiEmozione(Emozione emozione) {
         Connection connection;
         PreparedStatement statement;
         String query =
@@ -40,6 +62,6 @@ public class EmozioneRepository extends Repository<EmozioneEntity> {
             e.printStackTrace();
             return false;
         }
-
     }
+
 }

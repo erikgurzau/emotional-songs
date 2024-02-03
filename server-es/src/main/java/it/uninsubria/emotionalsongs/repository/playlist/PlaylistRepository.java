@@ -1,8 +1,6 @@
 package it.uninsubria.emotionalsongs.repository.playlist;
 
 import it.uninsubria.emotionalsongs.config.DatabaseConfig;
-import it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity;
-import it.uninsubria.emotionalsongs.entity.canzone.GenereMusicaleEntity;
 import it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity;
 import it.uninsubria.emotionalsongs.model.canzone.Canzone;
 import it.uninsubria.emotionalsongs.model.playlist.Playlist;
@@ -12,10 +10,31 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Questa classe è responsabile dell'interazione con i dati nel database
+ * fornendo metodi relativi alle playlist.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.DatabaseConfig
+ * @see it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity
+ * @see it.uninsubria.emotionalsongs.model.canzone.Canzone
+ * @see it.uninsubria.emotionalsongs.model.playlist.Playlist
+ * @see it.uninsubria.emotionalsongs.repository.Repository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ */
 public class PlaylistRepository extends Repository<PlaylistEntity> {
+
+    /**
+     * Il costruttore della classe.
+     */
     public PlaylistRepository() { }
 
-    //METODO FINALE CORRETTO
+    /**
+     * Recupera un elenco di tutte le playlist presenti nel database, inclusi i dettagli delle canzoni.
+     * @return Una lista di entità di tipo playlist
+     */
     public List<PlaylistEntity> getAll() {
         Connection connection;
         PreparedStatement statement;
@@ -66,7 +85,6 @@ public class PlaylistRepository extends Repository<PlaylistEntity> {
                 canzone.setAnno(anno);
                 canzone.setGenere(nomeGenere);
                 canzone.setDurata(durataMs);
-
 
                 playlist.getCanzoni().add(canzone);
             }
@@ -142,6 +160,11 @@ public class PlaylistRepository extends Repository<PlaylistEntity> {
     }
      */
 
+    /**
+     * Inserisce una nuova playlist utilizzando i dati dell'oggetto Playlist fornito come argomento.
+     * @param playlist La playlist da inserire
+     * @return {@code true} se l'inserimento avviene con successo, {@code false} altrimenti
+     */
     public boolean createPlaylist(Playlist playlist) {
         Connection connection;
         PreparedStatement statement;
@@ -165,6 +188,10 @@ public class PlaylistRepository extends Repository<PlaylistEntity> {
         }
     }
 
+    /**
+     * Restituisce il numero totale di playlist presenti nel database.
+     * @return L'intero che rappresenta il totale delle playlist
+     */
     public Integer getTotalePlaylists() {
         Connection connection;
         PreparedStatement statement;

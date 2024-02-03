@@ -9,6 +9,14 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.*;
 
+/**
+ * Questa classe astratta fornisce l'implementazione dei metodi utili per elaborare i risultati delle interrogazioni al database.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.utils.Utils
+ */
 public abstract class Repository<T> {
 
     /**
@@ -46,6 +54,13 @@ public abstract class Repository<T> {
         return list; // restituisce la lista di oggetti T creata dai dati del ResultSet
     }
 
+    /**
+     * Sostituisce i parametri di una query SQL con i rispettivi valori forniti in una mappa di parametri, permettendo
+     * la creazione di query parametrizzate.
+     * @param query La query SQL
+     * @param params La mappa dei parametri
+     * @return La stringa che rappresenta il risultato della sostituzione
+     */
     public static String replaceNamedParams(String query, Map<String, Object> params) {
         for (Map.Entry<String, Object> param : params.entrySet()) {
             String paramName = param.getKey();
@@ -60,7 +75,5 @@ public abstract class Repository<T> {
         }
         return query;
     }
-
-
 
 }

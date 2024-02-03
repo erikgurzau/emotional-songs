@@ -9,9 +9,31 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Questa classe è responsabile dell'interazione con i dati nel database
+ * fornendo metodi relativi ai report emozionali delle canzoni.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.DatabaseConfig
+ * @see it.uninsubria.emotionalsongs.entity.canzone.CanzoneEntity
+ * @see it.uninsubria.emotionalsongs.entity.report.ReportEntity
+ * @see it.uninsubria.emotionalsongs.repository.Repository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ */
 public class ReportRepository extends Repository<CanzoneEntity> {
+
+    /**
+     * Il costruttore della classe
+     */
     public ReportRepository() { }
 
+    /**
+     * Recupera le informazioni del report emozionald relativo alla canzone specificata come argomento.
+     * @param idCanzone L'ID della canzone di cui ottenere il report
+     * @return Un'entità di tipo report.
+     */
     public ReportEntity getReport(Integer idCanzone) {
         ReportEntity reportEntity = new ReportEntity();
         reportEntity.setIdCanzone(idCanzone);

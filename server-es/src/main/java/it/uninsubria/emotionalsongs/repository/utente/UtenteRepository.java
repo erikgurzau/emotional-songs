@@ -1,6 +1,5 @@
 package it.uninsubria.emotionalsongs.repository.utente;
 
-
 import it.uninsubria.emotionalsongs.config.DatabaseConfig;
 import it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity;
 import it.uninsubria.emotionalsongs.model.utente.Utente;
@@ -16,10 +15,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Questa classe è responsabile dell'interazione con i dati nel database
+ * fornendo metodi relativi ai report emozionali delle canzoni.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 2.0.0
+ * @see it.uninsubria.emotionalsongs.config.DatabaseConfig
+ * @see it.uninsubria.emotionalsongs.entity.utente.UtenteRegistratoEntity
+ * @see it.uninsubria.emotionalsongs.model.utente.Utente
+ * @see it.uninsubria.emotionalsongs.repository.Repository
+ * @see it.uninsubria.emotionalsongs.utils.Logger
+ */
 public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
 
+    /**
+     * Il costruttore della classe.
+     */
     public UtenteRepository() { }
 
+    /**
+     * Recupera un elenco di tutti gli utenti registrati.
+     * @return Una lista di entità di tipo utente registrato
+     */
     public List<UtenteRegistratoEntity> findAll() {
         Connection connection;
         PreparedStatement statement;
@@ -40,6 +59,11 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         }
     }
 
+    /**
+     * Restituisce l'utente corrispondente all'ID specificato, se presente.
+     * @param id L'ID dell'utente da cercare
+     * @return Un'entità di tipo utente registrato
+     */
     public Optional<UtenteRegistratoEntity> findById(Integer id) {
         Connection connection;
         PreparedStatement statement;
@@ -63,6 +87,11 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         }
     }
 
+    /**
+     * Inserisce un nuovo utente registrato utilizzando i dati dell'oggetto Utente fornito come argomento.
+     * @param utente L'utente da inserire
+     * @return {@code true} se l'inserimento avviene con successo, {@code false} altrimenti
+     */
     public boolean createUtente(Utente utente) {
         Connection connection;
         PreparedStatement statement;
@@ -93,6 +122,12 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
         }
     }
 
+    /**
+     * Restituisce gli utenti che possiedono l'email e la password forniti come argomento.
+     * @param email L'email dell'utente da cercare
+     * @param password La password dell'utente da cercare
+     * @return Una lista di entità di tipo utente registrato
+     */
     public Optional<UtenteRegistratoEntity> findByEmailAndPassword(String email, String password) {
         Connection connection;
         PreparedStatement statement;
@@ -116,4 +151,5 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
             return Optional.empty();
         }
     }
+
 }
