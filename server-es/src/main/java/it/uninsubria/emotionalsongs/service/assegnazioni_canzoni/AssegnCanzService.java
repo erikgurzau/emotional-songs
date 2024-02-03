@@ -7,16 +7,39 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.util.List;
 
+/**
+ * Questa classe fornisce dei servizi per la gestione delle assegnazioni delle canzoni.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 1.0.0
+ */
+
 public class AssegnCanzService {
 
+    /**
+     * Repository per le assegnazioni delle canzoni.
+     */
     private final AssegnCanzRepository assegnCanzRepository;
+
+    /**
+     * Assemblatore per le assegnazioni delle canzoni.
+     */
     private final AssegnCanzAssembler assegnCanzAssembler;
 
+    /**
+     * Costruisce un nuovo servizio di assegnazione delle canzoni inizializzando il repository e l'assemblatore.
+     */
     public AssegnCanzService() {
         assegnCanzRepository = new AssegnCanzRepository();
         assegnCanzAssembler = new AssegnCanzAssembler();
     }
 
+    /**
+     * Inserisce un'assegnazione di canzone.
+     * @param assegnazione l'assegnazione di canzone da inserire.
+     * @return true se l'assegnazione è stata inserita con successo, false altrimenti.
+     */
     public boolean insertAssegnazione(AssegnCanzone assegnazione) {
         Logger.info("AssegnCanzService: insertAssegnazione ");
         return assegnCanzRepository.insertAssegnazione(assegnazione);

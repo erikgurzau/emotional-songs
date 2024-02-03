@@ -12,15 +12,38 @@ import it.uninsubria.emotionalsongs.utils.Logger;
 
 import java.util.List;
 
+/**
+ * Questa classe fornisce dei servizi per la gestione dei report.
+ * @author Erik Gurzau (749400, VA)
+ * @author Alessia Metaj (738945, VA)
+ * @author Sara Biavaschi (748698, VA)
+ * @version 1.0.0
+ */
 public class ReportService {
+
+    /**
+     * Repository dei report.
+     */
     private final ReportRepository reportRepository;
+
+    /**
+     * Assemblatore dei report.
+     */
     private final ReportAssembler reportAssembler;
 
+    /**
+     * Costruisce un nuovo servizio di gestione dei report inizializzando il repository e l'assemblatore.
+     */
     public ReportService() {
         reportRepository = new ReportRepository();
         reportAssembler = new ReportAssembler();
     }
 
+    /**
+     * Recupera un report tramite il suo ID.
+     * @param id L'ID del report da recuperare.
+     * @return Il report corrispondente all'ID specificato se presente, altrimenti null.
+     */
     public Report getReport(Integer id) {
         Logger.info("ReportService : getReport ");
         ReportEntity report = reportRepository.getReport(id);
