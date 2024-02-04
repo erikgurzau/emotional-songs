@@ -9,11 +9,11 @@ import it.uninsubria.emotionalsongs.service.sessione.SessioneService;
 import it.uninsubria.emotionalsongs.service.utente.UtenteService;
 
 /**
- * Questa classe è un gestore dei servizi che fornisce accesso,ai servizi del server.
+ * Questa classe è un gestore centralizzato che fornisce l'accesso ai servizi del server.
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
  * @see it.uninsubria.emotionalsongs.service.assegnazioni_canzoni.AssegnCanzService
  * @see it.uninsubria.emotionalsongs.service.canzone.CanzoneService
  * @see it.uninsubria.emotionalsongs.service.emozione.EmozioneService
@@ -62,7 +62,7 @@ public class SharedService {
 
     /**
      * Restituisce il servizio per la gestione degli utenti.
-     * @return Il servizio per la gestione degli utenti.
+     * @return Il servizio per la gestione degli utenti
      */
     public static UtenteService getUtenteService() {
         return utenteService;
@@ -70,7 +70,7 @@ public class SharedService {
 
     /**
      * Restituisce il servizio per la gestione delle canzoni.
-     * @return Il servizio per la gestione delle canzoni.
+     * @return Il servizio per la gestione delle canzoni
      */
     public static CanzoneService getCanzoneService() {
         return canzoneService;
@@ -78,7 +78,7 @@ public class SharedService {
 
     /**
      * Restituisce il servizio per la gestione delle playlist.
-     * @return Il servizio per la gestione delle playlist.
+     * @return Il servizio per la gestione delle playlist
      */
     public static PlaylistService getPlaylistService() {
         return playlistService;
@@ -86,7 +86,7 @@ public class SharedService {
 
     /**
      * Restituisce il servizio per la gestione delle assegnazioni delle canzoni.
-     * @return Il servizio per la gestione delle assegnazioni delle canzoni.
+     * @return Il servizio per la gestione delle assegnazioni delle canzoni
      */
     public static AssegnCanzService getAssegnCanzService() {
         return assegnCanzService;
@@ -94,7 +94,7 @@ public class SharedService {
 
     /**
      * Restituisce il servizio per la gestione delle emozioni.
-     * @return Il servizio per la gestione delle emozioni.
+     * @return Il servizio per la gestione delle emozioni
      */
     public static EmozioneService getEmozioneService(){
         return emozioneService; 
@@ -102,14 +102,14 @@ public class SharedService {
 
     /**
      * Restituisce il servizio per la gestione dei report.
-     * @return Il servizio per la gestione dei report.
+     * @return Il servizio per la gestione dei report
      */
     public static ReportService getReportService() { return reportService; }
 
     /**
      * Restituisce il servizio per la gestione delle sessioni degli utenti.
      * Questo metodo è sincronizzato per garantire la corretta gestione delle sessioni in contesti multi-thread.
-     * @return Il servizio per la gestione delle sessioni degli utenti.
+     * @return Il servizio per la gestione delle sessioni degli utenti
      */
     public static synchronized SessioneService getSessioneService() {
         return sessioneService;

@@ -65,7 +65,7 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
     /**
      * Restituisce la canzone corrispondente all'ID specificato, se presente.
      * @param id L'ID della canzone da cercare
-     * @return Un'entità di tipo canzone
+     * @return Un'entità di tipo canzone corrispondente all'ID specificato, se presente; altrimenti, un'istanza vuota di {@code Optional}
      */
     public Optional<CanzoneEntity> findById(Integer id) {
         Connection connection;
@@ -96,7 +96,7 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
     /**
      * Restituisce le canzoni che contengono nel titolo la stringa ricercata.
      * @param ricerca La stinga della ricerca
-     * @return Una lista di entità di tipo canzone
+     * @return Una lista di entità di tipo canzone che contengono nel titolo la ricerca, se presenti; altrimenti, {@code null}
      */
     public List<CanzoneEntity> findByTitolo(String ricerca) {
         Connection connection;
@@ -128,13 +128,12 @@ public class CanzoneRepository extends Repository<CanzoneEntity> {
      * Restituisce le canzoni che possiedono l'autore e l'anno di pubblicazione forniti come argomento.
      * @param autore L'autore della canzone da cercare
      * @param anno L'anno della canzone da cercare
-     * @return Una lista di entità di tipo canzone
+     * @return Una lista di entità di tipo canzone che possiedono l'autore e l'anno indicati nella ricerca, se presenti; altrimenti, {@code null}
      */
     public List<CanzoneEntity> findByAutoreAnno(String autore, Integer anno) {
         Connection connection;
         PreparedStatement statement;
         ResultSet resultSet;
-        System.out.println("ciao");
 
         String query = "SELECT c.id, c.autore, c.titolo, c.anno, c.durata_ms, " +
                 "   gm.id as id_genere_musicale, gm.nome as nome_genere_musicale " +

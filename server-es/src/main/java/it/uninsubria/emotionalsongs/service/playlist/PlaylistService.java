@@ -13,7 +13,7 @@ import java.util.List;
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
+ * @version 2.0.0
  * @see it.uninsubria.emotionalsongs.assembler.playlist.PlaylistAssembler
  * @see it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity
  * @see it.uninsubria.emotionalsongs.model.playlist.Playlist
@@ -53,10 +53,11 @@ public class PlaylistService {
     /**
      * Crea una nuova playlist.
      * @param playlist La playlist da creare.
-     * @return true se la playlist è stata creata con successo, false altrimenti.
+     * @return {@code true} se la playlist è stata creata con successo, {@code false} altrimenti.
      */
     public boolean createPlaylist(Playlist playlist) {
         Logger.info(this.getClass().getSimpleName() + ": createPlaylist ");
         return playlistRepository.createPlaylist(playlist);
     }
+
 }

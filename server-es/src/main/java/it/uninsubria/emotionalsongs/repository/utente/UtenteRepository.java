@@ -37,7 +37,7 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
 
     /**
      * Recupera un elenco di tutti gli utenti registrati.
-     * @return Una lista di entità di tipo utente registrato
+     * @return Una lista di entità di tipo utente registrato, se sono presenti utenti registrati; altrimenti, {@code null}
      */
     public List<UtenteRegistratoEntity> findAll() {
         Connection connection;
@@ -62,7 +62,8 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
     /**
      * Restituisce l'utente corrispondente all'ID specificato, se presente.
      * @param id L'ID dell'utente da cercare
-     * @return Un'entità di tipo utente registrato
+     * @return Un'entità di tipo utente registrato corrispondente all'ID specificato, se presente;
+     *         altrimenti, un'istanza vuota di {@code Optional}
      */
     public Optional<UtenteRegistratoEntity> findById(Integer id) {
         Connection connection;
@@ -126,7 +127,8 @@ public class UtenteRepository extends Repository<UtenteRegistratoEntity> {
      * Restituisce gli utenti che possiedono l'email e la password forniti come argomento.
      * @param email L'email dell'utente da cercare
      * @param password La password dell'utente da cercare
-     * @return Una lista di entità di tipo utente registrato
+     * @return Una lista di entità di tipo utente registrato che possiedono l'email e la password indicati nella ricerca, se presenti;
+     *         altrimenti, un'istanza vuota di {@code Optional}
      */
     public Optional<UtenteRegistratoEntity> findByEmailAndPassword(String email, String password) {
         Connection connection;

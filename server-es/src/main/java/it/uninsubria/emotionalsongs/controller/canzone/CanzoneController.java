@@ -15,6 +15,7 @@ import it.uninsubria.emotionalsongs.utils.Utils;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static it.uninsubria.emotionalsongs.utils.Utils.isNull;
 
@@ -51,7 +52,7 @@ public class CanzoneController extends Controller implements ApiConfig {
      * Costruttore della classe.
      */
     public CanzoneController() {
-        canzoneService = new CanzoneService();
+        canzoneService = SharedService.getCanzoneService();
         sessioneService = SharedService.getSessioneService();
     }
 

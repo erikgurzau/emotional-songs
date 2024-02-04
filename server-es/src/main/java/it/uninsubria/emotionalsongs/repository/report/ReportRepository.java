@@ -30,9 +30,9 @@ public class ReportRepository extends Repository<CanzoneEntity> {
     public ReportRepository() { }
 
     /**
-     * Recupera le informazioni del report emozionald relativo alla canzone specificata come argomento.
+     * Recupera le informazioni del report emozionale relativo alla canzone con l'ID specificato come argomento.
      * @param idCanzone L'ID della canzone di cui ottenere il report
-     * @return Un'entità di tipo report.
+     * @return Un'entità di tipo report relativa alla canzone con l'ID specificato, se presente; altrimenti, {@code null}
      */
     public ReportEntity getReport(Integer idCanzone) {
         ReportEntity reportEntity = new ReportEntity();
@@ -100,12 +100,12 @@ public class ReportRepository extends Repository<CanzoneEntity> {
 
             reportEntity.setStatiEmozionali(emotionalStates);
 
-            statement.close();
+            connection.close();
+            return reportEntity;
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-
-        return reportEntity;
     }
 
     //public ReportEntity getReport() { return new ReportEntity(); }

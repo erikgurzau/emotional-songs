@@ -1,30 +1,20 @@
 package it.uninsubria.emotionalsongs.service.report;
 
-import it.uninsubria.emotionalsongs.assembler.playlist.PlaylistAssembler;
 import it.uninsubria.emotionalsongs.assembler.report.ReportAssembler;
-import it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity;
 import it.uninsubria.emotionalsongs.entity.report.ReportEntity;
-import it.uninsubria.emotionalsongs.model.playlist.Playlist;
 import it.uninsubria.emotionalsongs.model.report.Report;
-import it.uninsubria.emotionalsongs.repository.playlist.PlaylistRepository;
 import it.uninsubria.emotionalsongs.repository.report.ReportRepository;
 import it.uninsubria.emotionalsongs.utils.Logger;
 
-import java.util.List;
-
 /**
- * Questa classe fornisce dei servizi per la gestione dei report.
+ * Questa classe fornisce dei servizi per la gestione dei report emozionali.
  * @author Erik Gurzau (749400, VA)
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
- * @version 1.0.0
- * @see it.uninsubria.emotionalsongs.assembler.playlist.PlaylistAssembler
+ * @version 2.0.0
  * @see it.uninsubria.emotionalsongs.assembler.report.ReportAssembler
- * @see it.uninsubria.emotionalsongs.entity.playlist.PlaylistEntity
  * @see it.uninsubria.emotionalsongs.entity.report.ReportEntity
- * @see it.uninsubria.emotionalsongs.model.playlist.Playlist
  * @see it.uninsubria.emotionalsongs.model.report.Report
- * @see it.uninsubria.emotionalsongs.repository.playlist.PlaylistRepository
  * @see it.uninsubria.emotionalsongs.repository.report.ReportRepository
  * @see it.uninsubria.emotionalsongs.utils.Logger
  */
@@ -49,9 +39,9 @@ public class ReportService {
     }
 
     /**
-     * Recupera un report tramite il suo ID.
-     * @param id L'ID del report da recuperare.
-     * @return Il report corrispondente all'ID specificato se presente, altrimenti null.
+     * Recupera un report emozinale relativo alla canzone con l'ID specificato.
+     * @param id L'ID della canzone di cui ottenere il report
+     * @return Il report corrispondente alla canzone con l'ID specificato, se presente; altrimenti, {@code null}
      */
     public Report getReport(Integer id) {
         Logger.info("ReportService : getReport ");
