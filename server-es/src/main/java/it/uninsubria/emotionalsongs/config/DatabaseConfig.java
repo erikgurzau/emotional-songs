@@ -11,8 +11,6 @@ import java.sql.SQLException;
  * @author Alessia Metaj (738945, VA)
  * @author Sara Biavaschi (748698, VA)
  * @version 2.0.0
- * @see it.uninsubria.emotionalsongs.model.api.API
- * @see it.uninsubria.emotionalsongs.utils.Costanti
  */
 public interface DatabaseConfig {
 
